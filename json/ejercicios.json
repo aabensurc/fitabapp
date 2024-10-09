@@ -1,0 +1,67 @@
+{
+  "ejercicios": [
+    {
+      "id": 1,
+      "nombre": "Sentadillas",
+      "descripcion": "Fortalece los músculos de las piernas y glúteos. Mejora la estabilidad y postura corporal.",
+      "nivel": "Intermedio",
+      "musculos_involucrados": ["Cuádriceps", "Glúteos"],
+      "imagen_url": "https://static.vecteezy.com/system/resources/previews/008/635/575/non_2x/woman-doing-bodyweight-squats-exercise-flat-illustration-isolated-on-white-background-vector.jpg",
+      "video_url": "https://videos.pexels.com/video-files/5319759/5319759-uhd_2560_1440_25fps.mp4"
+    },
+    {
+      "id": 2,
+      "nombre": "Estocadas",
+      "descripcion": "Ideal para fortalecer los cuádriceps y femorales, mejorando el equilibrio y la coordinación.",
+      "nivel": "Avanzado",
+      "musculos_involucrados": ["Cuádriceps", "Femorales"],
+      "imagen_url": "https://thumbs.dreamstime.com/b/woman-doing-lunges-isolated-white-background-45623531.jpg",
+      "video_url": "https://example.com/estocadas-video.mp4"
+    },
+    {
+      "id": 3,
+      "nombre": "Peso muerto",
+      "descripcion": "Desarrolla la fuerza de los músculos femorales, glúteos y dorsales, clave en entrenamientos de fuerza.",
+      "nivel": "Intermedio",
+      "musculos_involucrados": ["Femorales", "Glúteos", "Dorsales"],
+      "imagen_url": "https://example.com/peso-muerto.jpg",
+      "video_url": "https://example.com/peso-muerto-video.mp4"
+    },
+    {
+      "id": 4,
+      "nombre": "Elevaciones de talón",
+      "descripcion": "Enfocado en los músculos de la pantorrilla, mejora la estabilidad de las piernas.",
+      "nivel": "Principiante",
+      "musculos_involucrados": ["Femorales", "Cuádriceps"],
+      "imagen_url": "https://www.entrenamientos.com/media/cache/exercise_375/uploads/exercise/elevacion-talones-de-pie-apoyado-en-silla-init-pos-6580.png",
+      "video_url": "https://example.com/elevaciones-talon-video.mp4"
+    },
+    {
+      "id": 5,
+      "nombre": "Curl de bíceps",
+      "descripcion": "Un ejercicio clásico para el desarrollo y fortalecimiento de los bíceps.",
+      "nivel": "Principiante",
+      "musculos_involucrados": ["Bíceps"],
+      "imagen_url": "https://example.com/curl-biceps.jpg",
+      "video_url": "https://example.com/curl-biceps-video.mp4"
+    },
+    {
+      "id": 6,
+      "nombre": "Press de banca",
+      "descripcion": "Fortalece los pectorales y tríceps. Uno de los ejercicios clave en entrenamiento de fuerza.",
+      "nivel": "Intermedio",
+      "musculos_involucrados": ["Pectorales", "Tríceps"],
+      "imagen_url": "https://example.com/press-banca.jpg",
+      "video_url": "https://example.com/press-banca-video.mp4"
+    },
+    {
+      "id": 7,
+      "nombre": "Flexiones",
+      "descripcion": "Un ejercicio básico que trabaja pectorales, tríceps y músculos dorsales, perfecto para principiantes.",
+      "nivel": "Principiante",
+      "musculos_involucrados": ["Pectorales", "Tríceps", "Dorsales"],
+      "imagen_url": "https://example.com/flexiones.jpg",
+      "video_url": "https://example.com/flexiones-video.mp4"
+    }
+  ]
+}
