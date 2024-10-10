@@ -159,6 +159,7 @@ p {
   padding: 5px 15px; /* Espaciado interno */
   display: flex;
   align-items: center; /* Alinear verticalmente el contenido */
+  margin: 20px 0px;
 }
 
 /* Quitar bordes del input y botón */
@@ -191,6 +192,10 @@ p {
   color: #6c757d; /* Color del placeholder */
 }
 
+.container_ejers2{
+  padding-top: 60px;
+
+}
 
 
 
