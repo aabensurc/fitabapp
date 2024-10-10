@@ -39,11 +39,16 @@
 }
 
 
+html{
+  height: 100%;
+}
 
 /* Estilos generales */
 body {
   font-family: 'MiFuente', sans-serif;
   background-color: #f5f8fa;
+
+  height: 100%;
 }
 
 h1 {
@@ -305,6 +310,7 @@ p {
   padding: 0px;
   padding-top: 60px; /* Deja espacio debajo del App Bar */
 
+  height: 100%;
 }
 
 .container-ejer-info{
@@ -313,6 +319,8 @@ p {
   border-radius: 20px 20px 0px 0px;
   background-color:#fff;
   padding-top: 26px;
+
+  height: 100%;
 }
 
 
