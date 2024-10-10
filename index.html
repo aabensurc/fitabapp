@@ -13,15 +13,22 @@
   
 </head>
 <body>
-
-<div class="container-fluid">
+<!-- App Bar -->
+<div class="app-bar">
+  <div class="nav-icons" id="back-button">
+      <i class="bi bi-arrow-left"></i> <!-- Icono de "atrás" -->
+  </div>
+  <h1>Ejercicios</h1> <!-- Título dinámico -->
+  <div class="nav-icons"></div>
+</div>
+<div class="container-fluid container_ejers2">
   <!-- Buscador estilo iOS -->
-  <div class="search-container my-4">
+  <div class="search-container">
     <input type="text" id="searchInput" class="form-control" placeholder="Buscar ejercicio" aria-label="Buscar ejercicio" aria-describedby="searchIcon">
     <i class="bi bi-search" id="searchIcon" onclick="buscarEjercicio()"></i> <!-- Icono de búsqueda -->
   </div>
 
-  <h1 class="text-center my-4 d-flex">Ejercicios</h1>
+
   
   <div class="container-custom">
     <!-- Opciones de ejercicios -->
@@ -58,7 +65,7 @@
 <!-- Script para manejar la navegación -->
 <script>
   function irAEjercicios(musculo) {
-    window.location.href = `ejercicios.html?musculo=${musculo}`;
+    window.location.href = `ejerciciosxmusculo.html?musculo=${musculo}`;
   }
 
   // Manejador para el buscador
@@ -75,6 +82,11 @@
       window.location.href = `busqueda_ejercicio.html?nombre=${searchQuery}`;
     }
   }
+
+    // Función para volver a la pantalla anterior
+    document.getElementById('back-button').addEventListener('click', function() {
+      history.back();
+  });
 </script>
 
 <!-- Bootstrap JS and dependencies -->
