@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <meta name="description" content="Mi PWA con Bootstrap y JSON">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>FITABAPP</title>
+</head>
+<body>
+
+<!-- App Bar -->
+<div class="app-bar">
+    <div class="nav-icons" id="back-button">
+        <i class="bi bi-arrow-left"></i> <!-- Icono de "atrás" -->
+    </div>
+    <h1 id="titulo-musculo">Ejercicios</h1> <!-- Título dinámico -->
+    <div class="nav-icons"></div>
+</div>
+
+<!-- Contenedor principal -->
+<div class="container-fluid container_ejers">
+    <!-- Lista de ejercicios con estilo flat -->
+    <ul id="ejercicios-list" class="list-group"></ul>
+</div>
+
+<!-- Cargar ejercicios desde JSON -->
+<script>
+  // Obtener el parámetro del músculo seleccionado o el término de búsqueda
+  const urlParams = new URLSearchParams(window.location.search);
+  const musculoSeleccionado = urlParams.get('musculo');  // Ej: "Cuádriceps", "Glúteos", etc.
+  const terminoBusqueda = urlParams.get('busqueda');  // Parámetro de búsqueda por nombre de ejercicio
+
+  // Actualizar el título del App Bar
+  const titulo = musculoSeleccionado ? musculoSeleccionado : (terminoBusqueda ? `Resultados para: ${terminoBusqueda}` : 'Ejercicios');
+  document.getElementById('titulo-musculo').textContent = titulo;
+
+  // Cargar datos desde el archivo JSON
+  fetch('json/ejercicios.json')
+    .then(response => response.json())
+    .then(data => {
+      const listaEjercicios = data.ejercicios;
+      
+      // Filtrar por músculo o por búsqueda de nombre (LIKE)
+      let ejerciciosFiltrados;
+      if (musculoSeleccionado) {
+        ejerciciosFiltrados = listaEjercicios.filter(ejercicio => ejercicio.musculos_involucrados.includes(musculoSeleccionado));
+      } else if (terminoBusqueda) {
+        const terminoLower = terminoBusqueda.toLowerCase();
+        ejerciciosFiltrados = listaEjercicios.filter(ejercicio => ejercicio.nombre.toLowerCase().includes(terminoLower));
+      } else {
+        ejerciciosFiltrados = listaEjercicios;  // Mostrar todos si no hay filtro
+      }
+
+      const ejerciciosList = document.getElementById('ejercicios-list');
+      ejerciciosList.innerHTML = ''; // Limpiar la lista
+
+      if (ejerciciosFiltrados.length === 0) {
+        ejerciciosList.innerHTML = '<li class="list-group-item">No se encontraron ejercicios.</li>';
+      }
+
+      ejerciciosFiltrados.forEach(ejercicio => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item', 'd-flex', 'align-items-center', 'mb-3', 'shadow-sm');
+        listItem.innerHTML = `
+          <img src="${ejercicio.imagen_url}" alt="${ejercicio.nombre}" class="img-fluid" style="width: 50px; height: 50px;">
+          <div class="ms-3">
+            <h5>${ejercicio.nombre}</h5>
+            <p class="mb-0">Nivel: <span class="text-primary">${ejercicio.nivel}</span></p>
+          </div>
+        `;
+
+        // Agregar evento clic para redirigir a la nueva página
+        listItem.addEventListener('click', function() {
+          window.location.href = `detalle_ejer.html?id=${ejercicio.id}`; // Solo pasamos el id
+        });
+
+        ejerciciosList.appendChild(listItem);
+      });
+    })
+    .catch(error => {
+      console.error('Error al cargar los datos:', error);
+      document.getElementById('ejercicios-list').innerHTML = '<li class="list-group-item">Error al cargar los ejercicios.</li>';
+    });
+
+  // Función para volver a la pantalla anterior
+  document.getElementById('back-button').addEventListener('click', function() {
+      history.back();
+  });
+</script>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
