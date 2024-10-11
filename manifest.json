@@ -1,38 +1,112 @@
 {
-  "name": "FITABAPP",
-  "short_name": "FTA",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#007bff",
-  "icons": [
-    {
-      "src": "img/icon1.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "img/icon2.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "img/screenshot1.png",
-      "type": "image/png",
-      "sizes": "1280x800",
-      "label": "Descripción de la imagen",
-      "form_factor": "wide"
-    },
-    {
-      "src": "img/screenshot2.png",
-      "type": "image/png",
-      "sizes": "800x600",
-      "label": "Descripción de la imagen"
-    }
-  ],
-  "id": "https://aabensurc.github.io/fitabapp/index.html"
+    "ejercicios": [
+        {
+            "id": 1,
+            "nombre": "Sentadillas",
+            "descripcion": "Fortalece los m\u00fasculos de las piernas y gl\u00fateos. Mejora la estabilidad y postura corporal.",
+            "nivel": "Intermedio",
+            "musculos_involucrados": [
+                "Cu\u00e1driceps",
+                "Gl\u00fateos"
+            ],
+            "imagen_url": "https:\/\/static.vecteezy.com\/system\/resources\/previews\/008\/635\/575\/non_2x\/woman-doing-bodyweight-squats-exercise-flat-illustration-isolated-on-white-background-vector.jpg",
+            "video_url": "https:\/\/videos.pexels.com\/video-files\/5319759\/5319759-uhd_2560_1440_25fps.mp4"
+        },
+        {
+            "id": 2,
+            "nombre": "Estocadas",
+            "descripcion": "Ideal para fortalecer los cu\u00e1driceps y femorales, mejorando el equilibrio y la coordinaci\u00f3n.",
+            "nivel": "Avanzado",
+            "musculos_involucrados": [
+                "Cu\u00e1driceps",
+                "Femorales"
+            ],
+            "imagen_url": "https:\/\/thumbs.dreamstime.com\/b\/woman-doing-lunges-isolated-white-background-45623531.jpg",
+            "video_url": "https:\/\/example.com\/estocadas-video.mp4"
+        },
+        {
+            "id": 3,
+            "nombre": "Peso muerto",
+            "descripcion": "Desarrolla la fuerza de los m\u00fasculos femorales, gl\u00fateos y dorsales, clave en entrenamientos de fuerza.",
+            "nivel": "Intermedio",
+            "musculos_involucrados": [
+                "Femorales",
+                "Gl\u00fateos",
+                "Dorsales"
+            ],
+            "imagen_url": "https:\/\/example.com\/peso-muerto.jpg",
+            "video_url": "https:\/\/example.com\/peso-muerto-video.mp4"
+        },
+        {
+            "id": 4,
+            "nombre": "Elevaciones de tal\u00f3n",
+            "descripcion": "Enfocado en los m\u00fasculos de la pantorrilla, mejora la estabilidad de las piernas.",
+            "nivel": "Principiante",
+            "musculos_involucrados": [
+                "Femorales",
+                "Cu\u00e1driceps"
+            ],
+            "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/elevacion-talones-de-pie-apoyado-en-silla-init-pos-6580.png",
+            "video_url": "https:\/\/example.com\/elevaciones-talon-video.mp4"
+        },
+        {
+            "id": 5,
+            "nombre": "Curl de b\u00edceps",
+            "descripcion": "Un ejercicio cl\u00e1sico para el desarrollo y fortalecimiento de los b\u00edceps.",
+            "nivel": "Principiante",
+            "musculos_involucrados": [
+                "B\u00edceps"
+            ],
+            "imagen_url": "https:\/\/example.com\/curl-biceps.jpg",
+            "video_url": "https:\/\/example.com\/curl-biceps-video.mp4"
+        },
+        {
+            "id": 6,
+            "nombre": "Press de banca",
+            "descripcion": "Fortalece los pectorales y tr\u00edceps. Uno de los ejercicios clave en entrenamiento de fuerza.",
+            "nivel": "Intermedio",
+            "musculos_involucrados": [
+                "Pectorales",
+                "Tr\u00edceps"
+            ],
+            "imagen_url": "https:\/\/example.com\/press-banca.jpg",
+            "video_url": "https:\/\/example.com\/press-banca-video.mp4"
+        },
+        {
+            "id": 7,
+            "nombre": "Flexiones",
+            "descripcion": "Un ejercicio b\u00e1sico que trabaja pectorales, tr\u00edceps y m\u00fasculos dorsales, perfecto para principiantes.",
+            "nivel": "Principiante",
+            "musculos_involucrados": [
+                "Pectorales",
+                "Tr\u00edceps",
+                "Dorsales"
+            ],
+            "imagen_url": "https:\/\/example.com\/flexiones.jpg",
+            "video_url": "https:\/\/example.com\/flexiones-video.mp4"
+        },
+        {
+            "id": 8,
+            "nombre": "bulgaras",
+            "descripcion": "Ejercicio para aumento de masa muscular en el gl\u00fateo",
+            "nivel": "Avanzado",
+            "musculos_involucrados": [
+                "Gl\u00fateos",
+                "Femorales"
+            ],
+            "imagen_url": "https:\/\/runningvillarejo.es\/wp-content\/uploads\/2023\/11\/beneficios-y-ejecucion-de-las-sentadillas-bulgaras.jpg",
+            "video_url": "https:\/\/videos.pexels.com\/video-files\/12676973\/12676973-hd_1920_1080_25fps.mp4"
+        },
+        {
+            "id": 9,
+            "nombre": "M\u00e1quina de extensi\u00f3n de piernas",
+            "descripcion": "Ejercicio para cuadriceps en maquina sentado",
+            "nivel": "Principiante",
+            "musculos_involucrados": [
+                "Cu\u00e1driceps"
+            ],
+            "imagen_url": "https:\/\/www.shutterstock.com\/image-vector\/man-doing-leg-extension-on-260nw-2169477623.jpg",
+            "video_url": "videos\/leg-extension.webm"
+        }
+    ]
 }
