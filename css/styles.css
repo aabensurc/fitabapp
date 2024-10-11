@@ -235,6 +235,10 @@ p {
   padding-left: 12px;
 
   font-size: 24px;
+
+  white-space: nowrap;       /* Mantiene el texto en una sola línea */
+  overflow: hidden;          /* Oculta el texto desbordado */
+  text-overflow: ellipsis;   /* Agrega puntos suspensivos si el texto es muy largo */
 }
 
 
