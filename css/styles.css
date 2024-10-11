@@ -38,6 +38,12 @@
     font-style: normal;
 }
 
+*{
+  user-select: none; /* Evita la selección de texto en la mayoría de los navegadores */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
 
 html{
   height: 100%;
@@ -74,6 +80,24 @@ p {
 
 
 
+.ripple-effect {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.5s linear;
+
+  z-index: 1001;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(10); /* Cambia a 10 para que el efecto sea más grande */
+    opacity: 0;
+  }
+}
 
 
 
@@ -226,7 +250,7 @@ p {
   z-index: 1000; /* Para asegurarse que esté siempre encima */
 }
 
-.app-bar h1 {
+.app-bar h1 {   /* #exercise-title */
   font-size: 1.5rem;
   letter-spacing: 0.02em;
   font-weight: 500; /* Gilroy-Bold */
