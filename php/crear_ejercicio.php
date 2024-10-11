@@ -28,7 +28,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 // Verificar que los datos necesarios están presentes
 if (!empty($data['nombre']) && 
     !empty($data['descripcion']) && 
-    !empty($data['nivel']) && 
+    !empty($data['tipo']) && 
     !empty($data['musculos_involucrados']) && 
     !empty($data['imagen_url']) && 
     !empty($data['video_url'])) {
@@ -38,7 +38,7 @@ if (!empty($data['nombre']) &&
         "id" => count($ejercicios['ejercicios']) + 1, // Asignar un nuevo ID
         "nombre" => $data['nombre'],
         "descripcion" => $data['descripcion'],
-        "nivel" => $data['nivel'],
+        "tipo" => $data['tipo'],
         "musculos_involucrados" => $data['musculos_involucrados'],
         "imagen_url" => $data['imagen_url'],
         "video_url" => $data['video_url']
