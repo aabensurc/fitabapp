@@ -87,7 +87,7 @@
         },
         {
             "id": 8,
-            "nombre": "bulgaras",
+            "nombre": "Sentadillas bulgaras",
             "descripcion": "Ejercicio para aumento de masa muscular en el gl\u00fateo",
             "nivel": "Avanzado",
             "musculos_involucrados": [
@@ -95,7 +95,7 @@
                 "Femorales"
             ],
             "imagen_url": "https:\/\/runningvillarejo.es\/wp-content\/uploads\/2023\/11\/beneficios-y-ejecucion-de-las-sentadillas-bulgaras.jpg",
-            "video_url": "https:\/\/videos.pexels.com\/video-files\/12676973\/12676973-hd_1920_1080_25fps.mp4"
+            "video_url": "videos\/sentadilla-bulgara.webm"
         },
         {
             "id": 9,
