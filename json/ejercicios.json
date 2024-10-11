@@ -44,7 +44,7 @@
             "nivel": "Principiante",
             "musculos_involucrados": [
                 "Femorales",
-                "Cu\u00e1driceps"
+                "Pantorrillas"
             ],
             "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/elevacion-talones-de-pie-apoyado-en-silla-init-pos-6580.png",
             "video_url": "https:\/\/example.com\/elevaciones-talon-video.mp4"
@@ -75,7 +75,7 @@
         {
             "id": 7,
             "nombre": "Flexiones",
-            "descripcion": "Un ejercicio b\u00e1sico que trabaja pectorales, tr\u00edceps y m\u00fasculos dorsales, perfecto para principiantes.",
+            "descripcion": "Un ejercicio b\u00e1sico que trabaja pectorales, tr\u00edceps y músculos dorsales, perfecto para principiantes.",
             "nivel": "Principiante",
             "musculos_involucrados": [
                 "Pectorales",
@@ -87,7 +87,7 @@
         },
         {
             "id": 8,
-            "nombre": "Sentadillas bulgaras",
+            "nombre": "bulgaras",
             "descripcion": "Ejercicio para aumento de masa muscular en el gl\u00fateo",
             "nivel": "Avanzado",
             "musculos_involucrados": [
@@ -95,7 +95,7 @@
                 "Femorales"
             ],
             "imagen_url": "https:\/\/runningvillarejo.es\/wp-content\/uploads\/2023\/11\/beneficios-y-ejecucion-de-las-sentadillas-bulgaras.jpg",
-            "video_url": "videos\/sentadilla-bulgara.webm"
+            "video_url": "https:\/\/videos.pexels.com\/video-files\/12676973\/12676973-hd_1920_1080_25fps.mp4"
         },
         {
             "id": 9,
