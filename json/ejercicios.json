@@ -4,7 +4,7 @@
             "id": 1,
             "nombre": "Sentadillas",
             "descripcion": "Fortalece los m\u00fasculos de las piernas y gl\u00fateos. Mejora la estabilidad y postura corporal.",
-            "nivel": "Intermedio",
+            "tipo": "En Casa",
             "musculos_involucrados": [
                 "Cu\u00e1driceps",
                 "Gl\u00fateos"
@@ -16,7 +16,7 @@
             "id": 2,
             "nombre": "Estocadas",
             "descripcion": "Ideal para fortalecer los cu\u00e1driceps y femorales, mejorando el equilibrio y la coordinaci\u00f3n.",
-            "nivel": "Avanzado",
+            "tipo": "Musculacion",
             "musculos_involucrados": [
                 "Cu\u00e1driceps",
                 "Femorales"
@@ -28,7 +28,7 @@
             "id": 3,
             "nombre": "Peso muerto",
             "descripcion": "Desarrolla la fuerza de los m\u00fasculos femorales, gl\u00fateos y dorsales, clave en entrenamientos de fuerza.",
-            "nivel": "Intermedio",
+            "tipo": "Musculacion",
             "musculos_involucrados": [
                 "Femorales",
                 "Gl\u00fateos",
@@ -41,7 +41,7 @@
             "id": 4,
             "nombre": "Elevaciones de tal\u00f3n",
             "descripcion": "Enfocado en los m\u00fasculos de la pantorrilla, mejora la estabilidad de las piernas.",
-            "nivel": "Principiante",
+            "tipo": "En Casa",
             "musculos_involucrados": [
                 "Femorales",
                 "Pantorrillas"
@@ -53,7 +53,7 @@
             "id": 5,
             "nombre": "Curl de b\u00edceps",
             "descripcion": "Un ejercicio cl\u00e1sico para el desarrollo y fortalecimiento de los b\u00edceps.",
-            "nivel": "Principiante",
+            "tipo": "Musculacion",
             "musculos_involucrados": [
                 "B\u00edceps"
             ],
@@ -64,7 +64,7 @@
             "id": 6,
             "nombre": "Press de banca",
             "descripcion": "Fortalece los pectorales y tr\u00edceps. Uno de los ejercicios clave en entrenamiento de fuerza.",
-            "nivel": "Intermedio",
+            "tipo": "Musculacion",
             "musculos_involucrados": [
                 "Pectorales",
                 "Tr\u00edceps"
@@ -76,7 +76,7 @@
             "id": 7,
             "nombre": "Flexiones",
             "descripcion": "Un ejercicio b\u00e1sico que trabaja pectorales, tr\u00edceps y músculos dorsales, perfecto para principiantes.",
-            "nivel": "Principiante",
+            "tipo": "Funcional",
             "musculos_involucrados": [
                 "Pectorales",
                 "Tr\u00edceps",
@@ -89,7 +89,7 @@
             "id": 8,
             "nombre": "bulgaras",
             "descripcion": "Ejercicio para aumento de masa muscular en el gl\u00fateo",
-            "nivel": "Avanzado",
+            "tipo": "Musculacion",
             "musculos_involucrados": [
                 "Gl\u00fateos",
                 "Femorales"
@@ -101,7 +101,7 @@
             "id": 9,
             "nombre": "M\u00e1quina de extensi\u00f3n de piernas",
             "descripcion": "Ejercicio para cuadriceps en maquina sentado",
-            "nivel": "Principiante",
+            "tipo": "Musculacion",
             "musculos_involucrados": [
                 "Cu\u00e1driceps"
             ],
