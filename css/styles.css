@@ -483,6 +483,7 @@ p {
 #selector-dias button{
   border-radius: 50px;
   background-color: #2196F3;
+  border: none;
 }
 
 
