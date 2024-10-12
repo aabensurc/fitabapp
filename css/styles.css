@@ -465,7 +465,7 @@ p {
 
 #container-nutricion {
   padding-bottom: 80px; /* Asegúrate de que este valor sea suficiente para evitar que el último card sea cubierto */
-  padding-top: 80px; /* Asegúrate de que este valor sea suficiente para evitar que el último card sea cubierto */
+  padding-top: 60px; /* Asegúrate de que este valor sea suficiente para evitar que el último card sea cubierto */
 }
 
 
