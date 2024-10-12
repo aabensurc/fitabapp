@@ -227,7 +227,7 @@ p {
 
 .container_ejers2{
   padding-top: 60px;
-
+  padding-bottom: 60px;
 }
 
 
@@ -270,7 +270,6 @@ p {
 }
 
 
-
 .app-bar .nav-icons {
   display: flex;
   gap: 15px;
@@ -284,6 +283,50 @@ p {
   justify-content: center;
   align-items: center;
 }
+
+
+
+
+
+
+
+
+.navbar-nav {
+  flex: 1; /* Permite que la lista de navegación ocupe todo el espacio */
+}
+
+.nav-link {
+  text-align: center; /* Centra el texto debajo del icono */
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  text-decoration: none; /* Quita el subrayado al pasar el ratón */
+}
+
+
+.nav-link.active {
+  color: #fff; /* Color del texto para el enlace activo */
+  background-color: #47a5f1;
+}
+
+.nav-link.active::after {
+  content: ""; /* Crea un indicador visual */
+  display: block;
+  width: 100%; /* Ocupar el ancho completo del enlace */
+  height: 2px; /* Altura de la línea */
+  background-color: #ffffff; /* Color de la línea, puedes cambiarlo */
+  margin-top: 4px; /* Espaciado entre el texto y la línea */
+}
+
+
+
+
+
+
+
+
+
 
 
 
