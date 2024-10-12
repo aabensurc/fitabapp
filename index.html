@@ -10,6 +10,14 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="manifest" href="manifest.json">
   <title>FITABAPP</title>
+
+  <!-- Incluir el archivo auth.js -->
+  <script src="js/auth.js"></script>
+  <script>
+      // Llamar a la función para verificar si el usuario está logueado
+      window.addEventListener('load', checkLogin);
+  </script>
+
   
 </head>
 <body>
@@ -75,13 +83,8 @@
 <script src="js/app.js"></script>
 
 <script>
-    // Función para volver a la pantalla anterior
-    document.getElementById('exit-button').addEventListener('click', function() {
-      localStorage.removeItem('loggedIn');
-localStorage.removeItem('username');
-window.location.href = 'login.html';
-
-  });
+  // Llamar a la función de logout cuando el usuario haga clic en el botón de "Salir"
+  document.getElementById('exit-button').addEventListener('click', logout);
 </script>
 
 </body>
