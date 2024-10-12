@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "nombre_usuario": "aabensurc",
+        "password": "12345",
+        "nombre": "Alex",
+        "apellido": "Abensur",
+        "sexo": "M"
+    },
+    {
+        "id": 2,
+        "nombre_usuario": "asmith",
+        "password": "smith456",
+        "nombre": "Alice",
+        "apellido": "Smith",
+        "sexo": "F"
+    },
+    {
+        "id": 3,
+        "nombre_usuario": "bmiller",
+        "password": "miller789",
+        "nombre": "Bob",
+        "apellido": "Miller",
+        "sexo": "M"
+    },
+    {
+        "id": 4,
+        "nombre_usuario": "cjones",
+        "password": "jones321",
+        "nombre": "Carol",
+        "apellido": "Jones",
+        "sexo": "F"
+    },
+    {
+        "id": 5,
+        "nombre_usuario": "dthompson",
+        "password": "thompson654",
+        "nombre": "David",
+        "apellido": "Thompson",
+        "sexo": "M"
+    }
+]
