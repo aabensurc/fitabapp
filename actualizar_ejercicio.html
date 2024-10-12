@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#007bff">
+    <meta name="description" content="Actualizar ejercicio existente">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Actualizar Ejercicio</title>
+</head>
+<body>
+    <!-- App Bar -->
+    <div class="app-bar">
+        <div class="nav-icons" id="back-button">
+            <i class="bi bi-arrow-left"></i> <!-- Icono de "atrás" -->
+        </div>
+        <h1>Actualizar Ejercicio</h1> <!-- Título dinámico -->
+        <div class="nav-icons"></div>
+    </div>
+    <div class="container">
+
+        <form id="updateExerciseForm" style="margin-top: 80px;">
+            <div class="mb-3">
+                <label for="exerciseSelect" class="form-label">Selecciona un Ejercicio</label>
+                <select class="form-select" id="exerciseSelect" required>
+                    <option value="">Cargando ejercicios...</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="update_nombre" class="form-label">Nombre del Ejercicio</label>
+                <input type="text" class="form-control" id="update_nombre" placeholder="Ingrese el nuevo nombre del ejercicio" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="update_descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="update_descripcion" rows="3" placeholder="Ingrese una descripción" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="update_tipo" class="form-label">Tipo</label>
+                <select class="form-select" id="update_tipo" required>
+                    <option value="">Seleccione el tipo</option>
+                    <option value="Musculacion">Musculacion</option>
+                    <option value="En Casa">En Casa</option>
+                    <option value="Funcional">Funcional</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Músculos Involucrados</label><br>
+                <!-- Checkbox para seleccionar músculos -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo1" value="Pectorales">
+                    <label class="form-check-label" for="musculo1">Pectorales</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo2" value="Tríceps">
+                    <label class="form-check-label" for="musculo2">Tríceps</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo3" value="Dorsales">
+                    <label class="form-check-label" for="musculo3">Dorsales</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo4" value="Cuádriceps">
+                    <label class="form-check-label" for="musculo4">Cuádriceps</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo5" value="Glúteos">
+                    <label class="form-check-label" for="musculo5">Glúteos</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo6" value="Bíceps">
+                    <label class="form-check-label" for="musculo6">Bíceps</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo7" value="Abdomen">
+                    <label class="form-check-label" for="musculo7">Abdomen</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo8" value="Femorales">
+                    <label class="form-check-label" for="musculo8">Femorales</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo9" value="Deltoides">
+                    <label class="form-check-label" for="musculo9">Deltoides</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="musculo10" value="Pantorrillas">
+                    <label class="form-check-label" for="musculo10">Pantorrillas</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="update_imagen_url" class="form-label">URL de la Imagen</label>
+                <input type="text" class="form-control" id="update_imagen_url" placeholder="Ingrese la URL de la imagen" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="update_video_url" class="form-label">URL del Video</label>
+                <input type="text" class="form-control" id="update_video_url" placeholder="Ingrese la URL del video" required>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Actualizar Ejercicio</button>
+        </form>
+
+        <div id="updateMessage" class="mt-3"></div>
+    </div>
+
+    <script>
+        // Cargar ejercicios al combo box
+        fetch('php/obtener_ejercicios.php')
+            .then(response => response.json())
+            .then(data => {
+                const exerciseSelect = document.getElementById('exerciseSelect');
+                exerciseSelect.innerHTML = '<option value="">Seleccione un ejercicio</option>';
+                data.ejercicios.forEach(ejercicio => {
+                    exerciseSelect.innerHTML += `<option value="${ejercicio.id}">${ejercicio.nombre}</option>`;
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar los ejercicios:', error);
+                document.getElementById('exerciseSelect').innerHTML = '<option value="">Error al cargar ejercicios</option>';
+            });
+
+        // Obtener detalles del ejercicio seleccionado
+        document.getElementById('exerciseSelect').addEventListener('change', function() {
+            const selectedId = this.value;
+            if (selectedId) {
+                fetch(`php/obtener_ejercicio.php?id=${selectedId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('update_nombre').value = data.nombre;
+                        document.getElementById('update_descripcion').value = data.descripcion;
+                        document.getElementById('update_tipo').value = data.tipo;
+
+                        // Limpiar checkboxes
+                        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                            checkbox.checked = false;
+                        });
+
+                        data.musculos_involucrados.forEach(musculo => {
+                            const checkbox = document.querySelector(`input[type="checkbox"][value="${musculo}"]`);
+                            if (checkbox) checkbox.checked = true;
+                        });
+
+                        document.getElementById('update_imagen_url').value = data.imagen_url;
+                        document.getElementById('update_video_url').value = data.video_url;
+                    })
+                    .catch(error => console.error('Error al obtener el ejercicio:', error));
+            }
+        });
+
+        document.getElementById('updateExerciseForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar que se envíe el formulario
+
+            const selectedId = document.getElementById('exerciseSelect').value;
+            const nombre = document.getElementById('update_nombre').value;
+            const descripcion = document.getElementById('update_descripcion').value;
+            const tipo = document.getElementById('update_tipo').value;
+            const imagen_url = document.getElementById('update_imagen_url').value;
+            const video_url = document.getElementById('update_video_url').value;
+
+            // Obtener los músculos seleccionados
+            const musculosSeleccionados = [];
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                musculosSeleccionados.push(checkbox.value);
+            });
+
+            // Crear el nuevo ejercicio
+            const ejercicioActualizado = {
+                id: parseInt(selectedId),
+                nombre: nombre,
+                descripcion: descripcion,
+                tipo: tipo,
+                musculos_involucrados: musculosSeleccionados,
+                imagen_url: imagen_url,
+                video_url: video_url
+            };
+
+            // Enviar el ejercicio actualizado al servidor usando fetch
+            fetch('php/actualizar_ejercicio.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(ejercicioActualizado)
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('updateMessage').innerHTML = `<div class="alert alert-success">${data}</div>`;
+                this.reset();
+            })
+            .catch(error => {
+                document.getElementById('updateMessage').innerHTML = `<div class="alert alert-danger">Error al actualizar el ejercicio: ${error}</div>`;
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
