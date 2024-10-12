@@ -238,8 +238,7 @@ p {
 
 
 
- /* Estilos del App Bar */
- .app-bar {
+.app-bar {
   position: fixed;
   top: 0;
   width: 100%;
@@ -247,7 +246,7 @@ p {
   color: white;
   height: 60px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between; /* Cambiado para distribuir los elementos */
   align-items: center;
   padding: 0 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -259,30 +258,30 @@ p {
   letter-spacing: 0.02em;
   font-weight: 500; /* Gilroy-Bold */
   margin: 0;
-
   padding-left: 12px;
-
   font-size: 24px;
-
   white-space: nowrap;       /* Mantiene el texto en una sola línea */
   overflow: hidden;          /* Oculta el texto desbordado */
   text-overflow: ellipsis;   /* Agrega puntos suspensivos si el texto es muy largo */
 }
-
 
 .app-bar .nav-icons {
   display: flex;
   gap: 15px;
 }
 
+#exit-button {
+  margin-left: auto; /* Esto empuja el botón hacia la derecha */
+}
+
 .nav-icons i {
   font-size: 1.5rem;
   cursor: pointer;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 
 
