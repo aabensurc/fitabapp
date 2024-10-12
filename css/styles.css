@@ -469,8 +469,21 @@ p {
 }
 
 
+.card-header{
+  background-color: #2196F3 !important;
+}
 
 
+#selector-dias{
+  background-color: #2196F3;
+  color: #fff;
+  border-radius: 50px;
+}
+
+#selector-dias button{
+  border-radius: 50px;
+  background-color: #2196F3;
+}
 
 
 
