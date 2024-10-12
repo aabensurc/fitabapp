@@ -27,9 +27,10 @@
 
   <div class="container-fluid" id="container-nutricion">
     <div class="d-flex justify-content-between align-items-center my-3" id="selector-dias">
-      <button id="prev-dia" class="btn btn-outline-primary"><i class="bi bi-chevron-left"></i></button>
+      <button id="prev-dia" class="btn btn-primary"><i class="bi bi-chevron-left"></i></button>
       <span id="dia-actual" class="fs-4"></span>
-      <button id="next-dia" class="btn btn-outline-primary"><i class="bi bi-chevron-right"></i></button>
+      <button id="next-dia" class="btn btn-primary"><i class="bi bi-chevron-right"></i></button>
+      
     </div>
 
     <div id="dieta"></div>
@@ -98,26 +99,29 @@
                 let contenido = ``; // No se mostrará ningún título
 
                 for (const [comida, alimentos] of Object.entries(comidasDelDia)) {
-                    contenido += `
-                    <div class="card mb-3">
-                        <div class="card-header bg-primary text-white" id="heading-${comida}">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${comida}" aria-expanded="true" aria-controls="collapse-${comida}">
-                                    ${comida.charAt(0).toUpperCase() + comida.slice(1)}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapse-${comida}" class="collapse show" aria-labelledby="heading-${comida}" data-bs-parent="#dieta">
-                            <div class="card-body">
-                                <ul>`;
-                    alimentos.forEach(alimento => {
-                        contenido += `<li>${alimento.cantidad} ${alimento.unidad} de ${alimento.alimento}</li>`;
-                    });
-                    contenido += `</ul>
-                            </div>
-                        </div>
-                    </div>`;
-                }
+    contenido += `
+    <div class="card mb-3">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center" id="heading-${comida}">
+            <h5 class="mb-0">
+                ${comida.charAt(0).toUpperCase() + comida.slice(1)}
+            </h5>
+            <!-- Ícono de colapso flotante -->
+            <button class="btn btn-link text-white p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${comida}" aria-expanded="true" aria-controls="collapse-${comida}">
+                <i class="bi bi-chevron-up"></i>
+            </button>
+        </div>
+        <div id="collapse-${comida}" class="collapse show" aria-labelledby="heading-${comida}">
+            <div class="card-body">
+                <ul>`;
+    alimentos.forEach(alimento => {
+        contenido += `<li>${alimento.cantidad} ${alimento.unidad} de ${alimento.alimento}</li>`;
+    });
+    contenido += `</ul>
+            </div>
+        </div>
+    </div>`;
+}
+
 
                 document.getElementById('dieta').innerHTML = contenido; // Mostrar en el contenedor
             } else {
