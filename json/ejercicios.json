@@ -14,9 +14,9 @@
         },
         {
             "id": 2,
-            "nombre": "Estocadas",
-            "descripcion": "Ideal para fortalecer los cu\u00e1driceps y femorales, mejorando el equilibrio y la coordinaci\u00f3n.",
-            "tipo": "Musculacion",
+            "nombre": "Zancadas",
+            "descripcion": "Ideal para fortalecer los gluteos y femorales, mejorando el equilibrio y la coordinaci\u00f3n.",
+            "tipo": "En Casa",
             "musculos_involucrados": [
                 "Cu\u00e1driceps",
                 "Femorales"
@@ -75,7 +75,7 @@
         {
             "id": 7,
             "nombre": "Flexiones",
-            "descripcion": "Un ejercicio b\u00e1sico que trabaja pectorales, tr\u00edceps y músculos dorsales, perfecto para principiantes.",
+            "descripcion": "Un ejercicio b\u00e1sico que trabaja pectorales, tr\u00edceps y m\u00fasculos dorsales, perfecto para principiantes.",
             "tipo": "Funcional",
             "musculos_involucrados": [
                 "Pectorales",
