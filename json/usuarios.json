@@ -13,14 +13,14 @@
     },
     {
         "id": 2,
-        "nombre_usuario": "asmith",
-        "password": "smith456",
-        "nombre": "Alice",
-        "apellido": "Smith",
+        "nombre_usuario": "echepey",
+        "password": "123456",
+        "nombre": "Elizabeth",
+        "apellido": "Chepe",
         "sexo": "F",
-        "edad": 28,
-        "peso": 62,
-        "estatura": 1.68,
+        "edad": 45,
+        "peso": 69,
+        "estatura": 1.65,
         "estado": "Habilitado"
     },
     {
