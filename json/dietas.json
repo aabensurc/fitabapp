@@ -149,7 +149,7 @@
     },
     {
         "id": 2,
-        "usuario": "maria456",
+        "usuario": "echepey",
         "lunes": {
             "desayuno": [
                 { "alimento": "Avena", "cantidad": 50, "unidad": "gramos" },
