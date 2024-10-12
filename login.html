@@ -10,74 +10,85 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="manifest.json">
     <title>Login - FITABAPP</title>
-    <style>
-        /* Contenedor principal */
-        .container-fluid {
-            height: 100vh; /* 100% de altura de la ventana */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-            padding: 0px;
-        }
 
-        /* Logo o título de la app */
-        .app-logo {
-            margin-bottom: 40px;
-        }
-
-        h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            font-weight: 600;
-            color: #007bff;
-        }
-
-        /* Estilo para los campos de entrada */
-        .form-control {
-            background-color: #f1f1f1;
-            border: none; /* Elimina el borde */
-            border-radius: 40px;
-            padding: 15px;
-            font-size: 16px;
-            width: 100%; /* Se mantiene al 100% */
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-control:focus {
-            outline: none; /* Elimina el contorno al enfocarse */
-            box-shadow: none; /* Elimina la sombra al enfocarse */
-        }
-
-        /* Botón de inicio de sesión */
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-            font-size: 18px;
-            padding: 15px;
-            border-radius: 50px;
-            border: none;
-            transition: background-color 0.3s ease-in-out;
-            width: 100%; /* Se mantiene al 100% */
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        form {
-            width: 280px;
-        }
-
-        /* Estilo para móviles */
-        @media (max-width: 768px) {
-            h3 {
-                font-size: 24px;
+    <script>
+        // Comprobar si el usuario ya está logueado al cargar la página
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                // Si ya ha iniciado sesión, redirigir a index.html
+                window.location.href = 'index.html';
             }
+        });
+    </script>
+
+<style>
+    /* Contenedor principal */
+    .container-fluid {
+        height: 100vh; /* 100% de altura de la ventana */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 0px;
+    }
+
+    /* Logo o título de la app */
+    .app-logo {
+        margin-bottom: 40px;
+    }
+
+    h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #007bff;
+    }
+
+    /* Estilo para los campos de entrada */
+    .form-control {
+        background-color: #f1f1f1;
+        border: none; /* Elimina el borde */
+        border-radius: 40px;
+        padding: 15px;
+        font-size: 16px;
+        width: 100%; /* Se mantiene al 100% */
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .form-control:focus {
+        outline: none; /* Elimina el contorno al enfocarse */
+        box-shadow: none; /* Elimina la sombra al enfocarse */
+    }
+
+    /* Botón de inicio de sesión */
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        font-size: 18px;
+        padding: 15px;
+        border-radius: 50px;
+        border: none;
+        transition: background-color 0.3s ease-in-out;
+        width: 100%; /* Se mantiene al 100% */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    form {
+        width: 280px;
+    }
+
+    /* Estilo para móviles */
+    @media (max-width: 768px) {
+        h3 {
+            font-size: 24px;
         }
-    </style>
+    }
+</style>
 </head>
 <body>
 
@@ -87,7 +98,7 @@
 
     <h3>Iniciar Sesión</h3>
 
-    <form id="loginForm" action="php/login_controller.php" method="POST">
+    <form id="loginForm">
         <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de Usuario" required>
         <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
@@ -121,8 +132,12 @@
         const usuario = usuarios.find(u => u.nombre_usuario === username && u.password === password);
 
         if (usuario) {
+            // Guardar el inicio de sesión en localStorage
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('username', username); // Guardar el nombre de usuario si lo necesitas más adelante
+
             // Redirigir a la página de inicio si las credenciales son correctas
-            window.location.href = 'index.html'; 
+            window.location.href = 'index.html';
         } else {
             alert('Usuario o contraseña incorrectos');
         }
