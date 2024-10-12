@@ -25,15 +25,15 @@
     },
     {
         "id": 3,
-        "nombre_usuario": "bmiller",
-        "password": "miller789",
-        "nombre": "Bob",
-        "apellido": "Miller",
+        "nombre_usuario": "nico.lazo",
+        "password": "123",
+        "nombre": "Nicolas",
+        "apellido": "Lazo",
         "sexo": "M",
-        "edad": 35,
+        "edad": 32,
         "peso": 85,
-        "estatura": 1.80,
-        "estado": "Deshabilitado"
+        "estatura": 1.70,
+        "estado": "Habilitado"
     },
     {
         "id": 4,
