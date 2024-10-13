@@ -11,124 +11,84 @@
   <link rel="manifest" href="manifest.json">
   <title>FITABAPP</title>
   
+  <!-- Incluir el archivo auth.js -->
+  <script src="js/auth.js"></script>
+  <script>
+    // Llamar a la función para verificar si el usuario está logueado
+    window.addEventListener('load', checkLogin);
+  </script>
 </head>
 <body>
-<!-- App Bar -->
-<div class="app-bar">
-  <h1>Ejercicios</h1> <!-- Título dinámico -->
-  <div class="nav-icons"></div>
-</div>
-<div class="container-fluid container_ejers2">
-  <!-- Buscador estilo iOS -->
-  <div class="search-container">
-    <input type="text" id="searchInput" class="form-control" placeholder="Buscar ejercicio" aria-label="Buscar ejercicio" aria-describedby="searchIcon">
-    <i class="bi bi-search" id="searchIcon" onclick="buscarEjercicio()"></i> <!-- Icono de búsqueda -->
+  <!-- App Bar -->
+  <div class="app-bar">
+    <h1>Contacto</h1>
+    <div class="nav-icons"></div>
   </div>
 
-
+  <div class="container-fluid" id="container-contacto">
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <!-- Foto dentro de un círculo -->
+        <img src="img/foto.jpg" alt="Foto de Andre AB" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px; object-fit: cover; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+        
+        <!-- Título con nombre -->
+        <h2>Andre AB</h2>
+        
+        <!-- Ocupación -->
+        <p class="text-muted">Entrenador fitness y desarrollador de software</p>
+        
+        <!-- Lista de contacto -->
+        <ul class="list-group">
+          <!-- Correo electrónico con funcionalidad de clic -->
+          <li class="list-group-item d-flex justify-content-between align-items-center" onclick="window.location.href='mailto:aabensurc@gmail.com';" style="cursor: pointer;">
+            <span><i class="bi bi-envelope-fill" style="color: rgb(253, 6, 6);"></i> Email</span>
+            <span>aabensurc@gmail.com</span>
+          </li>
+          
+          <!-- WhatsApp con funcionalidad de clic -->
+          <li class="list-group-item d-flex justify-content-between align-items-center" onclick="window.location.href='https://wa.me/+51964905207';" style="cursor: pointer;">
+            <span><i class="bi bi-whatsapp" style="color: rgb(6, 253, 80);"></i> Whatsapp</span>
+            <span>+51 964905207</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
   
-  <div class="container-custom">
-    <!-- Opciones de ejercicios -->
-    <div class="row row-custom bg-1" onclick="irAEjercicios('Cuádriceps')">
-      <div class="overlay">Cuádriceps</div>
-    </div>
-    <div class="row row-custom bg-2" onclick="irAEjercicios('Glúteos')">
-      <div class="overlay">Glúteos</div>
-    </div>
-    <div class="row row-custom bg-3" onclick="irAEjercicios('Bíceps')">
-      <div class="overlay">Bíceps</div>
-    </div>
-    <div class="row row-custom bg-4" onclick="irAEjercicios('Tríceps')">
-      <div class="overlay">Tríceps</div>
-    </div>
-    <div class="row row-custom bg-5" onclick="irAEjercicios('Femorales')">
-      <div class="overlay">Femorales</div>
-    </div>
-    <div class="row row-custom bg-6" onclick="irAEjercicios('Dorsales')">
-      <div class="overlay">Dorsales</div>
-    </div>
-    <div class="row row-custom bg-7" onclick="irAEjercicios('Pectorales')">
-      <div class="overlay">Pectorales</div>
-    </div>
-    <div class="row row-custom bg-8" onclick="irAEjercicios('Abdomen')">
-      <div class="overlay">Abdomen</div>
-    </div>
-    <div class="row row-custom bg-9" onclick="irAEjercicios('Deltoides')">
-      <div class="overlay">Deltoides</div>
-    </div>
-    <div class="row row-custom bg-10" onclick="irAEjercicios('Pantorrillas')">
-      <div class="overlay">Pantorrillas</div>
-    </div>
-  </div>
-</div>
-
-<!-- Bottom Navigation -->
-<nav class="navbar navbar-expand fixed-bottom navbar-light p-0" style="background-color: #2196F3;">
-  <div class="container-fluid p-0 m-0">
+  <!-- Bottom Navigation -->
+  <nav class="navbar navbar-expand fixed-bottom navbar-light p-0" style="background-color: #2196F3;">
+    <div class="container-fluid p-0 m-0">
       <ul class="navbar-nav w-100 d-flex justify-content-between">
-          <li class="nav-item text-center">
-              <a class="nav-link text-white" href="index.html">
-                  <i class="bi bi-house-fill" style="font-size: 24px;"></i><br>
-                  Inicio
-              </a>
-          </li>
-          <li class="nav-item text-center">
-              <a class="nav-link text-white" href="ejercicios.html">
-                  <i class="bi bi-headset-vr" style="font-size: 24px;"></i><br>
-                  Ejercicios
-              </a>
-          </li>
-          <li class="nav-item text-center">
-              <a class="nav-link text-white" href="nutricion.html">
-                  <i class="bi bi-apple" style="font-size: 24px;"></i><br>
-                  Nutrición
-              </a>
-          </li>
-          <li class="nav-item text-center">
-              <a class="nav-link text-white active" href="contacto.html">
-                  <i class="bi bi-envelope-fill" style="font-size: 24px;"></i><br>
-                  Contacto
-              </a>
-          </li>
+        <li class="nav-item text-center">
+          <a class="nav-link text-white" href="index.html">
+            <i class="bi bi-house-fill" style="font-size: 24px;"></i><br>
+            Inicio
+          </a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link text-white" href="ejercicios.html">
+            <i class="bi bi-headset-vr" style="font-size: 24px;"></i><br>
+            Ejercicios
+          </a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link text-white" href="nutricion.html">
+            <i class="bi bi-apple" style="font-size: 24px;"></i><br>
+            Nutrición
+          </a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link text-white active" href="contacto.html">
+            <i class="bi bi-envelope-fill" style="font-size: 24px;"></i><br>
+            Contacto
+          </a>
+        </li>
       </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
 
-
-
-
-
-
-
-<!-- Script para manejar la navegación -->
-<script>
-  function irAEjercicios(musculo) {
-    window.location.href = `ejerciciosxmusculo.html?musculo=${musculo}`;
-  }
-
-  // Manejador para el buscador
-  document.getElementById('searchInput').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-      buscarEjercicio();
-    }
-  });
-
-  // Función para realizar la búsqueda
-  function buscarEjercicio() {
-    const searchQuery = document.getElementById('searchInput').value.trim();
-    if (searchQuery !== "") {
-      window.location.href = `busqueda_ejercicio.html?nombre=${searchQuery}`;
-    }
-  }
-
-    // Función para volver a la pantalla anterior
-    document.getElementById('back-button').addEventListener('click', function() {
-      history.back();
-  });
-</script>
-
-<!-- Bootstrap JS and dependencies -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app.js"></script>
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
