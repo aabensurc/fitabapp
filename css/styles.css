@@ -243,6 +243,25 @@ p {
 
 
 
+.container_home{
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+}
+#card-intro h5{
+  font-size: 22px;
+  font-weight: 600;
+}
+#card-intro button{
+ 
+  font-weight: 600;
+
+}
+
+
+
+
+
 
 
 
