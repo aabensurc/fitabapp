@@ -249,13 +249,17 @@ p {
 
 }
 #card-intro h5{
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 500;
 }
 #card-intro button{
  
   font-weight: 600;
 
+}
+
+#card-intro img{
+ 
 }
 
 
