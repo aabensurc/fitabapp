@@ -291,5 +291,153 @@
                 { "alimento": "Ensalada verde", "cantidad": 100, "unidad": "gramos" }
             ]
         }
+    },
+    {
+        "id": 3,
+        "usuario": "nico.lazo",
+        "lunes": {
+            "desayuno": [
+                { "alimento": "Huevos", "cantidad": 2, "unidad": "unidades" },
+                { "alimento": "Pan", "cantidad": 1, "unidad": "rebanada" },
+                { "alimento": "Papaya", "cantidad": 100, "unidad": "gramos" }
+            ],
+            "media_mañana": [
+                { "alimento": "Yogurt", "cantidad": 200, "unidad": "ml" },
+                { "alimento": "Manzana", "cantidad": 1, "unidad": "unidad" }
+            ],
+            "almuerzo": [
+                { "alimento": "Pollo", "cantidad": 150, "unidad": "gramos" },
+                { "alimento": "Arroz", "cantidad": 200, "unidad": "gramos" },
+                { "alimento": "Ensalada", "cantidad": 100, "unidad": "gramos" }
+            ],
+            "media_tarde": [
+                { "alimento": "Galletas integrales", "cantidad": 3, "unidad": "unidades" }
+            ],
+            "cena": [
+                { "alimento": "Sopa de verduras", "cantidad": 250, "unidad": "ml" },
+                { "alimento": "Pan integral", "cantidad": 1, "unidad": "rebanada" }
+            ]
+        },
+        "martes": {
+            "desayuno": [
+                { "alimento": "Avena", "cantidad": 50, "unidad": "gramos" },
+                { "alimento": "Leche", "cantidad": 200, "unidad": "ml" }
+            ],
+            "media_mañana": [
+                { "alimento": "Frutos secos", "cantidad": 30, "unidad": "gramos" }
+            ],
+            "almuerzo": [
+                { "alimento": "Pasta integral", "cantidad": 150, "unidad": "gramos" },
+                { "alimento": "Carne molida", "cantidad": 120, "unidad": "gramos" },
+                { "alimento": "Brócoli", "cantidad": 100, "unidad": "gramos" }
+            ],
+            "media_tarde": [
+                { "alimento": "Yogurt", "cantidad": 150, "unidad": "ml" }
+            ],
+            "cena": [
+                { "alimento": "Pescado al horno", "cantidad": 150, "unidad": "gramos" },
+                { "alimento": "Quinoa", "cantidad": 100, "unidad": "gramos" }
+            ]
+        },
+        "miércoles": {
+            "desayuno": [
+                { "alimento": "Tostadas de aguacate", "cantidad": 2, "unidad": "rebanadas" },
+                { "alimento": "Huevo duro", "cantidad": 1, "unidad": "unidad" }
+            ],
+            "media_mañana": [
+                { "alimento": "Batido de frutas", "cantidad": 250, "unidad": "ml" }
+            ],
+            "almuerzo": [
+                { "alimento": "Ensalada César", "cantidad": 200, "unidad": "gramos" },
+                { "alimento": "Pollo a la parrilla", "cantidad": 150, "unidad": "gramos" }
+            ],
+            "media_tarde": [
+                { "alimento": "Barra de granola", "cantidad": 1, "unidad": "unidad" }
+            ],
+            "cena": [
+                { "alimento": "Sopa de pollo", "cantidad": 250, "unidad": "ml" },
+                { "alimento": "Tortilla de maíz", "cantidad": 2, "unidad": "unidades" }
+            ]
+        },
+        "jueves": {
+            "desayuno": [
+                { "alimento": "Yogurt griego", "cantidad": 200, "unidad": "ml" },
+                { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
+            ],
+            "media_mañana": [
+                { "alimento": "Kiwi", "cantidad": 1, "unidad": "unidad" }
+            ],
+            "almuerzo": [
+                { "alimento": "Arroz integral", "cantidad": 200, "unidad": "gramos" },
+                { "alimento": "Lentejas", "cantidad": 150, "unidad": "gramos" },
+                { "alimento": "Zanahoria", "cantidad": 100, "unidad": "gramos" }
+            ],
+            "media_tarde": [
+                { "alimento": "Té", "cantidad": 1, "unidad": "taza" }
+            ],
+            "cena": [
+                { "alimento": "Pasta con verduras", "cantidad": 200, "unidad": "gramos" },
+                { "alimento": "Ensalada de tomate", "cantidad": 150, "unidad": "gramos" }
+            ]
+        },
+        "viernes": {
+            "desayuno": [
+                { "alimento": "Smoothie de frutas", "cantidad": 300, "unidad": "ml" },
+                { "alimento": "Granola", "cantidad": 50, "unidad": "gramos" }
+            ],
+            "media_mañana": [
+                { "alimento": "Palta", "cantidad": 1, "unidad": "unidad" }
+            ],
+            "almuerzo": [
+                { "alimento": "Tacos de pollo", "cantidad": 3, "unidad": "unidades" },
+                { "alimento": "Frijoles", "cantidad": 100, "unidad": "gramos" }
+            ],
+            "media_tarde": [
+                { "alimento": "Frutos secos", "cantidad": 30, "unidad": "gramos" }
+            ],
+            "cena": [
+                { "alimento": "Pizza integral", "cantidad": 2, "unidad": "rebanadas" }
+            ]
+        },
+        "sábado": {
+            "desayuno": [
+                { "alimento": "Panqueques", "cantidad": 2, "unidad": "unidades" },
+                { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
+            ],
+            "media_mañana": [
+                { "alimento": "Batido de proteínas", "cantidad": 250, "unidad": "ml" }
+            ],
+            "almuerzo": [
+                { "alimento": "Hamburguesa de pavo", "cantidad": 1, "unidad": "unidad" },
+                { "alimento": "Papas al horno", "cantidad": 150, "unidad": "gramos" }
+            ],
+            "media_tarde": [
+                { "alimento": "Galletas", "cantidad": 2, "unidad": "unidades" }
+            ],
+            "cena": [
+                { "alimento": "Pollo al curry", "cantidad": 200, "unidad": "gramos" },
+                { "alimento": "Arroz basmati", "cantidad": 150, "unidad": "gramos" }
+            ]
+        },
+        "domingo": {
+            "desayuno": [
+                { "alimento": "Tostadas con aguacate", "cantidad": 2, "unidad": "rebanadas" },
+                { "alimento": "Café", "cantidad": 1, "unidad": "taza" }
+            ],
+            "media_mañana": [
+                { "alimento": "Nueces", "cantidad": 30, "unidad": "gramos" }
+            ],
+            "almuerzo": [
+                { "alimento": "Ensalada de atún", "cantidad": 200, "unidad": "gramos" },
+                { "alimento": "Pan integral", "cantidad": 2, "unidad": "rebanadas" }
+            ],
+            "media_tarde": [
+                { "alimento": "Fruta", "cantidad": 1, "unidad": "unidad" }
+            ],
+            "cena": [
+                { "alimento": "Pasta al pesto", "cantidad": 200, "unidad": "gramos" },
+                { "alimento": "Ensalada verde", "cantidad": 100, "unidad": "gramos" }
+            ]
+        }
     }
 ]
