@@ -43,9 +43,12 @@
 <div class="app-bar">
   
   <h1>ABFITAPP</h1> <!-- Título dinámico -->
-  <div class="nav-icons"></div>
   <div class="nav-icons" id="exit-button">
-    <i class="bi bi-box-arrow-left"></i> <!-- Icono de "atrás" -->
+    <i class="bi bi-three-dots-vertical" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+    <!-- Menú desplegable -->
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+      <li><a class="dropdown-item" href="#" id="logout-option">Cerrar sesión</a></li>
+    </ul>
 </div>
 </div>
 <div class="container-fluid container_ejers2">
@@ -101,8 +104,8 @@
 <script src="js/app.js"></script>
 
 <script>
-  // Llamar a la función de logout cuando el usuario haga clic en el botón de "Salir"
-  document.getElementById('exit-button').addEventListener('click', logout);
+  // Llamar a la función de logout cuando el usuario haga clic en "Cerrar sesión"
+  document.getElementById('logout-option').addEventListener('click', logout);
 </script>
 
 </body>
