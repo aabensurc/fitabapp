@@ -37,14 +37,14 @@
     },
     {
         "id": 4,
-        "nombre_usuario": "cjones",
-        "password": "jones321",
-        "nombre": "Carol",
+        "nombre_usuario": "leily123",
+        "password": "123",
+        "nombre": "Leily",
         "apellido": "Jones",
         "sexo": "F",
-        "edad": 25,
+        "edad": 29,
         "peso": 58,
-        "estatura": 1.65,
+        "estatura": 1.60,
         "estado": "Habilitado"
     },
     {
