@@ -8,7 +8,7 @@
                 { "alimento": "Pan", "cantidad": 1, "unidad": "rebanada" },
                 { "alimento": "Papaya", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Yogurt", "cantidad": 200, "unidad": "ml" },
                 { "alimento": "Manzana", "cantidad": 1, "unidad": "unidad" }
             ],
@@ -17,7 +17,7 @@
                 { "alimento": "Arroz", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Ensalada", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Galletas integrales", "cantidad": 3, "unidad": "unidades" }
             ],
             "cena": [
@@ -30,7 +30,7 @@
                 { "alimento": "Avena", "cantidad": 50, "unidad": "gramos" },
                 { "alimento": "Leche", "cantidad": 200, "unidad": "ml" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Frutos secos", "cantidad": 30, "unidad": "gramos" }
             ],
             "almuerzo": [
@@ -38,7 +38,7 @@
                 { "alimento": "Carne molida", "cantidad": 120, "unidad": "gramos" },
                 { "alimento": "Brócoli", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Yogurt", "cantidad": 150, "unidad": "ml" }
             ],
             "cena": [
@@ -51,14 +51,14 @@
                 { "alimento": "Tostadas de aguacate", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Huevo duro", "cantidad": 1, "unidad": "unidad" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Batido de frutas", "cantidad": 250, "unidad": "ml" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada César", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pollo a la parrilla", "cantidad": 150, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Barra de granola", "cantidad": 1, "unidad": "unidad" }
             ],
             "cena": [
@@ -71,7 +71,7 @@
                 { "alimento": "Yogurt griego", "cantidad": 200, "unidad": "ml" },
                 { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Kiwi", "cantidad": 1, "unidad": "unidad" }
             ],
             "almuerzo": [
@@ -79,7 +79,7 @@
                 { "alimento": "Lentejas", "cantidad": 150, "unidad": "gramos" },
                 { "alimento": "Zanahoria", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Té", "cantidad": 1, "unidad": "taza" }
             ],
             "cena": [
@@ -92,14 +92,14 @@
                 { "alimento": "Smoothie de frutas", "cantidad": 300, "unidad": "ml" },
                 { "alimento": "Granola", "cantidad": 50, "unidad": "gramos" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Palta", "cantidad": 1, "unidad": "unidad" }
             ],
             "almuerzo": [
                 { "alimento": "Tacos de pollo", "cantidad": 3, "unidad": "unidades" },
                 { "alimento": "Frijoles", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Frutos secos", "cantidad": 30, "unidad": "gramos" }
             ],
             "cena": [
@@ -111,14 +111,14 @@
                 { "alimento": "Panqueques", "cantidad": 2, "unidad": "unidades" },
                 { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Batido de proteínas", "cantidad": 250, "unidad": "ml" }
             ],
             "almuerzo": [
                 { "alimento": "Hamburguesa de pavo", "cantidad": 1, "unidad": "unidad" },
                 { "alimento": "Papas al horno", "cantidad": 150, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Galletas", "cantidad": 2, "unidad": "unidades" }
             ],
             "cena": [
@@ -131,14 +131,14 @@
                 { "alimento": "Tostadas con aguacate", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Café", "cantidad": 1, "unidad": "taza" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Nueces", "cantidad": 30, "unidad": "gramos" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada de atún", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pan integral", "cantidad": 2, "unidad": "rebanadas" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Fruta", "cantidad": 1, "unidad": "unidad" }
             ],
             "cena": [
@@ -155,7 +155,7 @@
                 { "alimento": "Avena", "cantidad": 50, "unidad": "gramos" },
                 { "alimento": "Plátano", "cantidad": 1, "unidad": "unidad" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Té verde", "cantidad": 1, "unidad": "taza" }
             ],
             "almuerzo": [
@@ -163,7 +163,7 @@
                 { "alimento": "Quinoa", "cantidad": 150, "unidad": "gramos" },
                 { "alimento": "Espárragos", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Yogurt", "cantidad": 200, "unidad": "ml" }
             ],
             "cena": [
@@ -176,14 +176,14 @@
                 { "alimento": "Tostadas de pan integral", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Huevo revuelto", "cantidad": 2, "unidad": "unidades" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Nueces", "cantidad": 30, "unidad": "gramos" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada de garbanzos", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pechuga de pavo", "cantidad": 120, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Batido de frutas", "cantidad": 250, "unidad": "ml" }
             ],
             "cena": [
@@ -196,14 +196,14 @@
                 { "alimento": "Smoothie de frutas", "cantidad": 300, "unidad": "ml" },
                 { "alimento": "Granola", "cantidad": 50, "unidad": "gramos" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Kiwi", "cantidad": 1, "unidad": "unidad" }
             ],
             "almuerzo": [
                 { "alimento": "Pasta con verduras", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Carne magra", "cantidad": 120, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Galletas integrales", "cantidad": 2, "unidad": "unidades" }
             ],
             "cena": [
@@ -216,14 +216,14 @@
                 { "alimento": "Yogurt griego", "cantidad": 200, "unidad": "ml" },
                 { "alimento": "Fruta", "cantidad": 1, "unidad": "unidad" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Té", "cantidad": 1, "unidad": "taza" }
             ],
             "almuerzo": [
                 { "alimento": "Tacos de pollo", "cantidad": 3, "unidad": "unidades" },
                 { "alimento": "Frijoles", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Frutos secos", "cantidad": 30, "unidad": "gramos" }
             ],
             "cena": [
@@ -236,14 +236,14 @@
                 { "alimento": "Tostadas con aguacate", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Café", "cantidad": 1, "unidad": "taza" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Palta", "cantidad": 1, "unidad": "unidad" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada César", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pechuga de pollo", "cantidad": 150, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Barra de granola", "cantidad": 1, "unidad": "unidad" }
             ],
             "cena": [
@@ -256,14 +256,14 @@
                 { "alimento": "Panqueques", "cantidad": 2, "unidad": "unidades" },
                 { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Batido de proteínas", "cantidad": 250, "unidad": "ml" }
             ],
             "almuerzo": [
                 { "alimento": "Hamburguesa de pollo", "cantidad": 1, "unidad": "unidad" },
                 { "alimento": "Papas al horno", "cantidad": 150, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Galletas", "cantidad": 2, "unidad": "unidades" }
             ],
             "cena": [
@@ -276,14 +276,14 @@
                 { "alimento": "Tostadas con aguacate", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Café", "cantidad": 1, "unidad": "taza" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Nueces", "cantidad": 30, "unidad": "gramos" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada de atún", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pan integral", "cantidad": 2, "unidad": "rebanadas" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Fruta", "cantidad": 1, "unidad": "unidad" }
             ],
             "cena": [
@@ -301,7 +301,7 @@
                 { "alimento": "Pan", "cantidad": 1, "unidad": "rebanada" },
                 { "alimento": "Papaya", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Yogurt", "cantidad": 200, "unidad": "ml" },
                 { "alimento": "Manzana", "cantidad": 1, "unidad": "unidad" }
             ],
@@ -310,7 +310,7 @@
                 { "alimento": "Arroz", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Ensalada", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Galletas integrales", "cantidad": 3, "unidad": "unidades" }
             ],
             "cena": [
@@ -323,7 +323,7 @@
                 { "alimento": "Avena", "cantidad": 50, "unidad": "gramos" },
                 { "alimento": "Leche", "cantidad": 200, "unidad": "ml" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Frutos secos", "cantidad": 30, "unidad": "gramos" }
             ],
             "almuerzo": [
@@ -331,7 +331,7 @@
                 { "alimento": "Carne molida", "cantidad": 120, "unidad": "gramos" },
                 { "alimento": "Brócoli", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Yogurt", "cantidad": 150, "unidad": "ml" }
             ],
             "cena": [
@@ -344,14 +344,14 @@
                 { "alimento": "Tostadas de aguacate", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Huevo duro", "cantidad": 1, "unidad": "unidad" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Batido de frutas", "cantidad": 250, "unidad": "ml" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada César", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pollo a la parrilla", "cantidad": 150, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Barra de granola", "cantidad": 1, "unidad": "unidad" }
             ],
             "cena": [
@@ -364,7 +364,7 @@
                 { "alimento": "Yogurt griego", "cantidad": 200, "unidad": "ml" },
                 { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Kiwi", "cantidad": 1, "unidad": "unidad" }
             ],
             "almuerzo": [
@@ -372,7 +372,7 @@
                 { "alimento": "Lentejas", "cantidad": 150, "unidad": "gramos" },
                 { "alimento": "Zanahoria", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Té", "cantidad": 1, "unidad": "taza" }
             ],
             "cena": [
@@ -385,14 +385,14 @@
                 { "alimento": "Smoothie de frutas", "cantidad": 300, "unidad": "ml" },
                 { "alimento": "Granola", "cantidad": 50, "unidad": "gramos" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Palta", "cantidad": 1, "unidad": "unidad" }
             ],
             "almuerzo": [
                 { "alimento": "Tacos de pollo", "cantidad": 3, "unidad": "unidades" },
                 { "alimento": "Frijoles", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Frutos secos", "cantidad": 30, "unidad": "gramos" }
             ],
             "cena": [
@@ -404,14 +404,14 @@
                 { "alimento": "Panqueques", "cantidad": 2, "unidad": "unidades" },
                 { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Batido de proteínas", "cantidad": 250, "unidad": "ml" }
             ],
             "almuerzo": [
                 { "alimento": "Hamburguesa de pavo", "cantidad": 1, "unidad": "unidad" },
                 { "alimento": "Papas al horno", "cantidad": 150, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Galletas", "cantidad": 2, "unidad": "unidades" }
             ],
             "cena": [
@@ -424,14 +424,14 @@
                 { "alimento": "Tostadas con aguacate", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Café", "cantidad": 1, "unidad": "taza" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Nueces", "cantidad": 30, "unidad": "gramos" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada de atún", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pan integral", "cantidad": 2, "unidad": "rebanadas" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Fruta", "cantidad": 1, "unidad": "unidad" }
             ],
             "cena": [
@@ -449,7 +449,7 @@
                 { "alimento": "Pan", "cantidad": 1, "unidad": "rebanada" },
                 { "alimento": "Papaya", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Yogurt", "cantidad": 200, "unidad": "ml" },
                 { "alimento": "Manzana", "cantidad": 1, "unidad": "unidad" }
             ],
@@ -458,7 +458,7 @@
                 { "alimento": "Arroz", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Ensalada", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Galletas integrales", "cantidad": 3, "unidad": "unidades" }
             ],
             "cena": [
@@ -471,7 +471,7 @@
                 { "alimento": "Avena", "cantidad": 50, "unidad": "gramos" },
                 { "alimento": "Leche", "cantidad": 200, "unidad": "ml" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Frutos secos", "cantidad": 30, "unidad": "gramos" }
             ],
             "almuerzo": [
@@ -479,7 +479,7 @@
                 { "alimento": "Carne molida", "cantidad": 120, "unidad": "gramos" },
                 { "alimento": "Brócoli", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Yogurt", "cantidad": 150, "unidad": "ml" }
             ],
             "cena": [
@@ -492,14 +492,14 @@
                 { "alimento": "Tostadas de aguacate", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Huevo duro", "cantidad": 1, "unidad": "unidad" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Batido de frutas", "cantidad": 250, "unidad": "ml" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada César", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pollo a la parrilla", "cantidad": 150, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Barra de granola", "cantidad": 1, "unidad": "unidad" }
             ],
             "cena": [
@@ -512,7 +512,7 @@
                 { "alimento": "Yogurt griego", "cantidad": 200, "unidad": "ml" },
                 { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Kiwi", "cantidad": 1, "unidad": "unidad" }
             ],
             "almuerzo": [
@@ -520,7 +520,7 @@
                 { "alimento": "Lentejas", "cantidad": 150, "unidad": "gramos" },
                 { "alimento": "Zanahoria", "cantidad": 100, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Té", "cantidad": 1, "unidad": "taza" }
             ],
             "cena": [
@@ -533,7 +533,7 @@
                 { "alimento": "Smoothie de frutas", "cantidad": 300, "unidad": "ml" },
                 { "alimento": "Granola", "cantidad": 50, "unidad": "gramos" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Palta", "cantidad": 1, "unidad": "unidad" }
             ],
             "almuerzo": [
@@ -552,14 +552,14 @@
                 { "alimento": "Panqueques", "cantidad": 2, "unidad": "unidades" },
                 { "alimento": "Miel", "cantidad": 1, "unidad": "cucharada" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Batido de proteínas", "cantidad": 250, "unidad": "ml" }
             ],
             "almuerzo": [
                 { "alimento": "Hamburguesa de pavo", "cantidad": 1, "unidad": "unidad" },
                 { "alimento": "Papas al horno", "cantidad": 150, "unidad": "gramos" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Galletas", "cantidad": 2, "unidad": "unidades" }
             ],
             "cena": [
@@ -572,14 +572,14 @@
                 { "alimento": "Tostadas con aguacate", "cantidad": 2, "unidad": "rebanadas" },
                 { "alimento": "Café", "cantidad": 1, "unidad": "taza" }
             ],
-            "media mañana": [
+            "media_mañana": [
                 { "alimento": "Nueces", "cantidad": 30, "unidad": "gramos" }
             ],
             "almuerzo": [
                 { "alimento": "Ensalada de atún", "cantidad": 200, "unidad": "gramos" },
                 { "alimento": "Pan integral", "cantidad": 2, "unidad": "rebanadas" }
             ],
-            "media tarde": [
+            "media_tarde": [
                 { "alimento": "Fruta", "cantidad": 1, "unidad": "unidad" }
             ],
             "cena": [
