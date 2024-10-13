@@ -271,8 +271,17 @@ p {
  border: none;
 }
 
-.swiper-container{
-  overflow: auto;
+.swiper-container {
+  overflow: hidden; /* Oculta el scrollbar */
+}
+
+.swiper-wrapper {
+  display: flex; /* Asegúrate de que los slides se coloquen uno al lado del otro */
+}
+
+.swiper-slide {
+  flex: 0 0 auto; /* Asegura que cada slide mantenga su ancho */
+  width: 100vw; /* Cada slide ocupará todo el ancho de la ventana */
 }
 
 
