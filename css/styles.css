@@ -102,6 +102,11 @@ p {
 
 
 
+.container-fluid{
+  padding: 0px 20px;
+}
+
+
 
 .container-custom {
             /* Opcional: para asegurarse que las filas no se desborden horizontalmente */
