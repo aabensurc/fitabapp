@@ -267,6 +267,16 @@ p {
  
 }
 
+#card-intro {
+ border: none;
+}
+
+.swiper-container{
+  overflow: auto;
+}
+
+
+
 
 
 
@@ -551,25 +561,17 @@ p {
     }
   }
   
-  .card {
-    margin-bottom: 20px;
-  }
+ 
   
   @media (max-width: 576px) {
-    .card {
-      width: 100%;
-    }
+  
   }
   
   @media (min-width: 576px) and (max-width: 768px) {
-    .card {
-      width: 48%;
-    }
+ 
   }
   
   @media (min-width: 768px) {
-    .card {
-      width: 31%;
-    }
+
   }
   
