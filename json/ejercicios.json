@@ -63,8 +63,8 @@
                 "Pectorales",
                 "Tr\u00edceps"
             ],
-            "imagen_url": "https:\/\/example.com\/press-banca.jpg",
-            "video_url": "https:\/\/example.com\/press-banca-video.mp4"
+            "imagen_url": "https:\/\/media.istockphoto.com\/id\/1028234906\/es\/vector\/hombre-trabajando-con-barra-tumbado-en-un-banco-press-de-banca-colorido-isom%C3%A9trica-figura.jpg?s=612x612&w=0&k=20&c=DuCUuK5sq0mSJ0z7cWVKzVbcNdUy5OjJ_conZyjUYuo=",
+            "video_url": "https:\/\/videos.pexels.com\/video-files\/4945133\/4945133-uhd_2732_1440_24fps.mp4"
         },
         {
             "id": 7,
@@ -118,6 +118,16 @@
             ],
             "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/jalon-polea-alta-agarre-estrecho-prono-init-pos-1364.png",
             "video_url": "videos\/ejercicios\/jalon_polea_supino.webm"
+        },
+        {
+            "id": 12,
+            "nombre": "Jalon polea agarra  Prono",
+            "descripcion": "lorem ipsum",
+            "musculos_involucrados": [
+                "Espalda"
+            ],
+            "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/jalon-en-polea-alta-agarre-ancho-prono-init-pos-6779.png",
+            "video_url": "videos\/ejercicios\/jalon_polea_prono.webm"
         }
     ]
 }
