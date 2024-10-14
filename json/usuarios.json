@@ -33,7 +33,7 @@
         "edad": 32,
         "peso": 85,
         "estatura": 1.70,
-        "estado": "Habilitado"
+        "estado": "Deshabilitado"
     },
     {
         "id": 4,
