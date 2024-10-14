@@ -117,25 +117,25 @@
   
 <!-- Nueva fila con iconos circulares y texto debajo -->
 <div class="icon-container-home d-flex justify-content-between text-center my-4 w-100">
-    <div>
+    <div id="item_brazos">
       <div class="circle-icon" style="width: 60px; height: 60px; background-color: #2196F3; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
         <i class="bi bi-person" style="color: white; font-size: 30px;"></i> <!-- Icono para Brazos -->
       </div>
       <p class="mt-2" style="font-weight: 500;">Brazos</p>
     </div>
-    <div>
+    <div id="item_piernas">
       <div class="circle-icon" style="width: 60px; height: 60px; background-color: #2196F3; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
         <i class="bi bi-person" style="color: white; font-size: 30px;"></i> <!-- Icono para Piernas -->
       </div>
       <p class="mt-2" style="font-weight: 500;">Piernas</p>
     </div>
-    <div>
+    <div id="item_abdomen">
       <div class="circle-icon" style="width: 60px; height: 60px; background-color: #2196F3; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
         <i class="bi bi-person" style="color: white; font-size: 30px;"></i> <!-- Icono para Abdomen -->
       </div>
       <p class="mt-2" style="font-weight: 500;">Abdomen</p>
     </div>
-    <div>
+    <div id="item_gluteos">
       <div class="circle-icon" style="width: 60px; height: 60px; background-color: #2196F3; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
         <i class="bi bi-person" style="color: white; font-size: 30px;"></i> <!-- Icono para Glúteos -->
       </div>
@@ -198,6 +198,24 @@
 <script>
   // Llamar a la función de logout cuando el usuario haga clic en "Cerrar sesión"
   document.getElementById('logout-option').addEventListener('click', logout);
+</script>
+
+<script>
+    document.getElementById('item_brazos').addEventListener('click', function() {
+      window.location.href = `ejerciciosxmusculo.html?musculo=B%C3%ADceps`;
+  });
+
+  document.getElementById('item_piernas').addEventListener('click', function() {
+      window.location.href = `ejerciciosxmusculo.html?musculo=Cuádriceps`;
+  });
+
+  document.getElementById('item_abdomen').addEventListener('click', function() {
+      window.location.href = `ejerciciosxmusculo.html?musculo=Abdomen`;
+  });
+
+  document.getElementById('item_gluteos').addEventListener('click', function() {
+      window.location.href = `ejerciciosxmusculo.html?musculo=Glúteos`;
+  });
 </script>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
