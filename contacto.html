@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <meta name="description" content="Mi PWA con Bootstrap y JSON">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="manifest" href="manifest.json">
+  <title>FITABAPP</title>
+  
+  <!-- Incluir el archivo auth.js -->
+  <script src="js/auth.js"></script>
+  <script>
+    // Llamar a la función para verificar si el usuario está logueado
+    window.addEventListener('load', checkLogin);
+  </script>
+</head>
+<body>
+  <!-- App Bar -->
+  <div class="app-bar">
+    <div class="nav-icons" id="back-button">
+      <i class="bi bi-arrow-left"></i> <!-- Icono de "atrás" -->
+  </div>
+    <h1>Contacto</h1>
+    <div class="nav-icons"></div>
+  </div>
+
+  <div class="container-fluid" id="container-contacto">
+    <div class="row justify-content-center">
+      <div class="col text-center">
+        <!-- Foto dentro de un círculo -->
+        <img src="img/foto.jpg" alt="Foto de Andre AB" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px; object-fit: cover; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+        
+        <!-- Título con nombre -->
+        <h2>Andre AB</h2>
+        
+        <!-- Ocupación -->
+        <p class="text-muted" style="padding-bottom: 10px;">Entrenador fitness y desarrollador de software</p>
+        
+        <!-- Lista de contacto -->
+        <ul class="list-group">
+          <!-- Correo electrónico con funcionalidad de clic -->
+          <li class="list-group-item d-flex justify-content-between align-items-center" onclick="window.location.href='mailto:aabensurc@gmail.com';" style="cursor: pointer;">
+            <span><i class="bi bi-envelope-fill" style="color: rgb(253, 6, 6);"></i> Email</span>
+            <span>aabensurc@gmail.com</span>
+          </li>
+          
+          <!-- WhatsApp con funcionalidad de clic -->
+          <li class="list-group-item d-flex justify-content-between align-items-center" onclick="window.location.href='https://wa.me/+51964905207';" style="cursor: pointer;">
+            <span><i class="bi bi-whatsapp" style="color: rgb(6, 253, 80);"></i> Whatsapp</span>
+            <span>+51 964905207</span>
+          </li>
+
+           <!-- Instagram con funcionalidad de clic -->
+           <li class="list-group-item d-flex justify-content-between align-items-center" onclick="window.location.href='https://www.instagram.com/alex.abensur';" style="cursor: pointer;">
+            <span><i class="bi bi-instagram" style="color: rgb(230, 20, 90);"></i> Instagram</span>
+            <span>/alex.abensur</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+<script>
+    // Función para volver a la pantalla anterior
+    document.getElementById('back-button').addEventListener('click', function() {
+      history.back();
+  });
+</script>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
