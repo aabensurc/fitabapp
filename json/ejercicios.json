@@ -32,7 +32,7 @@
             "musculos_involucrados": [
                 "Femorales",
                 "Gl\u00fateos",
-                "Dorsales"
+                "Espalda"
             ],
             "imagen_url": "https:\/\/example.com\/peso-muerto.jpg",
             "video_url": "https:\/\/example.com\/peso-muerto-video.mp4"
@@ -80,14 +80,14 @@
             "musculos_involucrados": [
                 "Pectorales",
                 "Tr\u00edceps",
-                "Dorsales"
+                "Espalda"
             ],
             "imagen_url": "https:\/\/example.com\/flexiones.jpg",
             "video_url": "https:\/\/example.com\/flexiones-video.mp4"
         },
         {
             "id": 8,
-            "nombre": "bulgaras",
+            "nombre": "Bulgaras",
             "descripcion": "Ejercicio para aumento de masa muscular en el gl\u00fateo",
             "tipo": "Repeticion(es)",
             "musculos_involucrados": [
@@ -107,6 +107,17 @@
             ],
             "imagen_url": "https:\/\/www.shutterstock.com\/image-vector\/man-doing-leg-extension-on-260nw-2169477623.jpg",
             "video_url": "videos\/ejercicios\/leg-extension.webm"
+        },
+        {
+            "id": 10,
+            "nombre": "Curl femorales en maquina",
+            "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "tipo": "Repeticion(es)",
+            "musculos_involucrados": [
+                "Femorales"
+            ],
+            "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/curl-femoral-con-maquina-declinada-init-pos-8454.png",
+            "video_url": "videos\/ejercicios\/curl_ femoral_acostado.webm"
         }
     ]
 }
