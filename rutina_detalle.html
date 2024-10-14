@@ -26,6 +26,9 @@
 <body>
   <!-- App Bar -->
   <div class="app-bar">
+    <div class="nav-icons" id="back-button">
+        <i class="bi bi-arrow-left"></i> <!-- Icono de "atrás" -->
+    </div>
     <h1 id="routineTitle">Rutina</h1>
   </div>
 
@@ -64,6 +67,9 @@
             const ejercicioItem = document.createElement('a');
             ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center');
 
+            // Agregar el evento click para redirigir a detalle_ejer.html
+            ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
+
             const img = document.createElement('img');
             img.src = ejercicioData.imagen_url;
             img.alt = ejercicioData.nombre;
@@ -87,6 +93,13 @@
       }
     })
     .catch(error => console.error('Error al cargar los JSON:', error));
+  </script>
+
+  <script>
+      // Función para volver a la pantalla anterior
+  document.getElementById('back-button').addEventListener('click', function() {
+    history.back();
+  });
   </script>
 
   <!-- Bootstrap JS and dependencies -->
