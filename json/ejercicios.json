@@ -4,7 +4,6 @@
             "id": 1,
             "nombre": "Sentadillas",
             "descripcion": "Fortalece los m\u00fasculos de las piernas y gl\u00fateos. Mejora la estabilidad y postura corporal.",
-            "tipo": "Segundo(s)",
             "musculos_involucrados": [
                 "Cu\u00e1driceps",
                 "Gl\u00fateos"
@@ -16,7 +15,6 @@
             "id": 2,
             "nombre": "Zancadas",
             "descripcion": "Ideal para fortalecer los gluteos y femorales, mejorando el equilibrio y la coordinaci\u00f3n.",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "Cu\u00e1driceps",
                 "Femorales"
@@ -28,7 +26,6 @@
             "id": 3,
             "nombre": "Peso muerto",
             "descripcion": "Desarrolla la fuerza de los m\u00fasculos femorales, gl\u00fateos y dorsales, clave en entrenamientos de fuerza.",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "Femorales",
                 "Gl\u00fateos",
@@ -41,7 +38,6 @@
             "id": 4,
             "nombre": "Elevaciones de tal\u00f3n",
             "descripcion": "Enfocado en los m\u00fasculos de la pantorrilla, mejora la estabilidad de las piernas.",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "Femorales",
                 "Pantorrillas"
@@ -53,18 +49,16 @@
             "id": 5,
             "nombre": "Curl de b\u00edceps",
             "descripcion": "Un ejercicio cl\u00e1sico para el desarrollo y fortalecimiento de los b\u00edceps.",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "B\u00edceps"
             ],
-            "imagen_url": "https:\/\/example.com\/curl-biceps.jpg",
+            "imagen_url": "https:\/\/www.shutterstock.com\/image-vector\/man-doing-standing-dumbbell-bicep-600nw-1850250391.jpg",
             "video_url": "https:\/\/example.com\/curl-biceps-video.mp4"
         },
         {
             "id": 6,
             "nombre": "Press de banca",
             "descripcion": "Fortalece los pectorales y tr\u00edceps. Uno de los ejercicios clave en entrenamiento de fuerza.",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "Pectorales",
                 "Tr\u00edceps"
@@ -76,7 +70,6 @@
             "id": 7,
             "nombre": "Flexiones",
             "descripcion": "Un ejercicio b\u00e1sico que trabaja pectorales, tr\u00edceps y m\u00fasculos dorsales, perfecto para principiantes.",
-            "tipo": "Segundo(s)",
             "musculos_involucrados": [
                 "Pectorales",
                 "Tr\u00edceps",
@@ -89,7 +82,6 @@
             "id": 8,
             "nombre": "Bulgaras",
             "descripcion": "Ejercicio para aumento de masa muscular en el gl\u00fateo",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "Gl\u00fateos",
                 "Femorales"
@@ -101,7 +93,6 @@
             "id": 9,
             "nombre": "M\u00e1quina de extensi\u00f3n de piernas",
             "descripcion": "Ejercicio para cuadriceps en maquina sentado",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "Cu\u00e1driceps"
             ],
@@ -112,7 +103,6 @@
             "id": 10,
             "nombre": "Curl femorales en maquina",
             "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "Femorales"
             ],
@@ -123,7 +113,6 @@
             "id": 11,
             "nombre": "Jalon polea con agarre Supinado",
             "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            "tipo": "Repeticion(es)",
             "musculos_involucrados": [
                 "Espalda"
             ],
