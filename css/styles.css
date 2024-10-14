@@ -423,7 +423,7 @@ p {
 .list-group-item img {
   width: 50px; /* Ancho de la imagen */
   height: 50px; /* Altura de la imagen */
-  border-radius: 50%; /* Bordes redondeados */
+
   object-fit: cover; /* Mantiene la proporción de la imagen */
   margin-right: 15px; /* Espacio entre la imagen y el texto */
 }
