@@ -118,6 +118,17 @@
             ],
             "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/curl-femoral-con-maquina-declinada-init-pos-8454.png",
             "video_url": "videos\/ejercicios\/curl_ femoral_acostado.webm"
+        },
+        {
+            "id": 11,
+            "nombre": "Jalon polea con agarre Supinado",
+            "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "tipo": "Repeticion(es)",
+            "musculos_involucrados": [
+                "Espalda"
+            ],
+            "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/jalon-polea-alta-agarre-estrecho-prono-init-pos-1364.png",
+            "video_url": "videos\/ejercicios\/jalon_polea_supino.webm"
         }
     ]
 }
