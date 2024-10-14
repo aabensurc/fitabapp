@@ -25,7 +25,6 @@ $datosRecibidos = json_decode(file_get_contents('php://input'), true);
 $id = $datosRecibidos['id'];
 $nombre = $datosRecibidos['nombre'];
 $descripcion = $datosRecibidos['descripcion'];
-$tipo = $datosRecibidos['tipo'];
 $musculos_involucrados = $datosRecibidos['musculos_involucrados'];
 $imagen_url = $datosRecibidos['imagen_url'];
 $video_url = $datosRecibidos['video_url'];
@@ -35,7 +34,6 @@ foreach ($ejercicios['ejercicios'] as &$ejercicio) {
     if ($ejercicio['id'] == $id) {
         $ejercicio['nombre'] = $nombre;
         $ejercicio['descripcion'] = $descripcion;
-        $ejercicio['tipo'] = $tipo;
         $ejercicio['musculos_involucrados'] = $musculos_involucrados;
         $ejercicio['imagen_url'] = $imagen_url;
         $ejercicio['video_url'] = $video_url;
