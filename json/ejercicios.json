@@ -2,11 +2,12 @@
     "ejercicios": [
         {
             "id": 1,
-            "nombre": "Sentadillas",
+            "nombre": "Sentadillas en maquina smith",
             "descripcion": "Fortalece los m\u00fasculos de las piernas y gl\u00fateos. Mejora la estabilidad y postura corporal.",
             "musculos_involucrados": [
                 "Cu\u00e1driceps",
-                "Gl\u00fateos"
+                "Gl\u00fateos",
+                "Femorales"
             ],
             "imagen_url": "https:\/\/static.vecteezy.com\/system\/resources\/previews\/008\/635\/575\/non_2x\/woman-doing-bodyweight-squats-exercise-flat-illustration-isolated-on-white-background-vector.jpg",
             "video_url": "https:\/\/videos.pexels.com\/video-files\/5319759\/5319759-uhd_2560_1440_25fps.mp4"
@@ -128,6 +129,26 @@
             ],
             "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/jalon-en-polea-alta-agarre-ancho-prono-init-pos-6779.png",
             "video_url": "videos\/ejercicios\/jalon_polea_prono.webm"
+        },
+        {
+            "id": 13,
+            "nombre": "Apertura de pecho en m\u00e1quina",
+            "descripcion": "lorem ipsum",
+            "musculos_involucrados": [
+                "Pectorales"
+            ],
+            "imagen_url": "https:\/\/www.shutterstock.com\/image-vector\/man-doing-machine-bent-arm-600nw-2379165459.jpg",
+            "video_url": "videos\/ejercicios\/peck_deck.webm"
+        },
+        {
+            "id": 14,
+            "nombre": "Extension de triceps en polea con soga",
+            "descripcion": "lorem ipsum",
+            "musculos_involucrados": [
+                "Tr\u00edceps"
+            ],
+            "imagen_url": "https:\/\/eresfitness.com\/wp-content\/uploads\/2019\/06\/Extensi%C3%B3n-de-tr%C3%ADceps-en-polea-alta-MUSCULOS-INVOLUCRADOS.jpg.webp",
+            "video_url": "videos\/ejercicios\/EXTENSION_DE_TRICEPS_CON_SOGA_EN_POLEA.webm"
         }
     ]
 }
