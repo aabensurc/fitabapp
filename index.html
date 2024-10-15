@@ -141,6 +141,12 @@
       </div>
       <p class="mt-2" style="font-weight: 500;">Glúteos</p>
     </div>
+    <div id="item_cardio">
+      <div class="circle-icon" style="width: 60px; height: 60px; background-color: #2196F3; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
+        <img src="img/iconos_musc/icono_cardio.png" style="color: white; width: 30px; height: 30px;"></img> <!-- Icono para Glúteos -->
+      </div>
+      <p class="mt-2" style="font-weight: 500;">Cardio</p>
+    </div>
   </div>
 
 
@@ -223,6 +229,10 @@
 
   document.getElementById('item_gluteos').addEventListener('click', function() {
       window.location.href = `ejerciciosxmusculo.html?musculo=Glúteos`;
+  });
+
+  document.getElementById('item_cardio').addEventListener('click', function() {
+      window.location.href = `ejerciciosxmusculo.html?musculo=Cardio`;
   });
 
 
