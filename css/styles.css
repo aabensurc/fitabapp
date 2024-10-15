@@ -352,7 +352,7 @@ p {
 }
 
 .nav-icons i {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -373,7 +373,7 @@ p {
 
 .nav-link {
   text-align: center; /* Centra el texto debajo del icono */
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .nav-link:hover {
