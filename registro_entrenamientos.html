@@ -54,6 +54,24 @@
       width: 10%;
       text-align: center;
     }
+
+
+    td, tr {
+  text-align: center;
+}
+
+th{
+  font-weight: 600;
+}
+
+
+#save-button{
+  background-color: #2196F3;
+}
+
+.card-header{
+  color: white;
+}
   </style>
 
 </head>
@@ -89,7 +107,7 @@
     <div class="row">
       <!-- Formulario -->
       <div class="form-section col-6">
-        <select id="weight-type" class="form-select">
+        <select id="weight-type" class="form-select mb-1">
           <option value="kg">Kilogramos</option>
           <option value="lb">Libras</option>
         </select>
@@ -97,7 +115,7 @@
       </div>
 
       <div class="form-section col-6">
-        <select id="type-select" class="form-select">
+        <select id="type-select" class="form-select mb-1">
           <option value="reps">Repeticiones</option>
           <option value="time">Tiempo</option>
         </select>
@@ -112,14 +130,18 @@
       </div>
     </div>
 
-    <!-- Botones -->
-    <div class="form-section d-flex">
-      <button id="save-button" class="btn btn-primary col-6">Guardar</button>
-      <button id="clear-button" class="btn btn-secondary col-6">Limpiar</button>
-    </div>
+<!-- Botones -->
+<div class="form-section d-flex justify-content-between">
+  <button id="save-button" class="btn btn-primary" style="width: 48%;">Guardar</button>
+  <button id="clear-button" class="btn btn-secondary" style="width: 48%;">Limpiar</button>
+</div>
+
+
+    <div id="records-container" class="mt-3"></div>
+
   </div>
 
-  <div id="records-container" class="mt-3"></div>
+
 
 
 <!-- Modal para el Calendario -->
@@ -308,7 +330,7 @@ function mostrarRegistros(registros) {
 
     const header = document.createElement('div');
     header.classList.add('card-header');
-    header.textContent = `Ejercicio: ${document.querySelector(`#exercise-select option[value="${ejercicioId}"]`).textContent}`;
+    header.textContent = document.querySelector(`#exercise-select option[value="${ejercicioId}"]`).textContent;
     card.appendChild(header);
 
     const body = document.createElement('div');
@@ -338,7 +360,7 @@ function mostrarRegistros(registros) {
         <td>${registro.peso} ${document.getElementById('weight-type').value}</td>
         <td>${registro.tipo === 'reps' ? registro.repeticiones : `${registro.tiempo.minutos}m : ${registro.tiempo.segundos}s`}</td>
         <td>
-          <button class="btn btn-danger btn-sm" onclick="eliminarRegistro(${registro.id})">Eliminar</button>
+          <button class="btn btn-danger btn-sm" onclick="eliminarRegistro(${registro.id})"><i class="bi bi-trash"></i></button>
         </td>
       `;
       tbody.appendChild(trBody);
