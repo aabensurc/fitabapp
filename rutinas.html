@@ -10,62 +10,41 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="manifest" href="manifest.json">
   <title>FITABAPP</title>
-  
+
+  <style>
+    /* Ajustar la imagen para que sea cuadrada con bordes redondeados */
+    .routine-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover; /* Mantener la proporción de la imagen */
+      border-radius: 10px; /* Bordes redondeados pero sigue siendo cuadrado */
+    }
+  </style>
 </head>
 <body>
-<!-- App Bar -->
-<div class="app-bar">
-  <h1>Ejercicios</h1> <!-- Título dinámico -->
-  <div class="nav-icons"></div>
-</div>
-<div class="container-fluid container_ejers2">
-  <!-- Buscador estilo iOS -->
-  <div class="search-container">
-    <input type="text" id="searchInput" class="form-control" placeholder="Buscar ejercicio" aria-label="Buscar ejercicio" aria-describedby="searchIcon">
-    <i class="bi bi-search" id="searchIcon" onclick="buscarEjercicio()"></i> <!-- Icono de búsqueda -->
+  <!-- App Bar -->
+  <div class="app-bar">
+    <h1>Rutinas</h1> <!-- Título dinámico -->
+    <div class="nav-icons"></div>
+  </div>
+
+  <div class="container-fluid container_rutinas">
+    <!-- Buscador estilo iOS -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="form-control" placeholder="Buscar rutina" aria-label="Buscar rutina" aria-describedby="searchIcon">
+      <i class="bi bi-search" id="searchIcon"></i> <!-- Icono de búsqueda -->
+    </div>
+
+    <!-- Listado de rutinas -->
+    <div id="rutinasList" class="list-group mt-3">
+      <!-- Aquí se van a cargar las rutinas dinámicamente -->
+    </div>
   </div>
 
 
-  
-  <div class="container-custom">
-    <!-- Opciones de ejercicios -->
-    <div class="row row-custom bg-1" onclick="irAEjercicios('Cuádriceps')">
-      <div class="overlay">Cuádriceps</div>
-    </div>
-    <div class="row row-custom bg-2" onclick="irAEjercicios('Glúteos')">
-      <div class="overlay">Glúteos</div>
-    </div>
-    <div class="row row-custom bg-3" onclick="irAEjercicios('Bíceps')">
-      <div class="overlay">Bíceps</div>
-    </div>
-    <div class="row row-custom bg-4" onclick="irAEjercicios('Tríceps')">
-      <div class="overlay">Tríceps</div>
-    </div>
-    <div class="row row-custom bg-5" onclick="irAEjercicios('Femorales')">
-      <div class="overlay">Femorales</div>
-    </div>
-    <div class="row row-custom bg-6" onclick="irAEjercicios('Espalda')">
-      <div class="overlay">Espalda</div>
-    </div>
-    <div class="row row-custom bg-7" onclick="irAEjercicios('Pectorales')">
-      <div class="overlay">Pectorales</div>
-    </div>
-    <div class="row row-custom bg-8" onclick="irAEjercicios('Abdomen')">
-      <div class="overlay">Abdomen</div>
-    </div>
-    <div class="row row-custom bg-9" onclick="irAEjercicios('Deltoides')">
-      <div class="overlay">Deltoides</div>
-    </div>
-    <div class="row row-custom bg-10" onclick="irAEjercicios('Pantorrillas')">
-      <div class="overlay">Pantorrillas</div>
-    </div>
-    <div class="row row-custom bg-11" onclick="irAEjercicios('Cardio')">
-      <div class="overlay">Cardio</div>
-    </div>
-  </div>
-</div>
 
-<!-- Bottom Navigation -->
+
+  <!-- Bottom Navigation -->
 <nav class="navbar navbar-expand fixed-bottom navbar-light p-0" style="background-color: #2196F3;">
   <div class="container-fluid p-0 m-0">
     <ul class="navbar-nav w-100 d-flex justify-content-between">
@@ -76,13 +55,13 @@
           </a>
       </li>
       <li class="nav-item text-center">
-        <a class="nav-link text-white" href="rutinas.html">
+        <a class="nav-link text-white active" href="rutinas.html">
             <i class="bi bi-clipboard2-minus-fill"></i><br>
             Rutinas
         </a>
     </li>
       <li class="nav-item text-center">
-          <a class="nav-link text-white active" href="ejercicios.html">
+          <a class="nav-link text-white" href="ejercicios.html">
               <i class="bi bi-lightning-fill"></i><br>
               Ejercicios
           </a>
@@ -100,36 +79,74 @@
 
 
 
+  <!-- Script para manejar la navegación y cargar las rutinas -->
+  <script>
+    // Cargar rutinas desde rutinas.json
+    let rutinas = [];
 
+    fetch('json/rutinas.json')
+      .then(response => response.json())
+      .then(data => {
+        rutinas = data.rutinas;
+        mostrarRutinas(rutinas); // Mostrar todas las rutinas inicialmente
+      })
+      .catch(error => console.error('Error al cargar el JSON:', error));
 
+    // Función para mostrar las rutinas en el list view
+    function mostrarRutinas(rutinas) {
+      const rutinasList = document.getElementById('rutinasList');
+      rutinasList.innerHTML = ''; // Limpiar la lista antes de cargar nuevas rutinas
 
+      rutinas.forEach(rutina => {
+        const numEjercicios = rutina.ejercicios.length; // Contar los ejercicios
 
-<!-- Script para manejar la navegación -->
-<script>
-  function irAEjercicios(musculo) {
-    window.location.href = `ejerciciosxmusculo.html?musculo=${musculo}`;
-  }
+        // Crear el item de la rutina
+        const rutinaItem = document.createElement('a');
+        rutinaItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center');
+        rutinaItem.href = `rutina_detalle.html?id=${rutina.id}`; // Enlace a detalle de rutina
 
-  // Manejador para el buscador
-  document.getElementById('searchInput').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-      buscarEjercicio();
+        // Imagen de la rutina (cuadrado con bordes redondeados)
+        const img = document.createElement('img');
+        img.src = rutina.url_imagen;
+        img.alt = rutina.nombre;
+        img.classList.add('routine-img', 'me-3'); // Clase de estilo para imagen cuadrada
+        rutinaItem.appendChild(img);
+
+        // Contenedor de texto
+        const textContainer = document.createElement('div');
+
+        // Título (nombre de la rutina)
+        const title = document.createElement('h5');
+        title.classList.add('mb-1');
+        title.textContent = rutina.nombre;
+        textContainer.appendChild(title);
+
+        // Descripción de cantidad de ejercicios
+        const exercisesCount = document.createElement('small');
+        exercisesCount.textContent = `${numEjercicios} ejercicios`;
+        textContainer.appendChild(exercisesCount);
+
+        rutinaItem.appendChild(textContainer);
+        rutinasList.appendChild(rutinaItem);
+      });
     }
-  });
 
-  // Función para realizar la búsqueda
-  function buscarEjercicio() {
-    const searchQuery = document.getElementById('searchInput').value.trim();
-    if (searchQuery !== "") {
-      window.location.href = `busqueda_ejercicio.html?nombre=${searchQuery}`;
-    }
-  }
+    // Filtro de rutinas en tiempo real mientras se escribe
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (searchQuery !== "") {
+        const filteredRutinas = rutinas.filter(rutina => 
+          rutina.nombre.toLowerCase().includes(searchQuery)
+        );
+        mostrarRutinas(filteredRutinas); // Mostrar las rutinas filtradas
+      } else {
+        mostrarRutinas(rutinas); // Mostrar todas si no hay búsqueda
+      }
+    });
+  </script>
 
-
-</script>
-
-<!-- Bootstrap JS and dependencies -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app.js"></script>
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
