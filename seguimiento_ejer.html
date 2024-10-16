@@ -39,9 +39,9 @@
 
   <div class="container-fluid contenedor_seg_ejer">
 
-        <!-- Inputs de Fecha y Botón de Filtrar -->
-        <div class="mb-3">
-            <div class="row">
+    <!-- Inputs de Fecha y Botón de Filtrar -->
+    <div class="mb-3">
+        <div class="row">
             <div class="col-6">
                 <label for="fechaDesde" class="form-label">Desde:</label>
                 <input type="date" id="fechaDesde" class="form-control">
@@ -50,11 +50,11 @@
                 <label for="fechaHasta" class="form-label">Hasta:</label>
                 <input type="date" id="fechaHasta" class="form-control">
             </div>
-            </div>
-            <div class="row d-flex mx-1">
-                <button id="filtrar" class="btn btn-primary mt-2">Filtrar</button>
-            </div>
-          </div>
+        </div>
+        <div class="row d-flex mx-1">
+            <button id="filtrar" class="btn btn-primary mt-2" disabled>Filtrar</button>
+        </div>
+    </div>
 
     <div class="card mb-3">
         <div class="card-body">
@@ -411,6 +411,35 @@ const calcularMaximoTiempoF = (records, id) => {
 
   </script>
   
+  <script>
+    //Funcion para validar los inputs
+    const fechaDesdeInput = document.getElementById('fechaDesde');
+const fechaHastaInput = document.getElementById('fechaHasta');
+const btnFiltrar = document.getElementById('filtrar');
+
+// Función para validar fechas
+const validarFechas = () => {
+    const fechaDesde = new Date(fechaDesdeInput.value);
+    const fechaHasta = new Date(fechaHastaInput.value);
+
+    // Comprobar si ambas fechas están establecidas y son válidas
+    if (fechaDesdeInput.value && fechaHastaInput.value) {
+        // Verificar si la fecha "hasta" es mayor o igual a la fecha "desde"
+        if (fechaHasta >= fechaDesde) {
+            btnFiltrar.disabled = false; // Habilitar el botón si las condiciones son válidas
+        } else {
+            btnFiltrar.disabled = true; // Deshabilitar el botón si no
+        }
+    } else {
+        btnFiltrar.disabled = true; // Deshabilitar el botón si alguna fecha no está establecida
+    }
+};
+
+// Añadir event listeners a los inputs
+fechaDesdeInput.addEventListener('input', validarFechas);
+fechaHastaInput.addEventListener('input', validarFechas);
+
+  </script>
 
 </body>
 </html>
