@@ -84,7 +84,19 @@ th{
     <h1>Notas Fit</h1>
     <div class="d-flex">
       <i id="calendar-icon" class="bi bi-calendar me-3"></i> <!-- Icono de calendario -->
-      <i class="bi bi-three-dots-vertical"></i> <!-- Icono de tres puntos -->
+      <i class="bi bi-three-dots-vertical" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+      <!-- Menú desplegable -->
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+        <li class="d-flex align-items-center">
+          <i class="bi bi-database-fill ms-3" style="font-size: 14px;"></i>
+          <a class="dropdown-item" href="#" id="unidad-p">Unidad-Peso</a>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="d-flex align-items-center">
+          <i class="bi bi-bar-chart-line-fill ms-3" style="font-size: 14px;"></i>
+          <a class="dropdown-item" href="#" id="estadisticas">Estadísticas</a>
+        </li>
+        </ul>
     </div>
   </div>
 
@@ -154,6 +166,61 @@ th{
       </div>
     </div>
   </div>
+
+
+  <!-- Modal para seleccionar la unidad de peso -->
+<div class="modal fade" id="unidadPesoModal" tabindex="-1" aria-labelledby="unidadPesoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="unidadPesoModalLabel">Selecciona la unidad de peso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="selectUnidadPeso">Unidad de Peso:</label>
+        <select id="selectUnidadPeso" class="form-select">
+          <option value="kg">kg</option>
+          <option value="lb">lb</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="guardarUnidadPeso">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('unidad-p').addEventListener('click', function () {
+  // Mostrar el modal al hacer clic en la opción "Unidad-Peso"
+  const unidadPesoModal = new bootstrap.Modal(document.getElementById('unidadPesoModal'));
+  unidadPesoModal.show();
+});
+
+document.getElementById('guardarUnidadPeso').addEventListener('click', function () {
+  // Obtener la opción seleccionada del select
+  const seleccion = document.getElementById('selectUnidadPeso').value;
+  
+  // Guardar en el localStorage según la selección
+  if (seleccion === 'kg') {
+    localStorage.setItem('unidad-peso', 'kg');
+  } else {
+    localStorage.setItem('unidad-peso', 'lb');
+  }
+
+    // Establecer el select de tipo de peso (kilogramos o libras) según LocalStorage
+    const unidadPeso = localStorage.getItem('unidad-peso');
+  document.getElementById('weight-type').value = unidadPeso === 'kg' ? 'kg' : 'lb';
+  
+  // Ocultar el modal después de guardar
+  const unidadPesoModal = bootstrap.Modal.getInstance(document.getElementById('unidadPesoModal'));
+  unidadPesoModal.hide();
+
+  // Llamar a cargarRegistros para actualizar la vista
+  cargarRegistros();
+});
+
+</script>
   
   
   <script>
@@ -246,10 +313,10 @@ request.onerror = function(event) {
       history.back();
     });
 
-    // Manejar botones de Guardar y Limpiar
-    document.getElementById('save-button').addEventListener('click', function() {
-        const ejercicioId = document.getElementById('exercise-select').value;
-  const peso = document.getElementById('weight').value;
+// Modificar la función que guarda los datos en IndexedDB
+document.getElementById('save-button').addEventListener('click', function() {
+  const ejercicioId = document.getElementById('exercise-select').value;
+  let peso = parseFloat(document.getElementById('weight').value);
   const tipo = document.getElementById('type-select').value;
   const fecha = document.getElementById('date-input').value;
   
@@ -265,13 +332,20 @@ request.onerror = function(event) {
     };
   }
 
-  // Guardar en IndexedDB
+// Convertir peso a kilogramos si la unidad seleccionada es libras
+const unidadPeso = localStorage.getItem('unidad-peso');
+if (unidadPeso === 'lb') {
+  peso = peso / 2.20462; // Convertir libras a kilogramos
+}
+
+
+  // Guardar en IndexedDB (siempre en kilogramos)
   const transaction = db.transaction(['entrenamientos'], 'readwrite');
   const objectStore = transaction.objectStore('entrenamientos');
 
   const nuevoRegistro = {
     ejercicioId,
-    peso,
+    peso, // Siempre se guarda en kilogramos
     tipo,
     repeticiones,
     tiempo,
@@ -288,7 +362,8 @@ request.onerror = function(event) {
   transaction.onerror = function(event) {
     console.error('Error al guardar el registro:', event.target.errorCode);
   };
-    });
+});
+
 
 
     function cargarRegistros() {
@@ -312,6 +387,8 @@ request.onerror = function(event) {
 function mostrarRegistros(registros) {
   const container = document.getElementById('records-container');
   container.innerHTML = ''; // Limpiar antes de mostrar nuevos registros
+
+  const unidadPeso = localStorage.getItem('unidad-peso'); // 'kg' o 'lb' en minúsculas
 
   // Agrupar registros por ejercicioId
   const registrosPorEjercicio = registros.reduce((acc, registro) => {
@@ -343,7 +420,7 @@ function mostrarRegistros(registros) {
     const trHead = document.createElement('tr');
     trHead.innerHTML = `
       <th>N°</th>
-      <th>Peso</th>
+      <th>Peso (${unidadPeso === 'kg' ? 'kg' : 'lb'})</th>
       <th>${registrosEjercicio[0].tipo === 'reps' ? 'Repeticiones' : 'Tiempo'}</th>
       <th>Acciones</th>
     `;
@@ -354,10 +431,17 @@ function mostrarRegistros(registros) {
 
     // Iterar sobre los registros de este ejercicio y reiniciar la numeración
     registrosEjercicio.forEach((registro, index) => {
+      let pesoMostrar = registro.peso;
+      if (unidadPeso === 'lb') {
+        pesoMostrar = (pesoMostrar * 2.20462); // Convertir a libras
+      }
+      
+      pesoMostrar = parseFloat(pesoMostrar).toFixed(1); // Limitar a un decimal
+
       const trBody = document.createElement('tr');
       trBody.innerHTML = `
         <td>${index + 1}</td>
-        <td>${registro.peso} ${document.getElementById('weight-type').value}</td>
+        <td>${pesoMostrar} ${unidadPeso}</td>
         <td>${registro.tipo === 'reps' ? registro.repeticiones : `${registro.tiempo.minutos}m : ${registro.tiempo.segundos}s`}</td>
         <td>
           <button class="btn btn-danger btn-sm" onclick="eliminarRegistro(${registro.id})"><i class="bi bi-trash"></i></button>
@@ -372,6 +456,9 @@ function mostrarRegistros(registros) {
     container.appendChild(card);
   });
 }
+
+
+
 
 // Función para eliminar un registro
 function eliminarRegistro(id) {
@@ -409,6 +496,17 @@ function cambiarFecha(dias) {
   cargarRegistros(); // Recargar registros para la nueva fecha
 }
 
+
+// Al cargar el documento, configurar unidad-peso en LocalStorage si no existe
+document.addEventListener('DOMContentLoaded', function() {
+  if (!localStorage.getItem('unidad-peso')) {
+    localStorage.setItem('unidad-peso', 'kg'); // Valor por defecto en minúsculas
+  }
+  //localStorage.setItem('unidad-peso', 'kg'); // Valor por defecto en minúsculas
+  // Establecer el select de tipo de peso (kilogramos o libras) según LocalStorage
+  const unidadPeso = localStorage.getItem('unidad-peso');
+  document.getElementById('weight-type').value = unidadPeso === 'kg' ? 'kg' : 'lb';
+});
 
 
 
