@@ -347,7 +347,7 @@ p {
   gap: 15px;
 }
 
-#exit-button {
+#icon_three_dots {
   margin-left: auto; /* Esto empuja el botón hacia la derecha */
 }
 
