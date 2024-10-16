@@ -115,19 +115,51 @@
        // Ordenar los registros por fecha de forma ascendente
        registrosEjercicio.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
        
-// Preparar los datos de las fechas
-const fechas = registrosEjercicio.map(record => {
-    // Verificar si la fecha está en formato DD-MM-YYYY
-    const dateParts = record.fecha.split('-');
-    if (dateParts.length === 3 && dateParts[0].length === 2) {
-        // Si es DD-MM-YYYY, devolverla en formato DD/MM/YYYY
-        return record.fecha.replace(/-/g, '/'); // Reemplazar guiones por barras
-    } else {
-        // Asumir que la fecha está en formato YYYY-MM-DD y convertirla
-        const [year, month, day] = record.fecha.split('-'); // Asumiendo formato YYYY-MM-DD
-        return `${day}/${month}/${year}`; // Formato DD/MM/YYYY
-    }
-});
+        // Preparar los datos de las fechas
+        const fechas = registrosEjercicio.map(record => {
+            // Verificar si la fecha está en formato DD-MM-YYYY
+            const dateParts = record.fecha.split('-');
+            if (dateParts.length === 3 && dateParts[0].length === 2) {
+                // Si es DD-MM-YYYY, devolverla en formato DD/MM/YYYY
+                return record.fecha.replace(/-/g, '/'); // Reemplazar guiones por barras
+            } else {
+                // Asumir que la fecha está en formato YYYY-MM-DD y convertirla
+                const [year, month, day] = record.fecha.split('-'); // Asumiendo formato YYYY-MM-DD
+                return `${day}/${month}/${year}`; // Formato DD/MM/YYYY
+            }
+        });
+
+                // Preparar los datos de las fechas de repeticiones
+                const fechas_reps = registrosEjercicio
+                .filter(record => record.tipo === "reps") // Validación para repeticiones
+                .map(record => {
+            // Verificar si la fecha está en formato DD-MM-YYYY
+            const dateParts = record.fecha.split('-');
+            if (dateParts.length === 3 && dateParts[0].length === 2) {
+                // Si es DD-MM-YYYY, devolverla en formato DD/MM/YYYY
+                return record.fecha.replace(/-/g, '/'); // Reemplazar guiones por barras
+            } else {
+                // Asumir que la fecha está en formato YYYY-MM-DD y convertirla
+                const [year, month, day] = record.fecha.split('-'); // Asumiendo formato YYYY-MM-DD
+                return `${day}/${month}/${year}`; // Formato DD/MM/YYYY
+            }
+        });
+
+                // Preparar los datos de las fechas de tiempo
+                        const fechas_time = registrosEjercicio
+                        .filter(record => record.tipo === "time") // Validación para tiempo
+                .map(record => {
+            // Verificar si la fecha está en formato DD-MM-YYYY
+            const dateParts = record.fecha.split('-');
+            if (dateParts.length === 3 && dateParts[0].length === 2) {
+                // Si es DD-MM-YYYY, devolverla en formato DD/MM/YYYY
+                return record.fecha.replace(/-/g, '/'); // Reemplazar guiones por barras
+            } else {
+                // Asumir que la fecha está en formato YYYY-MM-DD y convertirla
+                const [year, month, day] = record.fecha.split('-'); // Asumiendo formato YYYY-MM-DD
+                return `${day}/${month}/${year}`; // Formato DD/MM/YYYY
+            }
+        });
 
        
    
@@ -163,7 +195,7 @@ const fechas = registrosEjercicio.map(record => {
        new Chart(ctxReps, {
            type: 'line',
            data: {
-               labels: fechas,
+               labels: fechas_reps,
                datasets: [{
                    label: 'Repeticiones',
                    data: repeticiones,
@@ -193,7 +225,7 @@ const fechas = registrosEjercicio.map(record => {
        new Chart(ctxTiempo, {
            type: 'line',
            data: {
-               labels: fechas,
+               labels: fechas_time,
                datasets: [{
                    label: 'Tiempo (segundos)',
                    data: tiempos,
