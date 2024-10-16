@@ -265,12 +265,18 @@ request.onsuccess = function(event) {
   db = event.target.result;
   console.log('IndexedDB abierta correctamente');
 
-  // Establecer la fecha actual
-  const fechaActual = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
-  document.getElementById('date-input').value = fechaActual; // Asignar la fecha actual al input
+  // Establecer la fecha actual en formato YYYY-MM-DD
+  const fechaActual = new Date();
+  const offset = fechaActual.getTimezoneOffset(); // Obtener la diferencia en minutos
+  fechaActual.setMinutes(fechaActual.getMinutes() - offset); // Ajustar la fecha
+
+  const fechaFormateada = fechaActual.toISOString().split('T')[0]; // Obtener solo la parte de la fecha
+  document.getElementById('date-input').value = fechaFormateada; // Asignar la fecha formateada al input
 
   cargarRegistros(); // Cargar los registros al abrir la base de datos
 };
+
+
 
 
 request.onerror = function(event) {
