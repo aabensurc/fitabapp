@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <meta name="description" content="Seguimiento de ejercicio">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script> <!-- Librería de español -->
+
+  <title>Registro de Entrenamientos - FITABAPP</title>
+
+  <style>
+
+    .contenedor_seg_ejer {
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+
+  </style>
+
+</head>
+<body>
+  <!-- App Bar -->
+  <div class="app-bar">
+    <div class="nav-icons" id="back-button">
+      <i class="bi bi-arrow-left"></i> <!-- Botón de atrás -->
+    </div>
+    <h1 id="nombre-ejercicio">Nombre ejercicio</h1>
+  </div>
+
+  <div class="container-fluid contenedor_seg_ejer">
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Máximo Peso</h5>
+            <p class="card-text" id="maximo-peso">Cargando...</p>
+        </div>
+    </div>
+    
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Máximas Repeticiones</h5>
+            <p class="card-text" id="maximas-repeticiones">Cargando...</p>
+        </div>
+    </div>
+    
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Máximo Tiempo (mm:ss)</h5>
+            <p class="card-text" id="maximo-tiempo">Cargando...</p>
+        </div>
+    </div>
+  
+
+   
+
+  </div>
+
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Obtener parámetro "ejercicioId" de la URL
+    const obtenerId = () => new URLSearchParams(window.location.search).get('ejercicioId');
+  
+    // Cargar JSON y mostrar el nombre del ejercicio
+    const cargarEjercicio = async () => {
+      const id = obtenerId();
+      if (!id) return (document.getElementById('nombre-ejercicio').textContent = 'ID no encontrado');
+      
+      try {
+        const response = await fetch('json/ejercicios.json');
+        const { ejercicios } = await response.json();
+        const ejercicio = ejercicios.find(e => e.id == id);
+        document.getElementById('nombre-ejercicio').textContent = ejercicio ? ejercicio.nombre : 'Ejercicio no encontrado';
+      } catch (error) {
+        document.getElementById('nombre-ejercicio').textContent = 'Error al cargar el ejercicio';
+      }
+    };
+  
+
+
+        // Volver a la pantalla anterior
+        document.getElementById('back-button').addEventListener('click', function() {
+      history.back();
+    });
+  </script>
+
+  <script>
+// Función para obtener el máximo peso levantado
+const cargarMaximoPeso = async () => {
+    const id = obtenerId();
+    if (!id) return;
+
+    const dbName = "EntrenamientosDB";
+    const storeName = "entrenamientos"; // Cambia esto si el nombre de tu almacén es diferente
+
+    const request = indexedDB.open(dbName);
+    
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const allRecords = store.getAll();
+
+        allRecords.onsuccess = (event) => {
+            const records = event.target.result;
+
+            // Filtrar los registros por ejercicioId
+            const filteredRecords = records.filter(record => record.ejercicioId === id);
+            if (filteredRecords.length === 0) {
+                document.getElementById('maximo-peso').textContent = 'No hay registros para este ejercicio';
+                return;
+            }
+
+                // Calcular el máximo peso
+                const maxPeso = Math.max(...filteredRecords.map(record => parseFloat(record.peso)));
+
+                // Verificar la unidad de peso y convertir si es necesario
+                let maxPesoDisplay = maxPeso;
+                if (localStorage.getItem('unidad-peso') === 'lb') {
+                    // Convertir de kg a lb
+                    maxPesoDisplay = maxPeso * 2.20462; // Mantener el valor sin redondear
+                }
+
+                // Mostrar el máximo peso redondeado a un decimal
+                const pesoMostrado = (localStorage.getItem('unidad-peso') === 'lb') ? 
+                    (maxPesoDisplay).toFixed(1) : 
+                    (maxPesoDisplay).toFixed(1);
+
+                document.getElementById('maximo-peso').textContent = `${pesoMostrado} ${localStorage.getItem('unidad-peso') === 'kg' ? 'kg' : 'lb'}`;
+
+
+        };
+        
+        allRecords.onerror = () => {
+            document.getElementById('maximo-peso').textContent = 'Error al cargar los registros';
+        };
+    };
+
+    request.onerror = () => {
+        console.error("Error al abrir la base de datos.");
+    };
+};
+
+  </script>
+
+  <script>
+// Función para obtener las máximas repeticiones
+const cargarMaximasRepeticiones = async () => {
+    const id = obtenerId();
+    if (!id) return;
+
+    const dbName = "EntrenamientosDB";
+    const storeName = "entrenamientos"; // Cambia esto si el nombre de tu almacén es diferente
+
+    const request = indexedDB.open(dbName);
+    
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const allRecords = store.getAll();
+
+        allRecords.onsuccess = (event) => {
+            const records = event.target.result;
+
+            // Filtrar los registros por ejercicioId y tipo "reps"
+            const filteredRecords = records.filter(record => record.ejercicioId === id && record.tipo === "reps");
+            if (filteredRecords.length === 0) {
+                document.getElementById('maximas-repeticiones').textContent = 'No hay registros para este ejercicio';
+                return;
+            }
+
+            // Calcular las máximas repeticiones
+            const maxRepeticiones = Math.max(...filteredRecords.map(record => parseFloat(record.repeticiones)));
+
+            // Mostrar el máximo de repeticiones
+            document.getElementById('maximas-repeticiones').textContent = maxRepeticiones;
+        };
+        
+        allRecords.onerror = () => {
+            document.getElementById('maximas-repeticiones').textContent = 'Error al cargar los registros';
+        };
+    };
+
+    request.onerror = () => {
+        console.error("Error al abrir la base de datos.");
+    };
+};
+
+  </script>
+
+  <script>
+// Función para obtener el máximo tiempo
+const cargarMaximoTiempo = async () => {
+    const id = obtenerId();
+    if (!id) return;
+
+    const dbName = "EntrenamientosDB";
+    const storeName = "entrenamientos"; // Cambia esto si el nombre de tu almacén es diferente
+
+    const request = indexedDB.open(dbName);
+    
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const allRecords = store.getAll();
+
+        allRecords.onsuccess = (event) => {
+            const records = event.target.result;
+
+            // Filtrar los registros por ejercicioId y tipo "time"
+            const filteredRecords = records.filter(record => record.ejercicioId === id && record.tipo === "time");
+            if (filteredRecords.length === 0) {
+                document.getElementById('maximo-tiempo').textContent = 'No hay registros de tiempo para este ejercicio';
+                return;
+            }
+
+            // Calcular el máximo tiempo en segundos
+            const maxTimeInSeconds = Math.max(...filteredRecords.map(record => {
+                const minutos = parseInt(record.tiempo.minutos); // Convertir a número
+                const segundos = parseInt(record.tiempo.segundos); // Convertir a número
+                return minutos * 60 + segundos; // Convertir todo a segundos
+            }));
+
+            // Convertir el tiempo máximo de segundos a mm:ss
+            const maxMinutes = Math.floor(maxTimeInSeconds / 60);
+            const maxSeconds = maxTimeInSeconds % 60;
+
+            // Formatear a mm:ss
+            const formattedTime = `${String(maxMinutes).padStart(2, '0')}:${String(maxSeconds).padStart(2, '0')}`;
+
+            // Mostrar el máximo tiempo
+            document.getElementById('maximo-tiempo').textContent = formattedTime;
+        };
+        
+        allRecords.onerror = () => {
+            document.getElementById('maximo-tiempo').textContent = 'Error al cargar los registros';
+        };
+    };
+
+    request.onerror = () => {
+        console.error("Error al abrir la base de datos.");
+    };
+};
+
+
+  </script>
+
+  <script>
+    // Llamar a la función al cargar la página
+window.onload = async () => {
+    await cargarEjercicio();
+    await cargarMaximoPeso();
+    await cargarMaximasRepeticiones(); 
+    await cargarMaximoTiempo(); // Llamar a la nueva función
+};
+  </script>
+  
+
+</body>
+</html>
