@@ -78,6 +78,23 @@
             <p class="card-text" id="maximo-tiempo">Cargando...</p>
         </div>
     </div>
+
+
+
+    <div class="container-fluid mt-4">
+        <h5>Gráficos de Progreso</h5>
+        <div class="row">
+            <div class="col-12 mb-3">
+                <canvas id="pesoChart"></canvas>
+            </div>
+            <div class="col-12 mb-3">
+                <canvas id="repsChart"></canvas>
+            </div>
+            <div class="col-12 mb-3">
+                <canvas id="tiempoChart"></canvas>
+            </div>
+        </div>
+    </div>
   
 
    
@@ -87,6 +104,115 @@
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Función para crear gráficos
+   const crearGraficos = (filteredRecords, ejercicioId) => {
+       // Filtrar los registros para el ejercicio específico
+       const registrosEjercicio = filteredRecords.filter(record => record.ejercicioId === ejercicioId);
+       
+       // Ordenar los registros por fecha de forma ascendente
+       registrosEjercicio.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+       
+// Preparar los datos de las fechas
+const fechas = registrosEjercicio.map(record => {
+    // Verificar si la fecha está en formato DD-MM-YYYY
+    const dateParts = record.fecha.split('-');
+    if (dateParts.length === 3 && dateParts[0].length === 2) {
+        // Si es DD-MM-YYYY, devolverla en formato DD/MM/YYYY
+        return record.fecha.replace(/-/g, '/'); // Reemplazar guiones por barras
+    } else {
+        // Asumir que la fecha está en formato YYYY-MM-DD y convertirla
+        const [year, month, day] = record.fecha.split('-'); // Asumiendo formato YYYY-MM-DD
+        return `${day}/${month}/${year}`; // Formato DD/MM/YYYY
+    }
+});
+
+       
+   
+       // Preparar los datos para el gráfico de pesos
+       const pesos = registrosEjercicio.map(record => record.peso);
+       const ctxPeso = document.getElementById('pesoChart').getContext('2d');
+       new Chart(ctxPeso, {
+           type: 'line',
+           data: {
+               labels: fechas,
+               datasets: [{
+                   label: 'Peso (kg)',
+                   data: pesos,
+                   borderColor: 'rgba(75, 192, 192, 1)',
+                   borderWidth: 2,
+                   fill: false
+               }]
+           },
+           options: {
+               responsive: true,
+               scales: {
+                   x: { title: { display: true, text: 'Fecha' }},
+                   y: { title: { display: true, text: 'Peso (kg)' }}
+               }
+           }
+       });
+   
+       // Preparar los datos para el gráfico de repeticiones
+       const repeticiones = registrosEjercicio
+           .filter(record => record.tipo === "reps") // Validación para repeticiones
+           .map(record => record.repeticiones);
+       const ctxReps = document.getElementById('repsChart').getContext('2d');
+       new Chart(ctxReps, {
+           type: 'line',
+           data: {
+               labels: fechas,
+               datasets: [{
+                   label: 'Repeticiones',
+                   data: repeticiones,
+                   borderColor: 'rgba(153, 102, 255, 1)',
+                   borderWidth: 2,
+                   fill: false
+               }]
+           },
+           options: {
+               responsive: true,
+               scales: {
+                   x: { title: { display: true, text: 'Fecha' }},
+                   y: { title: { display: true, text: 'Repeticiones' }}
+               }
+           }
+       });
+   
+       // Preparar los datos para el gráfico de tiempo
+       const tiempos = registrosEjercicio
+           .filter(record => record.tipo === "time") // Validación para tiempo
+           .map(record => {
+               const minutos = parseInt(record.tiempo.minutos);
+               const segundos = parseInt(record.tiempo.segundos);
+               return minutos * 60 + segundos; // Convertir tiempo a segundos
+           });
+       const ctxTiempo = document.getElementById('tiempoChart').getContext('2d');
+       new Chart(ctxTiempo, {
+           type: 'line',
+           data: {
+               labels: fechas,
+               datasets: [{
+                   label: 'Tiempo (segundos)',
+                   data: tiempos,
+                   borderColor: 'rgba(255, 159, 64, 1)',
+                   borderWidth: 2,
+                   fill: false
+               }]
+           },
+           options: {
+               responsive: true,
+               scales: {
+                   x: { title: { display: true, text: 'Fecha' }},
+                   y: { title: { display: true, text: 'Tiempo (segundos)' }}
+               }
+           }
+       });
+   };
+   </script>
+   
 
   <script>
     // Obtener parámetro "ejercicioId" de la URL
@@ -325,6 +451,9 @@ document.getElementById('filtrar').addEventListener('click', async () => {
             calcularMaximoPesoF(filteredRecords, id);
             calcularMaximasRepeticionesF(filteredRecords, id);
             calcularMaximoTiempoF(filteredRecords, id);
+
+                        // Crear los gráficos
+                        crearGraficos(filteredRecords, id);
         };
 
         allRecords.onerror = () => {
@@ -442,6 +571,7 @@ fechaDesdeInput.addEventListener('input', validarFechas);
 fechaHastaInput.addEventListener('input', validarFechas);
 
   </script>
+  
 
 </body>
 </html>
