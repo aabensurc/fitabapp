@@ -39,6 +39,23 @@
 
   <div class="container-fluid contenedor_seg_ejer">
 
+        <!-- Inputs de Fecha y Botón de Filtrar -->
+        <div class="mb-3">
+            <div class="row">
+            <div class="col-6">
+                <label for="fechaDesde" class="form-label">Desde:</label>
+                <input type="date" id="fechaDesde" class="form-control">
+            </div>
+            <div class="col-6">
+                <label for="fechaHasta" class="form-label">Hasta:</label>
+                <input type="date" id="fechaHasta" class="form-control">
+            </div>
+            </div>
+            <div class="row d-flex mx-1">
+                <button id="filtrar" class="btn btn-primary mt-2">Filtrar</button>
+            </div>
+          </div>
+
     <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title">Máximo Peso</h5>
@@ -267,6 +284,131 @@ window.onload = async () => {
     await cargarMaximasRepeticiones(); 
     await cargarMaximoTiempo(); // Llamar a la nueva función
 };
+  </script>
+
+  <script>
+    // Función para filtrar registros por fecha
+const filtrarPorFecha = (records, fechaDesde, fechaHasta) => {
+    return records.filter(record => {
+        const fechaRegistro = new Date(record.fecha); // Asegúrate de que el campo 'fecha' exista en tu estructura
+        return fechaRegistro >= fechaDesde && fechaRegistro <= fechaHasta;
+    });
+};
+
+// Agregar evento al botón de filtrar
+document.getElementById('filtrar').addEventListener('click', async () => {
+    const fechaDesde = new Date(document.getElementById('fechaDesde').value);
+    const fechaHasta = new Date(document.getElementById('fechaHasta').value);
+    
+    // Cargar los registros y filtrar por fecha
+    const id = obtenerId();
+    const dbName = "EntrenamientosDB";
+    const storeName = "entrenamientos";
+
+    const request = indexedDB.open(dbName);
+
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const allRecords = store.getAll();
+
+        allRecords.onsuccess = (event) => {
+            const records = event.target.result;
+
+            // Filtrar registros por fecha
+            const filteredRecords = filtrarPorFecha(records, fechaDesde, fechaHasta);
+
+            // Calcular máximo peso, máximas repeticiones y máximo tiempo
+            calcularMaximoPesoF(filteredRecords, id);
+            calcularMaximasRepeticionesF(filteredRecords, id);
+            calcularMaximoTiempoF(filteredRecords, id);
+        };
+
+        allRecords.onerror = () => {
+            document.getElementById('maximo-peso').textContent = 'Error al cargar los registros';
+            document.getElementById('maximas-repeticiones').textContent = 'Error al cargar los registros';
+            document.getElementById('maximo-tiempo').textContent = 'Error al cargar los registros';
+        };
+    };
+
+    request.onerror = () => {
+        console.error("Error al abrir la base de datos.");
+    };
+});
+
+// Modificar las funciones de cálculo para que reciban `filteredRecords` como parámetro
+// Función para obtener el máximo peso levantado
+const calcularMaximoPesoF = (records, id) => {
+    // Filtrar los registros por ejercicioId
+    const filteredRecords = records.filter(record => record.ejercicioId === id);
+    if (filteredRecords.length === 0) {
+        document.getElementById('maximo-peso').textContent = 'No hay registros para este ejercicio';
+        return;
+    }
+
+    // Calcular el máximo peso
+    const maxPeso = Math.max(...filteredRecords.map(record => parseFloat(record.peso)));
+
+    // Verificar la unidad de peso y convertir si es necesario
+    let maxPesoDisplay = maxPeso;
+    if (localStorage.getItem('unidad-peso') === 'lb') {
+        // Convertir de kg a lb
+        maxPesoDisplay = maxPeso * 2.20462; // Mantener el valor sin redondear
+    }
+
+    // Mostrar el máximo peso redondeado a un decimal
+    const pesoMostrado = (localStorage.getItem('unidad-peso') === 'lb') ? 
+        (maxPesoDisplay).toFixed(1) : 
+        (maxPesoDisplay).toFixed(1);
+
+    document.getElementById('maximo-peso').textContent = `${pesoMostrado} ${localStorage.getItem('unidad-peso') === 'kg' ? 'kg' : 'lb'}`;
+};
+
+// Función para obtener las máximas repeticiones
+const calcularMaximasRepeticionesF = (records, id) => {
+    // Filtrar los registros por ejercicioId y tipo "reps"
+    const filteredRecords = records.filter(record => record.ejercicioId === id && record.tipo === "reps");
+    if (filteredRecords.length === 0) {
+        document.getElementById('maximas-repeticiones').textContent = 'No hay registros para este ejercicio';
+        return;
+    }
+
+    // Calcular las máximas repeticiones
+    const maxRepeticiones = Math.max(...filteredRecords.map(record => parseFloat(record.repeticiones)));
+
+    // Mostrar el máximo de repeticiones
+    document.getElementById('maximas-repeticiones').textContent = maxRepeticiones;
+};
+
+// Función para obtener el máximo tiempo
+const calcularMaximoTiempoF = (records, id) => {
+    // Filtrar los registros por ejercicioId y tipo "time"
+    const filteredRecords = records.filter(record => record.ejercicioId === id && record.tipo === "time");
+    if (filteredRecords.length === 0) {
+        document.getElementById('maximo-tiempo').textContent = 'No hay registros de tiempo para este ejercicio';
+        return;
+    }
+
+    // Calcular el máximo tiempo en segundos
+    const maxTimeInSeconds = Math.max(...filteredRecords.map(record => {
+        const minutos = parseInt(record.tiempo.minutos); // Convertir a número
+        const segundos = parseInt(record.tiempo.segundos); // Convertir a número
+        return minutos * 60 + segundos; // Convertir todo a segundos
+    }));
+
+    // Convertir el tiempo máximo de segundos a mm:ss
+    const maxMinutes = Math.floor(maxTimeInSeconds / 60);
+    const maxSeconds = maxTimeInSeconds % 60;
+
+    // Formatear a mm:ss
+    const formattedTime = `${String(maxMinutes).padStart(2, '0')}:${String(maxSeconds).padStart(2, '0')}`;
+
+    // Mostrar el máximo tiempo
+    document.getElementById('maximo-tiempo').textContent = formattedTime;
+};
+
+
   </script>
   
 
