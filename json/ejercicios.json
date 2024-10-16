@@ -149,6 +149,16 @@
             ],
             "imagen_url": "https:\/\/eresfitness.com\/wp-content\/uploads\/2019\/06\/Extensi%C3%B3n-de-tr%C3%ADceps-en-polea-alta-MUSCULOS-INVOLUCRADOS.jpg.webp",
             "video_url": "videos\/ejercicios\/EXTENSION_DE_TRICEPS_CON_SOGA_EN_POLEA.webm"
+        },
+        {
+            "id": 15,
+            "nombre": "Bicicleta estacionaria",
+            "descripcion": "Maquina para poder hacer calentamiento, cardio y trabajar piernas de una forma c\u00f3moda y sentada",
+            "musculos_involucrados": [
+                "Cardio"
+            ],
+            "imagen_url": "https:\/\/www.shutterstock.com\/image-vector\/woman-doing-cardio-stationary-bike-600nw-2400565249.jpg",
+            "video_url": "https:\/\/videos.pexels.com\/video-files\/4367759\/4367759-hd_1920_1080_30fps.mp4"
         }
     ]
 }
