@@ -13,12 +13,15 @@
 <body>
 
 <!-- App Bar -->
-<div class="app-bar">
+<div class="app-bar d-flex justify-content-between align-items-center">
   <div class="nav-icons" id="back-button">
-      <i class="bi bi-arrow-left"></i> <!-- Icono de "atrás" -->
+    <i class="bi bi-arrow-left"></i> <!-- Icono de "atrás" -->
   </div>
   <h1 class="" id="exercise-title">Ejercicio</h1>
-  <div class="nav-icons"></div>
+
+  <div class="nav-icons ms-auto" id="reg_ejer">
+    <i class="bi bi-pencil-square"></i> <!-- Icono de "editar" -->
+  </div>
 </div>
 
 <!-- Contenedor principal -->
@@ -115,6 +118,15 @@
   document.getElementById('back-button').addEventListener('click', function() {
     history.back();
   });
+
+
+    // Agregar el evento de clic al botón de registro de ejercicios
+    document.getElementById('reg_ejer').addEventListener('click', function() {
+    // Redirigir a la página de registro de entrenamientos con el ID
+    window.location.href = `registro_entrenamientos.html?id=${id}`;
+  });
+
+
 
   // Temporizador
   let timerInterval;
