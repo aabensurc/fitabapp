@@ -307,6 +307,14 @@ request.onerror = function(event) {
           option.textContent = ejercicio.nombre;
           exerciseSelect.appendChild(option);
         });
+
+///obtener el id de la pantalla detalle_ejer si es que lo hay
+        const urlParams = new URLSearchParams(window.location.search);
+    const exerciseId = urlParams.get('id'); // Obtener el valor de 'id'
+    if (exerciseId !== null) {
+      document.getElementById('exercise-select').selectedIndex = exerciseId;
+    }
+/// cerramos
       })
       .catch(error => console.error('Error al cargar los ejercicios:', error));
 
