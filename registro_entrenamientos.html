@@ -37,7 +37,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 20px 0;
+
+    }
+    .date-selector i{
+    color: white;
+      background-color: #2196F3;
+      padding: 5px;
+      border-radius: 5px;
     }
     .contenedor_notes {
       margin-top: 80px;
@@ -106,6 +112,9 @@ th{
   </div>
 
   <div class="container-fluid contenedor_notes">
+    <div class="col-12 text-center p-0" id="hoy">
+      Fecha:
+    </div>
     <!-- Selector de fecha -->
     <div class="date-selector">
       <i id="prev-day" class="bi bi-chevron-left"></i>
@@ -246,6 +255,7 @@ document.getElementById('calendar-icon').addEventListener('click', function() {
         document.getElementById('date-input').value = selectedDate.toISOString().split('T')[0];
         calendarModal.hide(); // Cerrar el modal después de seleccionar la fecha
         cargarRegistros(); // Cargar los registros al abrir la base de datos
+        mostrarHoySiEsHoy();
       }
     }
   });
@@ -277,7 +287,7 @@ request.onsuccess = function(event) {
 
   const fechaFormateada = fechaActual.toISOString().split('T')[0]; // Obtener solo la parte de la fecha
   document.getElementById('date-input').value = fechaFormateada; // Asignar la fecha formateada al input
-
+  mostrarHoySiEsHoy()
   cargarRegistros(); // Cargar los registros al abrir la base de datos
 };
 
@@ -523,6 +533,7 @@ function cambiarFecha(dias) {
   dateInput.value = nuevaFecha;
 
   cargarRegistros(); // Recargar registros para la nueva fecha
+  mostrarHoySiEsHoy();
 }
 
 
@@ -554,6 +565,46 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   </script>
 
+<script>
+  // Función para mostrar el div "hoy" si la fecha seleccionada es la fecha actual
+  function mostrarHoySiEsHoy() {
+    const fechaInput = document.getElementById('date-input').value;
+    
+    // Solo ejecuta si hay una fecha seleccionada
+    if (!fechaInput) {
+      return; // No hacer nada si no hay una fecha
+    }
+
+    const fechaActual = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
+
+// Calcular la fecha de mañana
+const mañana = new Date();
+mañana.setDate(mañana.getDate() + 1);
+const fechaMañana = mañana.toISOString().split('T')[0];
+
+// Calcular la fecha de ayer
+const ayer = new Date();
+ayer.setDate(ayer.getDate() - 1);
+const fechaAyer = ayer.toISOString().split('T')[0];
+
+// Comparar fecha seleccionada con la fecha actual, mañana y ayer
+if (fechaInput === fechaActual) {
+  document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
+  document.getElementById('hoy').innerText = "Hoy";
+} else if (fechaInput === fechaMañana) {
+  document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
+  document.getElementById('hoy').innerText = "Mañana";
+} else if (fechaInput === fechaAyer) {
+  document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
+  document.getElementById('hoy').innerText = "Ayer";
+} else {
+  document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
+  document.getElementById('hoy').innerText = "Fecha:";
+}
+
+
+  }
+</script>
 
 
 
