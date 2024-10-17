@@ -523,9 +523,7 @@ p {
   width: 100%; /* Asegurar que el contenedor ocupe todo el ancho */
 }
 
-.text-center {
-  width: 50%; /* Hacer que ambos divs ocupen el 50% del ancho */
-}
+
 
 .spinner-input {
   width: 40px; /* Ajustar el ancho del input como desees */
