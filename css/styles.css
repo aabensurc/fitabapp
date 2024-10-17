@@ -1,192 +1,192 @@
 /* Fuente para Gilroy-Light */
 @font-face {
-    font-family: 'MiFuente';
-    src: url('../fonts/Gilroy-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
+  font-family: 'MiFuente';
+  src: url('../fonts/Gilroy-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
 }
 
 /* Fuente para Gilroy-Regular */
 @font-face {
-  font-family: 'MiFuente';
-  src: url('../fonts/Gilroy-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
+font-family: 'MiFuente';
+src: url('../fonts/Gilroy-Regular.ttf') format('truetype');
+font-weight: 400;
+font-style: normal;
 }
 
 /* Fuente para Gilroy-Medium */
 @font-face {
-    font-family: 'MiFuente';
-    src: url('../fonts/Gilroy-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'MiFuente';
+  src: url('../fonts/Gilroy-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
 }
 
 /* Fuente para Gilroy-Bold */
 @font-face {
-    font-family: 'MiFuente';
-    src: url('../fonts/Gilroy-Bold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
+  font-family: 'MiFuente';
+  src: url('../fonts/Gilroy-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
 }
 
 /* Fuente para Gilroy-Heavy */
 @font-face {
-    font-family: 'MiFuente';
-    src: url('../fonts/Gilroy-Heavy.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'MiFuente';
+  src: url('../fonts/Gilroy-Heavy.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
 }
 
 *{
-  user-select: none; /* Evita la selección de texto en la mayoría de los navegadores */
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
+user-select: none; /* Evita la selección de texto en la mayoría de los navegadores */
+-webkit-user-select: none; /* Safari */
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 html{
-  height: 100%;
+height: 100%;
 }
 
 /* Estilos generales */
 body {
-  font-family: 'MiFuente', sans-serif;
-  background-color: #f5f8fa;
+font-family: 'MiFuente', sans-serif;
+background-color: #f5f8fa;
 
-  height: 100%;
+height: 100%;
 }
 
 h1 {
-  font-family: 'MiFuente', sans-serif;
-  font-weight: 600; /* Gilroy-Bold */
-  font-size: 2rem;
-  margin-bottom: 20px;
+font-family: 'MiFuente', sans-serif;
+font-weight: 600; /* Gilroy-Bold */
+font-size: 2rem;
+margin-bottom: 20px;
 }
 
 h5 {
-  font-family: 'MiFuente', sans-serif;
-  font-weight: 500; /* Gilroy-Regular */
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+font-family: 'MiFuente', sans-serif;
+font-weight: 500; /* Gilroy-Regular */
+font-size: 1.5rem;
+margin-bottom: 20px;
 }
 
 p {
-  font-family: 'MiFuente', sans-serif;
-  font-weight: 300; /* Gilroy-Light */
-  font-size: 1rem;
-  margin-bottom: 20px;
+font-family: 'MiFuente', sans-serif;
+font-weight: 300; /* Gilroy-Light */
+font-size: 1rem;
+margin-bottom: 20px;
 }
 
 
 
 .ripple-effect {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: ripple-animation 0.5s linear;
+position: absolute;
+width: 20px;
+height: 20px;
+background: rgba(0, 0, 0, 0.2);
+border-radius: 50%;
+transform: scale(0);
+animation: ripple-animation 0.5s linear;
 
-  z-index: 1001;
+z-index: 1001;
 }
 
 @keyframes ripple-animation {
-  to {
-    transform: scale(10); /* Cambia a 10 para que el efecto sea más grande */
-    opacity: 0;
-  }
+to {
+  transform: scale(10); /* Cambia a 10 para que el efecto sea más grande */
+  opacity: 0;
+}
 }
 
 
 
 
 .container-fluid{
-  padding: 0px 20px;
+padding: 0px 20px;
 }
 
 
 
 .container-custom {
-            /* Opcional: para asegurarse que las filas no se desborden horizontalmente */
-          
-            max-width: 100%; /* Se asegura que ocupe el 100% de la pantalla */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; /* Centrar filas horizontalmente */
+          /* Opcional: para asegurarse que las filas no se desborden horizontalmente */
+        
+          max-width: 100%; /* Se asegura que ocupe el 100% de la pantalla */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; /* Centrar filas horizontalmente */
 }
 
 .row-custom {
-  height: 160px; /* Cada fila ocupa un tercio de la altura de la ventana */
-  width: 100%;
-  border-radius: 15px; /* Bordes redondeados */
-  background-size: cover; /* Imagen de fondo que cubre todo */
-  background-position: center; /* Imagen centrada */
-  position: relative; /* Para poder colocar el degradado encima */
-  margin-bottom: 20px;
+height: 160px; /* Cada fila ocupa un tercio de la altura de la ventana */
+width: 100%;
+border-radius: 15px; /* Bordes redondeados */
+background-size: cover; /* Imagen de fondo que cubre todo */
+background-position: center; /* Imagen centrada */
+position: relative; /* Para poder colocar el degradado encima */
+margin-bottom: 20px;
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Degradado negro */
-  border-radius: 15px;
-  display: flex;
-  justify-content: center; /* Centrando horizontalmente */
-  align-items: center; /* Centrando verticalmente */
-  color: white;
-  font-size: 2rem;
-  text-align: center;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Degradado negro */
+border-radius: 15px;
+display: flex;
+justify-content: center; /* Centrando horizontalmente */
+align-items: center; /* Centrando verticalmente */
+color: white;
+font-size: 2rem;
+text-align: center;
 }
 
 .bg-1 {
-  background-image: url('https://i.blogs.es/06c8b2/istock-1330371237/1366_2000.jpeg'); /* Cambia la URL por la imagen que desees */
+background-image: url('https://i.blogs.es/06c8b2/istock-1330371237/1366_2000.jpeg'); /* Cambia la URL por la imagen que desees */
 }
 
 .bg-2 {
-  background-image: url('https://t1.uc.ltmcdn.com/es/posts/7/9/9/como_hacer_ejercicios_para_aumentar_los_gluteos_30997_600.webp');
+background-image: url('https://t1.uc.ltmcdn.com/es/posts/7/9/9/como_hacer_ejercicios_para_aumentar_los_gluteos_30997_600.webp');
 }
 
 .bg-3 {
-  background-image: url('https://www.shutterstock.com/image-photo/asian-man-shirtless-workout-weight-600nw-2280545545.jpg');
+background-image: url('https://www.shutterstock.com/image-photo/asian-man-shirtless-workout-weight-600nw-2280545545.jpg');
 }
 
 
 .bg-4 {
-  background-image: url('https://st.depositphotos.com/2389277/3604/i/450/depositphotos_36042999-stock-photo-exercise-for-triceps-with-cable.jpg');
+background-image: url('https://st.depositphotos.com/2389277/3604/i/450/depositphotos_36042999-stock-photo-exercise-for-triceps-with-cable.jpg');
 }
 
 .bg-5 {
-  background-image: url('https://uvn-brightspot.s3.amazonaws.com/assets/vixes/e/ejercicios_pierna_debes_dejar_rutina.jpg');
+background-image: url('https://uvn-brightspot.s3.amazonaws.com/assets/vixes/e/ejercicios_pierna_debes_dejar_rutina.jpg');
 }
 
 .bg-6 {
-  background-image: url('https://www.caribbeanfit.com/wp-content/uploads/2016/05/Ejercicios-para-dorsal-ancho.jpg');
+background-image: url('https://www.caribbeanfit.com/wp-content/uploads/2016/05/Ejercicios-para-dorsal-ancho.jpg');
 }
 
 .bg-7 {
-  background-image: url('https://st2.depositphotos.com/5657090/8377/i/450/depositphotos_83773190-stock-photo-a-black-man-with-a.jpg');
+background-image: url('https://st2.depositphotos.com/5657090/8377/i/450/depositphotos_83773190-stock-photo-a-black-man-with-a.jpg');
 }
 
 .bg-8 {
-  background-image: url('https://media.istockphoto.com/id/533440240/photo/muscular-young-woman-athlete-on-black.jpg?s=612x612&w=0&k=20&c=XN7M4PQIqRTZXlM58N_NQiFVh52buENWvUGb-CY4Enc=');
+background-image: url('https://media.istockphoto.com/id/533440240/photo/muscular-young-woman-athlete-on-black.jpg?s=612x612&w=0&k=20&c=XN7M4PQIqRTZXlM58N_NQiFVh52buENWvUGb-CY4Enc=');
 }
 
 .bg-9 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZIZcLazjLEtZwzp3m03dDu_vNi7Y5ad9mw&s');
+background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZIZcLazjLEtZwzp3m03dDu_vNi7Y5ad9mw&s');
 }
 
 .bg-10 {
-  background-image: url('https://media.istockphoto.com/id/510355625/es/foto/la-pr%C3%A1ctica.jpg?s=612x612&w=0&k=20&c=co1GxlQfR2INDTgj5A0s0zxOKOa49_xGhzdI0DZVYb4=');
+background-image: url('https://media.istockphoto.com/id/510355625/es/foto/la-pr%C3%A1ctica.jpg?s=612x612&w=0&k=20&c=co1GxlQfR2INDTgj5A0s0zxOKOa49_xGhzdI0DZVYb4=');
 }
 
 .bg-11 {
-  background-image: url('https://t2.uc.ltmcdn.com/es/posts/0/9/9/rutina_de_cardio_para_principiantes_en_el_gimnasio_47990_orig.jpg');
+background-image: url('https://t2.uc.ltmcdn.com/es/posts/0/9/9/rutina_de_cardio_para_principiantes_en_el_gimnasio_47990_orig.jpg');
 }
 
 
@@ -196,55 +196,55 @@ p {
 
 /* Estilos para el contenedor del buscador */
 .search-container {
-  background-color: #e4e6e7; /* Fondo más oscuro que el blanco */
-  border-radius: 30px; /* Bordes redondeados */
-  padding: 5px 15px; /* Espaciado interno */
-  display: flex;
-  align-items: center; /* Alinear verticalmente el contenido */
-  margin: 20px 0px;
+background-color: #e4e6e7; /* Fondo más oscuro que el blanco */
+border-radius: 30px; /* Bordes redondeados */
+padding: 5px 15px; /* Espaciado interno */
+display: flex;
+align-items: center; /* Alinear verticalmente el contenido */
+margin: 20px 0px;
 }
 
 /* Quitar bordes del input y botón */
 .search-container input {
-  border: none;
-  background: none;
-  box-shadow: none;
-  outline: none;
-  flex: 1; /* Permitir que el input use todo el espacio disponible */
-  background-color: transparent; /* Mantener el mismo fondo que el contenedor */
-  padding: 0; /* Quitar padding interno */
+border: none;
+background: none;
+box-shadow: none;
+outline: none;
+flex: 1; /* Permitir que el input use todo el espacio disponible */
+background-color: transparent; /* Mantener el mismo fondo que el contenedor */
+padding: 0; /* Quitar padding interno */
 }
 
 /* Eliminar el estilo de enfoque (focus) */
 .search-container input:focus {
-  outline: none;
-  box-shadow: none; /* Sin sombra al hacer foco */
-  background-color: transparent; /* Asegura que el fondo no cambie al hacer foco */
+outline: none;
+box-shadow: none; /* Sin sombra al hacer foco */
+background-color: transparent; /* Asegura que el fondo no cambie al hacer foco */
 }
 
 /* Ajustar el tamaño y estilo del icono de búsqueda */
 .search-container i {
-  color: #6c757d; /* Color gris para el ícono */
-  font-size: 20px;
-  margin-left: 10px; /* Espacio entre el texto y el icono */
+color: #6c757d; /* Color gris para el ícono */
+font-size: 20px;
+margin-left: 10px; /* Espacio entre el texto y el icono */
 }
 
 /* Estilo para el input */
 .search-container input::placeholder {
-  color: #6c757d; /* Color del placeholder */
+color: #6c757d; /* Color del placeholder */
 }
 
 .container_ejers2{
-  padding-top: 60px;
-  padding-bottom: 60px;
+padding-top: 60px;
+padding-bottom: 60px;
 }
 
 #welcome-message{
- margin-top: 20px;
+margin-top: 20px;
 }
 
 .container_ejers2 h2{
-  color: #2196F3;
+color: #2196F3;
 }
 
 
@@ -255,8 +255,8 @@ p {
 
 
 .container_rutinas{
-  padding-top: 60px;
-  padding-bottom: 60px;
+padding-top: 60px;
+padding-bottom: 60px;
 }
 
 
@@ -271,39 +271,39 @@ p {
 
 
 .container_home{
-  padding-top: 60px;
-  padding-bottom: 60px;
+padding-top: 60px;
+padding-bottom: 60px;
 
 }
 #card-intro h5{
-  font-size: 22px;
-  font-weight: 500;
+font-size: 22px;
+font-weight: 500;
 }
 #card-intro button{
- 
-  font-weight: 600;
+
+font-weight: 600;
 
 }
 
 #card-intro img{
- 
+
 }
 
 #card-intro {
- border: none;
+border: none;
 }
 
 .swiper-container {
-  overflow: hidden; /* Oculta el scrollbar */
+overflow: hidden; /* Oculta el scrollbar */
 }
 
 .swiper-wrapper {
-  display: flex; /* Asegúrate de que los slides se coloquen uno al lado del otro */
+display: flex; /* Asegúrate de que los slides se coloquen uno al lado del otro */
 }
 
 .swiper-slide {
-  flex: 0 0 auto; /* Asegura que cada slide mantenga su ancho */
-  width: 100vw; /* Cada slide ocupará todo el ancho de la ventana */
+flex: 0 0 auto; /* Asegura que cada slide mantenga su ancho */
+width: 100vw; /* Cada slide ocupará todo el ancho de la ventana */
 }
 
 
@@ -316,47 +316,47 @@ p {
 
 
 .app-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #2196F3; /* Color oscuro típico de App Bar */
-  color: white;
-  height: 60px;
-  display: flex;
+position: fixed;
+top: 0;
+width: 100%;
+background-color: #2196F3; /* Color oscuro típico de App Bar */
+color: white;
+height: 60px;
+display: flex;
 
-  align-items: center;
-  padding: 0 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Para asegurarse que esté siempre encima */
+align-items: center;
+padding: 0 15px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+z-index: 1000; /* Para asegurarse que esté siempre encima */
 }
 
 .app-bar h1 {   /* #exercise-title */
-  font-size: 1.5rem;
-  letter-spacing: 0.02em;
-  font-weight: 500; /* Gilroy-Bold */
-  margin: 0;
-  padding-left: 12px;
-  font-size: 24px;
-  white-space: nowrap;       /* Mantiene el texto en una sola línea */
-  overflow: hidden;          /* Oculta el texto desbordado */
-  text-overflow: ellipsis;   /* Agrega puntos suspensivos si el texto es muy largo */
+font-size: 1.5rem;
+letter-spacing: 0.02em;
+font-weight: 500; /* Gilroy-Bold */
+margin: 0;
+padding-left: 12px;
+font-size: 24px;
+white-space: nowrap;       /* Mantiene el texto en una sola línea */
+overflow: hidden;          /* Oculta el texto desbordado */
+text-overflow: ellipsis;   /* Agrega puntos suspensivos si el texto es muy largo */
 }
 
 .app-bar .nav-icons {
-  display: flex;
-  gap: 15px;
+display: flex;
+gap: 15px;
 }
 
 #icon_three_dots {
-  margin-left: auto; /* Esto empuja el botón hacia la derecha */
+margin-left: auto; /* Esto empuja el botón hacia la derecha */
 }
 
 .nav-icons i {
-  font-size: 1.7rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+font-size: 1.7rem;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 
@@ -368,31 +368,31 @@ p {
 
 
 .navbar-nav {
-  flex: 1; /* Permite que la lista de navegación ocupe todo el espacio */
+flex: 1; /* Permite que la lista de navegación ocupe todo el espacio */
 }
 
 .nav-link {
-  text-align: center; /* Centra el texto debajo del icono */
-  font-size: 15px;
+text-align: center; /* Centra el texto debajo del icono */
+font-size: 15px;
 }
 
 .nav-link:hover {
-  text-decoration: none; /* Quita el subrayado al pasar el ratón */
+text-decoration: none; /* Quita el subrayado al pasar el ratón */
 }
 
 
 .nav-link.active {
-  color: #fff; /* Color del texto para el enlace activo */
-  background-color: #47a5f1;
+color: #fff; /* Color del texto para el enlace activo */
+background-color: #47a5f1;
 }
 
 .nav-link.active::after {
-  content: ""; /* Crea un indicador visual */
-  display: block;
-  width: 100%; /* Ocupar el ancho completo del enlace */
-  height: 2px; /* Altura de la línea */
-  background-color: #ffffff; /* Color de la línea, puedes cambiarlo */
-  margin-top: 4px; /* Espaciado entre el texto y la línea */
+content: ""; /* Crea un indicador visual */
+display: block;
+width: 100%; /* Ocupar el ancho completo del enlace */
+height: 2px; /* Altura de la línea */
+background-color: #ffffff; /* Color de la línea, puedes cambiarlo */
+margin-top: 4px; /* Espaciado entre el texto y la línea */
 }
 
 
@@ -410,68 +410,68 @@ p {
 
 
 .container_ejers{
-  padding-top: 80px; /* Deja espacio debajo del App Bar */
+padding-top: 80px; /* Deja espacio debajo del App Bar */
 
 }
 
 .list-group-item {
-  border: none; /* Sin borde para estilo más limpio */
-  border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  margin-bottom: 15px; /* Separación entre items */
-  display: flex; /* Para alinear los elementos */
-  align-items: center; /* Alineación vertical */
-  height: 70px; /* Altura fija para asegurar que todos los items tengan la misma altura */
+border: none; /* Sin borde para estilo más limpio */
+border-radius: 15px; /* Bordes redondeados */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+margin-bottom: 15px; /* Separación entre items */
+display: flex; /* Para alinear los elementos */
+align-items: center; /* Alineación vertical */
+height: 70px; /* Altura fija para asegurar que todos los items tengan la misma altura */
 }
 
 .list-group-item img {
-  width: 50px; /* Ancho de la imagen */
-  height: 50px; /* Altura de la imagen */
+width: 50px; /* Ancho de la imagen */
+height: 50px; /* Altura de la imagen */
 
-  object-fit: cover; /* Mantiene la proporción de la imagen */
-  margin-right: 15px; /* Espacio entre la imagen y el texto */
+object-fit: cover; /* Mantiene la proporción de la imagen */
+margin-right: 15px; /* Espacio entre la imagen y el texto */
 }
 
 .ms-3 {
-  display: flex; /* Para alinear el texto verticalmente */
-  flex-direction: column; /* Para alinear el texto en una columna */
-  justify-content: center; /* Centrar el texto verticalmente */
-  margin: 0; /* Eliminar márgenes superiores e inferiores */
-  line-height: 1.2; /* Ajustar la altura de línea para reducir el espacio entre líneas */
+display: flex; /* Para alinear el texto verticalmente */
+flex-direction: column; /* Para alinear el texto en una columna */
+justify-content: center; /* Centrar el texto verticalmente */
+margin: 0; /* Eliminar márgenes superiores e inferiores */
+line-height: 1.2; /* Ajustar la altura de línea para reducir el espacio entre líneas */
 }
 
 h5 {
-  font-size: 1.2rem; /* Tamaño más pequeño si es necesario */
-  margin: 0; /* Eliminar márgenes para evitar separación adicional */
+font-size: 1.2rem; /* Tamaño más pequeño si es necesario */
+margin: 0; /* Eliminar márgenes para evitar separación adicional */
 }
 
 p {
-  font-size: 1rem; /* Tamaño más pequeño si es necesario */
-  margin: 0; /* Eliminar márgenes para evitar separación adicional */
+font-size: 1rem; /* Tamaño más pequeño si es necesario */
+margin: 0; /* Eliminar márgenes para evitar separación adicional */
 }
 
 
 
 
 #video-container{
-  display: flex;
+display: flex;
 }
 
 .container__detalle_ejer{
-  padding: 0px;
-  padding-top: 60px; /* Deja espacio debajo del App Bar */
+padding: 0px;
+padding-top: 60px; /* Deja espacio debajo del App Bar */
 
-  height: 100%;
+height: 100%;
 }
 
 .container-ejer-info{
-  position: relative;
-  top: -12px;
-  border-radius: 20px 20px 0px 0px;
-  background-color:#fff;
-  padding-top: 26px;
+position: relative;
+top: -12px;
+border-radius: 20px 20px 0px 0px;
+background-color:#fff;
+padding-top: 26px;
 
-  height: 100%;
+height: 100%;
 }
 
 
@@ -479,29 +479,29 @@ p {
 
 /* Estilo para el botón flotante */
 #fab {
-  transition: width 0.3s ease, border-radius 0.3s ease; /* Transición suave para el ancho y el borde */
-  height: 60px; /* Altura fija */
-  border-radius: 30px; /* Bordes redondeados por defecto */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #007bff; /* Color del botón */
-  width: 60px; /* Ancho inicial para el botón circular */
+transition: width 0.3s ease, border-radius 0.3s ease; /* Transición suave para el ancho y el borde */
+height: 60px; /* Altura fija */
+border-radius: 30px; /* Bordes redondeados por defecto */
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #007bff; /* Color del botón */
+width: 60px; /* Ancho inicial para el botón circular */
 
-  font-size: 20px;
+font-size: 20px;
 }
 
 /* Estilo para el temporizador (se muestra solo cuando el temporizador está activo) */
 #fab.timer-active {
-  border-radius: 50px; /* Bordes rectangulares cuando está activo */
-  width: 80px; /* Cambiar el ancho al mostrar el temporizador */
+border-radius: 50px; /* Bordes rectangulares cuando está activo */
+width: 80px; /* Cambiar el ancho al mostrar el temporizador */
 }
 
 #timer-icon{
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+font-size: 24px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 
@@ -511,23 +511,25 @@ p {
 
 
 .input-group {
-  display: flex; /* Usar flexbox para alinear los elementos */
-  justify-content: center; /* Centrar horizontalmente los elementos */
-  width: 100%; /* Ancho del grupo de inputs para ocupar el 100% del contenedor */
+display: flex; /* Usar flexbox para alinear los elementos */
+justify-content: center; /* Centrar horizontalmente los elementos */
+width: 100%; /* Ancho del grupo de inputs para ocupar el 100% del contenedor */
 }
 
 .input-container {
-  display: flex; /* Mantener los grupos en fila */
-  justify-content: space-between; /* Separar los grupos */
-  align-items: center; /* Alinear elementos verticalmente al centro */
-  width: 100%; /* Asegurar que el contenedor ocupe todo el ancho */
+display: flex; /* Mantener los grupos en fila */
+justify-content: space-between; /* Separar los grupos */
+align-items: center; /* Alinear elementos verticalmente al centro */
+width: 100%; /* Asegurar que el contenedor ocupe todo el ancho */
 }
 
-
+.text-center {
+width: 100%; /* Hacer que ambos divs ocupen el 50% del ancho */
+}
 
 .spinner-input {
-  width: 40px; /* Ajustar el ancho del input como desees */
-  text-align: center; /* Centrar texto en el input */
+width: 40px; /* Ajustar el ancho del input como desees */
+text-align: center; /* Centrar texto en el input */
 }
 
 
@@ -535,26 +537,26 @@ p {
 
 
 #container-nutricion {
-  padding-bottom: 80px; /* Asegúrate de que este valor sea suficiente para evitar que el último card sea cubierto */
-  padding-top: 60px; /* Asegúrate de que este valor sea suficiente para evitar que el último card sea cubierto */
+padding-bottom: 80px; /* Asegúrate de que este valor sea suficiente para evitar que el último card sea cubierto */
+padding-top: 60px; /* Asegúrate de que este valor sea suficiente para evitar que el último card sea cubierto */
 }
 
 
 .card-header{
-  background-color: #2196F3 !important;
+background-color: #2196F3 !important;
 }
 
 
 #selector-dias{
-  background-color: #2196F3;
-  color: #fff;
-  border-radius: 50px;
+background-color: #2196F3;
+color: #fff;
+border-radius: 50px;
 }
 
 #selector-dias button{
-  border-radius: 50px;
-  background-color: #2196F3;
-  border: none;
+border-radius: 50px;
+background-color: #2196F3;
+border: none;
 }
 
 
@@ -566,44 +568,43 @@ p {
 
 
 #container-contacto{
-  margin-top: 80px;
-  margin-bottom: 80px;
+margin-top: 80px;
+margin-bottom: 80px;
 }
 
 
 
 
 .container-detalle_rutina{
-  padding-bottom: 80px;
-  padding-top: 60px;
+padding-bottom: 80px;
+padding-top: 60px;
 }
 
 
 
-  
-  @media (min-width: 768px) {
-    h1 {
-      font-size: 2.5rem;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    h1 {
-      font-size: 3rem;
-    }
-  }
-  
- 
-  
-  @media (max-width: 576px) {
-  
-  }
-  
-  @media (min-width: 576px) and (max-width: 768px) {
- 
-  }
-  
-  @media (min-width: 768px) {
 
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
   }
-  
+}
+
+@media (min-width: 992px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+
+
+@media (max-width: 576px) {
+
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
