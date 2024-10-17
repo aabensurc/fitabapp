@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <meta name="description" content="Seguimiento de ejercicio">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+
+  <title>Calculadora 1RM - FITABAPP</title>
+
+  <style>
+
+    .contenedor_1rm {
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+
+  </style>
+
+</head>
+<body>
+  <!-- App Bar -->
+  <div class="app-bar">
+    <div class="nav-icons" id="back-button">
+      <i class="bi bi-arrow-left"></i> <!-- Botón de atrás -->
+    </div>
+    <h1 id="nombre-ejercicio">Calculaodora 1RM</h1>
+    <div class="d-flex ms-auto"> <!-- ms-auto empuja el ícono hacia la derecha -->
+
+        <i class="bi bi-three-dots-vertical" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <!-- Menú desplegable -->
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+
+          <li class="d-flex align-items-center">
+            <i class="bi bi-database-fill ms-3" style="font-size: 14px;"></i>
+            <a class="dropdown-item" href="#" id="unidad-p">Unidad-Peso</a>
+          </li>
+  
+          </ul>
+      </div>
+  </div>
+
+  <div class="container-fluid contenedor_1rm">
+
+
+
+    <div class="row">
+        <!-- Formulario -->
+        <div class="form-section col-6">
+          <select id="weight-type" class="form-select mb-1" disabled>
+            <option value="kg">Kilogramos</option>
+            <option value="lb">Libras</option>
+          </select>
+          <input type="number" id="weight" class="form-control" placeholder="Peso">
+        </div>
+  
+        <div class="form-section col-6">
+          <select id="reps-select" class="form-select mb-1" disabled>
+            <option value="reps">Repeticiones</option>
+          </select>
+          <!-- Input para repeticiones -->
+          <input type="number" id="reps" class="form-control" placeholder="Repeticiones">
+          <!-- Inputs para minutos y segundos, inicialmente ocultos -->
+        </div>
+      </div>
+<!-- Boton -->
+<div class="form-section d-flex justify-content-center mt-2">
+    <button id="calcular-button" class="btn btn-primary"  style="width: 100%;">Calcular</button>
+
+  </div>
+  
+  <div class="container-fluid"> <!-- Contenedor principal -->
+    <div class="row text-center"> <!-- Fila con texto centrado -->
+        <div class="col-4">Columna 1</div> <!-- Columna 1 -->
+        <div class="col-4">Columna 2</div> <!-- Columna 2 -->
+        <div class="col-4">Columna 3</div> <!-- Columna 3 -->
+    </div>
+</div>
+   
+
+  </div>
+
+
+
+
+  <!-- Modal para seleccionar la unidad de peso -->
+  <div class="modal fade" id="unidadPesoModal" tabindex="-1" aria-labelledby="unidadPesoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="unidadPesoModalLabel">Selecciona la unidad de peso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="selectUnidadPeso">Unidad de Peso:</label>
+          <select id="selectUnidadPeso" class="form-select">
+            <option value="kg">kg</option>
+            <option value="lb">lb</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarUnidadPeso">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.getElementById('unidad-p').addEventListener('click', function () {
+    // Mostrar el modal al hacer clic en la opción "Unidad-Peso"
+    const unidadPesoModal = new bootstrap.Modal(document.getElementById('unidadPesoModal'));
+    unidadPesoModal.show();
+  });
+  
+  document.getElementById('guardarUnidadPeso').addEventListener('click', function () {
+    // Obtener la opción seleccionada del select
+    const seleccion = document.getElementById('selectUnidadPeso').value;
+    
+    // Guardar en el localStorage según la selección
+    if (seleccion === 'kg') {
+      localStorage.setItem('unidad-peso', 'kg');
+    } else {
+      localStorage.setItem('unidad-peso', 'lb');
+    }
+  
+      // Establecer el select de tipo de peso (kilogramos o libras) según LocalStorage
+      const unidadPeso = localStorage.getItem('unidad-peso');
+    document.getElementById('weight-type').value = unidadPeso === 'kg' ? 'kg' : 'lb';
+    
+    // Ocultar el modal después de guardar
+    const unidadPesoModal = bootstrap.Modal.getInstance(document.getElementById('unidadPesoModal'));
+    unidadPesoModal.hide();
+  
+    // Llamar a a funcion principal
+    //cargarRegistros();
+  });
+  
+  </script>
+
+  <script>
+        // Volver a la pantalla anterior
+        document.getElementById('back-button').addEventListener('click', function() {
+      history.back();
+    });
+  </script>
+
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</body>
+</html>
