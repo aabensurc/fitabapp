@@ -145,34 +145,54 @@
                 const allRecords = store.getAll();
 
                 allRecords.onsuccess = (event) => {
-                    const records = event.target.result;
+                const records = event.target.result;
 
-                    // Filtrar registros de tipo "reps"
-                    const filteredRecords = records.filter(record => record.tipo === "reps");
-                    
-                    // Aquí deberías implementar la lógica para crear el gráfico usando Chart.js o cualquier otra biblioteca que estés utilizando
-                    const ctx = document.getElementById('grafico-carga-total').getContext('2d');
-                    const myChart = new Chart(ctx, {
-                        type: 'bar', // Tipo de gráfico
-                        data: {
-                            labels: filteredRecords.map(record => record.fecha), // Fechas de cada registro
-                            datasets: [{
-                                label: 'Carga Total',
-                                data: filteredRecords.map(record => parseFloat(record.peso)),
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
+                // Filtrar registros de tipo "reps"
+                const filteredRecords = records.filter(record => record.tipo === "reps");
+
+                // Obtener la unidad de peso desde localStorage
+                const unidadPeso = localStorage.getItem('unidad-peso');
+
+                // Convertir los datos de peso a libras si es necesario
+                const pesos = filteredRecords.map(record => {
+                    let peso = parseFloat(record.peso);
+                    if (unidadPeso === 'lb') {
+                        peso *= 2.20462; // Convertir de kg a lb
+                    }
+                    return peso;
+                });
+
+                // Crear el gráfico con los registros filtrados
+                const ctx = document.getElementById('grafico-carga-total').getContext('2d');
+
+                // Destruir el gráfico anterior si ya existe
+                if (window.myChart) {
+                    window.myChart.destroy();
+                }
+
+                // Crear el gráfico nuevo
+                window.myChart = new Chart(ctx, {
+                    type: 'bar', // Tipo de gráfico
+                    data: {
+                        labels: filteredRecords.map(record => record.fecha), // Fechas de cada registro
+                        datasets: [{
+                            label: `Carga Total (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
+                            data: pesos, // Usar los pesos convertidos
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
                             }
                         }
-                    });
-                };
+                    }
+                });
+            };
+
 
                 allRecords.onerror = () => {
                     console.error('Error al cargar los registros para el gráfico');
@@ -217,76 +237,95 @@
         fechaDesdeInput.addEventListener('input', validarFechas);
         fechaHastaInput.addEventListener('input', validarFechas);
 
-        // Agregar evento al botón de filtrar
-        btnFiltrar.addEventListener('click', async () => {
-            const fechaDesde = new Date(fechaDesdeInput.value);
-            const fechaHasta = new Date(fechaHastaInput.value);
-            
-            // Cargar los registros y filtrar por fecha
-            const dbName = "EntrenamientosDB";
-            const storeName = "entrenamientos";
+// Agregar evento al botón de filtrar
+btnFiltrar.addEventListener('click', async () => {
+    const fechaDesde = new Date(fechaDesdeInput.value);
+    const fechaHasta = new Date(fechaHastaInput.value);
+    
+    // Nombre de la base de datos y store
+    const dbName = "EntrenamientosDB";
+    const storeName = "entrenamientos";
 
-            const request = indexedDB.open(dbName);
+    // Abrir la base de datos
+    const request = indexedDB.open(dbName);
 
-            request.onsuccess = (event) => {
-                const db = event.target.result;
-                const transaction = db.transaction(storeName, "readonly");
-                const store = transaction.objectStore(storeName);
-                const allRecords = store.getAll();
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const allRecords = store.getAll();
 
-                allRecords.onsuccess = (event) => {
-                    const records = event.target.result;
+        allRecords.onsuccess = (event) => {
+            const records = event.target.result;
 
-                    // Filtrar registros por fecha y tipo "reps"
-                    const filteredRecords = records.filter(record => {
-                        const fechaRegistro = new Date(record.fecha); // Asegúrate de que el campo 'fecha' exista en tu estructura
-                        return fechaRegistro >= fechaDesde && fechaRegistro <= fechaHasta && record.tipo === "reps";
-                    });
+            // Filtrar registros por fecha y tipo "reps"
+            const filteredRecords = records.filter(record => {
+                const fechaRegistro = new Date(record.fecha);
+                return fechaRegistro >= fechaDesde && fechaRegistro <= fechaHasta && record.tipo === "reps";
+            });
 
-                    // Calcular la carga total
-                    const cargaTotal = filteredRecords.reduce((total, record) => total + parseFloat(record.peso), 0);
+            // Calcular la carga total
+            let cargaTotal = filteredRecords.reduce((total, record) => total + parseFloat(record.peso), 0);
 
-                    // Mostrar la carga total
-                    let cargaTotalDisplay = cargaTotal;
-                    if (localStorage.getItem('unidad-peso') === 'lb') {
-                        cargaTotalDisplay *= 2.20462; // Convertir a libras si es necesario
-                    }
+            // Verificar la unidad de peso y convertir la carga total si es necesario
+            const unidadPeso = localStorage.getItem('unidad-peso');
+            if (unidadPeso === 'lb') {
+                cargaTotal *= 2.20462; // Convertir la carga total a libras si es necesario
+            }
 
-                    document.getElementById('carga-total').textContent = `${cargaTotalDisplay.toFixed(1)} ${localStorage.getItem('unidad-peso') === 'kg' ? 'kg' : 'lb'}`;
+            // Mostrar la carga total en la interfaz
+            document.getElementById('carga-total').textContent = `${cargaTotal.toFixed(1)} ${unidadPeso === 'kg' ? 'kg' : 'lb'}`;
 
-                    // Crear el gráfico con los registros filtrados
-                    const ctx = document.getElementById('grafico-carga-total').getContext('2d');
-                    const myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: filteredRecords.map(record => record.fecha),
-                            datasets: [{
-                                label: 'Carga Total',
-                                data: filteredRecords.map(record => parseFloat(record.peso)),
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
+            // Convertir los datos de peso para el gráfico si es necesario
+            const pesos = filteredRecords.map(record => {
+                let peso = parseFloat(record.peso);
+                if (unidadPeso === 'lb') {
+                    peso *= 2.20462; // Convertir de kg a lb
+                }
+                return peso;
+            });
+
+            // Crear el gráfico con los datos filtrados
+            const ctx = document.getElementById('grafico-carga-total').getContext('2d');
+
+            // Destruir el gráfico anterior si ya existe
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+
+            // Crear el gráfico nuevo
+            window.myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: filteredRecords.map(record => record.fecha),
+                    datasets: [{
+                        label: `Carga Total (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
+                        data: pesos, // Usar los pesos convertidos
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
                         }
-                    });
-                };
+                    }
+                }
+            });
+        };
 
-                allRecords.onerror = () => {
-                    console.error('Error al cargar los registros para el gráfico');
-                };
-            };
+        allRecords.onerror = () => {
+            console.error('Error al cargar los registros para el gráfico');
+        };
+    };
 
-            request.onerror = () => {
-                console.error("Error al abrir la base de datos.");
-            };
-        });
+    request.onerror = () => {
+        console.error("Error al abrir la base de datos.");
+    };
+});
+
     </script>
 
     <script>
