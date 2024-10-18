@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <meta name="description" content="Recuento de cargas">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <title>Recuento de cargas - FITABAPP</title>
+
+  <style>
+
+    .contenedor_rec_car {
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+    .btn-filtros button{
+        font-size: smaller;
+        border-color: #2196F3;
+        color: #2196F3;
+    }
+    .btn-filtros button:active,
+.btn-filtros button:focus {
+    background-color: #2196F3 !important;
+    border: none !important;
+    color: white;
+}
+
+  </style>
+
+</head>
+<body>
+  <!-- App Bar -->
+  <div class="app-bar">
+    <div class="nav-icons" id="back-button">
+      <i class="bi bi-arrow-left"></i> <!-- Botón de atrás -->
+    </div>
+    <h1>Recuento de cargas</h1>
+  </div>
+
+  <div class="container-fluid contenedor_rec_car">
+
+    <!-- Inputs de Fecha y Botón de Filtrar -->
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-6">
+                <label for="fechaDesde" class="form-label">Desde:</label>
+                <input type="date" id="fechaDesde" class="form-control">
+            </div>
+            <div class="col-6">
+                <label for="fechaHasta" class="form-label">Hasta:</label>
+                <input type="date" id="fechaHasta" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-start mt-2">
+                <button id="filtrar" class="btn btn-primary w-100" style="background-color: #2196F3;" disabled>Filtrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-12 d-flex justify-content-between btn-filtros">
+            <button id="filtrar-1semana" class="btn">1 Semana</button>
+            <button id="filtrar-1mes" class="btn">1 Mes</button>
+            <button id="filtrar-3meses" class="btn">3 Meses</button>
+            <button id="filtrar-6meses" class="btn">6 Meses</button>
+            <button id="filtrar-1ano" class="btn">1 Año</button>
+        </div>
+    </div>
+    
+    
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Volumen total</h5>
+            <p class="card-text" id="carga-total">Cargando...</p>
+        </div>
+    </div>
+
+        <canvas id="grafico-carga-total"></canvas> <!-- Aquí se mostrará el gráfico -->
+    </div>
+
+    <script>
+        // Función para obtener la carga total
+        const cargarCargaTotal = async () => {
+            const dbName = "EntrenamientosDB";
+            const storeName = "entrenamientos";
+
+            const request = indexedDB.open(dbName);
+            
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(storeName, "readonly");
+                const store = transaction.objectStore(storeName);
+                const allRecords = store.getAll();
+
+                allRecords.onsuccess = (event) => {
+                    const records = event.target.result;
+
+                    // Filtrar registros de tipo "reps"
+                    const filteredRecords = records.filter(record => record.tipo === "reps");
+                    if (filteredRecords.length === 0) {
+                        document.getElementById('carga-total').textContent = 'No hay registros de repeticiones';
+                        return;
+                    }
+
+                    // Calcular la carga total
+                    const cargaTotal = filteredRecords.reduce((total, record) => total + parseFloat(record.peso), 0);
+
+                    // Mostrar la carga total redondeada a un decimal
+                    let cargaTotalDisplay = cargaTotal;
+                    if (localStorage.getItem('unidad-peso') === 'lb') {
+                        cargaTotalDisplay *= 2.20462; // Convertir a libras si es necesario
+                    }
+
+                    document.getElementById('carga-total').textContent = `${cargaTotalDisplay.toFixed(1)} ${localStorage.getItem('unidad-peso') === 'kg' ? 'kg' : 'lb'}`;
+                };
+
+                allRecords.onerror = () => {
+                    document.getElementById('carga-total').textContent = 'Error al cargar los registros';
+                };
+            };
+
+            request.onerror = () => {
+                console.error("Error al abrir la base de datos.");
+            };
+        };
+
+        // Función para crear gráficos con todos los datos
+        const crearGraficosTotales = async () => {
+            const dbName = "EntrenamientosDB";
+            const storeName = "entrenamientos";
+
+            const request = indexedDB.open(dbName);
+
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(storeName, "readonly");
+                const store = transaction.objectStore(storeName);
+                const allRecords = store.getAll();
+
+                allRecords.onsuccess = (event) => {
+                    const records = event.target.result;
+
+                    // Filtrar registros de tipo "reps"
+                    const filteredRecords = records.filter(record => record.tipo === "reps");
+                    
+                    // Aquí deberías implementar la lógica para crear el gráfico usando Chart.js o cualquier otra biblioteca que estés utilizando
+                    const ctx = document.getElementById('grafico-carga-total').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar', // Tipo de gráfico
+                        data: {
+                            labels: filteredRecords.map(record => record.fecha), // Fechas de cada registro
+                            datasets: [{
+                                label: 'Carga Total',
+                                data: filteredRecords.map(record => parseFloat(record.peso)),
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                };
+
+                allRecords.onerror = () => {
+                    console.error('Error al cargar los registros para el gráfico');
+                };
+            };
+
+            request.onerror = () => {
+                console.error("Error al abrir la base de datos.");
+            };
+        };
+
+        // Llamar a la función al cargar la página
+        window.onload = async () => {
+            await cargarCargaTotal(); // Cargar total al inicio
+            await crearGraficosTotales(); // Crear gráfico con todos los datos
+        };
+
+        // Función para validar los inputs de fecha
+        const fechaDesdeInput = document.getElementById('fechaDesde');
+        const fechaHastaInput = document.getElementById('fechaHasta');
+        const btnFiltrar = document.getElementById('filtrar');
+
+        // Función para validar fechas
+        const validarFechas = () => {
+            const fechaDesde = new Date(fechaDesdeInput.value);
+            const fechaHasta = new Date(fechaHastaInput.value);
+
+            // Comprobar si ambas fechas están establecidas y son válidas
+            if (fechaDesdeInput.value && fechaHastaInput.value) {
+                // Verificar si la fecha "hasta" es mayor o igual a la fecha "desde"
+                if (fechaHasta >= fechaDesde) {
+                    btnFiltrar.disabled = false; // Habilitar el botón si las condiciones son válidas
+                } else {
+                    btnFiltrar.disabled = true; // Deshabilitar el botón si no
+                }
+            } else {
+                btnFiltrar.disabled = true; // Deshabilitar el botón si alguna fecha no está establecida
+            }
+        };
+
+        // Añadir event listeners a los inputs
+        fechaDesdeInput.addEventListener('input', validarFechas);
+        fechaHastaInput.addEventListener('input', validarFechas);
+
+        // Agregar evento al botón de filtrar
+        btnFiltrar.addEventListener('click', async () => {
+            const fechaDesde = new Date(fechaDesdeInput.value);
+            const fechaHasta = new Date(fechaHastaInput.value);
+            
+            // Cargar los registros y filtrar por fecha
+            const dbName = "EntrenamientosDB";
+            const storeName = "entrenamientos";
+
+            const request = indexedDB.open(dbName);
+
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(storeName, "readonly");
+                const store = transaction.objectStore(storeName);
+                const allRecords = store.getAll();
+
+                allRecords.onsuccess = (event) => {
+                    const records = event.target.result;
+
+                    // Filtrar registros por fecha y tipo "reps"
+                    const filteredRecords = records.filter(record => {
+                        const fechaRegistro = new Date(record.fecha); // Asegúrate de que el campo 'fecha' exista en tu estructura
+                        return fechaRegistro >= fechaDesde && fechaRegistro <= fechaHasta && record.tipo === "reps";
+                    });
+
+                    // Calcular la carga total
+                    const cargaTotal = filteredRecords.reduce((total, record) => total + parseFloat(record.peso), 0);
+
+                    // Mostrar la carga total
+                    let cargaTotalDisplay = cargaTotal;
+                    if (localStorage.getItem('unidad-peso') === 'lb') {
+                        cargaTotalDisplay *= 2.20462; // Convertir a libras si es necesario
+                    }
+
+                    document.getElementById('carga-total').textContent = `${cargaTotalDisplay.toFixed(1)} ${localStorage.getItem('unidad-peso') === 'kg' ? 'kg' : 'lb'}`;
+
+                    // Crear el gráfico con los registros filtrados
+                    const ctx = document.getElementById('grafico-carga-total').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: filteredRecords.map(record => record.fecha),
+                            datasets: [{
+                                label: 'Carga Total',
+                                data: filteredRecords.map(record => parseFloat(record.peso)),
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                };
+
+                allRecords.onerror = () => {
+                    console.error('Error al cargar los registros para el gráfico');
+                };
+            };
+
+            request.onerror = () => {
+                console.error("Error al abrir la base de datos.");
+            };
+        });
+    </script>
+
+    <script>
+// Función para establecer fechas en base al rango seleccionado
+const establecerFechas = (meses) => {
+    const fechaHasta = new Date(); // Fecha actual
+    const fechaDesde = new Date();
+    fechaDesde.setMonth(fechaDesde.getMonth() - meses); // Restar meses
+
+    // Establecer valores de los inputs
+    fechaDesdeInput.value = fechaDesde.toISOString().split('T')[0]; // Formato 'YYYY-MM-DD'
+    fechaHastaInput.value = fechaHasta.toISOString().split('T')[0]; // Formato 'YYYY-MM-DD'
+    
+    // Activar el botón de filtrar
+    btnFiltrar.disabled = false; // Asegurarse de que el botón esté habilitado
+    btnFiltrar.click(); // Llamar a la función de filtrar
+};
+
+// Eventos para los botones de filtrado
+document.getElementById('filtrar-1semana').addEventListener('click', () => establecerFechas(0.25)); // 1 semana es aproximadamente 0.25 meses
+document.getElementById('filtrar-1mes').addEventListener('click', () => establecerFechas(1));
+document.getElementById('filtrar-3meses').addEventListener('click', () => establecerFechas(3));
+document.getElementById('filtrar-6meses').addEventListener('click', () => establecerFechas(6));
+document.getElementById('filtrar-1ano').addEventListener('click', () => establecerFechas(12));
+
+
+    </script>
+
+    <script>
+      // Volver a la pantalla anterior
+      document.getElementById('back-button').addEventListener('click', function() {
+      history.back();
+    });
+    </script>
+</body>
+</html>
