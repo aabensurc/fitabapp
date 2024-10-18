@@ -584,36 +584,40 @@ document.addEventListener('DOMContentLoaded', function() {
       return; // No hacer nada si no hay una fecha
     }
 
-    const fechaActual = new Date().toISOString().split('T')[0]; // Obtener la fecha actual en formato YYYY-MM-DD
+    // Obtener la fecha actual en formato YYYY-MM-DD de la zona horaria local
+    const hoy = new Date();
+    const año = hoy.getFullYear();
+    const mes = ("0" + (hoy.getMonth() + 1)).slice(-2); // Obtener el mes y asegurar dos dígitos
+    const día = ("0" + hoy.getDate()).slice(-2); // Obtener el día y asegurar dos dígitos
+    const fechaActual = `${año}-${mes}-${día}`; // Construir la fecha en formato YYYY-MM-DD
 
-// Calcular la fecha de mañana
-const mañana = new Date();
-mañana.setDate(mañana.getDate() + 1);
-const fechaMañana = mañana.toISOString().split('T')[0];
+    // Calcular la fecha de mañana
+    const mañana = new Date();
+    mañana.setDate(mañana.getDate() + 1);
+    const fechaMañana = `${mañana.getFullYear()}-${("0" + (mañana.getMonth() + 1)).slice(-2)}-${("0" + mañana.getDate()).slice(-2)}`;
 
-// Calcular la fecha de ayer
-const ayer = new Date();
-ayer.setDate(ayer.getDate() - 1);
-const fechaAyer = ayer.toISOString().split('T')[0];
+    // Calcular la fecha de ayer
+    const ayer = new Date();
+    ayer.setDate(ayer.getDate() - 1);
+    const fechaAyer = `${ayer.getFullYear()}-${("0" + (ayer.getMonth() + 1)).slice(-2)}-${("0" + ayer.getDate()).slice(-2)}`;
 
-// Comparar fecha seleccionada con la fecha actual, mañana y ayer
-if (fechaInput === fechaActual) {
-  document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
-  document.getElementById('hoy').innerText = "Hoy";
-} else if (fechaInput === fechaMañana) {
-  document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
-  document.getElementById('hoy').innerText = "Mañana";
-} else if (fechaInput === fechaAyer) {
-  document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
-  document.getElementById('hoy').innerText = "Ayer";
-} else {
-  document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
-  document.getElementById('hoy').innerText = "Fecha:";
-}
-
-
+    // Comparar fecha seleccionada con la fecha actual, mañana y ayer
+    if (fechaInput === fechaActual) {
+      document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
+      document.getElementById('hoy').innerText = "Hoy";
+    } else if (fechaInput === fechaMañana) {
+      document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
+      document.getElementById('hoy').innerText = "Mañana";
+    } else if (fechaInput === fechaAyer) {
+      document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
+      document.getElementById('hoy').innerText = "Ayer";
+    } else {
+      document.getElementById('hoy').removeAttribute('hidden'); // Mostrar el div
+      document.getElementById('hoy').innerText = "Fecha:";
+    }
   }
 </script>
+
 
 
 
