@@ -18,6 +18,25 @@
     // Llamar a la función para verificar si el usuario está logueado
     window.addEventListener('load', checkLogin);
   </script>
+
+  <style>
+        .date-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+    .date-selector i{
+    color: white;
+      background-color: #2196F3;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    #dia-actual{
+      font-size: 1.1rem; 
+    }
+  </style>
 </head>
 <body>
   <!-- App Bar -->
@@ -27,11 +46,12 @@
   </div>
 
   <div class="container-fluid" id="container-nutricion">
-    <div class="d-flex justify-content-between align-items-center my-3" id="selector-dias">
-      <button id="prev-dia" class="btn btn-primary"><i class="bi bi-chevron-left"></i></button>
-      <span id="dia-actual" class="fs-4"></span>
-      <button id="next-dia" class="btn btn-primary"><i class="bi bi-chevron-right"></i></button>
-      
+
+        <!-- Selector de fecha -->
+    <div class="date-selector my-3">
+      <i id="prev-dia" class="bi bi-chevron-left"></i>
+      <input type="text" id="dia-actual" class="form-control text-center mx-2" value="" readonly>
+      <i id="next-dia" class="bi bi-chevron-right"></i>
     </div>
 
     <div id="dieta"></div>
@@ -81,7 +101,7 @@
     // Función para actualizar el día mostrado
     function actualizarDia() {
       const diaActual = dias[diaActualIndice]; // Día en texto
-      document.getElementById('dia-actual').textContent = diaActual.charAt(0).toUpperCase() + diaActual.slice(1);
+      document.getElementById('dia-actual').value = diaActual.charAt(0).toUpperCase() + diaActual.slice(1);
       cargarDietaPorDia(diaActual); // Cargar la dieta del día seleccionado
     }
 
