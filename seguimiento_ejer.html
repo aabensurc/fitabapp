@@ -158,28 +158,50 @@
        
    
        // Preparar los datos para el gráfico de pesos
-       const pesos = registrosEjercicio.map(record => record.peso);
-       const ctxPeso = document.getElementById('pesoChart').getContext('2d');
-       new Chart(ctxPeso, {
-           type: 'line',
-           data: {
-               labels: fechas,
-               datasets: [{
-                   label: 'Peso (kg)',
-                   data: pesos,
-                   borderColor: 'rgba(75, 192, 192, 1)',
-                   borderWidth: 2,
-                   fill: false
-               }]
-           },
-           options: {
-               responsive: true,
-               scales: {
-                   x: { title: { display: true, text: 'Fecha' }},
-                   y: { title: { display: true, text: 'Peso (kg)' }}
-               }
-           }
-       });
+        // Obtener la unidad de peso desde localStorage
+        const unidadPeso = localStorage.getItem('unidad-peso');
+
+        // Preparar los datos para el gráfico de pesos
+        let pesos = registrosEjercicio.map(record => record.peso);
+
+        // Convertir los pesos a libras si la unidad es "lb"
+        if (unidadPeso === 'lb') {
+            pesos = pesos.map(peso => peso * 2.20462); // Convertir de kg a lb
+        }
+
+        // Crear el gráfico
+        const ctxPeso = document.getElementById('pesoChart').getContext('2d');
+        new Chart(ctxPeso, {
+            type: 'line',
+            data: {
+                labels: fechas,
+                datasets: [{
+                    label: `Peso (${unidadPeso === 'lb' ? 'lb' : 'kg'})`,
+                    data: pesos,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Fecha'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: `Peso (${unidadPeso === 'lb' ? 'lb' : 'kg'})`
+                        }
+                    }
+                }
+            }
+        });
+
    
        // Preparar los datos para el gráfico de repeticiones
        const repeticiones = registrosEjercicio
