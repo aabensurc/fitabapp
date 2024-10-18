@@ -485,7 +485,7 @@ border-radius: 30px; /* Bordes redondeados por defecto */
 display: flex;
 justify-content: center;
 align-items: center;
-background-color: #007bff; /* Color del botón */
+background-color: #2196F3; /* Color del botón */
 width: 60px; /* Ancho inicial para el botón circular */
 
 font-size: 20px;
