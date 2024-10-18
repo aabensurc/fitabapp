@@ -36,6 +36,39 @@
     #dia-actual{
       font-size: 1.1rem; 
     }
+
+      /* Quitar las viñetas de la lista */
+  .card-body ul {
+    list-style-type: none; /* Eliminar viñetas */
+    padding: 0; /* Quitar padding por defecto */
+    margin: 0;
+  }
+
+  /* Diseño tipo lista de app móvil */
+  .card-body li {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; /* Espaciado interno */
+    border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre elementos */
+    font-size: 1rem; /* Tamaño de fuente adecuado */
+  }
+
+  /* El último elemento no tendrá borde inferior */
+  .card-body li:last-child {
+    border-bottom: none;
+  }
+
+  /* Personalizar el ícono o contenido que acompaña a los elementos de la lista */
+  .card-body li::before {
+    font-family: 'Bootstrap Icons'; /* Usar íconos de Bootstrap */
+    margin-right: 10px; /* Separación entre ícono y texto */
+    color: #2196F3; /* Color del ícono */
+  }
+
+  /* Personalizar el hover para darle efecto móvil */
+  .card-body li:hover {
+    background-color: #f5f5f5; /* Cambiar color de fondo al pasar sobre el elemento */
+  }
   </style>
 </head>
 <body>
