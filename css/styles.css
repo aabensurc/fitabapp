@@ -331,12 +331,11 @@ z-index: 1000; /* Para asegurarse que esté siempre encima */
 }
 
 .app-bar h1 {   /* #exercise-title */
-font-size: 1.5rem;
+font-size: 1.3rem;
 letter-spacing: 0.02em;
 font-weight: 500; /* Gilroy-Bold */
 margin: 0;
 padding-left: 12px;
-font-size: 24px;
 white-space: nowrap;       /* Mantiene el texto en una sola línea */
 overflow: hidden;          /* Oculta el texto desbordado */
 text-overflow: ellipsis;   /* Agrega puntos suspensivos si el texto es muy largo */
