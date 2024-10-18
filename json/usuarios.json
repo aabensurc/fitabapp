@@ -58,5 +58,17 @@
         "peso": 90,
         "estatura": 1.78,
         "estado": "Deshabilitado"
+    },
+    {
+        "id": 6,
+        "nombre_usuario": "cristhianf01",
+        "password": "12345",
+        "nombre": "Cristhian",
+        "apellido": "Franco",
+        "sexo": "M",
+        "edad": 31,
+        "peso": 70,
+        "estatura": 1.70,
+        "estado": "Habilitado"
     }
 ]
