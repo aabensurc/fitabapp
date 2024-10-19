@@ -129,8 +129,19 @@ Promise.all([
         // Crear checkbox y colocarlo al final del item
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.classList.add('form-check-input', 'ms-auto'); // ms-auto para alinearlo a la derecha
-        checkbox.addEventListener('click', () => completarEjercicio(ejercicioItem, rutina.ejercicios.length));
+        checkbox.classList.add('form-check-input', 'ms-auto');
+        checkbox.addEventListener('click', () => {
+          if (checkbox.checked) {
+            completarEjercicio(ejercicioItem, rutina.ejercicios.length);
+          } else {
+            // Si se desmarca, decrementar el contador
+            ejerciciosCompletados--;
+            actualizarProgreso(rutina.ejercicios.length);
+            // Mostrar el ítem de nuevo (puedes ocultarlo en vez de eliminarlo)
+            item.style.display = 'flex'; // o lo que sea necesario para que se muestre
+          }
+        });
+
 
         // Añadir el checkbox al final del item
         ejercicioItem.appendChild(checkbox);
@@ -145,6 +156,23 @@ Promise.all([
   }
 })
 .catch(error => console.error('Error al cargar los JSON:', error));
+
+  </script>
+
+  <script>
+    function actualizarProgreso(totalEjercicios) {
+  // Actualizar la barra de progreso
+  const progreso = (ejerciciosCompletados / totalEjercicios) * 100;
+  const progressBar = document.getElementById('progressBar');
+  progressBar.style.width = `${progreso}%`;
+  progressBar.setAttribute('aria-valuenow', progreso);
+  progressBar.textContent = `${Math.round(progreso)}%`;
+
+  // Verificar si se han completado todos los ejercicios
+  if (ejerciciosCompletados === totalEjercicios) {
+    mostrarFelicidadesModal();
+  }
+}
 
   </script>
 
