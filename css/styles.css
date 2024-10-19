@@ -528,6 +528,10 @@ text-align: center; /* Centrar texto en el input */
 }
 
 
+.input-group{
+  padding-left: 16px;
+  padding-right: 16px;
+}
 
 .btn-minutosp{
   background-color: #2196F3 !important;
