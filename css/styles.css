@@ -529,6 +529,17 @@ text-align: center; /* Centrar texto en el input */
 
 
 
+.btn-minutosp{
+  background-color: #2196F3 !important;
+  color: #ffffff !important;
+}
+.btn-segundosp{
+  background-color: #2196F3 !important;
+  color: #ffffff !important;
+}
+
+
+
 
 
 #container-nutricion {
