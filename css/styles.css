@@ -572,6 +572,26 @@ font-size: 1rem;
 
 
 
+.form-check-input:checked {
+  background-color: #2196F3 !important;
+  border-color: #2196F3 !important;
+}
+
+.form-check-input:checked {
+  background-color: #2196F3 !important;
+  border-color: #2196F3 !important;
+}
+
+.progress-bar {
+  background-color: #2196F3 !important;
+}
+
+.btn-cerrar-modal-felic{
+background-color: #2196F3;
+color: #ffffff;
+}
+
+
 
 @media (min-width: 768px) {
   h1 {
