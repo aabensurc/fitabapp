@@ -528,7 +528,7 @@ text-align: center; /* Centrar texto en el input */
 }
 
 
-.input-group{
+#inputs_mmss{
   padding-left: 16px;
   padding-right: 16px;
 }
