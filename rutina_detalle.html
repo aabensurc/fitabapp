@@ -41,8 +41,8 @@
 
   <div class="container-fluid container-detalle_rutina">
 
-    <h2 id="routineName" class="mt-3"></h2>
-    <h4 id="routineType" class="text-muted"></h4>
+    <h4 id="routineType" class="mt-3 mb-0"></h4>
+    <h2 id="routineName" class=""></h2>
 
     <h3 class="mt-4">Ejercicios:</h3>
     <div id="exerciseList" class="list-group mt-3"></div>
@@ -63,7 +63,7 @@
         // Mostrar datos de la rutina
         document.getElementById('routineTitle').textContent = rutina.nombre;
         document.getElementById('routineName').textContent = rutina.nombre;
-        document.getElementById('routineType').textContent = `Tipo: ${rutina.tipo}`;
+        document.getElementById('routineType').textContent = rutina.tipo.toUpperCase();
         document.getElementById('routineImage').src = rutina.url_imagen;
 
         // Mostrar ejercicios
