@@ -296,17 +296,17 @@ function cambiarFecha(dias) {
 
 // Al cargar el documento
 document.addEventListener('DOMContentLoaded', function() {
-   // Establecer la fecha actual en formato YYYY-MM-DD
-   const fechaActual = new Date();
+  // Establecer la fecha actual en formato YYYY-MM-DD
+  const fechaActual = new Date();
   const offset = fechaActual.getTimezoneOffset(); // Obtener la diferencia en minutos
   fechaActual.setMinutes(fechaActual.getMinutes() - offset); // Ajustar la fecha
 
   const fechaFormateada = fechaActual.toISOString().split('T')[0]; // Obtener solo la parte de la fecha
   document.getElementById('date-input').value = fechaFormateada; // Asignar la fecha formateada al input
   mostrarHoySiEsHoy();
-  cargarRut();
-
+  cargarRut();  // Llama a cargarRut después de que el DOM esté listo
 });
+
 
 
   </script>
@@ -428,7 +428,7 @@ async function cargarRut() {
         }
       });
     } else {
-      document.getElementById('contendorejm').innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
+    //  document.getElementById('contendorejm').innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
     }
   })
   .catch(error => console.error('Error al cargar los JSON:', error));
