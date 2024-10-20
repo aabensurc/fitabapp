@@ -35,7 +35,7 @@
     <h1 id="routineTitle">Rutina</h1>
   </div>
 
-  <div class="container-fluid-ind img-detalle-rutina">
+  <div class="container-fluid img-detalle-rutina">
     <img id="routineImage" class="routine-img" src="" alt="Imagen de la rutina">
   </div>
 
@@ -71,6 +71,16 @@
   </div>
 </div>
 
+<!-- Modal para mostrar imagen -->
+<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img id="modalImage" class="img-fluid" alt="Imagen del ejercicio" />
+      </div>
+    </div>
+  </div>
+</div>
 
 
   <script>
@@ -108,6 +118,12 @@ Promise.all([
         img.src = ejercicioData.imagen_url;
         img.alt = ejercicioData.nombre;
         img.classList.add('exercise-img', 'me-3');
+
+            // Agregar evento click para mostrar el modal con la imagen
+            img.addEventListener('click', (e) => {
+              e.preventDefault(); // Evitar la acción por defecto de navegar al enlace
+              mostrarImagenModal(ejercicioData.imagen_url); // Mostrar la imagen en el modal
+            });
 
         const textContainer = document.createElement('div');
         const title = document.createElement('h5');
@@ -221,6 +237,16 @@ function completarEjercicio(item, totalEjercicios) {
     history.back();
   });
   </script>
+
+<script>
+  // Función para mostrar el modal con la imagen
+function mostrarImagenModal(imageUrl) {
+const modalImage = document.getElementById('modalImage');
+modalImage.src = imageUrl; // Asignar la URL de la imagen
+const imagenModal = new bootstrap.Modal(document.getElementById('imagenModal')); // Inicializar el modal
+imagenModal.show(); // Mostrar el modal
+}
+</script>
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
