@@ -182,21 +182,7 @@ svg {
   </div>
       
   <div class="container-fluid-ind img-detalle-rutina" id="contendorejm">
-    <img id="routineImage" class="routine-img" src="" alt="Imagen de la rutina">
 
-      <div class="container-fluid container-detalle_rutina">
-
-    <h4 id="routineType" class="mt-3 mb-0"></h4>
-    <h2 id="routineName" class=""></h2>
-    <p id="routineDescription" class="mt-2"></p> <!-- Contenedor para la descripción -->
-
-    <!-- Barra de progreso -->
-<div class="progress mt-3">
-  <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-</div>
-
-    <div id="exerciseList" class="list-group mt-4"></div>
-  </div>
   </div>
 
 
@@ -363,16 +349,64 @@ async function cargarRut() {
   ])
   .then(([rutinasData, ejerciciosData]) => {
     const rutina = rutinasData.rutinas.find(r => r.username == nomUsuario && r.fecha == fechaSeleccionada);
-    if (rutina) {
-      // Mostrar datos de la rutina
-      document.getElementById('routineName').textContent = rutina.nombre;
-      document.getElementById('routineDescription').textContent = rutina.descripcion;
-      document.getElementById('routineType').textContent = rutina.tipo.toUpperCase();
-      document.getElementById('routineImage').src = rutina.url_imagen;
+    const contenedorRutina = document.getElementById('contendorejm');
 
-      // *** Vaciar la lista de ejercicios antes de agregar nuevos ***
-      const exerciseList = document.getElementById('exerciseList');
-      exerciseList.innerHTML = '';  // Aquí vaciamos la lista de ejercicios
+    // Limpiar el contenido anterior
+    contenedorRutina.innerHTML = '';
+
+    if (rutina) {
+      // Crear la estructura de la rutina
+      const img = document.createElement('img');
+      img.id = 'routineImage';
+      img.className = 'routine-img';
+      img.src = rutina.url_imagen;
+      img.alt = 'Imagen de la rutina';
+      
+      const detalleContainer = document.createElement('div');
+      detalleContainer.className = 'container-fluid container-detalle_rutina';
+
+      const typeElement = document.createElement('h4');
+      typeElement.id = 'routineType';
+      typeElement.className = 'mt-3 mb-0';
+      typeElement.textContent = rutina.tipo.toUpperCase();
+
+      const nameElement = document.createElement('h2');
+      nameElement.id = 'routineName';
+      nameElement.className = '';
+      nameElement.textContent = rutina.nombre;
+
+      const descriptionElement = document.createElement('p');
+      descriptionElement.id = 'routineDescription';
+      descriptionElement.className = 'mt-2';
+      descriptionElement.textContent = rutina.descripcion;
+
+      // Barra de progreso
+      const progressContainer = document.createElement('div');
+      progressContainer.className = 'progress mt-3';
+
+      const progressBar = document.createElement('div');
+      progressBar.id = 'progressBar';
+      progressBar.className = 'progress-bar';
+      progressBar.role = 'progressbar';
+      progressBar.style.width = '0%';
+      progressBar.setAttribute('aria-valuenow', '0');
+      progressBar.setAttribute('aria-valuemin', '0');
+      progressBar.setAttribute('aria-valuemax', '100');
+      progressBar.textContent = '0%';
+
+      const exerciseList = document.createElement('div');
+      exerciseList.id = 'exerciseList';
+      exerciseList.className = 'list-group mt-4';
+
+      // Agregar todos los elementos al contenedor
+      progressContainer.appendChild(progressBar);
+      detalleContainer.appendChild(typeElement);
+      detalleContainer.appendChild(nameElement);
+      detalleContainer.appendChild(descriptionElement);
+      detalleContainer.appendChild(progressContainer);
+      detalleContainer.appendChild(exerciseList);
+      contenedorRutina.appendChild(img);
+      contenedorRutina.appendChild(detalleContainer);
 
       // Mostrar ejercicios
       rutina.ejercicios.forEach(ejercicio => {
@@ -383,7 +417,7 @@ async function cargarRut() {
 
           // Crear el contenedor que tendrá la imagen y el texto
           const contentContainer = document.createElement('div');
-          contentContainer.classList.add('d-flex', 'align-items-center'); // Para alinear imagen y texto
+          contentContainer.classList.add('d-flex', 'align-items-center');
 
           const img = document.createElement('img');
           img.src = ejercicioData.imagen_url;
@@ -417,7 +451,7 @@ async function cargarRut() {
             } else {
               ejerciciosCompletados--;
               actualizarProgreso(rutina.ejercicios.length);
-              item.style.display = 'flex';
+              ejercicioItem.style.display = 'flex';
             }
           });
 
@@ -428,11 +462,13 @@ async function cargarRut() {
         }
       });
     } else {
-    //  document.getElementById('contendorejm').innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
+      // Si no hay rutina, puedes mostrar un mensaje o hacer otra acción
+      contenedorRutina.innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
     }
   })
   .catch(error => console.error('Error al cargar los JSON:', error));
 }
+
 
   </script>
 
