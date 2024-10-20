@@ -217,16 +217,7 @@ svg {
   </div>
 
 
-<!-- Modal para mostrar imagen -->
-<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img id="modalImage" class="img-fluid text-center" alt="Imagen del ejercicio" />
-      </div>
-    </div>
-  </div>
-</div>
+
 
   
   
@@ -347,7 +338,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
+  // Variable global para contar los ejercicios completados
+let ejerciciosCompletados = 0;
 async function cargarRut() {
+
+  ejerciciosCompletados = 0;
   const nomUsuario = localStorage.getItem('username'); // Obtener el ID del usuario
   const fechaSeleccionada = document.getElementById('date-input').value; // Obtener la fecha seleccionada
 
@@ -419,64 +414,57 @@ async function cargarRut() {
 
       // Mostrar ejercicios
       rutina.ejercicios.forEach(ejercicio => {
-  const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
-  if (ejercicioData) {
-    const ejercicioItem = document.createElement('a');
-    ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
+        const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
+        if (ejercicioData) {
+          const ejercicioItem = document.createElement('a');
+          ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
 
-    // Crear el contenedor que tendrá la imagen y el texto
-    const contentContainer = document.createElement('div');
-    contentContainer.classList.add('d-flex', 'align-items-center');
+          // Crear el contenedor que tendrá la imagen y el texto
+          const contentContainer = document.createElement('div');
+          contentContainer.classList.add('d-flex', 'align-items-center');
 
-    const img = document.createElement('img');
-    img.src = ejercicioData.imagen_url;
-    img.alt = ejercicioData.nombre;
-    img.classList.add('exercise-img', 'me-3');
+          const img = document.createElement('img');
+          img.src = ejercicioData.imagen_url;
+          img.alt = ejercicioData.nombre;
+          img.classList.add('exercise-img', 'me-3');
 
-    // Agregar evento click para mostrar el modal con la imagen
-    img.addEventListener('click', (e) => {
-      e.preventDefault(); // Evitar la acción por defecto de navegar al enlace
-      mostrarImagenModal(ejercicioData.imagen_url); // Mostrar la imagen en el modal
-    });
+          const textContainer = document.createElement('div');
+          const title = document.createElement('h5');
+          title.classList.add('mb-1');
+          title.textContent = ejercicioData.nombre;
 
-    const textContainer = document.createElement('div');
-    const title = document.createElement('h5');
-    title.classList.add('mb-1');
-    title.textContent = ejercicioData.nombre;
+          const details = document.createElement('small');
+          details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
 
-    const details = document.createElement('small');
-    details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
+          // Agregar el texto y la imagen al contentContainer
+          textContainer.appendChild(title);
+          textContainer.appendChild(details);
+          contentContainer.appendChild(img);
+          contentContainer.appendChild(textContainer);
 
-    // Agregar el texto y la imagen al contentContainer
-    textContainer.appendChild(title);
-    textContainer.appendChild(details);
-    contentContainer.appendChild(img);
-    contentContainer.appendChild(textContainer);
+          // Añadir contentContainer al item
+          ejercicioItem.appendChild(contentContainer);
 
-    // Añadir contentContainer al item
-    ejercicioItem.appendChild(contentContainer);
+          // Crear checkbox y colocarlo al final del item
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.classList.add('form-check-input', 'ms-auto');
+          checkbox.addEventListener('click', () => {
+            if (checkbox.checked) {
+              completarEjercicio(ejercicioItem, rutina.ejercicios.length);
+            } else {
+              ejerciciosCompletados--;
+              actualizarProgreso(rutina.ejercicios.length);
+              ejercicioItem.style.display = 'flex';
+            }
+          });
 
-    // Crear checkbox y colocarlo al final del item
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('form-check-input', 'ms-auto');
-    checkbox.addEventListener('click', () => {
-      if (checkbox.checked) {
-        completarEjercicio(ejercicioItem, rutina.ejercicios.length);
-      } else {
-        ejerciciosCompletados--;
-        actualizarProgreso(rutina.ejercicios.length);
-        ejercicioItem.style.display = 'flex';
-      }
-    });
+          ejercicioItem.appendChild(checkbox);
 
-    ejercicioItem.appendChild(checkbox);
-
-    ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
-    exerciseList.appendChild(ejercicioItem);
-  }
-});
-
+          ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
+          exerciseList.appendChild(ejercicioItem);
+        }
+      });
     } else {
       // Si no hay rutina, puedes mostrar un mensaje o hacer otra acción
       contenedorRutina.innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
@@ -507,7 +495,7 @@ if (ejerciciosCompletados === totalEjercicios) {
 </script>
 
 <script>
-  let ejerciciosCompletados = 0; // Contador de ejercicios completados
+
 
 function completarEjercicio(item, totalEjercicios) {
 // Ocultar el ítem (lo puedes eliminar del DOM también si prefieres)
@@ -544,16 +532,6 @@ if (ejerciciosCompletados === totalEjercicios) {
     });
   }
 
-  </script>
-
-  <script>
-    // Función para mostrar el modal con la imagen
-function mostrarImagenModal(imageUrl) {
-  const modalImage = document.getElementById('modalImage');
-  modalImage.src = imageUrl; // Asignar la URL de la imagen
-  const imagenModal = new bootstrap.Modal(document.getElementById('imagenModal')); // Inicializar el modal
-  imagenModal.show(); // Mostrar el modal
-}
   </script>
 
 
