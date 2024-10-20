@@ -7,7 +7,7 @@
         "nombre": "Rutina de Fuerza",
         "descripcion": "Rutina para aumentar fuerza y masa muscular.",
         "tipo": "Fuerza",
-        "url_imagen": "https://example.com/imagen_rutina.jpg",
+        "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutina-fuerza-1.jpg",
         "ejercicios": [
           {
             "id_ejercicio": 1,
@@ -19,6 +19,29 @@
             "id_ejercicio": 2,
             "series": 4,
             "cantidad": 12,
+            "medicion": "repeticiones"
+          }
+        ]
+      },
+      {
+        "username": "aabensurc",
+        "id": 2,
+        "fecha": "2024-10-20",
+        "nombre": "Rutina de Resistencia",
+        "descripcion": "Rutina para aumentar velocidad.",
+        "tipo": "Resistencia",
+        "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+        "ejercicios": [
+          {
+            "id_ejercicio": 2,
+            "series": 3,
+            "cantidad": 18,
+            "medicion": "repeticiones"
+          },
+          {
+            "id_ejercicio": 4,
+            "series": 4,
+            "cantidad": 15,
             "medicion": "repeticiones"
           }
         ]
