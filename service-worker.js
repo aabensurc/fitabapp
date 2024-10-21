@@ -2,24 +2,68 @@ self.addEventListener('install', event => {
   event.waitUntil(
       caches.open('pwa-cache-v1').then(cache => {
           return cache.addAll([
+              // Archivos raíz
               'index.html',
               'ejercicios.html',
               'detalle_ejer.html',
               'busqueda_ejercicio.html',
-              'css/styles.css',
-              'js/app.js',
+              'calculadora1rm.html',
+              'contacto.html',
+              'crear_ejercicio.html',
+              'eliminar_ejercicio.html',
+              'login.html',
               'manifest.json',
+              'nutricion.html',
+              'recuento_cargas.html',
+              'registro_entrenamientos.html',
+              'rutina_detalle.html',
+              'rutina_hoy.html',
+              'rutinas.html',
+              'seguimiento_ejer.html',
+              'service-worker.js',
               'sounds/timesup.mp3',
+              
+              // CSS
+              'css/styles.css',
+
+              // Fuentes
               'fonts/Gilroy-Bold.ttf',
-              'fonts/Gilroy-Heavy.ttf',  
-              'fonts/Gilroy-Light.ttf',  
-              'fonts/Gilroy-Medium.ttf',  
-              'fonts/Gilroy-Regular.ttf',    
-              'img/logo.png', 
-              'img/icon1.png',      // Icono para el manifest
-              'img/icon2.png',      // Otro icono
-              'img/screenshot1.png', // Captura de pantalla
-              'img/screenshot2.png'  // Otra captura de pantalla
+              'fonts/Gilroy-Heavy.ttf',
+              'fonts/Gilroy-Light.ttf',
+              'fonts/Gilroy-Medium.ttf',
+              'fonts/Gilroy-Regular.ttf',
+
+              // Imágenes
+              'img/favicon.ico',
+              'img/foto.jpg',
+              'img/icon1.png',
+              'img/icon1_blanco.png',
+              'img/icon2.png',
+              'img/logo.png',
+              'img/screenshot1.png',
+              'img/screenshot2.png',
+              'img/whatsapp_icon.png',
+              
+              // JavaScript
+              'js/app.js',
+              'js/auth.js',
+
+              // PHP (Si necesitas que sean accesibles, pero normalmente no se cachean)
+              'php/actualizar_ejercicio.php',
+              'php/crear_ejercicio.php',
+              'php/eliminar_ejercicio.php',
+              'php/login_controller.php',
+              'php/obtener_ejercicio.php',
+              'php/obtener_ejercicios.php',
+
+              // Videos
+              'videos/ejercicios/EXTENSION_DE_TRICEPS_CON_SOGA_EN_POLEA.webm',
+              'videos/ejercicios/curl_femoral_acostado.webm',
+              'videos/ejercicios/jalon_polea_prono.webm',
+              'videos/ejercicios/jalon_polea_supino.webm',
+              'videos/ejercicios/leg-extension.webm',
+              'videos/ejercicios/peck_deck.webm',
+              'videos/ejercicios/sentadilla-bulgara.webm'
           ]);
       })
   );
@@ -29,23 +73,6 @@ self.addEventListener('fetch', event => {
   event.respondWith(
       caches.match(event.request).then(response => {
           return response || fetch(event.request);
-      })
-  );
-});
-
-// Evento de activación para limpiar cachés antiguos
-self.addEventListener('activate', event => {
-  const cacheWhitelist = ['pwa-cache-v1']; // Ajusta el nombre de la nueva versión de caché
-
-  event.waitUntil(
-      caches.keys().then(cacheNames => {
-          return Promise.all(
-              cacheNames.map(cacheName => {
-                  if (!cacheWhitelist.includes(cacheName)) {
-                      return caches.delete(cacheName);
-                  }
-              })
-          );
       })
   );
 });
