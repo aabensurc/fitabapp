@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#2196F3">
+  <meta name="description" content="Registro de Entrenamientos en FITABAPP">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script> <!-- Librería de español -->
+
+  <title>Rutina Personalizada - FITABAPP</title>
+
+  <style>
+    .routine-img {
+      width: 100%;
+      max-height: 250px;
+    }
+    .exercise-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .img-detalle-rutina{
+      
+    }
+
+    .form-section {
+      margin-top: 20px;
+    }
+    .app-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background-color: #2196F3;
+      color: white;
+    }
+    .nav-icons {
+      cursor: pointer;
+    }
+    .date-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+    .date-selector i{
+    color: white;
+      background-color: #2196F3;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .contenedor_rutina_hoy {
+      margin-top: 80px;
+      margin-bottom: 20px;
+    }
+    .time-input-group {
+      display: flex;
+      align-items: center;
+    }
+    .time-input-group input {
+      width: 45%;
+    }
+    .time-input-group span {
+      width: 10%;
+      text-align: center;
+    }
+
+
+    td, tr {
+  text-align: center;
+}
+
+th{
+  font-weight: 600;
+}
+
+
+#save-button{
+  background-color: #2196F3;
+}
+
+.card-header{
+  color: white;
+}
+
+th{
+  font-weight: 500;
+  color: rgb(136, 134, 134);
+}
+
+tr{
+vertical-align: middle;
+}
+
+
+
+/* parael flat picker*/
+
+.flatpickr-calendar{
+  box-shadow: 0px 0 0 #e6e6e6 !important;
+}
+
+.flatpickr-month{
+  background-color: #2196F3 !important; /* Color oscuro típico de App Bar */
+color: white !important;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+
+svg {
+  vertical-align: top !important;
+  
+}
+
+.today{
+  border-color: #2196F3 !important;
+  color: #2196F3 !important;
+}
+
+.selected{
+  background-color: #2196F3 !important; /* Color oscuro típico de App Bar */
+  color: white !important;
+}
+
+.flatpickr-monthDropdown-month{
+  background-color: #fff !important;
+  color: #818181 !important;
+}
+
+.numInputWrapper span {
+  opacity: 1 !important;
+}
+  </style>
+
+</head>
+<body>
+  <!-- App Bar -->
+  <div class="app-bar">
+    <div class="nav-icons" id="back-button">
+      <i class="bi bi-arrow-left"></i> <!-- Botón de atrás -->
+    </div>
+    <h1>Rutina Hoy</h1>
+    <div class="d-flex">
+      <i id="calendar-icon" class="bi bi-calendar me-3"></i> <!-- Icono de calendario -->
+      <i class="bi bi-three-dots-vertical" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+      <!-- Menú desplegable -->
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+        <li class="d-flex align-items-center">
+          <i class="bi bi-bar-chart-line-fill ms-3" style="font-size: 14px;"></i>
+          <a class="dropdown-item" href="recuento_cargas.html" id="estadisticas">Recuento</a>
+        </li>
+        <li class="d-flex align-items-center">
+          <i class="bi bi-calculator-fill ms-3" style="font-size: 14px;"></i>
+          <a class="dropdown-item" href="calculadora1rm.html" id="calculadora1rm">Calculadora 1RM</a>
+        </li>
+
+        </ul>
+    </div>
+  </div>
+
+  <div class="container-fluid contenedor_rutina_hoy">
+    <div class="col-12 text-center p-0" id="hoy">
+      Fecha:
+    </div>
+    <!-- Selector de fecha -->
+    <div class="date-selector">
+      <i id="prev-day" class="bi bi-chevron-left"></i>
+      <input type="text" id="date-input" class="form-control text-center mx-2" value="" readonly>
+      <i id="next-day" class="bi bi-chevron-right"></i>
+    </div>
+
+  </div>
+      
+  <div class="container-fluid-ind img-detalle-rutina" id="contendorejm">
+
+  </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="felicidadesModal" tabindex="-1" aria-labelledby="felicidadesModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"> <!-- Clase agregada -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="felicidadesModalLabel">¡Felicidades!</h5>
+      </div>
+      <div class="modal-body">
+        Has completado toda la rutina. ¡Buen trabajo!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-cerrar-modal-felic" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal para el Calendario -->
+<div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background-color: transparent;">
+        <div class="modal-body" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
+          <div id="calendar"></div> <!-- Contenedor para el calendario -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modal para mostrar imagen -->
+<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img id="modalImage" class="img-fluid text-center" alt="Imagen del ejercicio" />
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+  <script>
+    // Abrir el modal al hacer clic en el icono de calendario
+document.getElementById('calendar-icon').addEventListener('click', function() {
+  const calendarModal = new bootstrap.Modal(document.getElementById('calendarModal'));
+  calendarModal.show();
+
+  // Inicializar Flatpickr en el contenedor del modal
+  flatpickr("#calendar", {
+    locale: "es", // Establecer el idioma a español
+    inline: true, // Mostrar el calendario dentro del modal
+    dateFormat: "Y-m-d", // Formato de fecha
+    onChange: function(selectedDates) {
+      const selectedDate = selectedDates[0];
+      if (selectedDate) {
+        // Actualizar el input de fecha con la fecha seleccionada
+        document.getElementById('date-input').value = selectedDate.toISOString().split('T')[0];
+        calendarModal.hide(); // Cerrar el modal después de seleccionar la fecha
+
+        mostrarHoySiEsHoy();
+        cargarRut();
+      }
+    }
+  });
+});
+
+  </script>
+
+
+  <script>
+
+    // Navegar entre fechas
+    document.getElementById('prev-day').addEventListener('click', () => cambiarFecha(-1));
+    document.getElementById('next-day').addEventListener('click', () => cambiarFecha(1));
+
+    // Volver a la pantalla anterior
+    document.getElementById('back-button').addEventListener('click', function() {
+      history.back();
+    });
+
+
+// Manejar la navegación entre fechas
+const dateInput = document.getElementById('date-input');
+
+// Función para cambiar la fecha en el formato deseado
+function cambiarFecha(dias) {
+  // Cambiar 'Hoy' por la fecha actual en formato YYYY-MM-DD
+  const fechaActual = new Date(dateInput.value);
+  fechaActual.setDate(fechaActual.getDate() + dias);
+
+  // Actualizar el input con la nueva fecha en formato YYYY-MM-DD
+  const nuevaFecha = fechaActual.toISOString().split('T')[0];
+  dateInput.value = nuevaFecha;
+
+
+  mostrarHoySiEsHoy();
+  cargarRut();
+}
+
+
+// Al cargar el documento
+document.addEventListener('DOMContentLoaded', function() {
+  // Establecer la fecha actual en formato YYYY-MM-DD
+  const fechaActual = new Date();
+  const offset = fechaActual.getTimezoneOffset(); // Obtener la diferencia en minutos
+  fechaActual.setMinutes(fechaActual.getMinutes() - offset); // Ajustar la fecha
+
+  const fechaFormateada = fechaActual.toISOString().split('T')[0]; // Obtener solo la parte de la fecha
+  document.getElementById('date-input').value = fechaFormateada; // Asignar la fecha formateada al input
+  mostrarHoySiEsHoy();
+  cargarRut();  // Llama a cargarRut después de que el DOM esté listo
+});
+
+
+
+  </script>
+
+<script>
+  // Función para mostrar el div "hoy" si la fecha seleccionada es la fecha actual
+  function mostrarHoySiEsHoy() {
+    const fechaInput = document.getElementById('date-input').value;
+    
+    // Solo ejecuta si hay una fecha seleccionada
+    if (!fechaInput) {
+      return; // No hacer nada si no hay una fecha
+    }
+
+    // Obtener la fecha actual en formato YYYY-MM-DD de la zona horaria local
+    const hoy = new Date();
+    const año = hoy.getFullYear();
+    const mes = ("0" + (hoy.getMonth() + 1)).slice(-2); // Obtener el mes y asegurar dos dígitos
+    const día = ("0" + hoy.getDate()).slice(-2); // Obtener el día y asegurar dos dígitos
+    const fechaActual = `${año}-${mes}-${día}`; // Construir la fecha en formato YYYY-MM-DD
+
+    // Calcular la fecha de mañana
+    const mañana = new Date();
+    mañana.setDate(mañana.getDate() + 1);
+    const fechaMañana = `${mañana.getFullYear()}-${("0" + (mañana.getMonth() + 1)).slice(-2)}-${("0" + mañana.getDate()).slice(-2)}`;
+
+    // Calcular la fecha de ayer
+    const ayer = new Date();
+    ayer.setDate(ayer.getDate() - 1);
+    const fechaAyer = `${ayer.getFullYear()}-${("0" + (ayer.getMonth() + 1)).slice(-2)}-${("0" + ayer.getDate()).slice(-2)}`;
+
+    // Comparar fecha seleccionada con la fecha actual, mañana y ayer
+    if (fechaInput === fechaActual) {
+      document.getElementById('hoy').innerText = "Hoy";
+    } else if (fechaInput === fechaMañana) {
+      document.getElementById('hoy').innerText = "Mañana";
+    } else if (fechaInput === fechaAyer) {
+      document.getElementById('hoy').innerText = "Ayer";
+    } else {
+      document.getElementById('hoy').innerText = "Fecha:";
+    }
+  }
+</script>
+
+<script>
+  // Variable global para contar los ejercicios completados
+let ejerciciosCompletados = 0;
+async function cargarRut() {
+
+  ejerciciosCompletados = 0;
+  const nomUsuario = localStorage.getItem('username'); // Obtener el ID del usuario
+  const fechaSeleccionada = document.getElementById('date-input').value; // Obtener la fecha seleccionada
+
+  // Cargar rutinas y ejercicios desde sus archivos JSON
+  Promise.all([
+    fetch('json/rutinas_custom.json').then(response => response.json()),
+    fetch('json/ejercicios.json').then(response => response.json())
+  ])
+  .then(([rutinasData, ejerciciosData]) => {
+    const rutina = rutinasData.rutinas.find(r => r.username == nomUsuario && r.fecha == fechaSeleccionada);
+    const contenedorRutina = document.getElementById('contendorejm');
+
+    // Limpiar el contenido anterior
+    contenedorRutina.innerHTML = '';
+
+    if (rutina) {
+      // Crear la estructura de la rutina
+      const img = document.createElement('img');
+      img.id = 'routineImage';
+      img.className = 'routine-img';
+      img.src = rutina.url_imagen;
+      img.alt = 'Imagen de la rutina';
+      
+      const detalleContainer = document.createElement('div');
+      detalleContainer.className = 'container-fluid container-detalle_rutina';
+
+      const typeElement = document.createElement('h4');
+      typeElement.id = 'routineType';
+      typeElement.className = 'mt-3 mb-0';
+      typeElement.textContent = rutina.tipo.toUpperCase();
+
+      const nameElement = document.createElement('h2');
+      nameElement.id = 'routineName';
+      nameElement.className = '';
+      nameElement.textContent = rutina.nombre;
+
+      const descriptionElement = document.createElement('p');
+      descriptionElement.id = 'routineDescription';
+      descriptionElement.className = 'mt-2';
+      descriptionElement.textContent = rutina.descripcion;
+
+      // Barra de progreso
+      const progressContainer = document.createElement('div');
+      progressContainer.className = 'progress mt-3';
+
+      const progressBar = document.createElement('div');
+      progressBar.id = 'progressBar';
+      progressBar.className = 'progress-bar';
+      progressBar.role = 'progressbar';
+      progressBar.style.width = '0%';
+      progressBar.setAttribute('aria-valuenow', '0');
+      progressBar.setAttribute('aria-valuemin', '0');
+      progressBar.setAttribute('aria-valuemax', '100');
+      progressBar.textContent = '0%';
+
+      const exerciseList = document.createElement('div');
+      exerciseList.id = 'exerciseList';
+      exerciseList.className = 'list-group mt-4';
+
+      // Agregar todos los elementos al contenedor
+      progressContainer.appendChild(progressBar);
+      detalleContainer.appendChild(typeElement);
+      detalleContainer.appendChild(nameElement);
+      detalleContainer.appendChild(descriptionElement);
+      detalleContainer.appendChild(progressContainer);
+      detalleContainer.appendChild(exerciseList);
+      contenedorRutina.appendChild(img);
+      contenedorRutina.appendChild(detalleContainer);
+
+      // Mostrar ejercicios
+      rutina.ejercicios.forEach(ejercicio => {
+        const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
+        if (ejercicioData) {
+          const ejercicioItem = document.createElement('a');
+          ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
+
+          // Crear el contenedor que tendrá la imagen y el texto
+          const contentContainer = document.createElement('div');
+          contentContainer.classList.add('d-flex', 'align-items-center');
+
+          const img = document.createElement('img');
+          img.src = ejercicioData.imagen_url;
+          img.alt = ejercicioData.nombre;
+          img.classList.add('exercise-img', 'me-3');
+
+          
+            // Agregar evento click para mostrar el modal con la imagen
+            img.addEventListener('click', (e) => {
+              e.preventDefault(); // Evitar la acción por defecto de navegar al enlace
+              mostrarImagenModal(ejercicioData.imagen_url); // Mostrar la imagen en el modal
+            });
+
+          const textContainer = document.createElement('div');
+          const title = document.createElement('h5');
+          title.classList.add('mb-1');
+          title.textContent = ejercicioData.nombre;
+
+          const details = document.createElement('small');
+          details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
+
+          // Agregar el texto y la imagen al contentContainer
+          textContainer.appendChild(title);
+          textContainer.appendChild(details);
+          contentContainer.appendChild(img);
+          contentContainer.appendChild(textContainer);
+
+          // Añadir contentContainer al item
+          ejercicioItem.appendChild(contentContainer);
+
+          // Crear checkbox y colocarlo al final del item
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.classList.add('form-check-input', 'ms-auto');
+          checkbox.addEventListener('click', () => {
+            if (checkbox.checked) {
+              completarEjercicio(ejercicioItem, rutina.ejercicios.length);
+            } else {
+              ejerciciosCompletados--;
+              actualizarProgreso(rutina.ejercicios.length);
+              ejercicioItem.style.display = 'flex';
+            }
+          });
+
+          ejercicioItem.appendChild(checkbox);
+
+          ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
+          exerciseList.appendChild(ejercicioItem);
+        }
+      });
+    } else {
+      // Si no hay rutina, puedes mostrar un mensaje o hacer otra acción
+      contenedorRutina.innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
+    }
+  })
+  .catch(error => console.error('Error al cargar los JSON:', error));
+}
+
+
+  </script>
+
+
+<script>
+  function actualizarProgreso(totalEjercicios) {
+// Actualizar la barra de progreso
+const progreso = (ejerciciosCompletados / totalEjercicios) * 100;
+const progressBar = document.getElementById('progressBar');
+progressBar.style.width = `${progreso}%`;
+progressBar.setAttribute('aria-valuenow', progreso);
+progressBar.textContent = `${Math.round(progreso)}%`;
+
+// Verificar si se han completado todos los ejercicios
+if (ejerciciosCompletados === totalEjercicios) {
+  mostrarFelicidadesModal();
+}
+}
+
+</script>
+
+<script>
+
+
+function completarEjercicio(item, totalEjercicios) {
+// Ocultar el ítem (lo puedes eliminar del DOM también si prefieres)
+item.style.display = 'none';
+
+// Aumentar el número de ejercicios completados
+ejerciciosCompletados++;
+
+// Actualizar la barra de progreso
+const progreso = (ejerciciosCompletados / totalEjercicios) * 100;
+const progressBar = document.getElementById('progressBar');
+progressBar.style.width = `${progreso}%`;
+progressBar.setAttribute('aria-valuenow', progreso);
+progressBar.textContent = `${Math.round(progreso)}%`;
+
+// Verificar si se han completado todos los ejercicios
+if (ejerciciosCompletados === totalEjercicios) {
+  // Mostrar modal de felicitaciones
+  mostrarFelicidadesModal();
+}
+}
+
+</script>
+
+
+<script>
+  function mostrarFelicidadesModal() {
+    const felicidadesModal = new bootstrap.Modal(document.getElementById('felicidadesModal'));
+    felicidadesModal.show();
+
+    // Agregar evento para ejecutar history.back() al cerrar el modal
+    felicidadesModal._element.addEventListener('hidden.bs.modal', function () {
+      history.back();
+    });
+  }
+
+  </script>
+
+
+<script>
+  // Función para mostrar el modal con la imagen
+function mostrarImagenModal(imageUrl) {
+const modalImage = document.getElementById('modalImage');
+modalImage.src = imageUrl; // Asignar la URL de la imagen
+const imagenModal = new bootstrap.Modal(document.getElementById('imagenModal')); // Inicializar el modal
+imagenModal.show(); // Mostrar el modal
+}
+</script>
+
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
