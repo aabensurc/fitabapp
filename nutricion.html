@@ -70,6 +70,10 @@
   .card-body li:hover {
     background-color: #f5f5f5; /* Cambiar color de fondo al pasar sobre el elemento */
   }
+
+  h5{
+    font-size: 1.1em;
+  }
   </style>
 
 </head>
@@ -144,53 +148,54 @@
 
     // Cargar dietas y mostrar la dieta del día seleccionado
     async function cargarDietaPorDia(dia) {
-        const usuario = localStorage.getItem('username'); // Obtener nombre de usuario
+    const usuario = localStorage.getItem('username'); // Obtener nombre de usuario
 
-        try {
-            const response = await fetch('json/dietas.json'); // Cargar el archivo JSON
-            const dietas = await response.json(); // Convertir a objeto JSON
+    try {
+        const response = await fetch('json/dietas.json'); // Cargar el archivo JSON
+        const dietas = await response.json(); // Convertir a objeto JSON
 
-            // Buscar la dieta del usuario
-            const dietaUsuario = dietas.find(dieta => dieta.usuario === usuario);
+        // Buscar la dieta del usuario
+        const dietaUsuario = dietas.find(dieta => dieta.usuario === usuario);
 
-            if (dietaUsuario) {
-                const comidasDelDia = dietaUsuario[dia]; // Obtener las comidas del día
-                let contenido = ``; // No se mostrará ningún título
+        if (dietaUsuario) {
+            const comidasDelDia = dietaUsuario[dia]; // Obtener las comidas del día
+            let contenido = ``; // No se mostrará ningún título
 
-                for (const [comida, alimentos] of Object.entries(comidasDelDia)) {
-    contenido += `
-    <div class="card mb-3">
-        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center" id="heading-${comida}">
-            <h5 class="mb-0">
-                ${comida.charAt(0).toUpperCase() + comida.slice(1)}
-            </h5>
-            <!-- Ícono de colapso flotante -->
-            <button class="btn btn-link text-white p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${comida}" aria-expanded="true" aria-controls="collapse-${comida}">
-                <i class="bi bi-chevron-up"></i>
-            </button>
-        </div>
-        <div id="collapse-${comida}" class="collapse show" aria-labelledby="heading-${comida}">
-            <div class="card-body">
-                <ul>`;
-    alimentos.forEach(alimento => {
-        contenido += `<li>${alimento.cantidad} ${alimento.unidad} de ${alimento.alimento}</li>`;
-    });
-    contenido += `</ul>
-            </div>
-        </div>
-    </div>`;
+            for (const [comida, datosComida] of Object.entries(comidasDelDia)) {
+              const horaFormateada = formatearHora(datosComida.hora); // Convierte la hora a formato AM/PM
+                contenido += `
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center" id="heading-${comida}">
+                        <h5 class="mb-0">
+                            ${comida.charAt(0).toUpperCase() + comida.slice(1)} - ${horaFormateada}
+                        </h5>
+                        <!-- Ícono de colapso flotante -->
+                        <button class="btn btn-link text-white p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${comida}" aria-expanded="true" aria-controls="collapse-${comida}">
+                            <i class="bi bi-chevron-up"></i>
+                        </button>
+                    </div>
+                    <div id="collapse-${comida}" class="collapse show" aria-labelledby="heading-${comida}">
+                        <div class="card-body">
+                            <ul>`;
+                datosComida.alimentos.forEach(alimento => {
+                    contenido += `<li>${alimento.cantidad} ${alimento.unidad} de ${alimento.alimento}</li>`;
+                });
+                contenido += `</ul>
+                        </div>
+                    </div>
+                </div>`;
+            }
+
+            document.getElementById('dieta').innerHTML = contenido; // Mostrar en el contenedor
+        } else {
+            document.getElementById('dieta').innerHTML = "<p>No se encontró la dieta para el usuario.</p>";
+        }
+    } catch (error) {
+        console.error('Error al cargar las dietas:', error);
+        document.getElementById('dieta').innerHTML = "<p>Error al cargar las dietas.</p>";
+    }
 }
 
-
-                document.getElementById('dieta').innerHTML = contenido; // Mostrar en el contenedor
-            } else {
-                document.getElementById('dieta').innerHTML = "<p>No se encontró la dieta para el usuario.</p>";
-            }
-        } catch (error) {
-            console.error('Error al cargar las dietas:', error);
-            document.getElementById('dieta').innerHTML = "<p>Error al cargar las dietas.</p>";
-        }
-    }
 
     // Navegar al día anterior
     document.getElementById('prev-dia').addEventListener('click', () => {
@@ -229,6 +234,17 @@ document.getElementById('generar-imagen').addEventListener('click', () => {
     console.error('Error al generar la imagen:', error);
   });
 });
+  </script>
+
+  <script>
+    // Función para convertir la hora a formato AM/PM
+function formatearHora(hora) {
+    const [hora24, minutos] = hora.split(':');
+    const horaNum = parseInt(hora24, 10);
+    const periodo = horaNum >= 12 ? 'PM' : 'AM';
+    const hora12 = horaNum % 12 || 12; // Convierte la hora a formato de 12 horas
+    return `${hora12}:${minutos} ${periodo}`;
+}
   </script>
 </body>
 </html>
