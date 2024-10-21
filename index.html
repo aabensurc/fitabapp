@@ -333,7 +333,7 @@ async function cargarRut() {
     });
     } else {
       // Si no hay rutina, puedes mostrar un mensaje o hacer otra acción
-      contenedorRutina.innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
+      contenedorRutinaHoy.innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
     }
   })
   .catch(error => console.error('Error al cargar los JSON:', error));
