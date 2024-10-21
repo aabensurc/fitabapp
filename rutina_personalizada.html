@@ -217,7 +217,16 @@ svg {
   </div>
 
 
-
+<!-- Modal para mostrar imagen -->
+<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img id="modalImage" class="img-fluid text-center" alt="Imagen del ejercicio" />
+      </div>
+    </div>
+  </div>
+</div>
 
   
   
@@ -428,6 +437,13 @@ async function cargarRut() {
           img.alt = ejercicioData.nombre;
           img.classList.add('exercise-img', 'me-3');
 
+          
+            // Agregar evento click para mostrar el modal con la imagen
+            img.addEventListener('click', (e) => {
+              e.preventDefault(); // Evitar la acción por defecto de navegar al enlace
+              mostrarImagenModal(ejercicioData.imagen_url); // Mostrar la imagen en el modal
+            });
+
           const textContainer = document.createElement('div');
           const title = document.createElement('h5');
           title.classList.add('mb-1');
@@ -533,6 +549,17 @@ if (ejerciciosCompletados === totalEjercicios) {
   }
 
   </script>
+
+
+<script>
+  // Función para mostrar el modal con la imagen
+function mostrarImagenModal(imageUrl) {
+const modalImage = document.getElementById('modalImage');
+modalImage.src = imageUrl; // Asignar la URL de la imagen
+const imagenModal = new bootstrap.Modal(document.getElementById('imagenModal')); // Inicializar el modal
+imagenModal.show(); // Mostrar el modal
+}
+</script>
 
 
   <!-- Bootstrap JS and dependencies -->
