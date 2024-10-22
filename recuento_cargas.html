@@ -86,123 +86,141 @@
     </div>
 
     <script>
-        // Función para obtener la carga total
-        const cargarCargaTotal = async () => {
-            const dbName = "EntrenamientosDB";
-            const storeName = "entrenamientos";
+// Función para obtener la carga total
+const cargarCargaTotal = async () => {
+    const dbName = "EntrenamientosDB";
+    const storeName = "entrenamientos";
 
-            const request = indexedDB.open(dbName);
-            
-            request.onsuccess = (event) => {
-                const db = event.target.result;
-                const transaction = db.transaction(storeName, "readonly");
-                const store = transaction.objectStore(storeName);
-                const allRecords = store.getAll();
+    const request = indexedDB.open(dbName);
+    
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const allRecords = store.getAll();
 
-                allRecords.onsuccess = (event) => {
-                    const records = event.target.result;
+        allRecords.onsuccess = (event) => {
+            const records = event.target.result;
 
-                    // Filtrar registros de tipo "reps"
-                    const filteredRecords = records.filter(record => record.tipo === "reps");
-                    if (filteredRecords.length === 0) {
-                        document.getElementById('carga-total').textContent = 'No hay registros de repeticiones';
-                        return;
-                    }
+            // Filtrar registros de tipo "reps"
+            const filteredRecords = records.filter(record => record.tipo === "reps");
+            if (filteredRecords.length === 0) {
+                document.getElementById('carga-total').textContent = 'No hay registros de repeticiones';
+                return;
+            }
 
-                    // Calcular la carga total
-                    const cargaTotal = filteredRecords.reduce((total, record) => total + parseFloat(record.peso), 0);
+            // Calcular la carga total (peso * repeticiones)
+            const cargaTotal = filteredRecords.reduce((total, record) => {
+                return total + (parseFloat(record.peso) * parseFloat(record.repeticiones));
+            }, 0);
 
-                    // Mostrar la carga total redondeada a un decimal
-                    let cargaTotalDisplay = cargaTotal;
-                    if (localStorage.getItem('unidad-peso') === 'lb') {
-                        cargaTotalDisplay *= 2.20462; // Convertir a libras si es necesario
-                    }
+            // Mostrar la carga total redondeada a un decimal
+            let cargaTotalDisplay = cargaTotal;
+            if (localStorage.getItem('unidad-peso') === 'lb') {
+                cargaTotalDisplay *= 2.20462; // Convertir a libras si es necesario
+            }
 
-                    document.getElementById('carga-total').textContent = `${cargaTotalDisplay.toFixed(1)} ${localStorage.getItem('unidad-peso') === 'kg' ? 'kg' : 'lb'}`;
-                };
-
-                allRecords.onerror = () => {
-                    document.getElementById('carga-total').textContent = 'Error al cargar los registros';
-                };
-            };
-
-            request.onerror = () => {
-                console.error("Error al abrir la base de datos.");
-            };
+            document.getElementById('carga-total').textContent = `${cargaTotalDisplay.toFixed(1)} ${localStorage.getItem('unidad-peso') === 'kg' ? 'kg' : 'lb'}`;
         };
 
-        // Función para crear gráficos con todos los datos
-        const crearGraficosTotales = async () => {
-            const dbName = "EntrenamientosDB";
-            const storeName = "entrenamientos";
+        allRecords.onerror = () => {
+            document.getElementById('carga-total').textContent = 'Error al cargar los registros';
+        };
+    };
 
-            const request = indexedDB.open(dbName);
+    request.onerror = () => {
+        console.error("Error al abrir la base de datos.");
+    };
+};
 
-            request.onsuccess = (event) => {
-                const db = event.target.result;
-                const transaction = db.transaction(storeName, "readonly");
-                const store = transaction.objectStore(storeName);
-                const allRecords = store.getAll();
 
-                allRecords.onsuccess = (event) => {
-                const records = event.target.result;
+// Función para crear gráficos con los datos agrupados por día
+const crearGraficosTotales = async () => {
+    const dbName = "EntrenamientosDB";
+    const storeName = "entrenamientos";
 
-                // Filtrar registros de tipo "reps"
-                const filteredRecords = records.filter(record => record.tipo === "reps");
+    const request = indexedDB.open(dbName);
 
-                // Obtener la unidad de peso desde localStorage
-                const unidadPeso = localStorage.getItem('unidad-peso');
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const allRecords = store.getAll();
 
-                // Convertir los datos de peso a libras si es necesario
-                const pesos = filteredRecords.map(record => {
-                    let peso = parseFloat(record.peso);
-                    if (unidadPeso === 'lb') {
-                        peso *= 2.20462; // Convertir de kg a lb
-                    }
-                    return peso;
-                });
+        allRecords.onsuccess = (event) => {
+            const records = event.target.result;
 
-                // Crear el gráfico con los registros filtrados
-                const ctx = document.getElementById('grafico-carga-total').getContext('2d');
+            // Filtrar registros de tipo "reps"
+            const filteredRecords = records.filter(record => record.tipo === "reps");
 
-                // Destruir el gráfico anterior si ya existe
-                if (window.myChart) {
-                    window.myChart.destroy();
+            // Obtener la unidad de peso desde localStorage
+            const unidadPeso = localStorage.getItem('unidad-peso');
+
+            // Crear un objeto para agrupar los volúmenes por día
+            const volumenPorDia = {};
+
+            filteredRecords.forEach(record => {
+                // Multiplicar peso por repeticiones
+                let volumen = parseFloat(record.peso) * parseFloat(record.repeticiones);
+
+                // Convertir el volumen a libras si es necesario
+                if (unidadPeso === 'lb') {
+                    volumen *= 2.20462;
                 }
 
-                // Crear el gráfico nuevo
-                window.myChart = new Chart(ctx, {
-                    type: 'line', // Tipo de gráfico
-                    data: {
-                        labels: filteredRecords.map(record => record.fecha), // Fechas de cada registro
-                        datasets: [{
-                            label: `Volumen Total (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
-                            data: pesos, // Usar los pesos convertidos
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+                // Agrupar los volúmenes por la fecha (asumiendo que la fecha está en formato YYYY-MM-DD)
+                const fecha = record.fecha;
+                if (!volumenPorDia[fecha]) {
+                    volumenPorDia[fecha] = 0;
+                }
+                volumenPorDia[fecha] += volumen; // Sumar el volumen total del día
+            });
+
+            // Preparar los datos para el gráfico
+            const fechas = Object.keys(volumenPorDia); // Fechas como etiquetas del gráfico
+            const volumenes = Object.values(volumenPorDia); // Volumen diario total
+
+            // Crear el gráfico con los volúmenes diarios
+            const ctx = document.getElementById('grafico-carga-total').getContext('2d');
+
+            // Destruir el gráfico anterior si ya existe
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+
+            // Crear el nuevo gráfico
+            window.myChart = new Chart(ctx, {
+                type: 'line', // Tipo de gráfico
+                data: {
+                    labels: fechas, // Fechas de cada registro
+                    datasets: [{
+                        label: `Volumen Total Diario (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
+                        data: volumenes, // Usar los volúmenes sumados por día
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
                         }
                     }
-                });
-            };
-
-
-                allRecords.onerror = () => {
-                    console.error('Error al cargar los registros para el gráfico');
-                };
-            };
-
-            request.onerror = () => {
-                console.error("Error al abrir la base de datos.");
-            };
+                }
+            });
         };
+
+        allRecords.onerror = () => {
+            console.error('Error al cargar los registros para el gráfico');
+        };
+    };
+
+    request.onerror = () => {
+        console.error("Error al abrir la base de datos.");
+    };
+};
+
 
         // Llamar a la función al cargar la página
         window.onload = async () => {
