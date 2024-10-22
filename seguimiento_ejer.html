@@ -101,77 +101,71 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
+    // Variables globales para almacenar los gráficos
+    let pesoChart, repsChart, tiempoChart;
+  
     // Función para crear gráficos
-   const crearGraficos = (filteredRecords, ejercicioId) => {
-       // Filtrar los registros para el ejercicio específico
-       const registrosEjercicio = filteredRecords.filter(record => record.ejercicioId === ejercicioId);
-       
-       // Ordenar los registros por fecha de forma ascendente
-       registrosEjercicio.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-       
+    const crearGraficos = (filteredRecords, ejercicioId) => {
+        // Filtrar los registros para el ejercicio específico
+        const registrosEjercicio = filteredRecords.filter(record => record.ejercicioId === ejercicioId);
+        
+        // Ordenar los registros por fecha de forma ascendente
+        registrosEjercicio.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+        
         // Preparar los datos de las fechas
         const fechas = registrosEjercicio.map(record => {
-            // Verificar si la fecha está en formato DD-MM-YYYY
             const dateParts = record.fecha.split('-');
             if (dateParts.length === 3 && dateParts[0].length === 2) {
-                // Si es DD-MM-YYYY, devolverla en formato DD/MM/YYYY
-                return record.fecha.replace(/-/g, '/'); // Reemplazar guiones por barras
+                return record.fecha.replace(/-/g, '/');
             } else {
-                // Asumir que la fecha está en formato YYYY-MM-DD y convertirla
-                const [year, month, day] = record.fecha.split('-'); // Asumiendo formato YYYY-MM-DD
-                return `${day}/${month}/${year}`; // Formato DD/MM/YYYY
+                const [year, month, day] = record.fecha.split('-');
+                return `${day}/${month}/${year}`;
             }
         });
-
-                // Preparar los datos de las fechas de repeticiones
-                const fechas_reps = registrosEjercicio
-                .filter(record => record.tipo === "reps") // Validación para repeticiones
-                .map(record => {
-            // Verificar si la fecha está en formato DD-MM-YYYY
-            const dateParts = record.fecha.split('-');
-            if (dateParts.length === 3 && dateParts[0].length === 2) {
-                // Si es DD-MM-YYYY, devolverla en formato DD/MM/YYYY
-                return record.fecha.replace(/-/g, '/'); // Reemplazar guiones por barras
-            } else {
-                // Asumir que la fecha está en formato YYYY-MM-DD y convertirla
-                const [year, month, day] = record.fecha.split('-'); // Asumiendo formato YYYY-MM-DD
-                return `${day}/${month}/${year}`; // Formato DD/MM/YYYY
-            }
-        });
-
-                // Preparar los datos de las fechas de tiempo
-                        const fechas_time = registrosEjercicio
-                        .filter(record => record.tipo === "time") // Validación para tiempo
-                .map(record => {
-            // Verificar si la fecha está en formato DD-MM-YYYY
-            const dateParts = record.fecha.split('-');
-            if (dateParts.length === 3 && dateParts[0].length === 2) {
-                // Si es DD-MM-YYYY, devolverla en formato DD/MM/YYYY
-                return record.fecha.replace(/-/g, '/'); // Reemplazar guiones por barras
-            } else {
-                // Asumir que la fecha está en formato YYYY-MM-DD y convertirla
-                const [year, month, day] = record.fecha.split('-'); // Asumiendo formato YYYY-MM-DD
-                return `${day}/${month}/${year}`; // Formato DD/MM/YYYY
-            }
-        });
-
-       
-   
-       // Preparar los datos para el gráfico de pesos
+  
+        // Preparar los datos de las fechas de repeticiones
+        const fechas_reps = registrosEjercicio
+            .filter(record => record.tipo === "reps")
+            .map(record => {
+                const dateParts = record.fecha.split('-');
+                if (dateParts.length === 3 && dateParts[0].length === 2) {
+                    return record.fecha.replace(/-/g, '/');
+                } else {
+                    const [year, month, day] = record.fecha.split('-');
+                    return `${day}/${month}/${year}`;
+                }
+            });
+  
+        // Preparar los datos de las fechas de tiempo
+        const fechas_time = registrosEjercicio
+            .filter(record => record.tipo === "time")
+            .map(record => {
+                const dateParts = record.fecha.split('-');
+                if (dateParts.length === 3 && dateParts[0].length === 2) {
+                    return record.fecha.replace(/-/g, '/');
+                } else {
+                    const [year, month, day] = record.fecha.split('-');
+                    return `${day}/${month}/${year}`;
+                }
+            });
+  
         // Obtener la unidad de peso desde localStorage
         const unidadPeso = localStorage.getItem('unidad-peso');
-
+  
         // Preparar los datos para el gráfico de pesos
         let pesos = registrosEjercicio.map(record => record.peso);
-
-        // Convertir los pesos a libras si la unidad es "lb"
         if (unidadPeso === 'lb') {
             pesos = pesos.map(peso => peso * 2.20462); // Convertir de kg a lb
         }
-
-        // Crear el gráfico
+  
+        // Destruir gráfico de peso anterior si existe
+        if (pesoChart) {
+            pesoChart.destroy();
+        }
+  
+        // Crear el gráfico de peso
         const ctxPeso = document.getElementById('pesoChart').getContext('2d');
-        new Chart(ctxPeso, {
+        pesoChart = new Chart(ctxPeso, {
             type: 'line',
             data: {
                 labels: fechas,
@@ -201,66 +195,79 @@
                 }
             }
         });
-
-   
-       // Preparar los datos para el gráfico de repeticiones
-       const repeticiones = registrosEjercicio
-           .filter(record => record.tipo === "reps") // Validación para repeticiones
-           .map(record => record.repeticiones);
-       const ctxReps = document.getElementById('repsChart').getContext('2d');
-       new Chart(ctxReps, {
-           type: 'line',
-           data: {
-               labels: fechas_reps,
-               datasets: [{
-                   label: 'Repeticiones',
-                   data: repeticiones,
-                   borderColor: 'rgba(153, 102, 255, 1)',
-                   borderWidth: 2,
-                   fill: false
-               }]
-           },
-           options: {
-               responsive: true,
-               scales: {
-                   x: { title: { display: true, text: 'Fecha' }},
-                   y: { title: { display: true, text: 'Repeticiones' }}
-               }
-           }
-       });
-   
-       // Preparar los datos para el gráfico de tiempo
-       const tiempos = registrosEjercicio
-           .filter(record => record.tipo === "time") // Validación para tiempo
-           .map(record => {
-               const minutos = parseInt(record.tiempo.minutos);
-               const segundos = parseInt(record.tiempo.segundos);
-               return minutos * 60 + segundos; // Convertir tiempo a segundos
-           });
-       const ctxTiempo = document.getElementById('tiempoChart').getContext('2d');
-       new Chart(ctxTiempo, {
-           type: 'line',
-           data: {
-               labels: fechas_time,
-               datasets: [{
-                   label: 'Tiempo (segundos)',
-                   data: tiempos,
-                   borderColor: 'rgba(255, 159, 64, 1)',
-                   borderWidth: 2,
-                   fill: false
-               }]
-           },
-           options: {
-               responsive: true,
-               scales: {
-                   x: { title: { display: true, text: 'Fecha' }},
-                   y: { title: { display: true, text: 'Tiempo (segundos)' }}
-               }
-           }
-       });
-   };
-   </script>
-   
+  
+        // Preparar los datos para el gráfico de repeticiones
+        const repeticiones = registrosEjercicio
+            .filter(record => record.tipo === "reps")
+            .map(record => record.repeticiones);
+  
+        // Destruir gráfico de repeticiones anterior si existe
+        if (repsChart) {
+            repsChart.destroy();
+        }
+  
+        // Crear el gráfico de repeticiones
+        const ctxReps = document.getElementById('repsChart').getContext('2d');
+        repsChart = new Chart(ctxReps, {
+            type: 'line',
+            data: {
+                labels: fechas_reps,
+                datasets: [{
+                    label: 'Repeticiones',
+                    data: repeticiones,
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { title: { display: true, text: 'Fecha' }},
+                    y: { title: { display: true, text: 'Repeticiones' }}
+                }
+            }
+        });
+  
+        // Preparar los datos para el gráfico de tiempo
+        const tiempos = registrosEjercicio
+            .filter(record => record.tipo === "time")
+            .map(record => {
+                const minutos = parseInt(record.tiempo.minutos);
+                const segundos = parseInt(record.tiempo.segundos);
+                return minutos * 60 + segundos; // Convertir tiempo a segundos
+            });
+  
+        // Destruir gráfico de tiempo anterior si existe
+        if (tiempoChart) {
+            tiempoChart.destroy();
+        }
+  
+        // Crear el gráfico de tiempo
+        const ctxTiempo = document.getElementById('tiempoChart').getContext('2d');
+        tiempoChart = new Chart(ctxTiempo, {
+            type: 'line',
+            data: {
+                labels: fechas_time,
+                datasets: [{
+                    label: 'Tiempo (segundos)',
+                    data: tiempos,
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { title: { display: true, text: 'Fecha' }},
+                    y: { title: { display: true, text: 'Tiempo (segundos)' }}
+                }
+            }
+        });
+    };
+  </script>
+  
 
   <script>
     // Obtener parámetro "ejercicioId" de la URL
@@ -459,6 +466,8 @@ window.onload = async () => {
     await cargarMaximoPeso();
     await cargarMaximasRepeticiones(); 
     await cargarMaximoTiempo(); // Llamar a la nueva función
+
+    await sinFiltrar();
 };
   </script>
 
@@ -469,6 +478,48 @@ const filtrarPorFecha = (records, fechaDesde, fechaHasta) => {
         const fechaRegistro = new Date(record.fecha); // Asegúrate de que el campo 'fecha' exista en tu estructura
         return fechaRegistro >= fechaDesde && fechaRegistro <= fechaHasta;
     });
+};
+
+const sinFiltrar = async () => {
+
+
+    const fechaDesde = new Date(document.getElementById('fechaDesde').value);
+    const fechaHasta = new Date(document.getElementById('fechaHasta').value);
+    
+    // Cargar los registros y filtrar por fecha
+    const id = obtenerId();
+    const dbName = "EntrenamientosDB";
+    const storeName = "entrenamientos";
+
+    const request = indexedDB.open(dbName);
+
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const allRecords = store.getAll();
+
+        allRecords.onsuccess = (event) => {
+            const records = event.target.result;
+
+
+
+
+                        // Crear los gráficos
+                        crearGraficos(records, id);
+        };
+
+        allRecords.onerror = () => {
+
+        };
+    };
+
+    request.onerror = () => {
+        console.error("Error al abrir la base de datos.");
+    };
+
+
+
 };
 
 // Agregar evento al botón de filtrar
