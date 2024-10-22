@@ -282,8 +282,10 @@ btnFiltrar.addEventListener('click', async () => {
                 return fechaRegistro >= fechaDesde && fechaRegistro <= fechaHasta && record.tipo === "reps";
             });
 
-            // Calcular la carga total
-            let cargaTotal = filteredRecords.reduce((total, record) => total + parseFloat(record.peso), 0);
+            // Calcular la carga total (multiplicando peso * repeticiones)
+            let cargaTotal = filteredRecords.reduce((total, record) => {
+                return total + (parseFloat(record.peso) * parseFloat(record.repeticiones));
+            }, 0);
 
             // Verificar la unidad de peso y convertir la carga total si es necesario
             const unidadPeso = localStorage.getItem('unidad-peso');
@@ -294,16 +296,31 @@ btnFiltrar.addEventListener('click', async () => {
             // Mostrar la carga total en la interfaz
             document.getElementById('carga-total').textContent = `${cargaTotal.toFixed(1)} ${unidadPeso === 'kg' ? 'kg' : 'lb'}`;
 
-            // Convertir los datos de peso para el gráfico si es necesario
-            const pesos = filteredRecords.map(record => {
-                let peso = parseFloat(record.peso);
+            // Agrupar los volúmenes por día
+            const volumenPorDia = {};
+
+            filteredRecords.forEach(record => {
+                // Multiplicar peso por repeticiones
+                let volumen = parseFloat(record.peso) * parseFloat(record.repeticiones);
+
+                // Convertir a libras si es necesario
                 if (unidadPeso === 'lb') {
-                    peso *= 2.20462; // Convertir de kg a lb
+                    volumen *= 2.20462;
                 }
-                return peso;
+
+                // Agrupar por fecha
+                const fecha = record.fecha;
+                if (!volumenPorDia[fecha]) {
+                    volumenPorDia[fecha] = 0;
+                }
+                volumenPorDia[fecha] += volumen; // Sumar el volumen total del día
             });
 
-            // Crear el gráfico con los datos filtrados
+            // Preparar los datos para el gráfico
+            const fechas = Object.keys(volumenPorDia); // Fechas como etiquetas del gráfico
+            const volumenes = Object.values(volumenPorDia); // Volumen diario total
+
+            // Crear el gráfico con los volúmenes diarios
             const ctx = document.getElementById('grafico-carga-total').getContext('2d');
 
             // Destruir el gráfico anterior si ya existe
@@ -311,14 +328,14 @@ btnFiltrar.addEventListener('click', async () => {
                 window.myChart.destroy();
             }
 
-            // Crear el gráfico nuevo
+            // Crear el nuevo gráfico
             window.myChart = new Chart(ctx, {
-                type: 'line',
+                type: 'line', // Tipo de gráfico
                 data: {
-                    labels: filteredRecords.map(record => record.fecha),
+                    labels: fechas, // Fechas de cada registro
                     datasets: [{
-                        label: `Volumen Total (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
-                        data: pesos, // Usar los pesos convertidos
+                        label: `Volumen Total Diario (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
+                        data: volumenes, // Usar los volúmenes sumados por día
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
@@ -343,6 +360,7 @@ btnFiltrar.addEventListener('click', async () => {
         console.error("Error al abrir la base de datos.");
     };
 });
+
 
     </script>
 
