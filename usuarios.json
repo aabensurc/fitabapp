@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "nombre_usuario": "aabensurc",
+        "password": "12345",
+        "nombre": "Alex",
+        "apellido": "Abensur",
+        "sexo": "M",
+        "edad": 30,
+        "peso": 75,
+        "estatura": 1.75,
+        "estado": "Habilitado"
+    },
+    {
+        "id": 2,
+        "nombre_usuario": "echepey",
+        "password": "123456",
+        "nombre": "Elizabeth",
+        "apellido": "Chepe",
+        "sexo": "F",
+        "edad": 45,
+        "peso": 69,
+        "estatura": 1.65,
+        "estado": "Habilitado"
+    },
+    {
+        "id": 3,
+        "nombre_usuario": "nico.lazo",
+        "password": "123",
+        "nombre": "Nicolas",
+        "apellido": "Lazo",
+        "sexo": "M",
+        "edad": 32,
+        "peso": 85,
+        "estatura": 1.70,
+        "estado": "Deshabilitado"
+    },
+    {
+        "id": 4,
+        "nombre_usuario": "leily123",
+        "password": "123",
+        "nombre": "Leily",
+        "apellido": "Jones",
+        "sexo": "F",
+        "edad": 29,
+        "peso": 58,
+        "estatura": 1.60,
+        "estado": "Habilitado"
+    },
+    {
+        "id": 5,
+        "nombre_usuario": "dthompson",
+        "password": "thompson654",
+        "nombre": "David",
+        "apellido": "Thompson",
+        "sexo": "M",
+        "edad": 40,
+        "peso": 90,
+        "estatura": 1.78,
+        "estado": "Deshabilitado"
+    },
+    {
+        "id": 6,
+        "nombre_usuario": "cristhianf01",
+        "password": "12345",
+        "nombre": "Cristhian",
+        "apellido": "Franco",
+        "sexo": "M",
+        "edad": 31,
+        "peso": 70,
+        "estatura": 1.70,
+        "estado": "Habilitado"
+    },
+    {
+        "id": 7,
+        "nombre_usuario": "jeanaq",
+        "password": "12345",
+        "nombre": "Jean",
+        "apellido": "Atencio",
+        "sexo": "M",
+        "edad": 24,
+        "peso": 70,
+        "estatura": 1.67,
+        "estado": "Habilitado"
+    }
+]
