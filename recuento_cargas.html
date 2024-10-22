@@ -39,7 +39,7 @@
     <div class="nav-icons" id="back-button">
       <i class="bi bi-arrow-left"></i> <!-- Botón de atrás -->
     </div>
-    <h1>Recuento de cargas</h1>
+    <h1>Recuento de Volumen</h1>
   </div>
 
   <div class="container-fluid contenedor_rec_car">
@@ -176,7 +176,7 @@
                     data: {
                         labels: filteredRecords.map(record => record.fecha), // Fechas de cada registro
                         datasets: [{
-                            label: `Carga Total (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
+                            label: `Volumen Total (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
                             data: pesos, // Usar los pesos convertidos
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             borderColor: 'rgba(75, 192, 192, 1)',
@@ -299,7 +299,7 @@ btnFiltrar.addEventListener('click', async () => {
                 data: {
                     labels: filteredRecords.map(record => record.fecha),
                     datasets: [{
-                        label: `Carga Total (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
+                        label: `Volumen Total (${unidadPeso === 'kg' ? 'kg' : 'lb'})`,
                         data: pesos, // Usar los pesos convertidos
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
