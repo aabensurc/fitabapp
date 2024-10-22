@@ -172,7 +172,7 @@
 
                 // Crear el gráfico nuevo
                 window.myChart = new Chart(ctx, {
-                    type: 'bar', // Tipo de gráfico
+                    type: 'line', // Tipo de gráfico
                     data: {
                         labels: filteredRecords.map(record => record.fecha), // Fechas de cada registro
                         datasets: [{
@@ -295,7 +295,7 @@ btnFiltrar.addEventListener('click', async () => {
 
             // Crear el gráfico nuevo
             window.myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: filteredRecords.map(record => record.fecha),
                     datasets: [{
