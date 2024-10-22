@@ -3,7 +3,7 @@
       {
         "username": "aabensurc",
         "id": 1,
-        "fecha": "2024-10-20",
+        "fecha": "2024-10-22",
         "nombre": "Rutina de Fuerza",
         "descripcion": "Rutina para aumentar fuerza y masa muscular.",
         "tipo": "Fuerza",
@@ -20,13 +20,19 @@
             "series": 4,
             "cantidad": 12,
             "medicion": "repeticiones"
+          },
+          {
+            "id_ejercicio": 8,
+            "series": 4,
+            "cantidad": 14,
+            "medicion": "repeticiones"
           }
         ]
       },
       {
         "username": "aabensurc",
         "id": 2,
-        "fecha": "2024-10-21",
+        "fecha": "2024-10-23",
         "nombre": "Rutina de Resistencia",
         "descripcion": "Rutina para aumentar velocidad.",
         "tipo": "Resistencia",
@@ -42,6 +48,12 @@
             "id_ejercicio": 4,
             "series": 4,
             "cantidad": 15,
+            "medicion": "repeticiones"
+          },
+          {
+            "id_ejercicio": 7,
+            "series": 4,
+            "cantidad": 14,
             "medicion": "repeticiones"
           }
         ]
