@@ -70,5 +70,17 @@
         "peso": 70,
         "estatura": 1.70,
         "estado": "Habilitado"
+    },
+    {
+        "id": 7,
+        "nombre_usuario": "jeanaq",
+        "password": "12345",
+        "nombre": "Jean",
+        "apellido": "Atencio",
+        "sexo": "M",
+        "edad": 24,
+        "peso": 70,
+        "estatura": 1.67,
+        "estado": "Habilitado"
     }
 ]
