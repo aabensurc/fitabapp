@@ -87,59 +87,58 @@
 
 <!-- Script para cargar datos desde la URL -->
 <script>
-  // Obtener parámetros de la URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get('id'); // Obtener el id
+// Obtener parámetros de la URL
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id'); // Obtener el id
+const minutos = urlParams.get('minutos') || 0; // Obtener minutos o 0 por defecto
+const segundos = urlParams.get('segundos') || 0; // Obtener segundos o 0 por defecto
 
-  // Cargar datos desde el archivo JSON
-  fetch('json/ejercicios.json')
-    .then(response => response.json())
-    .then(data => {
-      const ejercicio = data.ejercicios.find(ejercicio => ejercicio.id == id); // Buscar ejercicio por id
+// Cargar datos desde el archivo JSON
+fetch('json/ejercicios.json')
+  .then(response => response.json())
+  .then(data => {
+    const ejercicio = data.ejercicios.find(ejercicio => ejercicio.id == id); // Buscar ejercicio por id
 
-      if (ejercicio) {
-        // Actualizar el título del App Bar
-        document.getElementById('exercise-title').textContent = ejercicio.nombre;
+    if (ejercicio) {
+      // Actualizar el título del App Bar
+      document.getElementById('exercise-title').textContent = ejercicio.nombre;
 
-        // Mostrar el video
-        const videoContainer = document.getElementById('video-container');
-        videoContainer.innerHTML = `
-          <video controls style="width: 100%; height: auto;">
-            <source src="${ejercicio.video_url}" type="video/mp4">
-            Tu navegador no soporta la reproducción de videos.
-          </video>
-        `;
+      // Mostrar el video
+      const videoContainer = document.getElementById('video-container');
+      videoContainer.innerHTML = `
+        <video controls style="width: 100%; height: auto;">
+          <source src="${ejercicio.video_url}" type="video/mp4">
+          Tu navegador no soporta la reproducción de videos.
+        </video>
+      `;
 
-        // Mostrar el nombre y la descripción del ejercicio
-        document.getElementById('exercise-name').textContent = ejercicio.nombre;
-        document.getElementById('exercise-description').textContent = ejercicio.descripcion;
-      } else {
-        // Manejo de error si no se encuentra el ejercicio
-        document.getElementById('exercise-name').textContent = "Ejercicio no encontrado";
-      }
-    })
-    .catch(error => console.error('Error al cargar los datos:', error));
+      // Mostrar el nombre y la descripción del ejercicio
+      document.getElementById('exercise-name').textContent = ejercicio.nombre;
+      document.getElementById('exercise-description').textContent = ejercicio.descripcion;
+    } else {
+      // Manejo de error si no se encuentra el ejercicio
+      document.getElementById('exercise-name').textContent = "Ejercicio no encontrado";
+    }
+  })
+  .catch(error => console.error('Error al cargar los datos:', error));
 
-  // Función para volver a la pantalla anterior
-  document.getElementById('back-button').addEventListener('click', function() {
-    history.back();
-  });
+// Función para volver a la pantalla anterior
+document.getElementById('back-button').addEventListener('click', function() {
+  history.back();
+});
 
+// Agregar el evento de clic al botón de registro de ejercicios
+document.getElementById('reg_ejer').addEventListener('click', function() {
+  // Redirigir a la página de registro de entrenamientos con el ID
+  window.location.href = `registro_entrenamientos.html?id=${id}`;
+});
 
-    // Agregar el evento de clic al botón de registro de ejercicios
-    document.getElementById('reg_ejer').addEventListener('click', function() {
-    // Redirigir a la página de registro de entrenamientos con el ID
-    window.location.href = `registro_entrenamientos.html?id=${id}`;
-  });
+// Temporizador
+let timerInterval;
+let timerDisplay = document.getElementById('timer-display');
+const timerIcon = document.getElementById('timer-icon');
 
-
-
-  // Temporizador
-  let timerInterval;
-  let timerDisplay = document.getElementById('timer-display');
-  const timerIcon = document.getElementById('timer-icon');
-
-  const startTimer = (minutes, seconds) => {
+const startTimer = (minutes, seconds) => {
   let totalTime = minutes * 60 + seconds;
   timerDisplay.style.display = 'block'; // Mostrar el temporizador
   updateTimerDisplay(totalTime); // Inicializar la visualización
@@ -165,42 +164,47 @@
   }, 1000);
 };
 
+// Actualizar la visualización del temporizador
+const updateTimerDisplay = (totalSeconds) => {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; // MM:SS
+  timerIcon.style.display = 'none'; // Ocultar el icono del reloj
+};
 
-  // Actualizar la visualización del temporizador
-  const updateTimerDisplay = (totalSeconds) => {
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; // MM:SS
-    timerIcon.style.display = 'none'; // Ocultar el icono del reloj
-  };
+// Reproducir sonido al finalizar el temporizador
+const playAlarmSound = () => {
+  const audio = new Audio('sounds/timesup.mp3'); // Cambia esto con tu sonido MP3
+  audio.play();
+};
 
-  // Reproducir sonido al finalizar el temporizador
-  const playAlarmSound = () => {
-    const audio = new Audio('sounds/timesup.mp3'); // Cambia esto con tu sonido MP3
-    audio.play();
-  };
+// Evento del botón flotante para abrir el modal
+document.getElementById('fab').addEventListener('click', function() {
+  // Mostrar los minutos y segundos en los campos de entrada del modal
+  document.getElementById('minutes-input').value = minutos; // Establecer el valor de minutos
+  document.getElementById('seconds-input').value = segundos; // Establecer el valor de segundos
 
-  // Evento del botón flotante para abrir el modal
-  document.getElementById('fab').addEventListener('click', function() {
-    new bootstrap.Modal(document.getElementById('timeModal')).show();
-  });
+  // Abrir el modal
+  new bootstrap.Modal(document.getElementById('timeModal')).show();
+});
 
-  // Iniciar el temporizador cuando el usuario ingrese el tiempo
-  document.getElementById('start-timer-btn').addEventListener('click', function() {
-    const minutes = parseInt(document.getElementById('minutes-input').value) || 0;
-    const seconds = parseInt(document.getElementById('seconds-input').value) || 0;
-    startTimer(minutes, seconds);
-  });
+// Iniciar el temporizador cuando el usuario ingrese el tiempo
+document.getElementById('start-timer-btn').addEventListener('click', function() {
+  const minutes = parseInt(document.getElementById('minutes-input').value) || 0;
+  const seconds = parseInt(document.getElementById('seconds-input').value) || 0;
+  startTimer(minutes, seconds);
+});
 
-  function changeValue(inputId, change) {
-    const input = document.getElementById(inputId);
-    let currentValue = parseInt(input.value) || 0;
-    currentValue = Math.max(0, currentValue + change); // Asegurarse de que no sea negativo
-    if (inputId === 'seconds-input') {
-      currentValue = Math.min(59, currentValue); // Limitar a 59 segundos
-    }
-    input.value = currentValue;
+function changeValue(inputId, change) {
+  const input = document.getElementById(inputId);
+  let currentValue = parseInt(input.value) || 0;
+  currentValue = Math.max(0, currentValue + change); // Asegurarse de que no sea negativo
+  if (inputId === 'seconds-input') {
+    currentValue = Math.min(59, currentValue); // Limitar a 59 segundos
   }
+  input.value = currentValue;
+}
+
 
 </script>
 
