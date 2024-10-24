@@ -29,9 +29,28 @@
       object-fit: cover;
       border-radius: 10px;
     }
+    
     .img-detalle-rutina{
       
     }
+
+    .exercise-name {
+  white-space: nowrap; /* Evita que el texto se envuelva */
+  overflow: hidden; /* Oculta el texto que se desborda */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos */
+  max-width: 230px; /* Establece un ancho máximo para el contenedor del texto */
+
+  font-size: 1.1em;
+}
+
+.exercise-item {
+  max-width: 300px; /* Limitar el ancho máximo del contenedor del ejercicio */
+  overflow: hidden; /* Evitar el desbordamiento del contenedor */
+}
+
+.desc_label{
+
+}
 
     .form-section {
       margin-top: 20px;
@@ -355,142 +374,165 @@ async function cargarRut() {
   const nomUsuario = localStorage.getItem('username'); // Obtener el ID del usuario
   const fechaSeleccionada = document.getElementById('date-input').value; // Obtener la fecha seleccionada
 
-  // Cargar rutinas y ejercicios desde sus archivos JSON
-  Promise.all([
-    fetch('json/rutinas_custom.json').then(response => response.json()),
-    fetch('json/ejercicios.json').then(response => response.json())
-  ])
-  .then(([rutinasData, ejerciciosData]) => {
-    const rutina = rutinasData.rutinas.find(r => r.username == nomUsuario && r.fecha == fechaSeleccionada);
-    const contenedorRutina = document.getElementById('contendorejm');
+// Cargar rutinas y ejercicios desde sus archivos JSON
+Promise.all([
+  fetch('json/rutinas_custom.json').then(response => response.json()),
+  fetch('json/ejercicios.json').then(response => response.json())
+])
+.then(([rutinasData, ejerciciosData]) => {
+  const rutina = rutinasData.rutinas.find(r => r.username == nomUsuario && r.fecha == fechaSeleccionada);
+  const contenedorRutina = document.getElementById('contendorejm');
 
-    // Limpiar el contenido anterior
-    contenedorRutina.innerHTML = '';
+  // Limpiar el contenido anterior
+  contenedorRutina.innerHTML = '';
 
-    if (rutina) {
-      // Crear la estructura de la rutina
-      const img = document.createElement('img');
-      img.id = 'routineImage';
-      img.className = 'routine-img';
-      img.src = rutina.url_imagen;
-      img.alt = 'Imagen de la rutina';
-      
-      const detalleContainer = document.createElement('div');
-      detalleContainer.className = 'container-fluid container-detalle_rutina';
+  if (rutina) {
+    // Crear la estructura de la rutina
+    const img = document.createElement('img');
+    img.id = 'routineImage';
+    img.className = 'routine-img';
+    img.src = rutina.url_imagen;
+    img.alt = 'Imagen de la rutina';
 
-      const typeElement = document.createElement('h4');
-      typeElement.id = 'routineType';
-      typeElement.className = 'mt-3 mb-0';
-      typeElement.textContent = rutina.tipo.toUpperCase();
+    const detalleContainer = document.createElement('div');
+    detalleContainer.className = 'container-fluid container-detalle_rutina';
 
-      const nameElement = document.createElement('h2');
-      nameElement.id = 'routineName';
-      nameElement.className = '';
-      nameElement.textContent = rutina.nombre;
+    const typeElement = document.createElement('h4');
+    typeElement.id = 'routineType';
+    typeElement.className = 'mt-3 mb-0';
+    typeElement.textContent = rutina.tipo.toUpperCase();
 
-      const descriptionElement = document.createElement('p');
-      descriptionElement.id = 'routineDescription';
-      descriptionElement.className = 'mt-2';
-      descriptionElement.textContent = rutina.descripcion;
+    const nameElement = document.createElement('h2');
+    nameElement.id = 'routineName';
+    nameElement.className = '';
+    nameElement.textContent = rutina.nombre;
 
-      // Barra de progreso
-      const progressContainer = document.createElement('div');
-      progressContainer.className = 'progress mt-3';
+    const descriptionElement = document.createElement('p');
+    descriptionElement.id = 'routineDescription';
+    descriptionElement.className = 'mt-2';
+    descriptionElement.textContent = rutina.descripcion;
 
-      const progressBar = document.createElement('div');
-      progressBar.id = 'progressBar';
-      progressBar.className = 'progress-bar';
-      progressBar.role = 'progressbar';
-      progressBar.style.width = '0%';
-      progressBar.setAttribute('aria-valuenow', '0');
-      progressBar.setAttribute('aria-valuemin', '0');
-      progressBar.setAttribute('aria-valuemax', '100');
-      progressBar.textContent = '0%';
+    // Barra de progreso
+    const progressContainer = document.createElement('div');
+    progressContainer.className = 'progress mt-3';
 
-      const exerciseList = document.createElement('div');
-      exerciseList.id = 'exerciseList';
-      exerciseList.className = 'list-group mt-4';
+    const progressBar = document.createElement('div');
+    progressBar.id = 'progressBar';
+    progressBar.className = 'progress-bar';
+    progressBar.role = 'progressbar';
+    progressBar.style.width = '0%';
+    progressBar.setAttribute('aria-valuenow', '0');
+    progressBar.setAttribute('aria-valuemin', '0');
+    progressBar.setAttribute('aria-valuemax', '100');
+    progressBar.textContent = '0%';
 
-      // Agregar todos los elementos al contenedor
-      progressContainer.appendChild(progressBar);
-      detalleContainer.appendChild(typeElement);
-      detalleContainer.appendChild(nameElement);
-      detalleContainer.appendChild(descriptionElement);
-      detalleContainer.appendChild(progressContainer);
-      detalleContainer.appendChild(exerciseList);
-      contenedorRutina.appendChild(img);
-      contenedorRutina.appendChild(detalleContainer);
+    const exerciseList = document.createElement('div');
+    exerciseList.id = 'exerciseList';
+    exerciseList.className = 'list-group mt-4';
 
-      // Mostrar ejercicios
-      rutina.ejercicios.forEach(ejercicio => {
-        const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
-        if (ejercicioData) {
-          const ejercicioItem = document.createElement('a');
-          ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
+    // Agregar todos los elementos al contenedor
+    progressContainer.appendChild(progressBar);
+    detalleContainer.appendChild(typeElement);
+    detalleContainer.appendChild(nameElement);
+    detalleContainer.appendChild(descriptionElement);
+    detalleContainer.appendChild(progressContainer);
+    detalleContainer.appendChild(exerciseList);
+    contenedorRutina.appendChild(img);
+    contenedorRutina.appendChild(detalleContainer);
 
-          // Crear el contenedor que tendrá la imagen y el texto
-          const contentContainer = document.createElement('div');
-          contentContainer.classList.add('d-flex', 'align-items-center');
+    // Mostrar ejercicios
+    rutina.ejercicios.forEach(ejercicio => {
+      const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
+      if (ejercicioData) {
+        const ejercicioItem = document.createElement('a');
+        ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
 
-          const img = document.createElement('img');
-          img.src = ejercicioData.imagen_url;
-          img.alt = ejercicioData.nombre;
-          img.classList.add('exercise-img', 'me-3');
+        // Crear el contenedor que tendrá la imagen y el texto
+        const contentContainer = document.createElement('div');
+        contentContainer.classList.add('d-flex', 'align-items-center');
 
-          
-            // Agregar evento click para mostrar el modal con la imagen
-            img.addEventListener('click', (e) => {
-              e.preventDefault(); // Evitar la acción por defecto de navegar al enlace
-              mostrarImagenModal(ejercicioData.imagen_url); // Mostrar la imagen en el modal
-            });
+        const img = document.createElement('img');
+        img.src = ejercicioData.imagen_url;
+        img.alt = ejercicioData.nombre;
+        img.classList.add('exercise-img', 'me-3');
 
-          const textContainer = document.createElement('div');
-          const title = document.createElement('h5');
-          title.classList.add('mb-1');
-          title.textContent = ejercicioData.nombre;
+        // Evento para mostrar la imagen en un modal
+        img.addEventListener('click', (e) => {
+          e.preventDefault(); 
+          mostrarImagenModal(ejercicioData.imagen_url); 
+        });
 
-          const details = document.createElement('small');
-          details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
+// Crear contenedor para el texto
+const textContainer = document.createElement('div');
+textContainer.classList.add('text-container'); // Añade esta clase para aplicar estilos
+const title = document.createElement('h5');
+title.classList.add('mb-1', 'exercise-name'); // Añade la clase exercise-name
+title.textContent = ejercicioData.nombre;
 
-          // Agregar el texto y la imagen al contentContainer
-          textContainer.appendChild(title);
-          textContainer.appendChild(details);
-          contentContainer.appendChild(img);
-          contentContainer.appendChild(textContainer);
+const details = document.createElement('small');
+details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
 
-          // Añadir contentContainer al item
-          ejercicioItem.appendChild(contentContainer);
+// Agregar el texto y la imagen al contentContainer
+textContainer.appendChild(title);
+textContainer.appendChild(details);
+contentContainer.appendChild(img);
+contentContainer.appendChild(textContainer);
 
-          // Crear checkbox y colocarlo al final del item
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.classList.add('form-check-input', 'ms-auto');
-          checkbox.addEventListener('click', () => {
-            if (checkbox.checked) {
-              completarEjercicio(ejercicioItem, rutina.ejercicios.length);
-            } else {
-              ejerciciosCompletados--;
-              actualizarProgreso(rutina.ejercicios.length);
-              ejercicioItem.style.display = 'flex';
-            }
-          });
 
-          ejercicioItem.appendChild(checkbox);
+        // Añadir contentContainer al item
+        ejercicioItem.appendChild(contentContainer);
 
-          ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
-          exerciseList.appendChild(ejercicioItem);
-        }
-      });
-    } else {
-      // Si no hay rutina, puedes mostrar un mensaje o hacer otra acción
-      contenedorRutina.innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
-    }
-  })
-  .catch(error => console.error('Error al cargar los JSON:', error));
+        // Crear checkbox para completar el ejercicio
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.classList.add('form-check-input', 'ms-auto');
+        checkbox.addEventListener('click', () => {
+          if (checkbox.checked) {
+            completarEjercicio(ejercicioItem, rutina.ejercicios.length);
+          } else {
+            ejerciciosCompletados--;
+            actualizarProgreso(rutina.ejercicios.length);
+            ejercicioItem.style.display = 'flex';
+          }
+        });
+
+        ejercicioItem.appendChild(checkbox);
+
+        // Crear y añadir el tiempo de descanso debajo de detalles
+        const restTime = ejercicio.tiempo_descanso || { minutos: 0, segundos: 0 };
+        const restTimeElement = document.createElement('small');  // Mantener el estilo
+        restTimeElement.style.display = 'flex'; // Establecer display flex
+
+        // Crear el ícono de reloj
+        const clockIcon = document.createElement('i');
+        clockIcon.className = 'bi bi-clock me-1 desc_label'; // Añadir clases para el ícono de reloj
+
+        // Establecer el contenido del small
+        restTimeElement.textContent = `Descanso en series: ${restTime.minutos}m ${restTime.segundos}s`;
+
+        // Agregar el ícono y el texto al mismo small
+        restTimeElement.prepend(clockIcon);
+
+        // Agregar el tiempo de descanso al textContainer
+        textContainer.appendChild(restTimeElement);
+
+        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
+        exerciseList.appendChild(ejercicioItem);
+      }
+    });
+  } else {
+    // Si no hay rutina, muestra un mensaje
+    contenedorRutina.innerHTML = `<p>No se encontraron rutinas para esta fecha.</p>`;
+  }
+})
+.catch(error => console.error('Error al cargar los JSON:', error));
+
+
 }
 
 
   </script>
+
 
 
 <script>
