@@ -48,9 +48,6 @@
   overflow: hidden; /* Evitar el desbordamiento del contenedor */
 }
 
-.desc_label{
-
-}
 
     .form-section {
       margin-top: 20px;
@@ -246,6 +243,8 @@ svg {
     </div>
   </div>
 </div>
+
+
 
   
   
@@ -505,7 +504,7 @@ contentContainer.appendChild(textContainer);
 
         // Crear el ícono de reloj
         const clockIcon = document.createElement('i');
-        clockIcon.className = 'bi bi-clock me-1 desc_label'; // Añadir clases para el ícono de reloj
+        clockIcon.className = 'bi bi-clock me-1 d-flex justify-content-between align-items-center'; // Añadir clases para el ícono de reloj
 
         // Establecer el contenido del small
         restTimeElement.textContent = `Descanso en series: ${restTime.minutos}m ${restTime.segundos}s`;
