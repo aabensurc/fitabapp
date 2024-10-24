@@ -416,7 +416,7 @@ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 margin-bottom: 15px; /* Separación entre items */
 display: flex; /* Para alinear los elementos */
 align-items: center; /* Alineación vertical */
-height: 70px; /* Altura fija para asegurar que todos los items tengan la misma altura */
+height: 100px; /* Altura fija para asegurar que todos los items tengan la misma altura */
 }
 
 .list-group-item img {
