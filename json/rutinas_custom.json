@@ -1,92 +1,127 @@
 {
-    "rutinas": [
-      {
-        "username": "aabensurc",
-        "id": 1,
-        "fecha": "2024-10-22",
-        "nombre": "Rutina de Fuerza",
-        "descripcion": "Rutina para aumentar fuerza y masa muscular.",
-        "tipo": "Fuerza",
-        "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutina-fuerza-1.jpg",
-        "ejercicios": [
-          {
-            "id_ejercicio": 1,
-            "series": 3,
-            "cantidad": 10,
-            "medicion": "repeticiones"
-          },
-          {
-            "id_ejercicio": 2,
-            "series": 4,
-            "cantidad": 12,
-            "medicion": "repeticiones"
-          },
-          {
-            "id_ejercicio": 8,
-            "series": 4,
-            "cantidad": 14,
-            "medicion": "repeticiones"
+  "rutinas": [
+    {
+      "username": "aabensurc",
+      "id": 1,
+      "fecha": "2024-10-22",
+      "nombre": "Rutina de Fuerza",
+      "descripcion": "Rutina para aumentar fuerza y masa muscular.",
+      "tipo": "Fuerza",
+      "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutina-fuerza-1.jpg",
+      "ejercicios": [
+        {
+          "id_ejercicio": 1,
+          "series": 3,
+          "cantidad": 10,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 1,
+            "segundos": 30
           }
-        ]
-      },
-      {
-        "username": "aabensurc",
-        "id": 2,
-        "fecha": "2024-10-23",
-        "nombre": "Rutina de Resistencia",
-        "descripcion": "Rutina para aumentar velocidad.",
-        "tipo": "Resistencia",
-        "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
-        "ejercicios": [
-          {
-            "id_ejercicio": 2,
-            "series": 3,
-            "cantidad": 18,
-            "medicion": "repeticiones"
-          },
-          {
-            "id_ejercicio": 4,
-            "series": 4,
-            "cantidad": 15,
-            "medicion": "repeticiones"
-          },
-          {
-            "id_ejercicio": 7,
-            "series": 4,
-            "cantidad": 14,
-            "medicion": "repeticiones"
+        },
+        {
+          "id_ejercicio": 2,
+          "series": 4,
+          "cantidad": 12,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 2,
+            "segundos": 0
           }
-        ]
-      },
-      {
-        "username": "jeanaq",
-        "id": 2,
-        "fecha": "2024-10-22",
-        "nombre": "Rutina de Resistencia",
-        "descripcion": "Rutina para aumentar velocidad.",
-        "tipo": "Resistencia",
-        "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
-        "ejercicios": [
-          {
-            "id_ejercicio": 2,
-            "series": 3,
-            "cantidad": 18,
-            "medicion": "repeticiones"
-          },
-          {
-            "id_ejercicio": 4,
-            "series": 4,
-            "cantidad": 15,
-            "medicion": "repeticiones"
-          },
-          {
-            "id_ejercicio": 6,
-            "series": 3,
-            "cantidad": 12,
-            "medicion": "repeticiones"
+        },
+        {
+          "id_ejercicio": 8,
+          "series": 4,
+          "cantidad": 14,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 1,
+            "segundos": 45
           }
-        ]
-      }
-    ]
-  }
-  
+        }
+      ]
+    },
+    {
+      "username": "aabensurc",
+      "id": 2,
+      "fecha": "2024-10-23",
+      "nombre": "Rutina de Resistencia",
+      "descripcion": "Rutina para aumentar velocidad.",
+      "tipo": "Resistencia",
+      "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+      "ejercicios": [
+        {
+          "id_ejercicio": 2,
+          "series": 3,
+          "cantidad": 18,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 0,
+            "segundos": 45
+          }
+        },
+        {
+          "id_ejercicio": 4,
+          "series": 4,
+          "cantidad": 15,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 1,
+            "segundos": 15
+          }
+        },
+        {
+          "id_ejercicio": 7,
+          "series": 4,
+          "cantidad": 14,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 1,
+            "segundos": 0
+          }
+        }
+      ]
+    },
+    {
+      "username": "jeanaq",
+      "id": 2,
+      "fecha": "2024-10-22",
+      "nombre": "Rutina de Resistencia",
+      "descripcion": "Rutina para aumentar velocidad.",
+      "tipo": "Resistencia",
+      "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+      "ejercicios": [
+        {
+          "id_ejercicio": 2,
+          "series": 3,
+          "cantidad": 18,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 0,
+            "segundos": 45
+          }
+        },
+        {
+          "id_ejercicio": 4,
+          "series": 4,
+          "cantidad": 15,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 1,
+            "segundos": 15
+          }
+        },
+        {
+          "id_ejercicio": 6,
+          "series": 3,
+          "cantidad": 12,
+          "medicion": "repeticiones",
+          "tiempo_descanso": {
+            "minutos": 1,
+            "segundos": 30
+          }
+        }
+      ]
+    }
+  ]
+}
