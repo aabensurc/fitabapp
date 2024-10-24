@@ -515,8 +515,12 @@ contentContainer.appendChild(textContainer);
         // Agregar el tiempo de descanso al textContainer
         textContainer.appendChild(restTimeElement);
 
-        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
+        // Modificar el href para incluir id, minutos y segundos en la URL
+        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}&minutos=${restTime.minutos}&segundos=${restTime.segundos}`;
+
+        // Añadir el ejercicio a la lista
         exerciseList.appendChild(ejercicioItem);
+
       }
     });
   } else {
