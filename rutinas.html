@@ -13,13 +13,35 @@
   <title>FITABAPP</title>
 
   <style>
-    /* Ajustar la imagen para que sea cuadrada con bordes redondeados */
-    .routine-img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover; /* Mantener la proporción de la imagen */
-      border-radius: 10px; /* Bordes redondeados pero sigue siendo cuadrado */
-    }
+/* Ajustar la imagen para que sea cuadrada con bordes redondeados */
+.routine-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover; /* Mantener la proporción de la imagen */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Contenedor de texto */
+.text-container {
+  flex: 1;  /* Permitir que el contenedor de texto ocupe el espacio restante */
+  min-width: 0; /* Permitir que el contenedor se reduzca si es necesario */
+}
+
+/* Estilo para que el h5 se muestre en un máximo de dos líneas */
+.routine-title {
+  display: -webkit-box;         /* Usar un box flexible para el texto */
+  -webkit-box-orient: vertical; /* Orientación vertical */
+  -webkit-line-clamp: 2;       /* Limitar a dos líneas */
+  overflow: hidden;             /* Ocultar el contenido que se desborda del contenedor */
+  text-overflow: ellipsis;      /* Mostrar los puntos suspensivos si el texto es muy largo */
+  font-size: 0.9em;             /* Hacer el texto más pequeño */
+  max-width: 100%;              /* Asegurar que el título ocupe el 100% del espacio disponible */
+  margin-bottom: 0.5rem;        /* Margen inferior para el espaciado */
+}
+
+
+
+
   </style>
 </head>
 <body>
@@ -93,44 +115,46 @@
       })
       .catch(error => console.error('Error al cargar el JSON:', error));
 
-    // Función para mostrar las rutinas en el list view
-    function mostrarRutinas(rutinas) {
-      const rutinasList = document.getElementById('rutinasList');
-      rutinasList.innerHTML = ''; // Limpiar la lista antes de cargar nuevas rutinas
+// Función para mostrar las rutinas en el list view
+function mostrarRutinas(rutinas) {
+  const rutinasList = document.getElementById('rutinasList');
+  rutinasList.innerHTML = ''; // Limpiar la lista antes de cargar nuevas rutinas
 
-      rutinas.forEach(rutina => {
-        const numEjercicios = rutina.ejercicios.length; // Contar los ejercicios
+  rutinas.forEach(rutina => {
+    const numEjercicios = rutina.ejercicios.length; // Contar los ejercicios
 
-        // Crear el item de la rutina
-        const rutinaItem = document.createElement('a');
-        rutinaItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center');
-        rutinaItem.href = `rutina_detalle.html?id=${rutina.id}`; // Enlace a detalle de rutina
+    // Crear el item de la rutina
+    const rutinaItem = document.createElement('a');
+    rutinaItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center');
+    rutinaItem.href = `rutina_detalle.html?id=${rutina.id}`; // Enlace a detalle de rutina
 
-        // Imagen de la rutina (cuadrado con bordes redondeados)
-        const img = document.createElement('img');
-        img.src = rutina.url_imagen;
-        img.alt = rutina.nombre;
-        img.classList.add('routine-img', 'me-3'); // Clase de estilo para imagen cuadrada
-        rutinaItem.appendChild(img);
+    // Imagen de la rutina (cuadrado con bordes redondeados)
+    const img = document.createElement('img');
+    img.src = rutina.url_imagen;
+    img.alt = rutina.nombre;
+    img.classList.add('routine-img', 'me-3'); // Clase de estilo para imagen cuadrada
+    rutinaItem.appendChild(img);
 
-        // Contenedor de texto
-        const textContainer = document.createElement('div');
+    // Contenedor de texto con ancho ajustado
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('text-container'); // Añadir la clase text-container para manejar el ancho
 
-        // Título (nombre de la rutina)
-        const title = document.createElement('h5');
-        title.classList.add('mb-1');
-        title.textContent = rutina.nombre;
-        textContainer.appendChild(title);
+    // Título (nombre de la rutina)
+    const title = document.createElement('h5');
+    title.classList.add('mb-1', 'routine-title'); // Clase que limita el texto a una línea y añade puntos suspensivos
+    title.textContent = rutina.nombre;
+    textContainer.appendChild(title);
 
-        // Descripción de cantidad de ejercicios
-        const exercisesCount = document.createElement('small');
-        exercisesCount.textContent = `${numEjercicios} ejercicios`;
-        textContainer.appendChild(exercisesCount);
+    // Descripción de cantidad de ejercicios
+    const exercisesCount = document.createElement('small');
+    exercisesCount.textContent = `${numEjercicios} ejercicios`;
+    textContainer.appendChild(exercisesCount);
 
-        rutinaItem.appendChild(textContainer);
-        rutinasList.appendChild(rutinaItem);
-      });
-    }
+    rutinaItem.appendChild(textContainer);
+    rutinasList.appendChild(rutinaItem);
+  });
+}
+
 
     // Filtro de rutinas en tiempo real mientras se escribe
     document.getElementById('searchInput').addEventListener('input', function() {
