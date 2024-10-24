@@ -555,7 +555,7 @@ contentContainer.appendChild(textContainer);
 
         // Crear el ícono de reloj
         const clockIcon = document.createElement('i');
-        clockIcon.className = 'bi bi-clock me-1'; // Añadir clases para el ícono de reloj
+        clockIcon.className = 'bi bi-clock me-1 d-flex justify-content-between align-items-center'; // Añadir clases para el ícono de reloj
 
         // Establecer el contenido del small
         restTimeElement.textContent = `Descanso en series: ${restTime.minutos}m ${restTime.segundos}s`;
@@ -566,8 +566,12 @@ contentContainer.appendChild(textContainer);
         // Agregar el tiempo de descanso al textContainer
         textContainer.appendChild(restTimeElement);
 
-        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
+        // Modificar el href para incluir id, minutos y segundos en la URL
+        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}&minutos=${restTime.minutos}&segundos=${restTime.segundos}`;
+
+        // Añadir el ejercicio a la lista
         exerciseList.appendChild(ejercicioItem);
+
       }
     });
   } else {
