@@ -38,15 +38,16 @@
   white-space: nowrap; /* Evita que el texto se envuelva */
   overflow: hidden; /* Oculta el texto que se desborda */
   text-overflow: ellipsis; /* Muestra puntos suspensivos */
-  max-width: 230px; /* Establece un ancho máximo para el contenedor del texto */
+  max-width: 210px; /* Establece un ancho máximo para el contenedor del texto */
 
   font-size: 1.1em;
 }
 
-.exercise-item {
-  max-width: 300px; /* Limitar el ancho máximo del contenedor del ejercicio */
-  overflow: hidden; /* Evitar el desbordamiento del contenedor */
+small{
+  font-size: 0.8em;
 }
+
+
 
 
     .form-section {
@@ -465,7 +466,7 @@ Promise.all([
 const textContainer = document.createElement('div');
 textContainer.classList.add('text-container'); // Añade esta clase para aplicar estilos
 const title = document.createElement('h5');
-title.classList.add('mb-1', 'exercise-name'); // Añade la clase exercise-name
+title.classList.add('exercise-name'); // Añade la clase exercise-name
 title.textContent = ejercicioData.nombre;
 
 const details = document.createElement('small');
@@ -504,7 +505,7 @@ contentContainer.appendChild(textContainer);
 
         // Crear el ícono de reloj
         const clockIcon = document.createElement('i');
-        clockIcon.className = 'bi bi-clock me-1 d-flex justify-content-between align-items-center'; // Añadir clases para el ícono de reloj
+        clockIcon.className = 'bi bi-clock me-1'; // Añadir clases para el ícono de reloj
 
         // Establecer el contenido del small
         restTimeElement.textContent = `Descanso en series: ${restTime.minutos}m ${restTime.segundos}s`;
@@ -515,12 +516,8 @@ contentContainer.appendChild(textContainer);
         // Agregar el tiempo de descanso al textContainer
         textContainer.appendChild(restTimeElement);
 
-        // Modificar el href para incluir id, minutos y segundos en la URL
-        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}&minutos=${restTime.minutos}&segundos=${restTime.segundos}`;
-
-        // Añadir el ejercicio a la lista
+        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
         exerciseList.appendChild(ejercicioItem);
-
       }
     });
   } else {
