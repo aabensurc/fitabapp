@@ -34,11 +34,15 @@
       
     }
 
+    .text-container{
+      max-width: 210px;
+    }
+
     .exercise-name {
   white-space: nowrap; /* Evita que el texto se envuelva */
   overflow: hidden; /* Oculta el texto que se desborda */
   text-overflow: ellipsis; /* Muestra puntos suspensivos */
-  max-width: 210px; /* Establece un ancho máximo para el contenedor del texto */
+  
 
   font-size: 1.1em;
 }
@@ -47,7 +51,53 @@ small{
   font-size: 0.8em;
 }
 
+@media (max-width: 374px) {
+  .text-container {
 
+    max-width: 180px; /* Establece un ancho máximo para el contenedor del texto */
+  
+    font-size: 0.9em;
+  }
+  small{
+  font-size: 0.6em;
+  }
+}
+
+@media (min-width: 428px) and (max-width: 478px) {
+  .text-container {
+
+    max-width: 270px; /* Establece un ancho máximo para el contenedor del texto */
+  
+    font-size: 1.1em;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 599px) {
+  .text-container {
+
+    max-width: 300px; /* Establece un ancho máximo para el contenedor del texto */
+  
+    font-size: 1.1em;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 869px){
+  .text-container {
+
+    max-width: 500px; /* Establece un ancho máximo para el contenedor del texto */
+  
+    font-size: 1.1em;
+  }
+}
+
+@media (min-width: 870px){
+  .text-container {
+
+    max-width: 100%; /* Establece un ancho máximo para el contenedor del texto */
+  
+    font-size: 1.1em;
+  }
+}
 
 
     .form-section {
