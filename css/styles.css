@@ -1,3 +1,7 @@
+@import url(https://pro.fontawesome.com/releases/v5.10.0/css/all.css);
+
+
+
 /* Fuente para Gilroy-Light */
 @font-face {
   font-family: 'MiFuente';
@@ -362,34 +366,71 @@ align-items: center;
 
 
 
-.navbar-nav {
-flex: 1; /* Permite que la lista de navegación ocupe todo el espacio */
+
+.bg-gray-100 {
+  background-color: #f7fafc;
 }
+.navbar {
 
-.nav-link {
-text-align: center; /* Centra el texto debajo del icono */
-font-size: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  
 }
-
-.nav-link:hover {
-text-decoration: none; /* Quita el subrayado al pasar el ratón */
+.navbar-item {
+  flex: 1;
+  text-align: center;
+  color: gray;
+  transition: color 0.3s;
+  text-decoration: none;
+  outline: none;
+  background: transparent;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
-
-
-.nav-link.active {
-color: #fff; /* Color del texto para el enlace activo */
-background-color: #47a5f1;
+.navbar-item:hover {
+  color: #2196F3;
 }
-
-.nav-link.active::after {
-content: ""; /* Crea un indicador visual */
-display: block;
-width: 100%; /* Ocupar el ancho completo del enlace */
-height: 2px; /* Altura de la línea */
-background-color: #ffffff; /* Color de la línea, puedes cambiarlo */
-margin-top: 4px; /* Espaciado entre el texto y la línea */
+.navbar-item:active {
+  background: transparent;
 }
-
+.navbar-item i {
+  font-size: 1rem;
+}
+.navbar-item span {
+  font-size: 0.8rem;
+  display: block;
+  line-height: 1.2;
+}
+.navbar-item:focus::after, .navbar-item:active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 0.15em;
+  background-color: #2196F3;
+  border-radius: 10px;
+}
+.navbar-item.active {
+  color: #2196F3; /* Cambiar color del texto del elemento activo */
+}
+.navbar-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 0.15em;
+  background-color: #2196F3; /* Color de la línea debajo del texto */
+  border-radius: 10px;
+}
 
 
 
