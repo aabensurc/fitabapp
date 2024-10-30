@@ -48,7 +48,7 @@ margin: 0;
 .card-body li {
 display: flex;
 align-items: center;
-padding: 10px 15px; /* Espaciado interno */
+padding: 10px 0px; /* Espaciado interno */
 border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre elementos */
 font-size: 0.9rem; /* Tamaño de fuente adecuado */
 }
@@ -80,7 +80,7 @@ font-size: 1.1em;
   <div class="app-bar d-flex justify-content-between">
     <h1>Dieta del día</h1>
     <div id="generar-imagen">
-      <i class="bi bi-printer-fill"></i>
+      <i class="bi bi-download"></i>
     </div>
   </div>
 
@@ -186,7 +186,7 @@ font-size: 1.1em;
               contenido += `
               <li class="d-flex justify-content-between align-items-center">
                 <span>${alimento.cantidad} ${alimento.unidad} de ${alimento.alimento}</span>
-                <input type="checkbox" id="${alimentoId}" class="form-check-input ms-auto">
+                <input type="checkbox" id="${alimentoId}" class="form-check-input ms-auto mt-0">
               </li>
               `;
             }
@@ -233,66 +233,7 @@ font-size: 1.1em;
       actualizarDia();
     });
 
-    // Solicitar permiso para las notificaciones
-function solicitarPermisoNotificaciones() {
-  if ('Notification' in window) {
-    Notification.requestPermission().then((resultado) => {
-      if (resultado === 'granted') {
-        console.log('Permiso para notificaciones concedido.');
-      } else {
-        console.log('Permiso para notificaciones denegado.');
-      }
-    });
-  }
-}
-
-// Llama a esta función cuando se carga la aplicación
-window.onload = () => {
-  solicitarPermisoNotificaciones();
-  actualizarDia();
-  programarNotificaciones(); // Llama a la función para programar las notificaciones
-};
-
-
-  </script>
-
-  <script>
-    async function programarNotificaciones() {
-  const diaActual = dias[diaActualIndice];
-  const usuario = localStorage.getItem('username');
-
-  try {
-    const response = await fetch('json/dietas.json');
-    const dietas = await response.json();
-    const dietaUsuario = dietas.find(dieta => dieta.usuario === usuario);
-
-    if (dietaUsuario) {
-      const comidasDelDia = dietaUsuario[diaActual];
-
-      for (const [comida, datosComida] of Object.entries(comidasDelDia)) {
-        const horaComida = datosComida.hora;
-        const [hora, minutos] = horaComida.split(':');
-
-        // Crear un nuevo Date para la notificación
-        const fechaNotificacion = new Date();
-        fechaNotificacion.setHours(hora, minutos, 0, 0); // Establecer hora y minutos
-
-        // Programar la notificación
-        if (fechaNotificacion > new Date()) { // Solo programar si la hora no ha pasado
-          setTimeout(() => {
-            new Notification(`¡Hora de ${comida.charAt(0).toUpperCase() + comida.slice(1)}!`, {
-              body: `Recuerda comer ${datosComida.alimentos.map(a => a.alimento).join(', ')}.`,
-              icon: 'img/favicon.ico' // Cambia a la ruta de tu ícono
-            });
-          }, fechaNotificacion - new Date());
-        }
-      }
-    }
-  } catch (error) {
-    console.error('Error al cargar las dietas:', error);
-  }
-}
-
+    window.onload = actualizarDia;
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -312,6 +253,5 @@ window.onload = () => {
       });
     });
   </script>
-  
 </body>
 </html>
