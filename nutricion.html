@@ -11,229 +11,247 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="manifest" href="manifest.json">
   <title>FITABAPP</title>
+
   
   <!-- Incluir el archivo auth.js -->
   <script src="js/auth.js"></script>
   <script>
-    // Llamar a la función para verificar si el usuario está logueado
     window.addEventListener('load', checkLogin);
   </script>
 
+<style>
+  .date-selector {
+display: flex;
+align-items: center;
+justify-content: center;
 
-  <style>
-        .date-selector {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+}
+.date-selector i{
+color: white;
+background-color: #2196F3;
+padding: 5px;
+border-radius: 5px;
+}
 
-    }
-    .date-selector i{
-    color: white;
-      background-color: #2196F3;
-      padding: 5px;
-      border-radius: 5px;
-    }
+#dia-actual{
+font-size: 1.1rem; 
+}
 
-    #dia-actual{
-      font-size: 1.1rem; 
-    }
+/* Quitar las viñetas de la lista */
+.card-body ul {
+list-style-type: none; /* Eliminar viñetas */
+padding: 0; /* Quitar padding por defecto */
+margin: 0;
+}
 
-      /* Quitar las viñetas de la lista */
-  .card-body ul {
-    list-style-type: none; /* Eliminar viñetas */
-    padding: 0; /* Quitar padding por defecto */
-    margin: 0;
-  }
+/* Diseño tipo lista de app móvil */
+.card-body li {
+display: flex;
+align-items: center;
+padding: 10px 15px; /* Espaciado interno */
+border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre elementos */
+font-size: 0.9rem; /* Tamaño de fuente adecuado */
+}
 
-  /* Diseño tipo lista de app móvil */
-  .card-body li {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px; /* Espaciado interno */
-    border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre elementos */
-    font-size: 1rem; /* Tamaño de fuente adecuado */
-  }
+/* El último elemento no tendrá borde inferior */
+.card-body li:last-child {
+border-bottom: none;
+}
 
-  /* El último elemento no tendrá borde inferior */
-  .card-body li:last-child {
-    border-bottom: none;
-  }
+/* Personalizar el ícono o contenido que acompaña a los elementos de la lista */
+.card-body li::before {
+font-family: 'Bootstrap Icons'; /* Usar íconos de Bootstrap */
+margin-right: 10px; /* Separación entre ícono y texto */
+color: #2196F3; /* Color del ícono */
+}
 
-  /* Personalizar el ícono o contenido que acompaña a los elementos de la lista */
-  .card-body li::before {
-    font-family: 'Bootstrap Icons'; /* Usar íconos de Bootstrap */
-    margin-right: 10px; /* Separación entre ícono y texto */
-    color: #2196F3; /* Color del ícono */
-  }
+/* Personalizar el hover para darle efecto móvil */
+.card-body li:hover {
+background-color: #f5f5f5; /* Cambiar color de fondo al pasar sobre el elemento */
+}
 
-  /* Personalizar el hover para darle efecto móvil */
-  .card-body li:hover {
-    background-color: #f5f5f5; /* Cambiar color de fondo al pasar sobre el elemento */
-  }
-
-  h5{
-    font-size: 1.1em;
-  }
-  </style>
+h5{
+font-size: 1.1em;
+}
+</style>
 
 </head>
 <body>
-  <!-- App Bar -->
   <div class="app-bar d-flex justify-content-between">
-    <h1>Dieta del día</h1> <!-- Título dinámico -->
+    <h1>Dieta del día</h1>
     <div id="generar-imagen">
       <i class="bi bi-printer-fill"></i>
     </div>
   </div>
 
   <div class="container-fluid" id="container-nutricion">
-
-        <!-- Selector de fecha -->
     <div class="date-selector my-3">
       <i id="prev-dia" class="bi bi-chevron-left"></i>
       <input type="text" id="dia-actual" class="form-control text-center mx-2" value="" readonly>
       <i id="next-dia" class="bi bi-chevron-right"></i>
     </div>
-
     <div id="dieta"></div>
   </div>
 
-  <!-- Bottom Navigation -->
-        <!-- Navbar -->
-        <div class="navbar">
-            <a href="index.html" class="navbar-item"> <!-- Elemento activo -->
-                <i class="far fa-home"></i>
-                <span>Inicio</span>
-            </a>
-            <a href="rutinas.html" class="navbar-item">
-                <i class="far fa-search"></i>
-                <span>Rutinas</span>
-            </a>
-            <a href="ejercicios.html" class="navbar-item">
-                <i class="far fa-dumbbell"></i>
-                <span>Ejercicios</span>
-            </a>
-            <a href="nutricion.html" class="navbar-item active">
-                <i class="fas fa-apple-alt"></i>
-                <span>Dieta</span>
-            </a>
-        </div>
+  <div class="navbar">
+    <a href="index.html" class="navbar-item">
+      <i class="far fa-home"></i>
+      <span>Inicio</span>
+    </a>
+    <a href="rutinas.html" class="navbar-item">
+      <i class="far fa-search"></i>
+      <span>Rutinas</span>
+    </a>
+    <a href="ejercicios.html" class="navbar-item">
+      <i class="far fa-dumbbell"></i>
+      <span>Ejercicios</span>
+    </a>
+    <a href="nutricion.html" class="navbar-item active">
+      <i class="fas fa-apple-alt"></i>
+      <span>Dieta</span>
+    </a>
+  </div>
 
-
-  <!-- Bootstrap JS and dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/app.js"></script>
   <script>
-    // Array de los días de la semana
     const dias = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-    let diaActualIndice = new Date().getDay(); // Obtiene el índice del día actual (0=domingo, 6=sábado)
-    
-    // Función para actualizar el día mostrado
-    function actualizarDia() {
-      const diaActual = dias[diaActualIndice]; // Día en texto
-      document.getElementById('dia-actual').value = diaActual.charAt(0).toUpperCase() + diaActual.slice(1);
-      cargarDietaPorDia(diaActual); // Cargar la dieta del día seleccionado
+    let diaActualIndice = new Date().getDay();
+
+    function abrirIndexedDB() {
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open("fitabappDB", 1);
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          db.createObjectStore("checkboxes", { keyPath: "id" });
+        };
+        request.onsuccess = (event) => resolve(event.target.result);
+        request.onerror = (event) => reject("Error al abrir IndexedDB:", event.target.error);
+      });
     }
 
-    // Cargar dietas y mostrar la dieta del día seleccionado
+    async function guardarEstadoCheckbox(id, estado) {
+      const db = await abrirIndexedDB();
+      const tx = db.transaction("checkboxes", "readwrite");
+      const store = tx.objectStore("checkboxes");
+      store.put({ id, estado });
+      tx.oncomplete = () => db.close();
+    }
+
+    async function cargarEstadoCheckbox(id) {
+      const db = await abrirIndexedDB();
+      const tx = db.transaction("checkboxes", "readonly");
+      const store = tx.objectStore("checkboxes");
+      const request = store.get(id);
+
+      return new Promise((resolve) => {
+        request.onsuccess = () => resolve(request.result ? request.result.estado : false);
+        request.onerror = () => resolve(false);
+      });
+    }
+
+    function actualizarDia() {
+      const diaActual = dias[diaActualIndice];
+      document.getElementById('dia-actual').value = diaActual.charAt(0).toUpperCase() + diaActual.slice(1);
+      cargarDietaPorDia(diaActual);
+    }
+
     async function cargarDietaPorDia(dia) {
-    const usuario = localStorage.getItem('username'); // Obtener nombre de usuario
+      const usuario = localStorage.getItem('username');
 
-    try {
-        const response = await fetch('json/dietas.json'); // Cargar el archivo JSON
-        const dietas = await response.json(); // Convertir a objeto JSON
-
-        // Buscar la dieta del usuario
+      try {
+        const response = await fetch('json/dietas.json');
+        const dietas = await response.json();
         const dietaUsuario = dietas.find(dieta => dieta.usuario === usuario);
 
         if (dietaUsuario) {
-            const comidasDelDia = dietaUsuario[dia]; // Obtener las comidas del día
-            let contenido = ``; // No se mostrará ningún título
+          const comidasDelDia = dietaUsuario[dia];
+          let contenido = ``;
 
-            for (const [comida, datosComida] of Object.entries(comidasDelDia)) {
-              const horaFormateada = formatearHora(datosComida.hora); // Convierte la hora a formato AM/PM
-                contenido += `
-                <div class="card mb-3">
-                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center" id="heading-${comida}">
-                        <h5 class="mb-0">
-                            ${comida.charAt(0).toUpperCase() + comida.slice(1)} - ${horaFormateada}
-                        </h5>
-                        <!-- Ícono de colapso flotante -->
-                        <button class="btn btn-link text-white p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${comida}" aria-expanded="true" aria-controls="collapse-${comida}">
-                            <i class="bi bi-chevron-up"></i>
-                        </button>
-                    </div>
-                    <div id="collapse-${comida}" class="collapse show" aria-labelledby="heading-${comida}">
-                        <div class="card-body">
-                            <ul>`;
-                datosComida.alimentos.forEach(alimento => {
-                    contenido += `<li>${alimento.cantidad} ${alimento.unidad} de ${alimento.alimento}</li>`;
-                });
-                contenido += `</ul>
-                        </div>
-                    </div>
-                </div>`;
+          for (const [comida, datosComida] of Object.entries(comidasDelDia)) {
+            const horaFormateada = formatearHora(datosComida.hora);
+            contenido += `
+            <div class="card mb-3">
+              <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center" id="heading-${comida}">
+                <h5 class="mb-0">${comida.charAt(0).toUpperCase() + comida.slice(1)} - ${horaFormateada}</h5>
+                <button class="btn btn-link text-white p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${comida}" aria-expanded="true" aria-controls="collapse-${comida}">
+                  <i class="bi bi-chevron-up"></i>
+                </button>
+              </div>
+              <div id="collapse-${comida}" class="collapse show" aria-labelledby="heading-${comida}">
+                <div class="card-body">
+                  <ul>`;
+            for (const alimento of datosComida.alimentos) {
+              const alimentoId = `${dia}-${comida}-${alimento.alimento}`;
+              contenido += `
+              <li class="d-flex justify-content-between align-items-center">
+                <span>${alimento.cantidad} ${alimento.unidad} de ${alimento.alimento}</span>
+                <input type="checkbox" id="${alimentoId}" class="form-check-input ms-auto">
+              </li>
+              `;
             }
+            contenido += `</ul>
+                </div>
+              </div>
+            </div>`;
+          }
 
-            document.getElementById('dieta').innerHTML = contenido; // Mostrar en el contenedor
+          document.getElementById('dieta').innerHTML = contenido;
+          marcarCheckboxes();
         } else {
-            document.getElementById('dieta').innerHTML = "<p>No se encontró la dieta para el usuario.</p>";
+          document.getElementById('dieta').innerHTML = "<p>No se encontró la dieta para el usuario.</p>";
         }
-    } catch (error) {
+      } catch (error) {
         console.error('Error al cargar las dietas:', error);
         document.getElementById('dieta').innerHTML = "<p>Error al cargar las dietas.</p>";
+      }
     }
-}
 
+    async function marcarCheckboxes() {
+      const checkboxes = document.querySelectorAll('.form-check-input');
+      for (const checkbox of checkboxes) {
+        checkbox.checked = await cargarEstadoCheckbox(checkbox.id);
+        checkbox.addEventListener("change", () => guardarEstadoCheckbox(checkbox.id, checkbox.checked));
+      }
+    }
 
-    // Navegar al día anterior
+    function formatearHora(hora) {
+      const [hora24, minutos] = hora.split(':');
+      const horaNum = parseInt(hora24, 10);
+      const periodo = horaNum >= 12 ? 'PM' : 'AM';
+      const hora12 = horaNum % 12 || 12;
+      return `${hora12}:${minutos} ${periodo}`;
+    }
+
     document.getElementById('prev-dia').addEventListener('click', () => {
-      diaActualIndice = (diaActualIndice - 1 + dias.length) % dias.length; // Ciclar entre días
+      diaActualIndice = (diaActualIndice - 1 + dias.length) % dias.length;
       actualizarDia();
     });
 
-    // Navegar al día siguiente
     document.getElementById('next-dia').addEventListener('click', () => {
-      diaActualIndice = (diaActualIndice + 1) % dias.length; // Ciclar entre días
+      diaActualIndice = (diaActualIndice + 1) % dias.length;
       actualizarDia();
     });
 
-    // Cargar el día actual al cargar la página
     window.onload = actualizarDia;
   </script>
 
-  <!-- Cargar html2canvas -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
   <script>
- // Generar la imagen del contenedor
-document.getElementById('generar-imagen').addEventListener('click', () => {
-  const contenedor = document.getElementById('container-nutricion');
-  html2canvas(contenedor).then((canvas) => {
-    // Crear una URL de la imagen
-    const imgData = canvas.toDataURL('image/png');
-    // Crear un enlace para descargar la imagen
-    const link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'dieta-nutricional.png'; // Nombre del archivo
-    document.body.appendChild(link); // Agregar el enlace al DOM
-    link.click(); // Hacer clic en el enlace para iniciar la descarga
-    document.body.removeChild(link); // Eliminar el enlace después de la descarga
-  }).catch(error => {
-    console.error('Error al generar la imagen:', error);
-  });
-});
-  </script>
-
-  <script>
-    // Función para convertir la hora a formato AM/PM
-function formatearHora(hora) {
-    const [hora24, minutos] = hora.split(':');
-    const horaNum = parseInt(hora24, 10);
-    const periodo = horaNum >= 12 ? 'PM' : 'AM';
-    const hora12 = horaNum % 12 || 12; // Convierte la hora a formato de 12 horas
-    return `${hora12}:${minutos} ${periodo}`;
-}
+    document.getElementById('generar-imagen').addEventListener('click', () => {
+      const contenedor = document.getElementById('container-nutricion');
+      html2canvas(contenedor).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'dieta-nutricional.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }).catch(error => {
+        console.error('Error al generar la imagen:', error);
+      });
+    });
   </script>
 </body>
 </html>
