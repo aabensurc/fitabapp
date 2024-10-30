@@ -76,3 +76,17 @@ self.addEventListener('fetch', event => {
       })
   );
 });
+
+
+self.addEventListener('push', function(event) {
+    const options = {
+        body: event.data ? event.data.text() : '¡Tienes una nueva notificación!',
+        icon: 'img/favicon.ico', // Cambia esto por la ruta de tu ícono
+        badge: 'img/favicon.ico' // Opcional: ícono que aparece en la notificación
+    };
+
+    event.waitUntil(
+        self.registration.showNotification('FITABAPP', options)
+    );
+});
+
