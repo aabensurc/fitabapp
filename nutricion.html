@@ -233,7 +233,66 @@ font-size: 1.1em;
       actualizarDia();
     });
 
-    window.onload = actualizarDia;
+    // Solicitar permiso para las notificaciones
+function solicitarPermisoNotificaciones() {
+  if ('Notification' in window) {
+    Notification.requestPermission().then((resultado) => {
+      if (resultado === 'granted') {
+        console.log('Permiso para notificaciones concedido.');
+      } else {
+        console.log('Permiso para notificaciones denegado.');
+      }
+    });
+  }
+}
+
+// Llama a esta función cuando se carga la aplicación
+window.onload = () => {
+  solicitarPermisoNotificaciones();
+  actualizarDia();
+  programarNotificaciones(); // Llama a la función para programar las notificaciones
+};
+
+
+  </script>
+
+  <script>
+    async function programarNotificaciones() {
+  const diaActual = dias[diaActualIndice];
+  const usuario = localStorage.getItem('username');
+
+  try {
+    const response = await fetch('json/dietas.json');
+    const dietas = await response.json();
+    const dietaUsuario = dietas.find(dieta => dieta.usuario === usuario);
+
+    if (dietaUsuario) {
+      const comidasDelDia = dietaUsuario[diaActual];
+
+      for (const [comida, datosComida] of Object.entries(comidasDelDia)) {
+        const horaComida = datosComida.hora;
+        const [hora, minutos] = horaComida.split(':');
+
+        // Crear un nuevo Date para la notificación
+        const fechaNotificacion = new Date();
+        fechaNotificacion.setHours(hora, minutos, 0, 0); // Establecer hora y minutos
+
+        // Programar la notificación
+        if (fechaNotificacion > new Date()) { // Solo programar si la hora no ha pasado
+          setTimeout(() => {
+            new Notification(`¡Hora de ${comida.charAt(0).toUpperCase() + comida.slice(1)}!`, {
+              body: `Recuerda comer ${datosComida.alimentos.map(a => a.alimento).join(', ')}.`,
+              icon: 'img/favicon.ico' // Cambia a la ruta de tu ícono
+            });
+          }, fechaNotificacion - new Date());
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error al cargar las dietas:', error);
+  }
+}
+
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -253,5 +312,6 @@ font-size: 1.1em;
       });
     });
   </script>
+  
 </body>
 </html>
