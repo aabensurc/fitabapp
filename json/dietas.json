@@ -12,7 +12,7 @@
                 ]
             },
             "media_mañana": {
-                "hora": "11:05",
+                "hora": "11:10",
                 "alimentos": [
                     { "alimento": "Yogurt", "cantidad": 200, "unidad": "ml" },
                     { "alimento": "Manzana", "cantidad": 1, "unidad": "unidad" }
