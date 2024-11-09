@@ -82,5 +82,17 @@
         "peso": 70,
         "estatura": 1.67,
         "estado": "Habilitado"
+    },
+    {
+        "id": 8,
+        "nombre_usuario": "fiorella1",
+        "password": "12345",
+        "nombre": "Fiorella",
+        "apellido": "Amiga",
+        "sexo": "F",
+        "edad": 27,
+        "peso": 64,
+        "estatura": 1.68,
+        "estado": "Habilitado"
     }
 ]
