@@ -127,10 +127,10 @@
       "username": "allisonz1",
       "id": 4,
       "fecha": "2025-05-17",
-      "nombre": "Rutina de Fuerza",
-      "descripcion": "Rutina para aumentar fuerza y masa muscular.",
+      "nombre": "Rutina de Piernas",
+      "descripcion": "Rutina para aumentar fuerza y masa muscular en las piernas.",
       "tipo": "Fuerza",
-      "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutina-fuerza-1.jpg",
+      "url_imagen": "https://www.myprotein.es/images?url=https://blogscdn.thehut.net/wp-content/uploads/sites/450/2017/12/15115625/rutina-de-pierna-mujer.jpg&format=webp&auto=avif&width=700&height=466&fit=crop",
       "ejercicios": [
         {
           "id_ejercicio": 1,
