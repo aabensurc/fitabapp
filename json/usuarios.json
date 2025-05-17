@@ -94,5 +94,17 @@
         "peso": 64,
         "estatura": 1.68,
         "estado": "Habilitado"
+    },
+    {
+        "id": 9,
+        "nombre_usuario": "allisonz1",
+        "password": "12345",
+        "nombre": "Allison Susan",
+        "apellido": "Zamalloa",
+        "sexo": "F",
+        "edad": 29,
+        "peso": 59,
+        "estatura": 1.57,
+        "estado": "Habilitado"
     }
 ]
