@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="description" content="Registrar Rutina Personalizada para el Día">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="css/styles.css"> <title>Registrar Rutina del Día</title>
+    <style>
+        .app-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #2196F3;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .app-bar h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .nav-icons {
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        .container {
+            margin-top: 90px; /* Ajusta esto para que el contenido no quede debajo del app-bar */
+            margin-bottom: 20px;
+        }
+        .exercise-item {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #f8f9fa;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-bar">
+        <div class="nav-icons" id="back-button">
+            <i class="bi bi-arrow-left"></i>
+        </div>
+        <h1>Registrar Rutina Personalizada</h1>
+        <div class="nav-icons"></div>
+    </div>
+
+    <div class="container">
+        <form id="routineHoyForm">
+            <div class="mb-3">
+                <label for="usernameSelect" class="form-label">Seleccionar Usuario</label>
+                <select class="form-select" id="usernameSelect" required>
+                    <option value="">Cargando usuarios...</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fechaRutina" class="form-label">Fecha de la Rutina</label>
+                <input type="text" class="form-control" id="fechaRutina" placeholder="Selecciona la fecha" required>
+            </div>
+            <div class="mb-3">
+                <label for="nombreRutinaHoy" class="form-label">Nombre de la Rutina</label>
+                <input type="text" class="form-control" id="nombreRutinaHoy" placeholder="Ej. Rutina de piernas, Cardio intenso" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="descripcionRutinaHoy" class="form-label">Descripción de la Rutina</label>
+                <textarea class="form-control" id="descripcionRutinaHoy" rows="3" placeholder="Detalles de la rutina" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="tipoRutinaHoy" class="form-label">Tipo de Rutina</label>
+                <select class="form-select" id="tipoRutinaHoy" required>
+                    <option value="">Selecciona un tipo</option>
+                    <option value="fuerza">Fuerza</option>
+                    <option value="hipertrofia">Hipertrofia</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="funcional">Funcional</option>
+                    <option value="resistencia">Resistencia</option>
+                    <option value="flexibilidad">Flexibilidad</option>
+                    <option value="abdomen">Abdomen</option>
+                    <option value="hiit">HIIT</option>
+                    <option value="yoga">Yoga</option>
+                    <option value="pilates">Pilates</option>
+                    <option value="rehabilitacion">Rehabilitación</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="urlImagenHoy" class="form-label">URL de la Imagen (opcional)</label>
+                <input type="url" class="form-control" id="urlImagenHoy" placeholder="https://ejemplo.com/imagen.jpg">
+            </div>
+
+            <hr>
+            <h4>Ejercicios de la Rutina</h4>
+            <div id="exercisesContainerHoy">
+                <div class="exercise-item">
+                    <h5>Ejercicio 1</h5>
+                    <div class="mb-3">
+                        <label for="ejercicioHoy1" class="form-label">Seleccionar Ejercicio</label>
+                        <select class="form-select exercise-select" id="ejercicioHoy1" required></select>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="seriesHoy1" class="form-label">Series</label>
+                            <input type="number" class="form-control exercise-series" id="seriesHoy1" min="1" value="3" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="medicionHoy1" class="form-label">Medición</label>
+                            <select class="form-select exercise-medicion" id="medicionHoy1" required>
+                                <option value="repeticiones">Repeticiones</option>
+                                <option value="segundos">Segundos</option>
+                                <option value="metros">Metros</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cantidadHoy1" class="form-label">Cantidad</label>
+                            <input type="number" class="form-control exercise-cantidad" id="cantidadHoy1" min="1" value="10" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label">Tiempo de Descanso (entre series)</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control exercise-descanso-min" placeholder="Minutos" min="0" value="1">
+                                <span class="input-group-text">min</span>
+                                <input type="number" class="form-control exercise-descanso-sec" placeholder="Segundos" min="0" max="59" value="30">
+                                <span class="input-group-text">seg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-danger btn-sm remove-exercise d-none">Eliminar Ejercicio</button>
+                </div>
+            </div>
+
+            <button type="button" id="addExerciseButtonHoy" class="btn btn-info mb-4">Añadir Otro Ejercicio</button>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">Guardar Rutina Personalizada</button>
+                <button type="button" id="closeButtonHoy" class="btn btn-secondary btn-lg">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script> <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const exercisesContainer = document.getElementById('exercisesContainerHoy');
+            const addExerciseButton = document.getElementById('addExerciseButtonHoy');
+            const routineHoyForm = document.getElementById('routineHoyForm');
+            const closeButton = document.getElementById('closeButtonHoy');
+            const dateInput = document.getElementById('fechaRutina');
+            const usernameSelect = document.getElementById('usernameSelect'); // Nuevo: el select para usuarios
+            let exerciseCount = 1;
+
+            // URL de tu nuevo script PHP
+            const PHP_API_URL = 'php/crear_rutina_hoy.php'; 
+
+            // --- NUEVA LÓGICA PARA CARGAR USUARIOS ---
+            async function loadUsersIntoSelect() {
+                try {
+                    const response = await fetch('json/usuarios.json'); // Ruta a tu archivo de usuarios
+                    const users = await response.json();
+
+                    // Limpiar opciones existentes (ej. "Cargando usuarios...")
+                    usernameSelect.innerHTML = '<option value="">Selecciona un usuario</option>';
+
+                    users.forEach(user => {
+                        // Solo añadir usuarios "Habilitado"
+                        if (user.estado === "Habilitado") {
+                            const option = document.createElement('option');
+                            option.value = user.nombre_usuario;
+                            option.textContent = user.nombre_usuario; // O user.nombre + ' ' + user.apellido
+                            usernameSelect.appendChild(option);
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error al cargar los usuarios:', error);
+                    usernameSelect.innerHTML = '<option value="">Error al cargar usuarios</option>';
+                    usernameSelect.disabled = true; // Deshabilitar si hay error
+                    alert('No se pudieron cargar los usuarios. Intenta de nuevo más tarde.');
+                }
+            }
+
+            // Llamar a la función para cargar usuarios al inicio
+            loadUsersIntoSelect();
+            // --- FIN NUEVA LÓGICA ---
+
+
+            // Inicializar Flatpickr para el campo de fecha
+            flatpickr(dateInput, {
+                locale: "es",
+                dateFormat: "Y-m-d",
+                defaultDate: "today", // Establecer la fecha actual por defecto
+                altInput: true,
+                altFormat: "F j, Y",
+                minDate: "today" // Opcional: No permitir fechas pasadas
+            });
+
+            // Función para cargar los ejercicios en los selects
+            async function loadExercisesIntoSelect(selectElement) {
+                try {
+                    const response = await fetch('json/ejercicios.json');
+                    const data = await response.json();
+                    const ejercicios = data.ejercicios;
+
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = "";
+                    defaultOption.textContent = "Selecciona un ejercicio";
+                    selectElement.appendChild(defaultOption);
+
+                    ejercicios.forEach(ej => {
+                        const option = document.createElement('option');
+                        option.value = ej.id;
+                        option.textContent = ej.nombre;
+                        selectElement.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error('Error al cargar los ejercicios:', error);
+                    alert('No se pudieron cargar los ejercicios. Intenta de nuevo más tarde.');
+                }
+            }
+
+            // Cargar ejercicios en el primer select al cargar la página
+            loadExercisesIntoSelect(document.getElementById('ejercicioHoy1'));
+
+            // Función para añadir un nuevo bloque de ejercicio al formulario
+            addExerciseButton.addEventListener('click', function() {
+                exerciseCount++;
+                const newExerciseHtml = `
+                    <div class="exercise-item">
+                        <h5>Ejercicio ${exerciseCount}</h5>
+                        <div class="mb-3">
+                            <label for="ejercicioHoy${exerciseCount}" class="form-label">Seleccionar Ejercicio</label>
+                            <select class="form-select exercise-select" id="ejercicioHoy${exerciseCount}" required></select>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="seriesHoy${exerciseCount}" class="form-label">Series</label>
+                                <input type="number" class="form-control exercise-series" id="seriesHoy${exerciseCount}" min="1" value="3" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="medicionHoy${exerciseCount}" class="form-label">Medición</label>
+                                <select class="form-select exercise-medicion" id="medicionHoy${exerciseCount}" required>
+                                    <option value="repeticiones">Repeticiones</option>
+                                    <option value="segundos">Segundos</option>
+                                    <option value="metros">Metros</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cantidadHoy${exerciseCount}" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control exercise-cantidad" id="cantidadHoy${exerciseCount}" min="1" value="10" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Tiempo de Descanso (entre series)</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control exercise-descanso-min" placeholder="Minutos" min="0" value="1">
+                                    <span class="input-group-text">min</span>
+                                    <input type="number" class="form-control exercise-descanso-sec" placeholder="Segundos" min="0" max="59" value="30">
+                                    <span class="input-group-text">seg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-danger btn-sm remove-exercise">Eliminar Ejercicio</button>
+                    </div>
+                `;
+                exercisesContainer.insertAdjacentHTML('beforeend', newExerciseHtml);
+                
+                const newSelectElement = document.getElementById(`ejercicioHoy${exerciseCount}`);
+                loadExercisesIntoSelect(newSelectElement);
+                updateRemoveButtonsVisibility();
+            });
+
+            // Función para eliminar un bloque de ejercicio
+            exercisesContainer.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-exercise')) {
+                    event.target.closest('.exercise-item').remove();
+                    updateExerciseNumbersAndRemoveButtons();
+                }
+            });
+
+            // Función para actualizar los números de los ejercicios y la visibilidad de los botones de eliminar
+            function updateExerciseNumbersAndRemoveButtons() {
+                const exerciseItems = exercisesContainer.querySelectorAll('.exercise-item');
+                exerciseCount = 0; // Resetear el contador global
+                exerciseItems.forEach((item) => {
+                    exerciseCount++;
+                    item.querySelector('h5').textContent = `Ejercicio ${exerciseCount}`;
+                    
+                    // Actualizar IDs para select e inputs
+                    item.querySelector('.exercise-select').id = `ejercicioHoy${exerciseCount}`;
+                    item.querySelector('.exercise-series').id = `seriesHoy${exerciseCount}`;
+                    item.querySelector('.exercise-medicion').id = `medicionHoy${exerciseCount}`;
+                    item.querySelector('.exercise-cantidad').id = `cantidadHoy${exerciseCount}`;
+
+                    // Mostrar botón de eliminar si hay más de un ejercicio, ocultarlo si solo hay uno
+                    const removeButton = item.querySelector('.remove-exercise');
+                    if (exerciseItems.length > 1) {
+                        removeButton.classList.remove('d-none');
+                    } else {
+                        removeButton.classList.add('d-none');
+                    }
+                });
+            }
+
+            // Inicializar la visibilidad de los botones de eliminar
+            function updateRemoveButtonsVisibility() {
+                const exerciseItems = exercisesContainer.querySelectorAll('.exercise-item');
+                if (exerciseItems.length <= 1) {
+                    exerciseItems[0].querySelector('.remove-exercise').classList.add('d-none');
+                } else {
+                    exerciseItems.forEach(item => item.querySelector('.remove-exercise').classList.remove('d-none'));
+                }
+            }
+            updateRemoveButtonsVisibility();
+
+
+            // Manejar el envío del formulario
+            routineHoyForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const username = usernameSelect.value; // Obtener el valor del select
+                const fecha = document.getElementById('fechaRutina').value;
+                const nombre = document.getElementById('nombreRutinaHoy').value;
+                const descripcion = document.getElementById('descripcionRutinaHoy').value;
+                const tipo = document.getElementById('tipoRutinaHoy').value;
+                const urlImagen = document.getElementById('urlImagenHoy').value;
+
+                const ejercicios = [];
+                const exerciseItems = exercisesContainer.querySelectorAll('.exercise-item');
+                
+                let allExercisesValid = true;
+                if (exerciseItems.length === 0) { // Asegurarse de que al menos un ejercicio esté agregado
+                    alert('Debes añadir al menos un ejercicio a la rutina.');
+                    return;
+                }
+
+                exerciseItems.forEach(item => {
+                    const idEjercicio = item.querySelector('.exercise-select').value;
+                    const series = parseInt(item.querySelector('.exercise-series').value);
+                    const medicion = item.querySelector('.exercise-medicion').value;
+                    const cantidad = parseInt(item.querySelector('.exercise-cantidad').value);
+                    const descansoMinutos = parseInt(item.querySelector('.exercise-descanso-min').value || 0);
+                    const descansoSegundos = parseInt(item.querySelector('.exercise-descanso-sec').value || 0);
+
+
+                    if (!idEjercicio || isNaN(series) || series <= 0 || !medicion || isNaN(cantidad) || cantidad <= 0 || isNaN(descansoMinutos) || isNaN(descansoSegundos) || descansoMinutos < 0 || descansoSegundos < 0 || descansoSegundos > 59) {
+                        allExercisesValid = false;
+                        return;
+                    }
+
+                    ejercicios.push({
+                        id_ejercicio: parseInt(idEjercicio),
+                        series: series,
+                        medicion: medicion,
+                        cantidad: cantidad,
+                        tiempo_descanso: {
+                            minutos: descansoMinutos,
+                            segundos: descansoSegundos
+                        }
+                    });
+                });
+
+                if (!allExercisesValid) {
+                    alert('Por favor, completa todos los campos de los ejercicios correctamente (selecciona un ejercicio, series y cantidad deben ser números positivos, y el tiempo de descanso válido).');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('username', username); // Ahora toma el valor del select
+                formData.append('fecha', fecha);
+                formData.append('nombre', nombre);
+                formData.append('descripcion', descripcion);
+                formData.append('tipo', tipo);
+                formData.append('url_imagen', urlImagen);
+                formData.append('ejercicios', JSON.stringify(ejercicios));
+
+                try {
+                    const response = await fetch(PHP_API_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        alert(result.message);
+                        // Redirigir a rutina_hoy.html con el username y la fecha
+                        window.location.href = `rutina_hoy.html?username=${username}&fecha=${fecha}`;
+                    } else {
+                        alert('Error al guardar la rutina: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error en la conexión o el servidor:', error);
+                    alert('Hubo un problema al intentar guardar la rutina. Por favor, verifica tu conexión o intenta más tarde.');
+                }
+            });
+
+            // Manejar el botón de cerrar/cancelar
+            document.getElementById('back-button').addEventListener('click', function() {
+                if (confirm('¿Estás seguro de que quieres cancelar? Los cambios no guardados se perderán.')) {
+                    window.history.back();
+                }
+            });
+
+            closeButton.addEventListener('click', function() {
+                if (confirm('¿Estás seguro de que quieres cancelar? Los cambios no guardados se perderán.')) {
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
