@@ -657,6 +657,62 @@ color: #ffffff;
 }
 
 
+
+
+/* Asegúrate de que tu párrafo 'p' tenga una altura de línea definida */
+p {
+    font-family: 'MiFuente', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5; /* ¡Mantén esta línea o ajústala si es necesario! */
+}
+
+/* Regla para truncar la descripción - ¡MUY IMPORTANTE! */
+#routineDescription.description-truncated {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    height: auto !important;
+
+     margin-bottom: 0px !important;
+}
+
+/* --- NUEVO ESTILO PARA EL BOTÓN Mostrar más/menos --- */
+.show-more-button {
+    /* Eliminamos el subrayado */
+    text-decoration: none;
+    /* Cambiamos el color a un gris más suave */
+    color: #adadad; /* Un gris de Bootstrap */
+    cursor: pointer;
+    font-weight: 500; /* Mantenemos un peso de fuente visible */
+ 
+    /* Para centrarlo y que parezca más "entradito" */
+    display: block; /* Ocupa su propia línea */
+    text-align: center; /* Centra el texto dentro del bloque */
+    padding: 5px 0; /* Un poco de padding vertical para que no se vea tan pegado */
+    font-size: 0.9rem; /* Un poco más pequeño si quieres que sea menos notorio */
+    transition: color 0.2s ease, border-color 0.2s ease; /* Transición suave para el color y el borde */
+
+    /* --- NUEVAS PROPIEDADES PARA EL BORDE --- */
+    border: 1px solid #dcdcdc; /* Borde de 1px sólido, color gris muy claro */
+    border-radius: 5px; /* Bordes redondeados sutiles */
+  /*  width: fit-content; /* El ancho se ajusta al contenido */
+    margin: 5px auto 0 auto; /* Centra el botón horizontalmente y añade margen superior */
+    padding: 5px 15px; /* Ajusta el padding para que el texto no toque el borde */
+}
+
+.show-more-button:hover {
+    color: #495057; /* Un gris un poco más oscuro al pasar el ratón */
+    border-color: #b0b0b0; /* El borde se oscurece un poco al pasar el ratón */
+}
+
+
+
+
+
 @media (min-width: 768px) {
   h1 {
     font-size: 2.5rem;
