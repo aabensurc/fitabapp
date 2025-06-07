@@ -2,7 +2,7 @@
     "ejercicios": [
         {
             "id": 1,
-            "nombre": "Sentadillas en maquina smith",
+            "nombre": "Sentadillas en maquina smith hola hoahola hola ",
             "descripcion": "Fortalece los m\u00fasculos de las piernas y gl\u00fateos. Mejora la estabilidad y postura corporal.",
             "musculos_involucrados": [
                 "Cu\u00e1driceps",
@@ -159,6 +159,16 @@
             ],
             "imagen_url": "https:\/\/www.shutterstock.com\/image-vector\/woman-doing-cardio-stationary-bike-600nw-2400565249.jpg",
             "video_url": "https:\/\/videos.pexels.com\/video-files\/4367759\/4367759-hd_1920_1080_30fps.mp4"
+        },
+        {
+            "id": 16,
+            "nombre": "Curl femoral sentado",
+            "descripcion": "ejercicio para femorales en maquina sentado",
+            "musculos_involucrados": [
+                "Femorales"
+            ],
+            "imagen_url": "https:\/\/images.ctfassets.net\/8urtyqugdt2l\/4DRhERHEzOSi7POHiecCsT\/b923dfac31133585e0b337b7201ad19f\/desktop-prone-vs-seated-leg-curl.jpg",
+            "video_url": "videos\/ejercicios\/seatedlegcurl2.mp4"
         }
     ]
 }
