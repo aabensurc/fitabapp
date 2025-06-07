@@ -83,97 +83,113 @@
 </div>
 
 
-  <script>
-const urlParams = new URLSearchParams(window.location.search);
-const rutinaId = urlParams.get('id');
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const rutinaId = urlParams.get('id');
 
-// Cargar rutinas y ejercicios desde sus archivos JSON
-Promise.all([
-  fetch('json/rutinas.json').then(response => response.json()),
-  fetch('json/ejercicios.json').then(response => response.json())
-])
-.then(([rutinasData, ejerciciosData]) => {
-  const rutina = rutinasData.rutinas.find(r => r.id == rutinaId);
-  if (rutina) {
-    // Mostrar datos de la rutina
-    document.getElementById('routineTitle').textContent = rutina.nombre;
-    document.getElementById('routineName').textContent = rutina.nombre;
-    document.getElementById('routineDescription').textContent = rutina.descripcion;
-    document.getElementById('routineType').textContent = rutina.tipo.toUpperCase();
-    document.getElementById('routineImage').src = rutina.url_imagen;
+        Promise.all([
+            fetch('json/rutinas.json').then(response => response.json()),
+            fetch('json/ejercicios.json').then(response => response.json())
+        ])
+        .then(([rutinasData, ejerciciosData]) => {
+            const rutina = rutinasData.rutinas.find(r => r.id == rutinaId);
+            if (rutina) {
+                document.getElementById('routineTitle').textContent = rutina.nombre;
+                document.getElementById('routineName').textContent = rutina.nombre;
+                const routineDescriptionElement = document.getElementById('routineDescription');
+                routineDescriptionElement.textContent = rutina.descripcion; 
+                document.getElementById('routineType').textContent = rutina.tipo.toUpperCase();
+                document.getElementById('routineImage').src = rutina.url_imagen;
 
-    // Mostrar ejercicios
-    const exerciseList = document.getElementById('exerciseList');
-    rutina.ejercicios.forEach(ejercicio => {
-      const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
-      if (ejercicioData) {
-        const ejercicioItem = document.createElement('a');
-        ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
+                // --- INICIO: Lógica para "Mostrar más/menos" en la descripción ---
+                setTimeout(() => {
+                    // Quitamos temporalmente la clase para medir la altura real del texto completo
+                    routineDescriptionElement.classList.remove('description-truncated');
+                    routineDescriptionElement.style.webkitLineClamp = 'unset';
+                    routineDescriptionElement.style.overflow = 'visible';
+                    routineDescriptionElement.style.display = 'block';
 
-        // Crear el contenedor que tendrá la imagen y el texto
-        const contentContainer = document.createElement('div');
-        contentContainer.classList.add('d-flex', 'align-items-center'); // Para alinear imagen y texto
+                    const lineHeight = parseFloat(getComputedStyle(routineDescriptionElement).lineHeight);
+                    const threeLinesHeight = lineHeight * 3;
 
-        const img = document.createElement('img');
-        img.src = ejercicioData.imagen_url;
-        img.alt = ejercicioData.nombre;
-        img.classList.add('exercise-img', 'me-3');
+                    // Ahora la condición clave: solo si el texto real es más largo que 3 líneas + un margen
+                    if (routineDescriptionElement.scrollHeight > threeLinesHeight + 5) {
+                        routineDescriptionElement.classList.add('description-truncated'); // Aplicamos el truncado
+                        
+                        const showMoreButton = document.createElement('span');
+                        showMoreButton.classList.add('show-more-button');
+                        showMoreButton.textContent = ' Mostrar más';
+                        
+                        routineDescriptionElement.insertAdjacentElement('afterend', showMoreButton);
 
-            // Agregar evento click para mostrar el modal con la imagen
-            img.addEventListener('click', (e) => {
-              e.preventDefault(); // Evitar la acción por defecto de navegar al enlace
-              mostrarImagenModal(ejercicioData.imagen_url); // Mostrar la imagen en el modal
-            });
+                        let isExpanded = false;
 
-        const textContainer = document.createElement('div');
-        const title = document.createElement('h5');
-        title.classList.add('mb-1');
-        title.textContent = ejercicioData.nombre;
+                        showMoreButton.addEventListener('click', () => {
+                            if (isExpanded) {
+                                routineDescriptionElement.classList.add('description-truncated');
+                                showMoreButton.textContent = ' Mostrar más';
+                            } else {
+                                routineDescriptionElement.classList.remove('description-truncated');
+                                showMoreButton.textContent = ' Mostrar menos';
+                            }
+                            isExpanded = !isExpanded;
+                        });
+                    }
+                    // Si el texto NO excede las tres líneas, esta sección "if" no se ejecuta,
+                    // y por lo tanto, el botón 'showMoreButton' nunca se crea ni se añade al DOM.
+                }, 250); 
+                // --- FIN: Lógica para "Mostrar más/menos" ---
 
-        const details = document.createElement('small');
-        details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
-
-        // Agregar el texto y la imagen al contentContainer
-        textContainer.appendChild(title);
-        textContainer.appendChild(details);
-        contentContainer.appendChild(img);
-        contentContainer.appendChild(textContainer);
-
-        // Añadir contentContainer al item
-        ejercicioItem.appendChild(contentContainer);
-
-        // Crear checkbox y colocarlo al final del item
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.classList.add('form-check-input', 'ms-auto');
-        checkbox.addEventListener('click', () => {
-          if (checkbox.checked) {
-            completarEjercicio(ejercicioItem, rutina.ejercicios.length);
-          } else {
-            // Si se desmarca, decrementar el contador
-            ejerciciosCompletados--;
-            actualizarProgreso(rutina.ejercicios.length);
-            // Mostrar el ítem de nuevo (puedes ocultarlo en vez de eliminarlo)
-            item.style.display = 'flex'; // o lo que sea necesario para que se muestre
-          }
-        });
-
-
-        // Añadir el checkbox al final del item
-        ejercicioItem.appendChild(checkbox);
-
-        // Agregar el evento click para redirigir a detalle_ejer.html
-        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
-
-        // Finalmente, añadir el item a la lista
-        exerciseList.appendChild(ejercicioItem);
-      }
+                // Tu código existente para ejercicios...
+                const exerciseList = document.getElementById('exerciseList');
+                rutina.ejercicios.forEach(ejercicio => {
+                    const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
+                    if (ejercicioData) {
+                        const ejercicioItem = document.createElement('a');
+                        ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
+                        const contentContainer = document.createElement('div');
+                        contentContainer.classList.add('d-flex', 'align-items-center');
+                        const img = document.createElement('img');
+                        img.src = ejercicioData.imagen_url;
+                        img.alt = ejercicioData.nombre;
+                        img.classList.add('exercise-img', 'me-3');
+                        img.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            mostrarImagenModal(ejercicioData.imagen_url);
+                        });
+                        const textContainer = document.createElement('div');
+                        const title = document.createElement('h5');
+                        title.classList.add('mb-1');
+                        title.textContent = ejercicioData.nombre;
+                        const details = document.createElement('small');
+                        details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
+                        textContainer.appendChild(title);
+                        textContainer.appendChild(details);
+                        contentContainer.appendChild(img);
+                        contentContainer.appendChild(textContainer);
+                        ejercicioItem.appendChild(contentContainer);
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.classList.add('form-check-input', 'ms-auto');
+                        checkbox.addEventListener('click', () => {
+                            if (checkbox.checked) {
+                                completarEjercicio(ejercicioItem, rutina.ejercicios.length);
+                            } else {
+                                ejerciciosCompletados--;
+                                actualizarProgreso(rutina.ejercicios.length);
+                            }
+                        });
+                        ejercicioItem.appendChild(checkbox);
+                        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
+                        exerciseList.appendChild(ejercicioItem);
+                    }
+                });
+            }
+        })
+        .catch(error => console.error('Error al cargar los JSON:', error));
     });
-  }
-})
-.catch(error => console.error('Error al cargar los JSON:', error));
-
-  </script>
+</script>
 
   <script>
     function actualizarProgreso(totalEjercicios) {
