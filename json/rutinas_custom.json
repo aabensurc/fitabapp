@@ -1,209 +1,240 @@
 {
-  "rutinas": [
-    {
-      "username": "aabensurc",
-      "id": 1,
-      "fecha": "2025-06-07",
-      "nombre": "Rutina de Fuerza",
-      "descripcion": "Rutina para aumentar fuerza y masa muscular.",
-      "tipo": "Fuerza",
-      "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutina-fuerza-1.jpg",
-      "ejercicios": [
+    "rutinas": [
         {
-          "id_ejercicio": 1,
-          "series": 3,
-          "cantidad": 10,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 30
-          }
+            "username": "aabensurc",
+            "id": 1,
+            "fecha": "2025-06-07",
+            "nombre": "Rutina de Fuerza",
+            "descripcion": "Rutina para aumentar fuerza y masa muscular.",
+            "tipo": "Fuerza",
+            "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutina-fuerza-1.jpg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 1,
+                    "series": 3,
+                    "cantidad": 10,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 30
+                    }
+                },
+                {
+                    "id_ejercicio": 2,
+                    "series": 4,
+                    "cantidad": 12,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 2,
+                        "segundos": 0
+                    }
+                },
+                {
+                    "id_ejercicio": 8,
+                    "series": 4,
+                    "cantidad": 14,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 45
+                    }
+                }
+            ]
         },
         {
-          "id_ejercicio": 2,
-          "series": 4,
-          "cantidad": 12,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 2,
-            "segundos": 0
-          }
+            "username": "aabensurc",
+            "id": 2,
+            "fecha": "2025-05-18",
+            "nombre": "Rutina de Resistencia",
+            "descripcion": "Rutina para aumentar velocidad.",
+            "tipo": "Resistencia",
+            "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 2,
+                    "series": 3,
+                    "cantidad": 18,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 0,
+                        "segundos": 45
+                    }
+                },
+                {
+                    "id_ejercicio": 4,
+                    "series": 4,
+                    "cantidad": 15,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 15
+                    }
+                },
+                {
+                    "id_ejercicio": 7,
+                    "series": 4,
+                    "cantidad": 14,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 0
+                    }
+                }
+            ]
         },
         {
-          "id_ejercicio": 8,
-          "series": 4,
-          "cantidad": 14,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 45
-          }
+            "username": "jeanaq",
+            "id": 3,
+            "fecha": "2025-05-17",
+            "nombre": "Rutina de Resistencia",
+            "descripcion": "Rutina para aumentar velocidad.",
+            "tipo": "Resistencia",
+            "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 2,
+                    "series": 3,
+                    "cantidad": 18,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 0,
+                        "segundos": 45
+                    }
+                },
+                {
+                    "id_ejercicio": 4,
+                    "series": 4,
+                    "cantidad": 15,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 15
+                    }
+                },
+                {
+                    "id_ejercicio": 6,
+                    "series": 3,
+                    "cantidad": 12,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 30
+                    }
+                }
+            ]
+        },
+        {
+            "username": "allisonz1",
+            "id": 4,
+            "fecha": "2025-05-17",
+            "nombre": "Rutina de Piernas",
+            "descripcion": "Rutina para aumentar fuerza y masa muscular en las piernas.",
+            "tipo": "Fuerza",
+            "url_imagen": "https://www.myprotein.es/images?url=https://blogscdn.thehut.net/wp-content/uploads/sites/450/2017/12/15115625/rutina-de-pierna-mujer.jpg&format=webp&auto=avif&width=700&height=466&fit=crop",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 1,
+                    "series": 3,
+                    "cantidad": 10,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 30
+                    }
+                },
+                {
+                    "id_ejercicio": 2,
+                    "series": 4,
+                    "cantidad": 12,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 2,
+                        "segundos": 0
+                    }
+                },
+                {
+                    "id_ejercicio": 8,
+                    "series": 4,
+                    "cantidad": 14,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 45
+                    }
+                }
+            ]
+        },
+        {
+            "username": "allisonz1",
+            "id": 3,
+            "fecha": "2025-05-18",
+            "nombre": "Rutina de Resistencia",
+            "descripcion": "Rutina para aumentar velocidad.",
+            "tipo": "Resistencia",
+            "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 2,
+                    "series": 3,
+                    "cantidad": 18,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 0,
+                        "segundos": 45
+                    }
+                },
+                {
+                    "id_ejercicio": 4,
+                    "series": 4,
+                    "cantidad": 15,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 15
+                    }
+                },
+                {
+                    "id_ejercicio": 6,
+                    "series": 3,
+                    "cantidad": 12,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 30
+                    }
+                }
+            ]
+        },
+        {
+            "username": "aabensurc",
+            "id": 5,
+            "fecha": "2025-06-08",
+            "nombre": "Rurtina core 1",
+            "descripcion": "jwjdshuhsudhsudihjsidjsidj sijdisjdisjdijsidj isjd isjdijsi djsidj sijd isjd isjd ijsi jsid jisj disjd isjid jsi jsi jisj isj isj ijsidjsi jdis jdisjd isjdi sjid jsi jdisj isjdi jsd sijdisjdisjdijsidj isjd isjdijsi djsidj sijd isjd isjd ijsi jsid jisj disjd isjid jsi jsi",
+            "tipo": "yoga",
+            "url_imagen": "https://media.glamour.mx/photos/67f46332c35d933f187ccc72/16:9/w_2560%2Cc_limit/pilates-20-minutos.jpg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 4,
+                    "series": 4,
+                    "medicion": "repeticiones",
+                    "cantidad": 25,
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 15
+                    }
+                },
+                {
+                    "id_ejercicio": 13,
+                    "series": 3,
+                    "medicion": "repeticiones",
+                    "cantidad": 12,
+                    "tiempo_descanso": {
+                        "minutos": 0,
+                        "segundos": 30
+                    }
+                }
+            ]
         }
-      ]
-    },
-    {
-      "username": "aabensurc",
-      "id": 2,
-      "fecha": "2025-05-18",
-      "nombre": "Rutina de Resistencia",
-      "descripcion": "Rutina para aumentar velocidad.",
-      "tipo": "Resistencia",
-      "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
-      "ejercicios": [
-        {
-          "id_ejercicio": 2,
-          "series": 3,
-          "cantidad": 18,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 0,
-            "segundos": 45
-          }
-        },
-        {
-          "id_ejercicio": 4,
-          "series": 4,
-          "cantidad": 15,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 15
-          }
-        },
-        {
-          "id_ejercicio": 7,
-          "series": 4,
-          "cantidad": 14,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 0
-          }
-        }
-      ]
-    },
-    {
-      "username": "jeanaq",
-      "id": 3,
-      "fecha": "2025-05-17",
-      "nombre": "Rutina de Resistencia",
-      "descripcion": "Rutina para aumentar velocidad.",
-      "tipo": "Resistencia",
-      "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
-      "ejercicios": [
-        {
-          "id_ejercicio": 2,
-          "series": 3,
-          "cantidad": 18,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 0,
-            "segundos": 45
-          }
-        },
-        {
-          "id_ejercicio": 4,
-          "series": 4,
-          "cantidad": 15,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 15
-          }
-        },
-        {
-          "id_ejercicio": 6,
-          "series": 3,
-          "cantidad": 12,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 30
-          }
-        }
-      ]
-    },
-    {
-      "username": "allisonz1",
-      "id": 4,
-      "fecha": "2025-05-17",
-      "nombre": "Rutina de Piernas",
-      "descripcion": "Rutina para aumentar fuerza y masa muscular en las piernas.",
-      "tipo": "Fuerza",
-      "url_imagen": "https://www.myprotein.es/images?url=https://blogscdn.thehut.net/wp-content/uploads/sites/450/2017/12/15115625/rutina-de-pierna-mujer.jpg&format=webp&auto=avif&width=700&height=466&fit=crop",
-      "ejercicios": [
-        {
-          "id_ejercicio": 1,
-          "series": 3,
-          "cantidad": 10,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 30
-          }
-        },
-        {
-          "id_ejercicio": 2,
-          "series": 4,
-          "cantidad": 12,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 2,
-            "segundos": 0
-          }
-        },
-        {
-          "id_ejercicio": 8,
-          "series": 4,
-          "cantidad": 14,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 45
-          }
-        }
-      ]
-    },
-    {
-      "username": "allisonz1",
-      "id": 3,
-      "fecha": "2025-05-18",
-      "nombre": "Rutina de Resistencia",
-      "descripcion": "Rutina para aumentar velocidad.",
-      "tipo": "Resistencia",
-      "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
-      "ejercicios": [
-        {
-          "id_ejercicio": 2,
-          "series": 3,
-          "cantidad": 18,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 0,
-            "segundos": 45
-          }
-        },
-        {
-          "id_ejercicio": 4,
-          "series": 4,
-          "cantidad": 15,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 15
-          }
-        },
-        {
-          "id_ejercicio": 6,
-          "series": 3,
-          "cantidad": 12,
-          "medicion": "repeticiones",
-          "tiempo_descanso": {
-            "minutos": 1,
-            "segundos": 30
-          }
-        }
-      ]
-    }
-  ]
+    ]
 }
