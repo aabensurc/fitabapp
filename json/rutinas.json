@@ -1,83 +1,112 @@
 {
     "rutinas": [
-      {
-        "id": 1,
-        "nombre": "Rutina tren inferior principiante A1 Mujer",
-        "descripcion": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet, comes from a line in section 1.10.32.",
-        "tipo": "musculación",
-        "url_imagen": "https://i.ytimg.com/vi/PecwXNmukpI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAP5pPikIikaX_xVAYL0qLKOAvFbA",
-        "ejercicios": [
-          {
-            "id_ejercicio": 1,
-            "series": 4,
-            "medicion": "repeticiones",
-            "cantidad": 12
-          },
-          {
-            "id_ejercicio": 3,
-            "series": 3,
-            "medicion": "repeticiones",
-            "cantidad": 10
-          },
-          {
-            "id_ejercicio": 5,
-            "series": 4,
-            "medicion": "repeticiones",
-            "cantidad": 15
-          },
-          {
-            "id_ejercicio": 6,
-            "series": 5,
-            "medicion": "repeticiones",
-            "cantidad": 8
-          },
-          {
-            "id_ejercicio": 7,
-            "series": 3,
-            "medicion": "repeticiones",
-            "cantidad": 20
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "nombre": "Rutina funcional en casa",
-        "descripcion": "Rutina funcional con ejercicios para realizar sin equipamiento, ideal para el hogar.",
-        "tipo": "en casa",
-        "url_imagen": "https://i.ytimg.com/vi/HNosAVcpsz4/maxresdefault.jpg",
-        "ejercicios": [
-          {
-            "id_ejercicio": 2,
-            "series": 4,
-            "medicion": "repeticiones",
-            "cantidad": 15
-          },
-          {
-            "id_ejercicio": 4,
-            "series": 4,
-            "medicion": "segundos",
-            "cantidad": 30
-          },
-          {
-            "id_ejercicio": 7,
-            "series": 3,
-            "medicion": "repeticiones",
-            "cantidad": 20
-          },
-          {
-            "id_ejercicio": 8,
-            "series": 4,
-            "medicion": "repeticiones",
-            "cantidad": 12
-          },
-          {
-            "id_ejercicio": 9,
-            "series": 3,
-            "medicion": "segundos",
-            "cantidad": 45
-          }
-        ]
-      }
+        {
+            "id": 1,
+            "nombre": "Rutina tren inferior principiante A1 Mujer",
+            "descripcion": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet, comes from a line in section 1.10.32.",
+            "tipo": "musculación",
+            "url_imagen": "https://i.ytimg.com/vi/PecwXNmukpI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAP5pPikIikaX_xVAYL0qLKOAvFbA",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 1,
+                    "series": 4,
+                    "medicion": "repeticiones",
+                    "cantidad": 12
+                },
+                {
+                    "id_ejercicio": 3,
+                    "series": 3,
+                    "medicion": "repeticiones",
+                    "cantidad": 10
+                },
+                {
+                    "id_ejercicio": 5,
+                    "series": 4,
+                    "medicion": "repeticiones",
+                    "cantidad": 15
+                },
+                {
+                    "id_ejercicio": 6,
+                    "series": 5,
+                    "medicion": "repeticiones",
+                    "cantidad": 8
+                },
+                {
+                    "id_ejercicio": 7,
+                    "series": 3,
+                    "medicion": "repeticiones",
+                    "cantidad": 20
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "nombre": "Rutina funcional en casa",
+            "descripcion": "Rutina funcional con ejercicios para realizar sin equipamiento, ideal para el hogar.",
+            "tipo": "en casa",
+            "url_imagen": "https://i.ytimg.com/vi/HNosAVcpsz4/maxresdefault.jpg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 2,
+                    "series": 4,
+                    "medicion": "repeticiones",
+                    "cantidad": 15
+                },
+                {
+                    "id_ejercicio": 4,
+                    "series": 4,
+                    "medicion": "segundos",
+                    "cantidad": 30
+                },
+                {
+                    "id_ejercicio": 7,
+                    "series": 3,
+                    "medicion": "repeticiones",
+                    "cantidad": 20
+                },
+                {
+                    "id_ejercicio": 8,
+                    "series": 4,
+                    "medicion": "repeticiones",
+                    "cantidad": 12
+                },
+                {
+                    "id_ejercicio": 9,
+                    "series": 3,
+                    "medicion": "segundos",
+                    "cantidad": 45
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "nombre": "rutina10",
+            "descripcion": "ddwdwdwwdw",
+            "tipo": "cardio",
+            "url_imagen": "https://images.ecestaticos.com/6fN32iO2fLd8Zgm_xfJEzq4LK6I=/201x21:1941x1326/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fc50%2Fad7%2F630%2Fc50ad7630e49b310ba3079f15bad7a73.jpg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 10,
+                    "series": 3,
+                    "medicion": "repeticiones",
+                    "cantidad": 20
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "nombre": "eefef",
+            "descripcion": "ewddwd",
+            "tipo": "cardio",
+            "url_imagen": "https://images.ecestaticos.com/6fN32iO2fLd8Zgm_xfJEzq4LK6I=/201x21:1941x1326/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fc50%2Fad7%2F630%2Fc50ad7630e49b310ba3079f15bad7a73.jpg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 10,
+                    "series": 3,
+                    "medicion": "repeticiones",
+                    "cantidad": 10
+                }
+            ]
+        }
     ]
-  }
-  
+}
