@@ -106,5 +106,17 @@
         "peso": 59,
         "estatura": 1.57,
         "estado": "Habilitado"
+    },
+    {
+        "id": 10,
+        "nombre_usuario": "liz123",
+        "password": "ironbody1",
+        "nombre": "Liz",
+        "apellido": "Flores",
+        "sexo": "F",
+        "edad": 21,
+        "peso": 64,
+        "estatura": 1.57,
+        "estado": "Habilitado"
     }
 ]
