@@ -475,8 +475,8 @@ nameElement.textContent = rutina.nombre;
 
 const descriptionElement = document.createElement('p');
 descriptionElement.id = 'routineDescription';
-descriptionElement.className = 'mt-2';
-descriptionElement.textContent = rutina.descripcion;
+descriptionElement.classList.add('mt-2', 'descripcion-con-saltos');
+descriptionElement.innerHTML = rutina.descripcion; // AHORA USA innerHTML
 
 // --- INICIO: Lógica para "Mostrar más/menos" en la descripción ---
 setTimeout(() => {
