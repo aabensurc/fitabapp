@@ -1973,5 +1973,233 @@
                 ]
             }
         }
+    }    
+    ,
+    {
+        "id": 8,
+        "usuario": "allisonz1",
+        "lunes": {
+            "desayuno": {
+                "hora": "07:30",
+                "alimentos": [
+                    { "alimento": "Huevos sancochados (con yema)", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Tostadas integrales", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Jugo de papaya", "cantidad": 1, "unidad": "vaso" }
+                ]
+            },
+            "almuerzo": {
+                "hora": "13:00",
+                "alimentos": [
+                    { "alimento": "Pollo a la plancha o sancochado", "cantidad": 150, "unidad": "gramos" },
+                    { "alimento": "Lentejas cocidas", "cantidad": 100, "unidad": "gramos" },
+                    { "alimento": "Tomate en rodajas", "cantidad": 1, "unidad": "unidad" }
+                ]
+            },
+            "media_tarde": {
+                "hora": "16:00",
+                "alimentos": [
+                    { "alimento": "Manies", "cantidad": 20, "unidad": "gramos" }
+                ]
+            },
+            "cena": {
+                "hora": "19:30",
+                "alimentos": [
+                    { "alimento": "Atún", "cantidad": "1/2", "unidad": "lata" },
+                    { "alimento": "Camote", "cantidad": "1", "unidad": "unid" },
+                    { "alimento": "Té", "cantidad": 1, "unidad": "taza" }
+                ]
+            }
+        },
+        "martes": {
+            "desayuno": {
+                "hora": "07:30",
+                "alimentos": [
+                    { "alimento": "Tostadas integrales", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Huevos", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Jugo de piña", "cantidad": 1, "unidad": "vaso" }
+                ]
+            },
+            "almuerzo": {
+                "hora": "13:00",
+                "alimentos": [
+                    { "alimento": "pescado blanco a la plancha ", "cantidad": 160, "unidad": "gramos" },
+                    { "alimento": "Choclo sancochado entero", "cantidad": 1, "unidad": "unid" },
+                    { "alimento": "Arroz integral cocido", "cantidad": 100, "unidad": "gramos" },
+                    { "alimento": "Palta", "cantidad": "1/2", "unidad": "unid" }
+                ]
+            },
+            "media_tarde": {
+                "hora": "16:00",
+                "alimentos": [
+                    { "alimento": "Manzana", "cantidad": 1, "unidad": "unid" }
+                ]
+            },
+            "cena": {
+                "hora": "19:30",
+                "alimentos": [
+                    { "alimento": "Atún", "cantidad": "1/2", "unidad": "lata" },
+                    { "alimento": "Papa sancochada o al horno", "cantidad": 1, "unidad": "unid" },
+                    { "alimento": "Manzanilla", "cantidad": 1, "unidad": "taza" }
+                ]
+            }
+        },
+        "miércoles": {
+            "desayuno": {
+                "hora": "07:30",
+                "alimentos": [
+                    { "alimento": "Panes integrales", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Huevos revueltos (en tortilla)", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Yogurt (de referencia griego o descremado)", "cantidad": 1, "unidad": "vaso" }
+                ]
+            },
+            "almuerzo": {
+                "hora": "13:00",
+                "alimentos": [
+                    { "alimento": "Pollo a la plancha o sancochado", "cantidad": 150, "unidad": "gramos" },
+                    { "alimento": "Arroz integral cocido", "cantidad": 100, "unidad": "gramos" },
+                    { "alimento": "Choclo sancochado entero", "cantidad": 1, "unidad": "unid" }
+                ]
+            },
+            "media_tarde": {
+                "hora": "16:00",
+                "alimentos": [
+                    { "alimento": "Almendras", "cantidad": 20, "unidad": "gramos" }
+                ]
+            },
+            "cena": {
+                "hora": "19:30",
+                "alimentos": [
+                    { "alimento": "Pollo (50gr) + lechuga", "cantidad": 2, "unidad": "sandwiches" },
+                    { "alimento": "Anís", "cantidad": 1, "unidad": "taza" }
+                ]
+            }
+        },
+        "jueves": {
+            "desayuno": {
+                "hora": "07:30",
+                "alimentos": [
+                    { "alimento": "Panes integrales", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Huevos revueltos (con yema)", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Jugo de papaya", "cantidad": 1, "unidad": "vaso" }
+                ]
+            },
+            "almuerzo": {
+                "hora": "13:00",
+                "alimentos": [
+                    { "alimento": "Pescado blanco a la plancha", "cantidad": 160, "unidad": "gramos" },
+                    { "alimento": "Frejol cocido", "cantidad": 100, "unidad": "gramos" },
+                    { "alimento": "Palta", "cantidad": "1/2", "unidad": "trozo" },
+                    { "alimento": "Tomate en rodajas", "cantidad": 1, "unidad": "unid" }
+                ]
+            },
+            "media_tarde": {
+                "hora": "16:00",
+                "alimentos": [
+                    { "alimento": "Nueces", "cantidad": 20, "unidad": "gramos" }
+                ]
+            },
+            "cena": {
+                "hora": "19:30",
+                "alimentos": [
+                    { "alimento": "Pollo (50gr) + lechuga", "cantidad": 2, "unidad": "sandwiches" },
+                    { "alimento": "Manzanilla", "cantidad": 1, "unidad": "taza" }
+                ]
+            }
+        },
+        "viernes": {
+            "desayuno": {
+                "hora": "07:30",
+                "alimentos": [
+                    { "alimento": "Huevos sancochados (con yema)", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Tostadas integrales", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Jugo de piña", "cantidad": 1, "unidad": "vaso" }
+                ]
+            },
+            "almuerzo": {
+                "hora": "13:00",
+                "alimentos": [
+                    { "alimento": "Carne de res", "cantidad": 150, "unidad": "gramos" },
+                    { "alimento": "Yuca sancochada", "cantidad": "1/2", "unidad": "unid" },
+                    { "alimento": "Pepino en rodajas", "cantidad": "1/2", "unidad": "unid" },
+                    { "alimento": "Choclo sancochado entero", "cantidad": 1, "unidad": "unid" }
+                ]
+            },
+            "media_tarde": {
+                "hora": "16:00",
+                "alimentos": [
+                    { "alimento": "Manies", "cantidad": 20, "unidad": "gramos" }
+                ]
+            },
+            "cena": {
+                "hora": "19:30",
+                "alimentos": [
+                    { "alimento": "Avena con 2 huevos", "cantidad": 1, "unidad": "tortilla" },
+                    { "alimento": "Avena cocida", "cantidad": 1, "unidad": "taza" }
+                ]
+            }
+        },
+        "sábado": {
+            "desayuno": {
+                "hora": "08:00",
+                "alimentos": [
+                    { "alimento": "Panes integrales", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Huevos revueltos (en tortilla)", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Yogurt (de referencia griego o descremado)", "cantidad": 1, "unidad": "vaso" }
+                ]
+            },
+            "almuerzo": {
+                "hora": "13:30",
+                "alimentos": [
+                    { "alimento": "Pollo a la plancha o sancochado", "cantidad": 150, "unidad": "gramos" },
+                    { "alimento": "Arroz integral", "cantidad": 150, "unidad": "gramos" },
+                    { "alimento": "Choclo sancochado entero", "cantidad": 1, "unidad": "unid" },
+                    { "alimento": "Palta", "cantidad": "1/2", "unidad": "unid" }
+                ]
+            },
+            "media_tarde": {
+                "hora": "16:30",
+                "alimentos": [
+                    { "alimento": "Mandarina", "cantidad": 1, "unidad": "unid" }
+                ]
+            },
+            "cena": {
+                "hora": "20:00",
+                "alimentos": [
+                    { "alimento": "Pollo (50gr) + lechuga", "cantidad": 2, "unidad": "sandwiches" },
+                    { "alimento": "Avena cocida", "cantidad": 1, "unidad": "taza" }
+                ]
+            }
+        },
+        "domingo": {
+            "desayuno": {
+                "hora": "08:00",
+                "alimentos": [
+                    { "alimento": "Tostadas integrales", "cantidad": 2, "unidad": "unidades" },
+                    { "alimento": "Jugo de piña", "cantidad": 1, "unidad": "vaso" }
+                ]
+            },
+            "almuerzo": {
+                "hora": "13:30",
+                "alimentos": [
+                    { "alimento": "Pescado blanco a la plancha", "cantidad": 160, "unidad": "gramos" },
+                    { "alimento": "Garbanzos cocidos", "cantidad": 100, "unidad": "gramos" },
+                    { "alimento": "Tomate en rodajas", "cantidad": 1, "unidad": "unid" },
+                    { "alimento": "Palta", "cantidad": "1/2", "unidad": "unid" }
+                ]
+            },
+            "media_tarde": {
+                "hora": "16:30",
+                "alimentos": [
+                    { "alimento": "Manzana", "cantidad": 1, "unidad": "unidad" }
+                ]
+            },
+            "cena": {
+                "hora": "19:30",
+                "alimentos": [
+                    { "alimento": "Avena con 2 huevos (sin yema)", "cantidad": 1, "unidad": "tortilla" },
+                    { "alimento": "Avena cocida", "cantidad": 1, "unidad": "taza" }
+                ]
+            }
+        }
     }
 ]
