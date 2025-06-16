@@ -235,6 +235,68 @@
                     }
                 }
             ]
+        },
+                {
+            "username": "liz123",
+            "id": 3,
+            "fecha": "2025-06-15",
+            "nombre": "Rutina de Resistencia",
+            "descripcion": "Rutina para aumentar velocidad.",
+            "tipo": "Resistencia",
+            "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 2,
+                    "series": 3,
+                    "cantidad": 18,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 0,
+                        "segundos": 45
+                    }
+                },
+                {
+                    "id_ejercicio": 4,
+                    "series": 4,
+                    "cantidad": 15,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 15
+                    }
+                },
+                {
+                    "id_ejercicio": 6,
+                    "series": 3,
+                    "cantidad": 12,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 30
+                    }
+                }
+            ]
+        },
+        {
+            "username": "liz123",
+            "id": 6,
+            "fecha": "2025-06-16",
+            "nombre": "Rutina de Cuádriceps + Aductores",
+            "descripcion": "Rutina de Cuádriceps + Aductores:\r\n<strong>1) Calentamiento</strong> de 2 series de 25 repeticiones en maquina de Extension de pierna sentado con 20kg\r\n2) Empieza con 3 series...",
+            "tipo": "hipertrofia",
+            "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutinas-cuadriceps1.jpg",
+            "ejercicios": [
+                {
+                    "id_ejercicio": 9,
+                    "series": 2,
+                    "medicion": "repeticiones",
+                    "cantidad": 25,
+                    "tiempo_descanso": {
+                        "minutos": 0,
+                        "segundos": 30
+                    }
+                }
+            ]
         }
     ]
 }
