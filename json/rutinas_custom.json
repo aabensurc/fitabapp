@@ -282,7 +282,7 @@
             "id": 6,
             "fecha": "2025-06-16",
             "nombre": "Rutina de Cuádriceps + Aductores",
-            "descripcion": "Detalles de la rutina:\r\n<strong>1) Calentamiento:</strong> 2 series de 25 repeticiones en maquina de Extension de pierna sentado con 20kg\r\n2.1) Máquina Hack 3 x 12-15 con 30kg\r\n2.2) Sentadilla Isométrica en la pared 3 x 30 segundos con un disco de 10kg encima. \r\n3.1) Prensa con los pies abajo y abiertos 3 x 15 reps \r\n3.2) Zancadas con pesas de 7,5kg en ambos lados -> 3 x 12-15 en cada pierna \r\n4.1) Sentadillas con salto agarrando disco de 5kg --> 3 X 20 reps \r\n4.2) Maquiina extensiones de pierna 3x12-14 con 40kg bajando en 2 segundos",
+            "descripcion": "Detalles de la rutina:\r\n<strong>1) Calentamiento:</strong> 2 series de 25 repeticiones en maquina de Extension de pierna sentado con 20kg\r\n2.1) Máquina Hack 3 x 12-15 con 30kg\r\n2.2) Sentadilla Isométrica en la pared 3 x 30 segundos con un disco de 10kg encima. \r\n3.1) Prensa con los pies abajo y abiertos 3 x 15 reps \r\n3.2) Zancadas con pesas de 7,5kg en ambos lados -> 3 x 12-15 en cada pierna \r\n4.1) Sentadillas con salto agarrando disco de 5kg --> 3 X 20 reps \r\n4.2) Maquina extensiones de pierna 3x12-14 con 40kg bajando en 2 segundos",
             "tipo": "hipertrofia",
             "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutinas-cuadriceps1.jpg",
             "ejercicios": [
@@ -294,6 +294,56 @@
                     "tiempo_descanso": {
                         "minutos": 0,
                         "segundos": 30
+                    }
+                },
+                {
+                    "id_ejercicio": 17,
+                    "series": 3,
+                    "cantidad": 15,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 30
+                    }
+                },
+                {
+                    "id_ejercicio": 18,
+                    "series": 3,
+                    "cantidad": 15,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 30
+                    }
+                },
+                {
+                    "id_ejercicio": 2,
+                    "series": 3,
+                    "cantidad": 15,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 2,
+                        "segundos": 0
+                    }
+                },
+                {
+                    "id_ejercicio": 19,
+                    "series": 3,
+                    "cantidad": 20,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 30
+                    }
+                },
+                {
+                    "id_ejercicio": 9,
+                    "series": 3,
+                    "cantidad": 14,
+                    "medicion": "repeticiones",
+                    "tiempo_descanso": {
+                        "minutos": 1,
+                        "segundos": 0
                     }
                 }
             ]
