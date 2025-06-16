@@ -18,10 +18,11 @@
             "descripcion": "Ideal para fortalecer los gluteos y femorales, mejorando el equilibrio y la coordinaci\u00f3n.",
             "musculos_involucrados": [
                 "Cu\u00e1driceps",
+                "Gl\u00fateos",
                 "Femorales"
             ],
             "imagen_url": "https:\/\/thumbs.dreamstime.com\/b\/woman-doing-lunges-isolated-white-background-45623531.jpg",
-            "video_url": "https:\/\/example.com\/estocadas-video.mp4"
+            "video_url": "videos\/ejercicios\/ZANCADA EST\u00c1TICA CON MANCUERNAS.mp4"
         },
         {
             "id": 3,
@@ -169,6 +170,41 @@
             ],
             "imagen_url": "https:\/\/images.ctfassets.net\/8urtyqugdt2l\/4DRhERHEzOSi7POHiecCsT\/b923dfac31133585e0b337b7201ad19f\/desktop-prone-vs-seated-leg-curl.jpg",
             "video_url": "videos\/ejercicios\/seatedlegcurl2.mp4"
+        },
+        {
+            "id": 17,
+            "nombre": "Maquina Hack",
+            "descripcion": "Ejercicio para fortalecer cuadriceps",
+            "musculos_involucrados": [
+                "Cu\u00e1driceps"
+            ],
+            "imagen_url": "https:\/\/www.gymequip.eu\/wp-content\/uploads\/2015\/10\/Hack-Squat-Machine-.jpg",
+            "video_url": "videos\/ejercicios\/Sentadilla Hack.mp4"
+        },
+        {
+            "id": 18,
+            "nombre": "Prensa",
+            "descripcion": "Maquina para trabajar el tren inferior",
+            "musculos_involucrados": [
+                "Cu\u00e1driceps",
+                "Gl\u00fateos",
+                "Femorales",
+                "Pantorrillas"
+            ],
+            "imagen_url": "https:\/\/www.fitness-world.in\/wp-content\/uploads\/2019\/04\/GLPH1100-LEG-PRESS_HACK-SQUAT-MACHINE.jpg",
+            "video_url": "videos\/ejercicios\/Leg Press Demo  Powertec.mp4"
+        },
+        {
+            "id": 19,
+            "nombre": "Sentadillas con salto",
+            "descripcion": "Ejercicio pliometrico para el tren inferior",
+            "musculos_involucrados": [
+                "Cu\u00e1driceps",
+                "Gl\u00fateos",
+                "Femorales"
+            ],
+            "imagen_url": "https:\/\/as1.ftcdn.net\/v2\/jpg\/04\/35\/78\/68\/1000_F_435786899_v92ZMhvgR3OEu9EHCDihkGGSI6dUPWYB.jpg",
+            "video_url": "videos\/ejercicios\/Jump squat con disco.mp4"
         }
     ]
 }
