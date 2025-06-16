@@ -711,6 +711,24 @@ p {
 }
 
 
+    .descripcion-con-saltos {
+        white-space: pre-wrap; /* Mantiene los saltos de línea y envuelve el texto */
+        word-break: break-word; /* Opcional: Ayuda a romper palabras largas si desbordan */
+    }
+
+
+
+
+    /* Asegura que el texto dentro de <strong> sea en negrita fuerte */
+strong {
+    font-weight: 600 !important; /* O 600 si Gilroy-Bold es suficiente */
+}
+
+/* Si las negritas están dentro de elementos <p>, puedes ser más específico */
+p strong {
+    font-weight: 600 !important; /* Esto apunta a negritas dentro de párrafos */
+}
+
 
 
 
