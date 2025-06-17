@@ -118,7 +118,7 @@
             "musculos_involucrados": [
                 "Espalda"
             ],
-            "imagen_url": "https:\/\/www.entrenamientos.com\/media\/cache\/exercise_375\/uploads\/exercise\/jalon-polea-alta-agarre-estrecho-prono-init-pos-1364.png",
+            "imagen_url": "https://fitcron.com/wp-content/uploads/2021/04/02081301-Cable-Reverse-grip-Straight-Back-Seated-High-Row_Back_720.gif",
             "video_url": "videos\/ejercicios\/jalon_polea_supino.webm"
         },
         {
@@ -205,6 +205,92 @@
             ],
             "imagen_url": "https:\/\/as1.ftcdn.net\/v2\/jpg\/04\/35\/78\/68\/1000_F_435786899_v92ZMhvgR3OEu9EHCDihkGGSI6dUPWYB.jpg",
             "video_url": "videos\/ejercicios\/Jump squat con disco.mp4"
+        },
+        {
+            "id": 20,
+            "nombre": "Remo con mancuerna (Serrucho)",
+            "descripcion": "El remo con mancuerna, tambi\u00e9n conocido como \"serrucho\", es un excelente ejercicio unilateral para fortalecer la espalda. Se enfoca principalmente en los dorsales, romboides y trapecios, ayudando a mejorar la postura y la simetr\u00eda muscular. Se realiza apoyando una mano y una rodilla en un banco, mientras se tira de la mancuerna hacia el tronco, concentr\u00e1ndose en contraer los m\u00fasculos de la espalda.",
+            "musculos_involucrados": [
+                "Espalda",
+                "B\u00edceps"
+            ],
+            "imagen_url": "https:\/\/static.strengthlevel.com\/images\/exercises\/dumbbell-row\/dumbbell-row-800.jpg",
+            "video_url": "videos\/ejercicios\/Remo a una mano con mancuerna en banco plano.mp4"
+        },
+        {
+            "id": 21,
+            "nombre": "Vuelos posteriores en maquina",
+            "descripcion": "Vuelos Posteriores en M\u00e1quina\r\nLos vuelos posteriores en m\u00e1quina son un ejercicio excelente para aislar y fortalecer los deltoides posteriores, esos m\u00fasculos ubicados en la parte trasera de tus hombros. Al realizarlos en m\u00e1quina, se proporciona un apoyo y una trayectoria guiada, lo que ayuda a mantener una t\u00e9cnica correcta y a reducir la implicaci\u00f3n de otros m\u00fasculos. Es ideal para mejorar la postura, la estabilidad del hombro y lograr una apariencia m\u00e1s equilibrada en la parte superior del cuerpo.",
+            "musculos_involucrados": [
+                "Espalda",
+                "Deltoides"
+            ],
+            "imagen_url": "https:\/\/static.vecteezy.com\/system\/resources\/previews\/022\/915\/226\/non_2x\/woman-doing-rear-delt-machine-flyes-exercise-vector.jpg",
+            "video_url": "videos\/ejercicios\/Vuelos posteriores en m\u00e1quina Rutinas030400.mp4"
+        },
+        {
+            "id": 22,
+            "nombre": "Jalon polea agarre supino",
+            "descripcion": "El jal\u00f3n en polea con agarre supino (palmas hacia ti) es un ejercicio fundamental para el desarrollo de la espalda, con un \u00e9nfasis particular en la parte inferior de los dorsales y los b\u00edceps. Al utilizar este agarre, se activa de forma m\u00e1s pronunciada el m\u00fasculo b\u00edceps braquial, mientras se sigue trabajando la amplitud y el grosor de la espalda. Es una excelente alternativa a las dominadas supinas para quienes buscan una progresi\u00f3n controlada y enfocada en estos grupos musculares.",
+            "musculos_involucrados": [
+                "Espalda",
+                "B\u00edceps"
+            ],
+            "imagen_url": "https:\/\/fitcron.com\/wp-content\/uploads\/2021\/04\/02081301-Cable-Reverse-grip-Straight-Back-Seated-High-Row_Back_720.gif",
+            "video_url": "videos\/ejercicios\/Jal\u00f3n al pecho agarre supino (Supine Grip Lat Pulldown).mp4"
+        },
+        {
+            "id": 23,
+            "nombre": "Burpees",
+            "descripcion": "El burpee es un ejercicio de cuerpo completo muy din\u00e1mico y exigente, ideal para mejorar la resistencia cardiovascular y la fuerza muscular. Combina una sentadilla, un impulso hacia atr\u00e1s a posici\u00f3n de plancha, una flexi\u00f3n de brazos (opcional), un salto hacia adelante para volver a la sentadilla y un salto explosivo con los brazos extendidos hacia arriba. Es una excelente opci\u00f3n para quemar calor\u00edas, aumentar la capacidad pulmonar y trabajar m\u00faltiples grupos musculares simult\u00e1neamente.",
+            "musculos_involucrados": [
+                "Abdomen",
+                "Cardio"
+            ],
+            "imagen_url": "https:\/\/phantom-telva.uecdn.es\/b40c0befaa878ad45ac38270ecab95e3\/resize\/828\/f\/jpg\/assets\/multimedia\/imagenes\/2021\/02\/26\/16143187500035.jpg",
+            "video_url": "videos\/ejercicios\/BURPEES  EJERCICIOS EN CASA [SIN MATERIAL] \ud83d\udd25 PIERDE GRASA.mp4"
+        },
+        {
+            "id": 24,
+            "nombre": "Remo Sentado en m\u00e1quina (agarre V)",
+            "descripcion": "El remo sentado en m\u00e1quina es un ejercicio fundamental para fortalecer los m\u00fasculos de la espalda, incluyendo los dorsales, romboides y trapecios. Al realizarse en una m\u00e1quina, permite un movimiento controlado y guiado, lo que lo hace ideal tanto para principiantes como para atletas experimentados. Este ejercicio ayuda a mejorar la postura, la densidad muscular de la espalda y la estabilidad escapular, permitiendo enfocar la tensi\u00f3n en la contracci\u00f3n de los m\u00fasculos espec\u00edficos sin la necesidad de estabilizar el cuerpo completamente.",
+            "musculos_involucrados": [
+                "Espalda",
+                "B\u00edceps"
+            ],
+            "imagen_url": "https:\/\/static.strengthlevel.com\/images\/exercises\/seated-cable-row\/seated-cable-row-800.jpg",
+            "video_url": "videos\/ejercicios\/Cable Seated Row Machine (V-Grip).mp4"
+        },
+        {
+            "id": 25,
+            "nombre": "Elevaciones laterales con mancuernas",
+            "descripcion": "Elevaciones Laterales con Mancuernas\r\nLas elevaciones laterales con mancuernas son un ejercicio clave para desarrollar y esculpir la parte media de tus hombros, espec\u00edficamente el deltoides lateral. Este movimiento a\u00edsla el m\u00fasculo, d\u00e1ndole a tus hombros esa apariencia ancha y redonda. Se realiza levantando las mancuernas hacia los lados, manteniendo una ligera flexi\u00f3n en los codos, hasta que tus brazos est\u00e9n paralelos al suelo, concentr\u00e1ndote en sentir la contracci\u00f3n en la parte lateral del hombro. Es fundamental para lograr una est\u00e9tica equilibrada en la parte superior del cuerpo.",
+            "musculos_involucrados": [
+                "Deltoides"
+            ],
+            "imagen_url": "https:\/\/static.vecteezy.com\/system\/resources\/previews\/006\/417\/678\/non_2x\/woman-doing-lateral-side-shoulder-dumbbell-raises-power-partials-exercise-flat-illustration-isolated-on-white-background-free-vector.jpg",
+            "video_url": "videos\/ejercicios\/How to do a Dumbbell Lateral Raise.mp4"
+        },
+        {
+            "id": 26,
+            "nombre": "Elevaciones frontales con Disco",
+            "descripcion": "Las elevaciones frontales con disco son un ejercicio excelente para trabajar la parte frontal de tus hombros, es decir, el deltoides anterior. Al usar un disco en lugar de mancuernas, se a\u00f1ade un elemento de estabilidad y agarre que puede desafiar los m\u00fasculos de una manera ligeramente diferente. Se realiza sosteniendo el disco con ambas manos y levant\u00e1ndolo hacia adelante hasta la altura de los hombros, controlando el movimiento tanto al subir como al bajar. Es ideal para fortalecer la parte delantera del hombro y contribuir a una apariencia m\u00e1s completa del deltoides.",
+            "musculos_involucrados": [
+                "Deltoides"
+            ],
+            "imagen_url": "https:\/\/us.123rf.com\/450wm\/lioputra\/lioputra2112\/lioputra211200671\/179552408-mujer-haciendo-ejercicio-de-elevaci%C3%B3n-de-placa-de-hombro-frontal-de-pie-ilustraci%C3%B3n-de-vector-plano.jpg?ver=6",
+            "video_url": "videos\/ejercicios\/Plate Front Raise.mp4"
+        },
+        {
+            "id": 27,
+            "nombre": "Press de hombros con mancuernas",
+            "descripcion": "El press de hombros con mancuernas, ya sea sentado o de pie, es un ejercicio fundamental para construir masa y fuerza en tus hombros, trabajando principalmente los deltoides (anterior, medio y posterior) y los tr\u00edceps. Permite un rango de movimiento m\u00e1s natural que las barras, lo que puede ser m\u00e1s amable con tus articulaciones. Se realiza empujando las mancuernas desde la altura de los hombros hacia arriba, extendiendo los brazos casi por completo, y luego baj\u00e1ndolas de forma controlada. Es un movimiento clave para el desarrollo general de la parte superior del cuerpo.",
+            "musculos_involucrados": [
+                "Tr\u00edceps",
+                "Deltoides"
+            ],
+            "imagen_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0269\/5551\/3900\/files\/Dumbbell-Shoulder-Press_da0aa742-620a-45f7-9277-78137d38ff28_600x600.png?v=1612138495",
+            "video_url": "videos\/ejercicios\/Seated Dumbbell Shoulder Press.mp4"
         }
     ]
 }
