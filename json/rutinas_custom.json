@@ -269,11 +269,11 @@
         {
             "username": "liz123",
             "id": 7,
-            "fecha": "2025-06-17",
-            "nombre": "Rutina de Espalda + Triceps +\u00a0Cardio",
-            "descripcion": "Rutina de Espalda + Hombros\r\nDetalle del Entrenamiento:\r\n1) Remo con mancuernas (Serrucho) 3 x 12 en cada brazo \uf0e0 con una pesa de 10kg\r\n2.1) Vuelos posteriores en maquina 3x20 --> con 20-30kg \r\n2.2) Jalon polea agarre supino y cerrado 3x15 --> con 30-40kg \r\n3.1) Burpees 3x20\r\n3.2) Remo Sentado en m\u00e1quina 3x14 --> con 25-35kg\r\n4.1) Elevaciones laterales con mancuernas 3x20 --> con pesas de 5kg\r\n4.2) Elevaciones frontales con un disco de 5kg 3x22\r\n4.3) Press de hombros con mancuernas de 5kg 3x15",
+            "fecha": "2025-06-18",
+            "nombre": "Rutina de Espalda + Hombros",
+            "descripcion": "Rutina de Espalda + Hombros\r\nDetalle del Entrenamiento:\r\n1) Remo con mancuernas (Serrucho) 3 x 12 en cada brazo  con una pesa de 10kg\r\n2.1) Vuelos posteriores en maquina 3x20 --> con 20-30kg \r\n2.2) Jalon polea agarre supino y cerrado 3x15 --> con 30-40kg \r\n3.1) Burpees 3x20\r\n3.2) Remo Sentado en máquina 3x14 --> con 25-35kg\r\n4.1) Elevaciones laterales con mancuernas 3x20 --> con pesas de 5kg\r\n4.2) Elevaciones frontales con un disco de 5kg 3x22\r\n4.3) Press de hombros con mancuernas de 5kg 3x15",
             "tipo": "hipertrofia",
-            "url_imagen": "https:\/\/i.ytimg.com\/vi\/zql7uU12Qck\/maxresdefault.jpg",
+            "url_imagen": "https://i.ytimg.com/vi/UaCLOybf2dI/maxresdefault.jpg",
             "ejercicios": [
                 {
                     "id_ejercicio": 20,
@@ -307,7 +307,7 @@
                 },
                 {
                     "id_ejercicio": 23,
-                    "series": 4,
+                    "series": 3,
                     "medicion": "repeticiones",
                     "cantidad": 20,
                     "tiempo_descanso": {
