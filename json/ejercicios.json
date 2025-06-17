@@ -118,7 +118,7 @@
             "musculos_involucrados": [
                 "Espalda"
             ],
-            "imagen_url": "https://fitcron.com/wp-content/uploads/2021/04/02081301-Cable-Reverse-grip-Straight-Back-Seated-High-Row_Back_720.gif",
+            "imagen_url": "https:\/\/fitcron.com\/wp-content\/uploads\/2021\/04\/02081301-Cable-Reverse-grip-Straight-Back-Seated-High-Row_Back_720.gif",
             "video_url": "videos\/ejercicios\/jalon_polea_supino.webm"
         },
         {
@@ -291,6 +291,26 @@
             ],
             "imagen_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0269\/5551\/3900\/files\/Dumbbell-Shoulder-Press_da0aa742-620a-45f7-9277-78137d38ff28_600x600.png?v=1612138495",
             "video_url": "videos\/ejercicios\/Seated Dumbbell Shoulder Press.mp4"
+        },
+        {
+            "id": 28,
+            "nombre": "Encogimiento de Hombros con mancuernas",
+            "descripcion": "El encogimiento de hombros es un ejercicio cl\u00e1sico dise\u00f1ado espec\u00edficamente para desarrollar y fortalecer los m\u00fasculos trapecios superiores, que se extienden desde el cuello hasta la parte superior de la espalda. Se realiza elevando los hombros directamente hacia las orejas, ya sea con mancuernas, barra o en m\u00e1quina, y luego baj\u00e1ndolos de forma controlada. Es ideal para mejorar la estabilidad de los hombros, la postura y a\u00f1adir grosor a la parte superior de la espalda y el cuello.",
+            "musculos_involucrados": [
+                "Trapecios"
+            ],
+            "imagen_url": "https:\/\/eresfitness.com\/wp-content\/uploads\/2019\/09\/Encogimiento-de-hombros-con-mancuernas.jpg.webp",
+            "video_url": "videos\/ejercicios\/654. Encogimiento de hombros con mancuernas.mp4"
+        },
+        {
+            "id": 29,
+            "nombre": "Curl de antebrazo con barra en banco (en pronacion)",
+            "descripcion": "De rodillas apoyando los brazos en un banco, flexionamos las mu\u00f1ecas arriba y abajo. Puedes ejecutarlo en pronaci\u00f3n o supinaci\u00f3n y siempre controlando el peso que vamos a mover para evitar lesiones inoportunas.",
+            "musculos_involucrados": [
+                "Antebrazos"
+            ],
+            "imagen_url": "https:\/\/eresfitness.com\/wp-content\/uploads\/Curl-de-munecas-con-barra-agarre-prono.webp",
+            "video_url": "videos\/ejercicios\/curl de antebrazos con barra en pronaci\u00f3n.mp4"
         }
     ]
 }
