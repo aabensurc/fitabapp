@@ -7,7 +7,7 @@
             "nombre": "Rutina de Fuerza",
             "descripcion": "Rutina para aumentar fuerza y masa muscular.",
             "tipo": "Fuerza",
-            "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutina-fuerza-1.jpg",
+            "url_imagen": "https:\/\/www.cambiatufisico.com\/wp-content\/uploads\/rutina-fuerza-1.jpg",
             "ejercicios": [
                 {
                     "id_ejercicio": 1,
@@ -48,7 +48,7 @@
             "nombre": "Rutina de Resistencia",
             "descripcion": "Rutina para aumentar velocidad.",
             "tipo": "Resistencia",
-            "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+            "url_imagen": "https:\/\/imagenes.eltiempo.com\/files\/image_1200_600\/uploads\/2023\/03\/15\/641229e980c1d.jpeg",
             "ejercicios": [
                 {
                     "id_ejercicio": 2,
@@ -83,54 +83,13 @@
             ]
         },
         {
-            "username": "jeanaq",
-            "id": 3,
-            "fecha": "2025-05-17",
-            "nombre": "Rutina de Resistencia",
-            "descripcion": "Rutina para aumentar velocidad.",
-            "tipo": "Resistencia",
-            "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
-            "ejercicios": [
-                {
-                    "id_ejercicio": 2,
-                    "series": 3,
-                    "cantidad": 18,
-                    "medicion": "repeticiones",
-                    "tiempo_descanso": {
-                        "minutos": 0,
-                        "segundos": 45
-                    }
-                },
-                {
-                    "id_ejercicio": 4,
-                    "series": 4,
-                    "cantidad": 15,
-                    "medicion": "repeticiones",
-                    "tiempo_descanso": {
-                        "minutos": 1,
-                        "segundos": 15
-                    }
-                },
-                {
-                    "id_ejercicio": 6,
-                    "series": 3,
-                    "cantidad": 12,
-                    "medicion": "repeticiones",
-                    "tiempo_descanso": {
-                        "minutos": 1,
-                        "segundos": 30
-                    }
-                }
-            ]
-        },
-        {
             "username": "allisonz1",
             "id": 4,
             "fecha": "2025-05-17",
             "nombre": "Rutina de Piernas",
             "descripcion": "Rutina para aumentar fuerza y masa muscular en las piernas.",
             "tipo": "Fuerza",
-            "url_imagen": "https://www.myprotein.es/images?url=https://blogscdn.thehut.net/wp-content/uploads/sites/450/2017/12/15115625/rutina-de-pierna-mujer.jpg&format=webp&auto=avif&width=700&height=466&fit=crop",
+            "url_imagen": "https:\/\/www.myprotein.es\/images?url=https:\/\/blogscdn.thehut.net\/wp-content\/uploads\/sites\/450\/2017\/12\/15115625\/rutina-de-pierna-mujer.jpg&format=webp&auto=avif&width=700&height=466&fit=crop",
             "ejercicios": [
                 {
                     "id_ejercicio": 1,
@@ -171,7 +130,7 @@
             "nombre": "Rutina de Resistencia",
             "descripcion": "Rutina para aumentar velocidad.",
             "tipo": "Resistencia",
-            "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
+            "url_imagen": "https:\/\/imagenes.eltiempo.com\/files\/image_1200_600\/uploads\/2023\/03\/15\/641229e980c1d.jpeg",
             "ejercicios": [
                 {
                     "id_ejercicio": 2,
@@ -212,7 +171,7 @@
             "nombre": "Rurtina core 1",
             "descripcion": "jwjdshuhsudhsudihjsidjsidj sijdisjdisjdijsidj isjd isjdijsi djsidj sijd isjd isjd ijsi jsid jisj disjd isjid jsi jsi jisj isj isj ijsidjsi jdis jdisjd isjdi sjid jsi jdisj isjdi jsd sijdisjdisjdijsidj isjd isjdijsi djsidj sijd isjd isjd ijsi jsid jisj disjd isjid jsi jsi",
             "tipo": "yoga",
-            "url_imagen": "https://media.glamour.mx/photos/67f46332c35d933f187ccc72/16:9/w_2560%2Cc_limit/pilates-20-minutos.jpg",
+            "url_imagen": "https:\/\/media.glamour.mx\/photos\/67f46332c35d933f187ccc72\/16:9\/w_2560%2Cc_limit\/pilates-20-minutos.jpg",
             "ejercicios": [
                 {
                     "id_ejercicio": 4,
@@ -238,53 +197,12 @@
         },
         {
             "username": "liz123",
-            "id": 3,
-            "fecha": "2025-06-15",
-            "nombre": "Rutina de Resistencia",
-            "descripcion": "Rutina para aumentar velocidad.",
-            "tipo": "Resistencia",
-            "url_imagen": "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2023/03/15/641229e980c1d.jpeg",
-            "ejercicios": [
-                {
-                    "id_ejercicio": 2,
-                    "series": 3,
-                    "cantidad": 18,
-                    "medicion": "repeticiones",
-                    "tiempo_descanso": {
-                        "minutos": 0,
-                        "segundos": 45
-                    }
-                },
-                {
-                    "id_ejercicio": 4,
-                    "series": 4,
-                    "cantidad": 15,
-                    "medicion": "repeticiones",
-                    "tiempo_descanso": {
-                        "minutos": 1,
-                        "segundos": 15
-                    }
-                },
-                {
-                    "id_ejercicio": 6,
-                    "series": 3,
-                    "cantidad": 12,
-                    "medicion": "repeticiones",
-                    "tiempo_descanso": {
-                        "minutos": 1,
-                        "segundos": 30
-                    }
-                }
-            ]
-        },
-        {
-            "username": "liz123",
             "id": 6,
             "fecha": "2025-06-16",
-            "nombre": "Rutina de Cuádriceps + Aductores",
-            "descripcion": "Detalles de la rutina:\r\n<strong>1) Calentamiento:</strong> 2 series de 25 repeticiones en maquina de Extension de pierna sentado con 20kg\r\n2.1) Máquina Hack 3 x 12-15 con 30kg\r\n2.2) Sentadilla Isométrica en la pared 3 x 30 segundos con un disco de 10kg encima. \r\n3.1) Prensa con los pies abajo y abiertos 3 x 15 reps \r\n3.2) Zancadas con pesas de 7,5kg en ambos lados -> 3 x 12-15 en cada pierna \r\n4.1) Sentadillas con salto agarrando disco de 5kg --> 3 X 20 reps \r\n4.2) Maquina extensiones de pierna 3x12-14 con 40kg bajando en 2 segundos",
+            "nombre": "Rutina de Cu\u00e1driceps + Aductores",
+            "descripcion": "Detalles de la rutina:\r\n<strong>1) Calentamiento:<\/strong> 2 series de 25 repeticiones en maquina de Extension de pierna sentado con 20kg\r\n2.1) M\u00e1quina Hack 3 x 12-15 con 30kg\r\n2.2) Sentadilla Isom\u00e9trica en la pared 3 x 30 segundos con un disco de 10kg encima. \r\n3.1) Prensa con los pies abajo y abiertos 3 x 15 reps \r\n3.2) Zancadas con pesas de 7,5kg en ambos lados -> 3 x 12-15 en cada pierna \r\n4.1) Sentadillas con salto agarrando disco de 5kg --> 3 X 20 reps \r\n4.2) Maquina extensiones de pierna 3x12-14 con 40kg bajando en 2 segundos",
             "tipo": "hipertrofia",
-            "url_imagen": "https://www.cambiatufisico.com/wp-content/uploads/rutinas-cuadriceps1.jpg",
+            "url_imagen": "https:\/\/www.cambiatufisico.com\/wp-content\/uploads\/rutinas-cuadriceps1.jpg",
             "ejercicios": [
                 {
                     "id_ejercicio": 9,
@@ -352,10 +270,10 @@
             "username": "liz123",
             "id": 7,
             "fecha": "2025-06-17",
-            "nombre": "Rutina de Espalda + Hombros",
-            "descripcion": "Rutina de Espalda + Hombros\r\nDetalle del Entrenamiento:\r\n1) Remo con mancuernas (Serrucho) 3 x 12 en cada brazo  con una pesa de 10kg\r\n2.1) Vuelos posteriores en maquina 3x20 --> con 20-30kg \r\n2.2) Jalon polea agarre supino y cerrado 3x15 --> con 30-40kg \r\n3.1) Burpees 3x20\r\n3.2) Remo Sentado en máquina 3x14 --> con 25-35kg\r\n4.1) Elevaciones laterales con mancuernas 3x20 --> con pesas de 5kg\r\n4.2) Elevaciones frontales con un disco de 5kg 3x22\r\n4.3) Press de hombros con mancuernas de 5kg 3x15",
+            "nombre": "Rutina de Espalda + Triceps +\u00a0Cardio",
+            "descripcion": "Rutina de Espalda + Hombros\r\nDetalle del Entrenamiento:\r\n1) Remo con mancuernas (Serrucho) 3 x 12 en cada brazo \uf0e0 con una pesa de 10kg\r\n2.1) Vuelos posteriores en maquina 3x20 --> con 20-30kg \r\n2.2) Jalon polea agarre supino y cerrado 3x15 --> con 30-40kg \r\n3.1) Burpees 3x20\r\n3.2) Remo Sentado en m\u00e1quina 3x14 --> con 25-35kg\r\n4.1) Elevaciones laterales con mancuernas 3x20 --> con pesas de 5kg\r\n4.2) Elevaciones frontales con un disco de 5kg 3x22\r\n4.3) Press de hombros con mancuernas de 5kg 3x15",
             "tipo": "hipertrofia",
-            "url_imagen": "https://i.ytimg.com/vi/zql7uU12Qck/maxresdefault.jpg",
+            "url_imagen": "https:\/\/i.ytimg.com\/vi\/zql7uU12Qck\/maxresdefault.jpg",
             "ejercicios": [
                 {
                     "id_ejercicio": 20,
@@ -389,7 +307,7 @@
                 },
                 {
                     "id_ejercicio": 23,
-                    "series": 3,
+                    "series": 4,
                     "medicion": "repeticiones",
                     "cantidad": 20,
                     "tiempo_descanso": {
