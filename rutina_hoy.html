@@ -19,6 +19,11 @@
   <title>Rutina Personalizada - FITABAPP</title>
 
   <style>
+
+    #editRoutineButton {
+      display: none; /* Esta es la línea clave: oculta el botón por defecto */
+    }
+
     .routine-img {
       width: 100%;
       max-height: 250px;
@@ -539,6 +544,20 @@ progressContainer.appendChild(progressBar);
 detalleContainer.appendChild(typeElement);
 detalleContainer.appendChild(nameElement);
 detalleContainer.appendChild(descriptionElement); // Asegúrate de que la descripción se añade aquí
+
+// --- INICIO: Botón para editar rutina ---
+const editButton = document.createElement('button');
+editButton.id = 'editRoutineButton';
+editButton.className = 'btn btn-primary mt-3 mb-3'; // Clase de Bootstrap para botón
+editButton.innerHTML = '<i class="bi bi-pencil-square me-2"></i> Editar Rutina';
+editButton.addEventListener('click', () => {
+    // Redirigir a editar_rutina_hoy.html pasando el id de la rutina, username y fecha
+    window.location.href = `editar_rutina_hoy.html?id=${rutina.id}&username=${rutina.username}&fecha=${rutina.fecha}`;
+});
+// --- FIN: Botón para editar rutina ---
+
+detalleContainer.appendChild(editButton); // Añadir el botón de edición aquí
+
 detalleContainer.appendChild(progressContainer);
 detalleContainer.appendChild(exerciseList);
 contenedorRutina.appendChild(img);
@@ -709,6 +728,49 @@ modalImage.src = imageUrl; // Asignar la URL de la imagen
 const imagenModal = new bootstrap.Modal(document.getElementById('imagenModal')); // Inicializar el modal
 imagenModal.show(); // Mostrar el modal
 }
+</script>
+
+<script>
+    // ... (tu código JS existente, incluyendo el atajo de teclado si lo mantienes) ...
+
+    // --- Lógica para mostrar/ocultar el botón de editar con un atajo secreto móvil (Triple Tap) ---
+    const secretMobileElement = document.querySelector('.app-bar h1'); // Selecciona el título "Rutina Hoy"
+    let tapCount = 0;
+    let tapTimeout;
+    const TAP_THRESHOLD = 3; // Número de taps necesarios
+    const TAP_TIME_LIMIT = 500; // Milisegundos entre taps (0.5 segundos)
+
+    if (secretMobileElement) {
+        secretMobileElement.addEventListener('click', function() {
+            tapCount++;
+
+            if (tapTimeout) {
+                clearTimeout(tapTimeout); // Reinicia el temporizador si hay un tap previo
+            }
+
+            tapTimeout = setTimeout(() => {
+                tapCount = 0; // Reinicia el contador si el tiempo entre taps expira
+            }, TAP_TIME_LIMIT);
+
+            if (tapCount >= TAP_THRESHOLD) {
+                const editButton = document.getElementById('editRoutineButton');
+                if (editButton) {
+                    // Verificar el estilo computado para mayor fiabilidad
+                    const currentDisplay = window.getComputedStyle(editButton).display;
+
+                    if (currentDisplay === 'none') {
+                        editButton.style.display = 'block'; // Asegura que se muestre
+                        console.log('Botón "Editar Rutina" visible (móvil).');
+                    } else {
+                        editButton.style.display = 'none'; // Asegura que se oculte
+                        console.log('Botón "Editar Rutina" oculto (móvil).');
+                    }
+                }
+                tapCount = 0; // Reinicia el contador después de activar
+                clearTimeout(tapTimeout); // Limpia el temporizador para evitar activaciones dobles
+            }
+        });
+    }
 </script>
 
 
