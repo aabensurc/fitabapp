@@ -23,8 +23,9 @@
     #editRoutineButton {
       display: none; /* Esta es la línea clave: oculta el botón por defecto */
     }
-    #deleteRoutineButton { /* Nuevo CSS para el botón de borrar */
-      display: none;
+
+          #deleteRoutineButton { /* Nuevo CSS para el botón de borrar */
+        display: none;
       }
 
     .routine-img {
@@ -548,18 +549,20 @@ detalleContainer.appendChild(typeElement);
 detalleContainer.appendChild(nameElement);
 detalleContainer.appendChild(descriptionElement); // Asegúrate de que la descripción se añade aquí
 
-  // --- INICIO: Botones de Editar y Borrar rutina ---
+// --- INICIO: Botón para editar rutina ---
+const editButton = document.createElement('button');
+editButton.id = 'editRoutineButton';
+editButton.className = 'btn btn-primary mt-3 mb-3'; // Clase de Bootstrap para botón
+editButton.innerHTML = '<i class="bi bi-pencil-square me-2"></i> Editar Rutina';
+editButton.addEventListener('click', () => {
+    // Redirigir a editar_rutina_hoy.html pasando el id de la rutina, username y fecha
+    window.location.href = `editar_rutina_hoy.html?id=${rutina.id}&username=${rutina.username}&fecha=${rutina.fecha}`;
+});
+// --- FIN: Botón para editar rutina ---
 
-  const editButton = document.createElement('button');
-  editButton.id = 'editRoutineButton';
-  editButton.className = 'btn btn-primary mt-3 mb-3 w-100'; // w-100 para que ocupe todo el ancho y el de abajo quede bien
-  editButton.innerHTML = '<i class="bi bi-pencil-square me-2"></i> Editar Rutina';
-  editButton.addEventListener('click', () => {
-      window.location.href = `editar_rutina_hoy.html?id=<span class="math-inline">\{rutina\.id\}&username\=</span>{rutina.username}&fecha=${rutina.fecha}`;
-  });
-  detalleContainer.appendChild(editButton); // Añadir el botón de edición
+detalleContainer.appendChild(editButton); // Añadir el botón de edición aquí
 
-  const deleteButton = document.createElement('button');
+ const deleteButton = document.createElement('button');
   deleteButton.id = 'deleteRoutineButton';
   deleteButton.className = 'btn btn-danger mb-3 w-100'; // w-100 para que ocupe todo el ancho
   deleteButton.innerHTML = '<i class="bi bi-trash-fill me-2"></i> Borrar Rutina';
@@ -568,13 +571,8 @@ detalleContainer.appendChild(descriptionElement); // Asegúrate de que la descri
           deleteRoutine(rutina.id, rutina.username, rutina.fecha);
       }
   });
-  detalleContainer.appendChild(deleteButton); // Añadir el botón de borrar debajo
-
-  // --- FIN: Botones de Editar y Borrar rutina ---
-
-
-
-detalleContainer.appendChild(editButton); // Añadir el botón de edición aquí
+  // --- FIN: Botón para borrar rutina ---
+  detalleContainer.appendChild(deleteButton);
 
 detalleContainer.appendChild(progressContainer);
 detalleContainer.appendChild(exerciseList);
@@ -751,47 +749,52 @@ imagenModal.show(); // Mostrar el modal
 <script>
     // ... (tu código JS existente, incluyendo el atajo de teclado si lo mantienes) ...
 
-  // --- Lógica para mostrar/ocultar el botón de editar con un atajo secreto móvil (Triple Tap) ---
-  const secretMobileElement = document.querySelector('.app-bar h1'); // Selecciona el título "Rutina Hoy"
-  let tapCount = 0;
-  let tapTimeout;
-  const TAP_THRESHOLD = 3; // Número de taps necesarios
-  const TAP_TIME_LIMIT = 500; // Milisegundos entre taps (0.5 segundos)
+    // --- Lógica para mostrar/ocultar el botón de editar con un atajo secreto móvil (Triple Tap) ---
+    const secretMobileElement = document.querySelector('.app-bar h1'); // Selecciona el título "Rutina Hoy"
+    let tapCount = 0;
+    let tapTimeout;
+    const TAP_THRESHOLD = 3; // Número de taps necesarios
+    const TAP_TIME_LIMIT = 500; // Milisegundos entre taps (0.5 segundos)
 
-  if (secretMobileElement) {
-      secretMobileElement.addEventListener('click', function() {
-          tapCount++;
+    if (secretMobileElement) {
+        secretMobileElement.addEventListener('click', function() {
+            tapCount++;
 
-          if (tapTimeout) {
-              clearTimeout(tapTimeout); // Reinicia el temporizador si hay un tap previo
-          }
+            if (tapTimeout) {
+                clearTimeout(tapTimeout); // Reinicia el temporizador si hay un tap previo
+            }
 
-          tapTimeout = setTimeout(() => {
-              tapCount = 0; // Reinicia el contador si el tiempo entre taps expira
-          }, TAP_TIME_LIMIT);
+            tapTimeout = setTimeout(() => {
+                tapCount = 0; // Reinicia el contador si el tiempo entre taps expira
+            }, TAP_TIME_LIMIT);
 
-          if (tapCount >= TAP_THRESHOLD) {
-              const editButton = document.getElementById('editRoutineButton');
-              const deleteButton = document.getElementById('deleteRoutineButton'); // Obtener también el botón de borrar
+            if (tapCount >= TAP_THRESHOLD) {
+                const editButton = document.getElementById('editRoutineButton');
+                const deleteButton = document.getElementById('deleteRoutineButton');
+                if (editButton) {
+                    // Verificar el estilo computado para mayor fiabilidad
+                    const currentDisplay = window.getComputedStyle(editButton).display;
+                    
 
-              if (editButton && deleteButton) { // Asegúrate de que ambos botones existan
-                  const currentEditDisplay = window.getComputedStyle(editButton).display;
-                  const newDisplay = currentEditDisplay === 'none' ? 'block' : 'none';
-
-                  editButton.style.display = newDisplay;
-                  deleteButton.style.display = newDisplay; // Aplica el mismo display al botón de borrar
-
-                  console.log(`Botones "Editar/Borrar Rutina" ${newDisplay === 'none' ? 'ocultos' : 'visibles'} (móvil).`);
-              }
-              tapCount = 0; // Reinicia el contador después de activar
-              clearTimeout(tapTimeout); // Limpia el temporizador para evitar activaciones dobles
-          }
+                    if (currentDisplay === 'none') {
+                        editButton.style.display = 'block'; // Asegura que se muestre
+                        deleteButton.style.display = 'block'; // Asegura que se muestre
+                        console.log('Botón "Editar Rutina" visible (móvil).');
+                    } else {
+                        editButton.style.display = 'none'; // Asegura que se oculte
+                        deleteButton.style.display = 'none'; // Asegura que se oculte
+                        console.log('Botón "Editar Rutina" oculto (móvil).');
+                    }
+                }
+                tapCount = 0; // Reinicia el contador después de activar
+                clearTimeout(tapTimeout); // Limpia el temporizador para evitar activaciones dobles
+            }
         });
     }
 </script>
 
 <script>
-    async function deleteRoutine(id, username, fecha) {
+  async function deleteRoutine(id, username, fecha) {
       try {
           const response = await fetch('php/eliminar_rutina_hoy.php', {
               method: 'POST',
@@ -816,7 +819,6 @@ imagenModal.show(); // Mostrar el modal
       }
   }
 </script>
-
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
