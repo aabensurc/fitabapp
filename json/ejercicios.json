@@ -144,7 +144,7 @@
         {
             "id": 14,
             "nombre": "Extension de triceps en polea con soga",
-            "descripcion": "lorem ipsum",
+            "descripcion": "La extensi\u00f3n de tr\u00edceps en polea con soga es uno de los mejores ejercicios de aislamiento para desarrollar la masa y la definici\u00f3n de la parte posterior de tus brazos. Al usar la soga, permite un mayor rango de movimiento y una contracci\u00f3n m\u00e1s profunda al separar las manos al final del movimiento. Te enfocas en la porci\u00f3n larga del tr\u00edceps, empujando la soga hacia abajo y hacia afuera, extendiendo completamente los brazos y sintiendo c\u00f3mo se aprieta el m\u00fasculo en la parte inferior del movimiento. Es un ejercicio clave para unos brazos bien definidos y fuertes.",
             "musculos_involucrados": [
                 "Tr\u00edceps"
             ],
@@ -311,6 +311,26 @@
             ],
             "imagen_url": "https:\/\/eresfitness.com\/wp-content\/uploads\/Curl-de-munecas-con-barra-agarre-prono.webp",
             "video_url": "videos\/ejercicios\/curl de antebrazos con barra en pronaci\u00f3n.mp4"
+        },
+        {
+            "id": 30,
+            "nombre": "Pull over en polea",
+            "descripcion": "El pullover en polea es un excelente ejercicio para trabajar la amplitud de la espalda, enfoc\u00e1ndose principalmente en los dorsales y el serrato anterior, aunque tambi\u00e9n involucra el tr\u00edceps. Al realizarse con polea, permite una tensi\u00f3n constante en el m\u00fasculo a lo largo de todo el movimiento, lo que lo hace muy efectivo para estirar y contraer los dorsales. Se ejecuta jalando la barra o cuerda hacia abajo y hacia el cuerpo, manteniendo los brazos ligeramente flexionados, sintiendo c\u00f3mo se extiende y contrae tu espalda. Es una opci\u00f3n fant\u00e1stica para mejorar la conexi\u00f3n mente-m\u00fasculo y dar una mayor definici\u00f3n a tu espalda.",
+            "musculos_involucrados": [
+                "Espalda"
+            ],
+            "imagen_url": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjbn7LQm_xQr72nW-Az8qzycT7QuFrpGCjolwF4D7El6cLiUj70nry_vbrAG2vqXM-oV1DF1bfAeJxW6XUTow9n9uIxbdEGxG4R4yYun9nDkaCBezCVTih2Q0XitzxPieIH42O8dDtFkEA\/s1600\/pullover-polea-barra.jpg",
+            "video_url": "videos\/ejercicios\/PULL OVER EN POLEA ALTA CON BARRA.mp4"
+        },
+        {
+            "id": 31,
+            "nombre": "Copa a Dos Manos (Extensi\u00f3n de Tr\u00edceps por Encima de la Cabeza)",
+            "descripcion": "La copa a dos manos, o extensi\u00f3n de tr\u00edceps por encima de la cabeza, es un ejercicio cl\u00e1sico para aislar y desarrollar las tres cabezas del tr\u00edceps, con un \u00e9nfasis particular en la cabeza larga. Se realiza sosteniendo una mancuerna con ambas manos por encima de la cabeza y flexionando los codos para bajar el peso detr\u00e1s de la cabeza, estirando el tr\u00edceps al m\u00e1ximo. Luego, se extiende el peso hacia arriba utilizando \u00fanicamente la fuerza de los tr\u00edceps. Es excelente para ganar masa y mejorar la definici\u00f3n en la parte posterior del brazo.",
+            "musculos_involucrados": [
+                "Tr\u00edceps"
+            ],
+            "imagen_url": "https:\/\/eresfitness.com\/wp-content\/uploads\/2019\/09\/Extensi%C3%B3n-de-tr%C3%ADceps-tras-nuca-con-mancuerna.jpg.webp",
+            "video_url": "videos\/ejercicios\/Copa a dos manos con mancuerna.mp4"
         }
     ]
 }
