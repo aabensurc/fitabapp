@@ -552,7 +552,7 @@ detalleContainer.appendChild(descriptionElement); // Asegúrate de que la descri
 // --- INICIO: Botón para editar rutina ---
 const editButton = document.createElement('button');
 editButton.id = 'editRoutineButton';
-editButton.className = 'btn btn-primary mt-3 mb-3'; // Clase de Bootstrap para botón
+editButton.className = 'btn btn-primary my-2 w-100'; // Clase de Bootstrap para botón
 editButton.innerHTML = '<i class="bi bi-pencil-square me-2"></i> Editar Rutina';
 editButton.addEventListener('click', () => {
     // Redirigir a editar_rutina_hoy.html pasando el id de la rutina, username y fecha
@@ -564,7 +564,7 @@ detalleContainer.appendChild(editButton); // Añadir el botón de edición aquí
 
  const deleteButton = document.createElement('button');
   deleteButton.id = 'deleteRoutineButton';
-  deleteButton.className = 'btn btn-danger mb-3 w-100'; // w-100 para que ocupe todo el ancho
+  deleteButton.className = 'btn btn-danger my-2 w-100'; // w-100 para que ocupe todo el ancho
   deleteButton.innerHTML = '<i class="bi bi-trash-fill me-2"></i> Borrar Rutina';
   deleteButton.addEventListener('click', () => {
       if (confirm('¿Estás seguro de que quieres borrar esta rutina? Esta acción es irreversible.')) {
