@@ -13,11 +13,11 @@
     <title>Registrar Rutina - FITABAPP</title>
 </head>
 <body>
-    <div class="app-bar">
-        <h1>Registrar Rutina</h1>
-        <div class="nav-icons">
-            <i class="bi bi-x-lg" id="closeButton"></i> </div>
-    </div>
+<div class="app-bar">
+    <div class="nav-icons" id="back-button">
+        <i class="bi bi-arrow-left"></i> </div>
+    <h1>Registrar Rutina</h1> <div class="nav-icons"></div>
+</div>
 
     <div class="container-fluid container_rutinas">
         <form id="routineForm" class="mt-4">
@@ -114,7 +114,7 @@
         const exercisesContainer = document.getElementById('exercisesContainer');
         const addExerciseButton = document.getElementById('addExerciseButton');
         const routineForm = document.getElementById('routineForm');
-        const closeButton = document.getElementById('closeButton');
+        
         let exerciseCount = 1;
 
         // ¡Asegúrate que esta URL sea correcta para tu configuración de servidor!
@@ -283,13 +283,17 @@
             }
         });
 
-        closeButton.addEventListener('click', function() {
-            if (confirm('¿Estás seguro de que quieres cancelar? Los cambios no guardados se perderán.')) {
-                window.history.back();
-            }
-        });
-
     });
 </script>
+
+<script>
+
+      // Función para volver a la pantalla anterior
+  document.getElementById('back-button').addEventListener('click', function() {
+      history.back();
+  });
+
+</script>
+
 </body>
 </html>
