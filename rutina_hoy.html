@@ -567,7 +567,7 @@ actionButtonsContainer.classList.add('action-buttons'); // Aplica la clase flex
 
 const editButton = document.createElement('button');
 editButton.id = 'editRoutineButton';
-editButton.className = 'btn btn-primary'; // Quita 'w-50' o 'w-100' de aquí
+editButton.className = 'btn btn-warning'; // Quita 'w-50' o 'w-100' de aquí
 editButton.innerHTML = '<i class="bi bi-pencil-square me-2"></i> Editar Rutina';
 editButton.addEventListener('click', () => {
     window.location.href = `editar_rutina_hoy.html?id=${rutina.id}&username=${rutina.username}&fecha=${rutina.fecha}`;
