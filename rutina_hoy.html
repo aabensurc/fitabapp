@@ -21,12 +21,24 @@
   <style>
 
     #editRoutineButton {
-      display: none; /* Esta es la línea clave: oculta el botón por defecto */
+    display: none; /* Esta es la línea clave: oculta el botón por defecto */
     }
 
-          #deleteRoutineButton { /* Nuevo CSS para el botón de borrar */
-        display: none;
-      }
+    #deleteRoutineButton { /* Nuevo CSS para el botón de borrar */
+    display: none;
+    }
+
+        /* ESTILOS PARA LOS BOTONES DE ACCIÓN */
+    .action-buttons {
+        display: flex;
+        justify-content: space-around; /* Distribuye el espacio uniformemente */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .action-buttons .btn {
+        flex: 1; /* Hace que los botones ocupen el mismo ancho */
+        margin: 0 5px; /* Espacio entre los botones */
+    }
 
     .routine-img {
       width: 100%;
@@ -549,30 +561,32 @@ detalleContainer.appendChild(typeElement);
 detalleContainer.appendChild(nameElement);
 detalleContainer.appendChild(descriptionElement); // Asegúrate de que la descripción se añade aquí
 
-// --- INICIO: Botón para editar rutina ---
+// --- INICIO: Contenedor para los botones de acción (ESTE ES EL CAMBIO CLAVE) ---
+const actionButtonsContainer = document.createElement('div');
+actionButtonsContainer.classList.add('action-buttons'); // Aplica la clase flex
+
 const editButton = document.createElement('button');
 editButton.id = 'editRoutineButton';
-editButton.className = 'btn btn-primary my-2 w-100'; // Clase de Bootstrap para botón
+editButton.className = 'btn btn-primary'; // Quita 'w-50' o 'w-100' de aquí
 editButton.innerHTML = '<i class="bi bi-pencil-square me-2"></i> Editar Rutina';
 editButton.addEventListener('click', () => {
-    // Redirigir a editar_rutina_hoy.html pasando el id de la rutina, username y fecha
     window.location.href = `editar_rutina_hoy.html?id=${rutina.id}&username=${rutina.username}&fecha=${rutina.fecha}`;
 });
-// --- FIN: Botón para editar rutina ---
+actionButtonsContainer.appendChild(editButton); // Añadir al nuevo contenedor
 
-detalleContainer.appendChild(editButton); // Añadir el botón de edición aquí
+const deleteButton = document.createElement('button');
+deleteButton.id = 'deleteRoutineButton';
+deleteButton.className = 'btn btn-danger'; // Quita 'w-50' o 'w-100' de aquí
+deleteButton.innerHTML = '<i class="bi bi-trash-fill me-2"></i> Borrar Rutina';
+deleteButton.addEventListener('click', () => {
+    if (confirm('¿Estás seguro de que quieres borrar esta rutina? Esta acción es irreversible.')) {
+        deleteRoutine(rutina.id, rutina.username, rutina.fecha);
+    }
+});
+actionButtonsContainer.appendChild(deleteButton); // Añadir al nuevo contenedor
+// --- FIN: Contenedor para los botones de acción ---
 
- const deleteButton = document.createElement('button');
-  deleteButton.id = 'deleteRoutineButton';
-  deleteButton.className = 'btn btn-danger my-2 w-100'; // w-100 para que ocupe todo el ancho
-  deleteButton.innerHTML = '<i class="bi bi-trash-fill me-2"></i> Borrar Rutina';
-  deleteButton.addEventListener('click', () => {
-      if (confirm('¿Estás seguro de que quieres borrar esta rutina? Esta acción es irreversible.')) {
-          deleteRoutine(rutina.id, rutina.username, rutina.fecha);
-      }
-  });
-  // --- FIN: Botón para borrar rutina ---
-  detalleContainer.appendChild(deleteButton);
+detalleContainer.appendChild(actionButtonsContainer); // Añadir el CONTENEDOR de botones al detalleContainer
 
 detalleContainer.appendChild(progressContainer);
 detalleContainer.appendChild(exerciseList);

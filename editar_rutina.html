@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="description" content="FITABAPP - Editar Rutinas">
+    <link rel="icon" type="image/jpg" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <title>Editar Rutina - FITABAPP</title>
+</head>
+<body>
+    <div class="app-bar">
+        <h1>Editar Rutina</h1>
+        <div class="nav-icons">
+            <i class="bi bi-x-lg" id="closeButton"></i>
+        </div>
+    </div>
+
+    <div class="container-fluid container_rutinas">
+        <form id="routineEditForm" class="mt-4">
+            <input type="hidden" id="routineId"> <div class="mb-3">
+                <label for="editNombreRutina" class="form-label">Nombre de la Rutina</label>
+                <input type="text" class="form-control" id="editNombreRutina" required>
+            </div>
+            <div class="mb-3">
+                <label for="editDescripcionRutina" class="form-label">Descripción</label>
+                <textarea class="form-control" id="editDescripcionRutina" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="editTipoRutina" class="form-label">Tipo de Rutina</label>
+                <select class="form-select" id="editTipoRutina" required>
+                   <option value="">Selecciona un tipo</option>
+                    <option value="fuerza">Fuerza</option>
+                    <option value="hipertrofia">Hipertrofia</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="funcional">Funcional</option>
+                    <option value="resistencia">Resistencia</option>
+                    <option value="flexibilidad">Flexibilidad</option>
+                    <option value="abdomen">Abdomen</option>
+                    <option value="hiit">HIIT</option>
+                    <option value="yoga">Yoga</option>
+                    <option value="pilates">Pilates</option>
+                    <option value="rehabilitacion">Rehabilitación</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="editUrlImagen" class="form-label">URL de la Imagen (opcional)</label>
+                <input type="text" class="form-control" id="editUrlImagen" placeholder="Ej: https://ejemplo.com/imagen.jpg">
+            </div>
+
+            <hr class="my-4">
+            <h4>Ejercicios de la Rutina</h4>
+            <div id="editExercisesContainer">
+                </div>
+            <button type="button" id="addExerciseButton" class="btn btn-info w-100 mb-4">Añadir Otro Ejercicio</button>
+
+            <button type="submit" class="btn btn-primary w-100">Actualizar Rutina</button>
+        </form>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" class="navbar-item">
+            <i class="far fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="rutinas.html" class="navbar-item">
+            <i class="far fa-search"></i>
+            <span>Rutinas</span>
+        </a>
+        <a href="ejercicios.html" class="navbar-item">
+            <i class="far fa-dumbbell"></i>
+            <span>Ejercicios</span>
+        </a>
+        <a href="nutricion.html" class="navbar-item">
+            <i class="fas fa-apple-alt"></i>
+            <span>Dieta</span>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const exercisesContainer = document.getElementById('editExercisesContainer');
+            const addExerciseButton = document.getElementById('addExerciseButton');
+            const routineEditForm = document.getElementById('routineEditForm');
+            const closeButton = document.getElementById('closeButton');
+            let exerciseCount = 0; // Se inicializa en 0 porque se generarán dinámicamente
+
+            const PHP_GET_API_URL = 'php/obtener_rutina.php'; // Nuevo script para obtener una rutina
+            const PHP_UPDATE_API_URL = 'php/actualizar_rutina.php'; // Nuevo script para actualizar una rutina
+            const JSON_EXERCISES_URL = 'json/ejercicios.json'; // Archivo de ejercicios
+
+            let allExercises = []; // Para almacenar todos los ejercicios disponibles
+
+            async function loadAllExercises() {
+                try {
+                    const response = await fetch(JSON_EXERCISES_URL);
+                    const data = await response.json();
+                    allExercises = data.ejercicios;
+                } catch (error) {
+                    console.error('Error al cargar la lista maestra de ejercicios:', error);
+                    alert('No se pudieron cargar los ejercicios disponibles. Intenta de nuevo más tarde.');
+                }
+            }
+
+            async function loadRoutineData(routineId) {
+                try {
+                    const response = await fetch(`${PHP_GET_API_URL}?id=${routineId}`);
+                    const result = await response.json();
+
+                    if (result.success && result.routine) {
+                        const routine = result.routine;
+                        document.getElementById('routineId').value = routine.id;
+                        document.getElementById('editNombreRutina').value = routine.nombre;
+                        document.getElementById('editDescripcionRutina').value = routine.descripcion;
+                        document.getElementById('editTipoRutina').value = routine.tipo;
+                        document.getElementById('editUrlImagen').value = routine.url_imagen;
+
+                        // Cargar los ejercicios de la rutina
+                        exercisesContainer.innerHTML = ''; // Limpiar cualquier ejercicio preexistente
+                        exerciseCount = 0; // Resetear el contador
+                        routine.ejercicios.forEach(ejercicio => {
+                            addExerciseField(ejercicio); // Añadir campo y precargarlo
+                        });
+                        updateRemoveButtonsVisibility(); // Asegurarse de que los botones de eliminar sean visibles si hay más de 1
+                    } else {
+                        alert('Error al cargar la rutina: ' + result.message);
+                        window.location.href = 'rutinas.html'; // Redirigir si no se encuentra
+                    }
+                } catch (error) {
+                    console.error('Error al obtener los datos de la rutina:', error);
+                    alert('Hubo un problema de conexión o servidor al cargar la rutina.');
+                    window.location.href = 'rutinas.html';
+                }
+            }
+
+            // Función para añadir un campo de ejercicio (usada para precargar y para añadir nuevos)
+            function addExerciseField(ejercicioData = null) {
+                exerciseCount++;
+                const newExerciseHtml = `
+                    <div class="exercise-item mb-3 p-3 border rounded bg-light">
+                        <h5>Ejercicio ${exerciseCount}</h5>
+                        <div class="mb-3">
+                            <label for="ejercicio${exerciseCount}" class="form-label">Seleccionar Ejercicio</label>
+                            <select class="form-select exercise-select" id="ejercicio${exerciseCount}" required></select>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="series${exerciseCount}" class="form-label">Series</label>
+                                <input type="number" class="form-control exercise-series" id="series${exerciseCount}" min="1" value="${ejercicioData ? ejercicioData.series : 3}" required>
+                            </div>
+                            <div class="col">
+                                <label for="medicion${exerciseCount}" class="form-label">Medición</label>
+                                <select class="form-select exercise-medicion" id="medicion${exerciseCount}" required>
+                                    <option value="repeticiones">Repeticiones</option>
+                                    <option value="segundos">Segundos</option>
+                                    <option value="metros">Metros</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="cantidad${exerciseCount}" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control exercise-cantidad" id="cantidad${exerciseCount}" min="1" value="${ejercicioData ? ejercicioData.cantidad : 10}" required>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-danger btn-sm remove-exercise">Eliminar Ejercicio</button>
+                    </div>
+                `;
+                exercisesContainer.insertAdjacentHTML('beforeend', newExerciseHtml);
+                
+                const newSelectElement = document.getElementById(`ejercicio${exerciseCount}`);
+                populateExerciseSelect(newSelectElement, ejercicioData ? ejercicioData.id_ejercicio : null);
+
+                // Seleccionar la medición si se está precargando datos
+                if (ejercicioData && ejercicioData.medicion) {
+                    document.getElementById(`medicion${exerciseCount}`).value = ejercicioData.medicion;
+                }
+            }
+
+            // Función para poblar un select de ejercicios
+            function populateExerciseSelect(selectElement, selectedId = null) {
+                selectElement.innerHTML = ''; // Limpiar opciones existentes
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Selecciona un ejercicio";
+                selectElement.appendChild(defaultOption);
+
+                allExercises.forEach(ej => {
+                    const option = document.createElement('option');
+                    option.value = ej.id;
+                    option.textContent = ej.nombre;
+                    if (selectedId && ej.id == selectedId) {
+                        option.selected = true;
+                    }
+                    selectElement.appendChild(option);
+                });
+            }
+
+            // Inicializar: Cargar ejercicios maestros y luego los datos de la rutina
+            loadAllExercises().then(() => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const routineId = urlParams.get('id');
+                if (routineId) {
+                    loadRoutineData(routineId);
+                } else {
+                    alert('ID de rutina no proporcionado. Redirigiendo...');
+                    window.location.href = 'rutinas.html';
+                }
+            });
+
+            // Event listener para añadir ejercicio
+            addExerciseButton.addEventListener('click', function() {
+                addExerciseField();
+                updateRemoveButtonsVisibility();
+            });
+
+            // Event listener para eliminar ejercicio
+            exercisesContainer.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-exercise')) {
+                    event.target.closest('.exercise-item').remove();
+                    updateExerciseNumbersAndRemoveButtons(); // Re-indexar y actualizar visibilidad
+                }
+            });
+
+            // Actualiza los números de ejercicio y la visibilidad de los botones de eliminar
+            function updateExerciseNumbersAndRemoveButtons() {
+                const exerciseItems = exercisesContainer.querySelectorAll('.exercise-item');
+                exerciseCount = 0; // Resetear el contador
+                exerciseItems.forEach((item, index) => {
+                    exerciseCount++;
+                    item.querySelector('h5').textContent = `Ejercicio ${exerciseCount}`;
+                    // Actualizar IDs para select, series, medicion, cantidad (importante para que los forms recojan bien los datos)
+                    item.querySelector('.exercise-select').id = `ejercicio${exerciseCount}`;
+                    item.querySelector('.exercise-series').id = `series${exerciseCount}`;
+                    item.querySelector('.exercise-medicion').id = `medicion${exerciseCount}`;
+                    item.querySelector('.exercise-cantidad').id = `cantidad${exerciseCount}`;
+                });
+                updateRemoveButtonsVisibility(); // Actualizar visibilidad después de re-indexar
+            }
+
+            // Controla la visibilidad de los botones de eliminar
+            function updateRemoveButtonsVisibility() {
+                const exerciseItems = exercisesContainer.querySelectorAll('.exercise-item');
+                if (exerciseItems.length <= 1) {
+                    exerciseItems.forEach(item => item.querySelector('.remove-exercise').classList.add('d-none'));
+                } else {
+                    exerciseItems.forEach(item => item.querySelector('.remove-exercise').classList.remove('d-none'));
+                }
+            }
+
+
+            // Manejar el envío del formulario para actualizar
+            routineEditForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const id = document.getElementById('routineId').value;
+                const nombre = document.getElementById('editNombreRutina').value;
+                const descripcion = document.getElementById('editDescripcionRutina').value;
+                const tipo = document.getElementById('editTipoRutina').value;
+                const urlImagen = document.getElementById('editUrlImagen').value;
+
+                const ejercicios = [];
+                const exerciseItems = exercisesContainer.querySelectorAll('.exercise-item');
+                
+                let allExercisesValid = true;
+                if (exerciseItems.length === 0) { // Asegurarse de que al menos hay un ejercicio
+                    alert('La rutina debe contener al menos un ejercicio.');
+                    return;
+                }
+
+                exerciseItems.forEach(item => {
+                    const idEjercicio = item.querySelector('.exercise-select').value;
+                    const series = parseInt(item.querySelector('.exercise-series').value);
+                    const medicion = item.querySelector('.exercise-medicion').value;
+                    const cantidad = parseInt(item.querySelector('.exercise-cantidad').value);
+
+                    if (!idEjercicio || isNaN(series) || series <= 0 || !medicion || isNaN(cantidad) || cantidad <= 0) {
+                        allExercisesValid = false;
+                        return;
+                    }
+
+                    ejercicios.push({
+                        id_ejercicio: parseInt(idEjercicio),
+                        series: series,
+                        medicion: medicion,
+                        cantidad: cantidad
+                    });
+                });
+
+                if (!allExercisesValid) {
+                    alert('Por favor, completa todos los campos de los ejercicios correctamente (selecciona un ejercicio, series y cantidad deben ser números positivos).');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('id', id);
+                formData.append('nombre', nombre);
+                formData.append('descripcion', descripcion);
+                formData.append('tipo', tipo);
+                formData.append('url_imagen', urlImagen);
+                formData.append('ejercicios', JSON.stringify(ejercicios));
+
+                try {
+                    const response = await fetch(PHP_UPDATE_API_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        alert(result.message);
+                        window.location.href = 'rutinas.html'; // Redirigir a la página de rutinas
+                    } else {
+                        alert('Error: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error al enviar la rutina al servidor:', error);
+                    alert('Hubo un problema de conexión o servidor al guardar la rutina. Revisa la consola para más detalles.');
+                }
+            });
+
+            // Botón de cerrar para cancelar la edición
+            closeButton.addEventListener('click', function() {
+                if (confirm('¿Estás seguro de que quieres cancelar? Los cambios no guardados se perderán.')) {
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

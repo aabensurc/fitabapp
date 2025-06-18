@@ -1,270 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2196F3">
-  <meta name="description" content="Detalles de la rutina en FITABAPP">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="manifest" href="manifest.json">
-  <title>Detalle Rutina - FITABAPP</title>
-  <style>
-    .routine-img {
-      width: 100%;
-      height: auto;
-    }
-    .exercise-img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    .img-detalle-rutina{
-      margin-top: 60px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="description" content="Detalles de la rutina en FITABAPP">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <title>Detalle Rutina - FITABAPP</title>
+    <style>
+
+        #editRoutineButton {
+        display: none; /* Esta es la línea clave: oculta el botón por defecto */
+        }
+
+        #deleteRoutineButton { /* Nuevo CSS para el botón de borrar */
+        display: none;
+        }
+
+        .routine-img {
+            width: 100%;
+            height: auto;
+        }
+        .exercise-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .img-detalle-rutina{
+            margin-top: 60px;
+        }
+        /* Estilos para los botones de acción */
+        .action-buttons {
+            display: flex;
+            justify-content: space-around; /* O space-between, center, etc. */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .action-buttons .btn {
+            flex: 1; /* Para que los botones ocupen el mismo ancho */
+            margin: 0 5px; /* Espacio entre los botones */
+        }
+    </style>
 </head>
 <body>
-  <!-- App Bar -->
-  <div class="app-bar">
-    <div class="nav-icons" id="back-button">
-        <i class="bi bi-arrow-left"></i> <!-- Icono de "atrás" -->
+    <div class="app-bar">
+        <div class="nav-icons" id="back-button">
+            <i class="bi bi-arrow-left"></i> </div>
+        <h1 id="routineTitle">Rutina</h1>
     </div>
-    <h1 id="routineTitle">Rutina</h1>
-  </div>
 
-  <div class="container-fluid-ind img-detalle-rutina">
-    <img id="routineImage" class="routine-img" src="" alt="Imagen de la rutina">
-  </div>
-
-  <div class="container-fluid container-detalle_rutina">
-
-    <h4 id="routineType" class="mt-3 mb-0"></h4>
-    <h2 id="routineName" class=""></h2>
-    <p id="routineDescription" class="mt-2"></p> <!-- Contenedor para la descripción -->
-
-    <!-- Barra de progreso -->
-<div class="progress mt-3">
-  <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-</div>
-
-    <div id="exerciseList" class="list-group mt-4"></div>
-  </div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="felicidadesModal" tabindex="-1" aria-labelledby="felicidadesModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered"> <!-- Clase agregada -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="felicidadesModalLabel">¡Felicidades!</h5>
-      </div>
-      <div class="modal-body">
-        Has completado toda la rutina. ¡Buen trabajo!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-cerrar-modal-felic" data-bs-dismiss="modal">Cerrar</button>
-      </div>
+    <div class="container-fluid-ind img-detalle-rutina">
+        <img id="routineImage" class="routine-img" src="" alt="Imagen de la rutina">
     </div>
-  </div>
-</div>
 
-<!-- Modal para mostrar imagen -->
-<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img id="modalImage" class="img-fluid text-center" alt="Imagen del ejercicio" />
-      </div>
+    <div class="container-fluid container-detalle_rutina">
+
+        <h4 id="routineType" class="mt-3 mb-0"></h4>
+        <h2 id="routineName" class=""></h2>
+        <p id="routineDescription" class="mt-2"></p> <div class="progress mt-3">
+            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="editRoutineButton" class="btn btn-warning">Editar Rutina</button>
+            <button id="deleteRoutineButton" class="btn btn-danger">Eliminar Rutina</button>
+        </div>
+
+        <div id="exerciseList" class="list-group mt-4"></div>
     </div>
-  </div>
-</div>
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const rutinaId = urlParams.get('id');
+    <div class="modal fade" id="felicidadesModal" tabindex="-1" aria-labelledby="felicidadesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"> <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="felicidadesModalLabel">¡Felicidades!</h5>
+                </div>
+                <div class="modal-body">
+                    Has completado toda la rutina. ¡Buen trabajo!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cerrar-modal-felic" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        Promise.all([
-            fetch('json/rutinas.json').then(response => response.json()),
-            fetch('json/ejercicios.json').then(response => response.json())
-        ])
-        .then(([rutinasData, ejerciciosData]) => {
-            const rutina = rutinasData.rutinas.find(r => r.id == rutinaId);
-            if (rutina) {
-                document.getElementById('routineTitle').textContent = rutina.nombre;
-                document.getElementById('routineName').textContent = rutina.nombre;
-                const routineDescriptionElement = document.getElementById('routineDescription');
-                routineDescriptionElement.textContent = rutina.descripcion; 
-                document.getElementById('routineType').textContent = rutina.tipo.toUpperCase();
-                document.getElementById('routineImage').src = rutina.url_imagen;
+    <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img id="modalImage" class="img-fluid text-center" alt="Imagen del ejercicio" />
+                </div>
+            </div>
+        </div>
+    </div>
 
-                // --- INICIO: Lógica para "Mostrar más/menos" en la descripción ---
-                setTimeout(() => {
-                    // Quitamos temporalmente la clase para medir la altura real del texto completo
-                    routineDescriptionElement.classList.remove('description-truncated');
-                    routineDescriptionElement.style.webkitLineClamp = 'unset';
-                    routineDescriptionElement.style.overflow = 'visible';
-                    routineDescriptionElement.style.display = 'block';
 
-                    const lineHeight = parseFloat(getComputedStyle(routineDescriptionElement).lineHeight);
-                    const threeLinesHeight = lineHeight * 3;
+    <script>
+        let currentRoutineId = null; // Variable para almacenar el ID de la rutina actual
 
-                    // Ahora la condición clave: solo si el texto real es más largo que 3 líneas + un margen
-                    if (routineDescriptionElement.scrollHeight > threeLinesHeight + 5) {
-                        routineDescriptionElement.classList.add('description-truncated'); // Aplicamos el truncado
-                        
-                        const showMoreButton = document.createElement('span');
-                        showMoreButton.classList.add('show-more-button');
-                        showMoreButton.textContent = ' Mostrar más';
-                        
-                        routineDescriptionElement.insertAdjacentElement('afterend', showMoreButton);
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const rutinaId = urlParams.get('id');
+            currentRoutineId = rutinaId; // Asignar el ID a la variable global
 
-                        let isExpanded = false;
+            Promise.all([
+                fetch('json/rutinas.json').then(response => response.json()),
+                fetch('json/ejercicios.json').then(response => response.json())
+            ])
+            .then(([rutinasData, ejerciciosData]) => {
+                const rutina = rutinasData.rutinas.find(r => r.id == rutinaId);
+                if (rutina) {
+                    document.getElementById('routineTitle').textContent = rutina.nombre;
+                    document.getElementById('routineName').textContent = rutina.nombre;
+                    const routineDescriptionElement = document.getElementById('routineDescription');
+                    routineDescriptionElement.textContent = rutina.descripcion; 
+                    document.getElementById('routineType').textContent = rutina.tipo.toUpperCase();
+                    document.getElementById('routineImage').src = rutina.url_imagen;
 
-                        showMoreButton.addEventListener('click', () => {
-                            if (isExpanded) {
-                                routineDescriptionElement.classList.add('description-truncated');
-                                showMoreButton.textContent = ' Mostrar más';
-                            } else {
-                                routineDescriptionElement.classList.remove('description-truncated');
-                                showMoreButton.textContent = ' Mostrar menos';
-                            }
-                            isExpanded = !isExpanded;
+                    // --- INICIO: Lógica para "Mostrar más/menos" en la descripción ---
+                    setTimeout(() => {
+                        routineDescriptionElement.classList.remove('description-truncated');
+                        routineDescriptionElement.style.webkitLineClamp = 'unset';
+                        routineDescriptionElement.style.overflow = 'visible';
+                        routineDescriptionElement.style.display = 'block';
+
+                        const lineHeight = parseFloat(getComputedStyle(routineDescriptionElement).lineHeight);
+                        const threeLinesHeight = lineHeight * 3;
+
+                        if (routineDescriptionElement.scrollHeight > threeLinesHeight + 5) {
+                            routineDescriptionElement.classList.add('description-truncated'); 
+                            
+                            const showMoreButton = document.createElement('span');
+                            showMoreButton.classList.add('show-more-button');
+                            showMoreButton.textContent = ' Mostrar más';
+                            
+                            routineDescriptionElement.insertAdjacentElement('afterend', showMoreButton);
+
+                            let isExpanded = false;
+
+                            showMoreButton.addEventListener('click', () => {
+                                if (isExpanded) {
+                                    routineDescriptionElement.classList.add('description-truncated');
+                                    showMoreButton.textContent = ' Mostrar más';
+                                } else {
+                                    routineDescriptionElement.classList.remove('description-truncated');
+                                    showMoreButton.textContent = ' Mostrar menos';
+                                }
+                                isExpanded = !isExpanded;
+                            });
+                        }
+                    }, 250); 
+                    // --- FIN: Lógica para "Mostrar más/menos" ---
+
+                    const exerciseList = document.getElementById('exerciseList');
+                    rutina.ejercicios.forEach(ejercicio => {
+                        const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
+                        if (ejercicioData) {
+                            const ejercicioItem = document.createElement('a');
+                            ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
+                            const contentContainer = document.createElement('div');
+                            contentContainer.classList.add('d-flex', 'align-items-center');
+                            const img = document.createElement('img');
+                            img.src = ejercicioData.imagen_url;
+                            img.alt = ejercicioData.nombre;
+                            img.classList.add('exercise-img', 'me-3');
+                            img.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                mostrarImagenModal(ejercicioData.imagen_url);
+                            });
+                            const textContainer = document.createElement('div');
+                            const title = document.createElement('h5');
+                            title.classList.add('mb-1');
+                            title.textContent = ejercicioData.nombre;
+                            const details = document.createElement('small');
+                            details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
+                            textContainer.appendChild(title);
+                            textContainer.appendChild(details);
+                            contentContainer.appendChild(img);
+                            contentContainer.appendChild(textContainer);
+                            ejercicioItem.appendChild(contentContainer);
+                            const checkbox = document.createElement('input');
+                            checkbox.type = 'checkbox';
+                            checkbox.classList.add('form-check-input', 'ms-auto');
+                            checkbox.addEventListener('click', () => {
+                                if (checkbox.checked) {
+                                    completarEjercicio(ejercicioItem, rutina.ejercicios.length);
+                                } else {
+                                    ejerciciosCompletados--;
+                                    actualizarProgreso(rutina.ejercicios.length);
+                                }
+                            });
+                            ejercicioItem.appendChild(checkbox);
+                            ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
+                            exerciseList.appendChild(ejercicioItem);
+                        }
+                    });
+                } else {
+                    alert('Rutina no encontrada.');
+                    history.back(); // Volver si la rutina no se encuentra
+                }
+            })
+            .catch(error => {
+                console.error('Error al cargar los JSON:', error);
+                alert('Error al cargar los detalles de la rutina.');
+                history.back();
+            });
+
+            // Event listener para el botón de editar
+            document.getElementById('editRoutineButton').addEventListener('click', () => {
+                if (currentRoutineId) {
+                    window.location.href = `editar_rutina.html?id=${currentRoutineId}`;
+                } else {
+                    alert('No se pudo obtener el ID de la rutina para editar.');
+                }
+            });
+
+            // Event listener para el botón de eliminar
+            document.getElementById('deleteRoutineButton').addEventListener('click', async () => {
+                if (!currentRoutineId) {
+                    alert('No se pudo obtener el ID de la rutina para eliminar.');
+                    return;
+                }
+
+                if (confirm('¿Estás seguro de que quieres eliminar esta rutina? Esta acción no se puede deshacer.')) {
+                    try {
+                        const formData = new FormData();
+                        formData.append('id', currentRoutineId);
+
+                        const response = await fetch('php/eliminar_rutina.php', {
+                            method: 'POST',
+                            body: formData
                         });
+
+                        const result = await response.json();
+
+                        if (result.success) {
+                            alert(result.message);
+                            window.location.href = 'rutinas.html'; // Redirigir a la lista de rutinas
+                        } else {
+                            alert('Error al eliminar la rutina: ' + result.message);
+                        }
+                    } catch (error) {
+                        console.error('Error al enviar la solicitud de eliminación:', error);
+                        alert('Hubo un problema de conexión o servidor al intentar eliminar la rutina.');
                     }
-                    // Si el texto NO excede las tres líneas, esta sección "if" no se ejecuta,
-                    // y por lo tanto, el botón 'showMoreButton' nunca se crea ni se añade al DOM.
-                }, 250); 
-                // --- FIN: Lógica para "Mostrar más/menos" ---
+                }
+            });
+        });
 
-                // Tu código existente para ejercicios...
-                const exerciseList = document.getElementById('exerciseList');
-                rutina.ejercicios.forEach(ejercicio => {
-                    const ejercicioData = ejerciciosData.ejercicios.find(e => e.id === ejercicio.id_ejercicio);
-                    if (ejercicioData) {
-                        const ejercicioItem = document.createElement('a');
-                        ejercicioItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
-                        const contentContainer = document.createElement('div');
-                        contentContainer.classList.add('d-flex', 'align-items-center');
-                        const img = document.createElement('img');
-                        img.src = ejercicioData.imagen_url;
-                        img.alt = ejercicioData.nombre;
-                        img.classList.add('exercise-img', 'me-3');
-                        img.addEventListener('click', (e) => {
-                            e.preventDefault();
-                            mostrarImagenModal(ejercicioData.imagen_url);
-                        });
-                        const textContainer = document.createElement('div');
-                        const title = document.createElement('h5');
-                        title.classList.add('mb-1');
-                        title.textContent = ejercicioData.nombre;
-                        const details = document.createElement('small');
-                        details.textContent = `${ejercicio.series} series de ${ejercicio.cantidad} ${ejercicio.medicion}`;
-                        textContainer.appendChild(title);
-                        textContainer.appendChild(details);
-                        contentContainer.appendChild(img);
-                        contentContainer.appendChild(textContainer);
-                        ejercicioItem.appendChild(contentContainer);
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.classList.add('form-check-input', 'ms-auto');
-                        checkbox.addEventListener('click', () => {
-                            if (checkbox.checked) {
-                                completarEjercicio(ejercicioItem, rutina.ejercicios.length);
-                            } else {
-                                ejerciciosCompletados--;
-                                actualizarProgreso(rutina.ejercicios.length);
-                            }
-                        });
-                        ejercicioItem.appendChild(checkbox);
-                        ejercicioItem.href = `detalle_ejer.html?id=${ejercicioData.id}`;
-                        exerciseList.appendChild(ejercicioItem);
-                    }
-                });
+        let ejerciciosCompletados = 0; // Contador de ejercicios completados
+
+        function actualizarProgreso(totalEjercicios) {
+            const progreso = (ejerciciosCompletados / totalEjercicios) * 100;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = `${progreso}%`;
+            progressBar.setAttribute('aria-valuenow', progreso);
+            progressBar.textContent = `${Math.round(progreso)}%`;
+
+            if (ejerciciosCompletados === totalEjercicios) {
+                mostrarFelicidadesModal();
             }
-        })
-        .catch(error => console.error('Error al cargar los JSON:', error));
-    });
+        }
+
+        function completarEjercicio(item, totalEjercicios) {
+            item.style.display = 'none';
+            ejerciciosCompletados++;
+            actualizarProgreso(totalEjercicios);
+        }
+
+        function mostrarFelicidadesModal() {
+            const felicidadesModal = new bootstrap.Modal(document.getElementById('felicidadesModal'));
+            felicidadesModal.show();
+
+            felicidadesModal._element.addEventListener('hidden.bs.modal', function () {
+                history.back();
+            });
+        }
+
+        function mostrarImagenModal(imageUrl) {
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageUrl;
+            const imagenModal = new bootstrap.Modal(document.getElementById('imagenModal'));
+            imagenModal.show();
+        }
+
+        document.getElementById('back-button').addEventListener('click', function() {
+            history.back();
+        });
+    </script>
+
+
+    <script>
+    // ... (tu código JS existente, incluyendo el atajo de teclado si lo mantienes) ...
+
+    // --- Lógica para mostrar/ocultar el botón de editar con un atajo secreto móvil (Triple Tap) ---
+    const secretMobileElement = document.querySelector('.app-bar h1'); // Selecciona el título "Rutina Hoy"
+    let tapCount = 0;
+    let tapTimeout;
+    const TAP_THRESHOLD = 3; // Número de taps necesarios
+    const TAP_TIME_LIMIT = 500; // Milisegundos entre taps (0.5 segundos)
+
+    if (secretMobileElement) {
+        secretMobileElement.addEventListener('click', function() {
+            tapCount++;
+
+            if (tapTimeout) {
+                clearTimeout(tapTimeout); // Reinicia el temporizador si hay un tap previo
+            }
+
+            tapTimeout = setTimeout(() => {
+                tapCount = 0; // Reinicia el contador si el tiempo entre taps expira
+            }, TAP_TIME_LIMIT);
+
+            if (tapCount >= TAP_THRESHOLD) {
+                const editButton = document.getElementById('editRoutineButton');
+                const deleteButton = document.getElementById('deleteRoutineButton');
+                if (editButton) {
+                    // Verificar el estilo computado para mayor fiabilidad
+                    const currentDisplay = window.getComputedStyle(editButton).display;
+                    
+
+                    if (currentDisplay === 'none') {
+                        editButton.style.display = 'block'; // Asegura que se muestre
+                        deleteButton.style.display = 'block'; // Asegura que se muestre
+                        console.log('Botón "Editar Rutina" visible (móvil).');
+                    } else {
+                        editButton.style.display = 'none'; // Asegura que se oculte
+                        deleteButton.style.display = 'none'; // Asegura que se oculte
+                        console.log('Botón "Editar Rutina" oculto (móvil).');
+                    }
+                }
+                tapCount = 0; // Reinicia el contador después de activar
+                clearTimeout(tapTimeout); // Limpia el temporizador para evitar activaciones dobles
+            }
+        });
+    }
 </script>
 
-  <script>
-    function actualizarProgreso(totalEjercicios) {
-  // Actualizar la barra de progreso
-  const progreso = (ejerciciosCompletados / totalEjercicios) * 100;
-  const progressBar = document.getElementById('progressBar');
-  progressBar.style.width = `${progreso}%`;
-  progressBar.setAttribute('aria-valuenow', progreso);
-  progressBar.textContent = `${Math.round(progreso)}%`;
 
-  // Verificar si se han completado todos los ejercicios
-  if (ejerciciosCompletados === totalEjercicios) {
-    mostrarFelicidadesModal();
-  }
-}
-
-  </script>
-
-  <script>
-    let ejerciciosCompletados = 0; // Contador de ejercicios completados
-
-function completarEjercicio(item, totalEjercicios) {
-  // Ocultar el ítem (lo puedes eliminar del DOM también si prefieres)
-  item.style.display = 'none';
-
-  // Aumentar el número de ejercicios completados
-  ejerciciosCompletados++;
-
-  // Actualizar la barra de progreso
-  const progreso = (ejerciciosCompletados / totalEjercicios) * 100;
-  const progressBar = document.getElementById('progressBar');
-  progressBar.style.width = `${progreso}%`;
-  progressBar.setAttribute('aria-valuenow', progreso);
-  progressBar.textContent = `${Math.round(progreso)}%`;
-
-  // Verificar si se han completado todos los ejercicios
-  if (ejerciciosCompletados === totalEjercicios) {
-    // Mostrar modal de felicitaciones
-    mostrarFelicidadesModal();
-  }
-}
-
-  </script>
-
-  <script>
-  function mostrarFelicidadesModal() {
-    const felicidadesModal = new bootstrap.Modal(document.getElementById('felicidadesModal'));
-    felicidadesModal.show();
-
-    // Agregar evento para ejecutar history.back() al cerrar el modal
-    felicidadesModal._element.addEventListener('hidden.bs.modal', function () {
-      history.back();
-    });
-  }
-
-  </script>
-
-  <script>
-      // Función para volver a la pantalla anterior
-  document.getElementById('back-button').addEventListener('click', function() {
-    history.back();
-  });
-  </script>
-
-<script>
-  // Función para mostrar el modal con la imagen
-function mostrarImagenModal(imageUrl) {
-const modalImage = document.getElementById('modalImage');
-modalImage.src = imageUrl; // Asignar la URL de la imagen
-const imagenModal = new bootstrap.Modal(document.getElementById('imagenModal')); // Inicializar el modal
-imagenModal.show(); // Mostrar el modal
-}
-</script>
-
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
