@@ -270,10 +270,10 @@
             "username": "liz123",
             "id": 7,
             "fecha": "2025-06-18",
-            "nombre": "Rutina de Espalda + Hombros",
-            "descripcion": "Rutina de Espalda + Hombros\r\nDetalle del Entrenamiento:\r\n1) Remo con mancuernas (Serrucho) 3 x 12 en cada brazo  con una pesa de 10kg\r\n2.1) Vuelos posteriores en maquina 3x20 --> con 20-30kg \r\n2.2) Jalon polea agarre supino y cerrado 3x15 --> con 30-40kg \r\n3.1) Burpees 3x20\r\n3.2) Remo Sentado en máquina 3x14 --> con 25-35kg\r\n4.1) Elevaciones laterales con mancuernas 3x20 --> con pesas de 5kg\r\n4.2) Elevaciones frontales con un disco de 5kg 3x22\r\n4.3) Press de hombros con mancuernas de 5kg 3x15",
+            "nombre": "Rutina de Espalda + Triceps + Cardio",
+            "descripcion": "Rutina de Espalda + Hombros\r\nDetalle del Entrenamiento:\r\n1) Remo con mancuernas (Serrucho) 3 x 12 en cada brazo --> con una pesa de 10kg\r\n2.1) Vuelos posteriores en maquina 3x20 --> con 20-30kg \r\n2.2) Jalon polea agarre supino y cerrado 3x15 --> con 30-40kg \r\n3.1) Remo Sentado en m\u00e1quina 3x14 --> con 25-35kg\r\n3.2) Pull over en polea 3x16 --> con la 5ta \u00f3 6ta placa de la maquina\r\n4) Burpees 4x20\r\n5.1) Copa 3x16 --> con pesa de 7,5kg\r\n5.2) Extension de triceps en polea con soga 3x16 --> con 25-35kg",
             "tipo": "hipertrofia",
-            "url_imagen": "https://i.ytimg.com/vi/UaCLOybf2dI/maxresdefault.jpg",
+            "url_imagen": "https:\/\/i.ytimg.com\/vi\/UaCLOybf2dI\/maxresdefault.jpg",
             "ejercicios": [
                 {
                     "id_ejercicio": 20,
@@ -306,16 +306,6 @@
                     }
                 },
                 {
-                    "id_ejercicio": 23,
-                    "series": 3,
-                    "medicion": "repeticiones",
-                    "cantidad": 20,
-                    "tiempo_descanso": {
-                        "minutos": 1,
-                        "segundos": 0
-                    }
-                },
-                {
                     "id_ejercicio": 24,
                     "series": 3,
                     "medicion": "repeticiones",
@@ -326,33 +316,43 @@
                     }
                 },
                 {
-                    "id_ejercicio": 25,
+                    "id_ejercicio": 30,
                     "series": 3,
                     "medicion": "repeticiones",
-                    "cantidad": 20,
+                    "cantidad": 16,
                     "tiempo_descanso": {
                         "minutos": 1,
                         "segundos": 0
                     }
                 },
                 {
-                    "id_ejercicio": 26,
+                    "id_ejercicio": 23,
+                    "series": 4,
+                    "medicion": "repeticiones",
+                    "cantidad": 20,
+                    "tiempo_descanso": {
+                        "minutos": 2,
+                        "segundos": 0
+                    }
+                },
+                {
+                    "id_ejercicio": 31,
                     "series": 3,
                     "medicion": "repeticiones",
-                    "cantidad": 22,
+                    "cantidad": 16,
                     "tiempo_descanso": {
                         "minutos": 1,
                         "segundos": 30
                     }
                 },
                 {
-                    "id_ejercicio": 27,
+                    "id_ejercicio": 14,
                     "series": 3,
                     "medicion": "repeticiones",
-                    "cantidad": 15,
+                    "cantidad": 16,
                     "tiempo_descanso": {
-                        "minutos": 2,
-                        "segundos": 0
+                        "minutos": 1,
+                        "segundos": 30
                     }
                 }
             ]
